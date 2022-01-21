@@ -10,18 +10,17 @@
    ```C++
    char b[100];  或者是 string b;
    scanf("%s",&b);     cin >> b;
-   
    for (int i = 0; b[i] != '\0'; i++) //i < b.length()
    ...对b的处理
-   
    ```
-
+   
    输入行
 
    ```C++
    string s;
    getline(cin, s);
    ```
+
 4. **C++中读取****`string`****对象**
    1.标准输入读取：`cin >> string`
    a.忽略开头所有的空白字符（空格、换行、制表符等）；

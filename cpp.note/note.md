@@ -27,7 +27,8 @@
        return x > y ? x : y;
    }
    ```
-   ```C++
+
+    ```C++
    template <class out_type, class in_value>
    out_type transf(const in_value &t)
    {
@@ -41,15 +42,17 @@
        double t = transf<double>(s); // <>里的是要转换的类型名，()里的是被转换的变量名
    }
    ```
+
 5. `i++`：用了再加        `++i`：用之前就加了
 6. `printf("he said :\"ok.\"");`  输出双引号时要用   \" 句子 \"   括起来
-7. `long long `: 9e19,  `unsigned long long` : 1e21
+7. `long long`: 9e19,  `unsigned long long` : 1e21
 8. 复杂度限制：
 
    1. 在函数(非递归)中，一维数组大小不超过1e5.
       在全局变量中，一维数组大小不超过1e8，二维数组大小不超过1e4
    2. 对于1s的时间限制，需要保证程序的所有语句的总执行次数不超过1e8.
       ![](image/image.png)
+
 9. `scanf("%4d%4d",&a,&b);`输入12345678将把1234赋予a，而把5678赋予b
 10. 让循环里的if只判断一次：
 
@@ -60,7 +63,8 @@
          xxx, f = 0;
         }
     ```
-11. 随机数生成 `int num = rand() % 50 + 1; //产生一个1-50之间的数`  带 ` <stdlib.h>`头
+
+11. 随机数生成 `int num = rand() % 50 + 1; //产生一个1-50之间的数`  带 `<stdlib.h>`头
 12. `const void *a` 因此，void * 类型指针，这个类型指针指向了实实在在的存放数据的地址，但是该地址存放的数据的 **数据类型** 我们暂时不知道。
 13. oj上结尾无空格：
 
@@ -71,6 +75,7 @@
                     cout << i;
                     f = 1;
     ```
+
 14. **`double`** 的位数高达 **`-1.79E+308 ~ +1.79E+308`**
 15. **二维数组** ：按坐标表示，xy轴互换
 
@@ -90,6 +95,7 @@
                 for (j = max(x1 - f, 0); j <= min(x1 + f, x); j++)
     
     ```
+
 16. 计数数组
     其实就是，将输入的值当做数组的位置下标    —> 桶
 
@@ -110,6 +116,7 @@
         return 0;
     }
     ```
+
 17. 去重
     纯数字的去重——**[转string后再转回数字](https://www.wolai.com/kUFqERVqpYckYNf2XNU1ik#usaSP5VLyCg4GBR35nq1Gt)**
 
@@ -129,6 +136,7 @@
         return k;   //k 为去重后的长度
     }
     ```
+
 18. 结构体数组：用一维数组**代替**多维数组
 
     ```C++
@@ -140,19 +148,19 @@
     for (i = 0; i < n; i++)
             cin >> a[i].x >> a[i].y >> a[i].z;  输入
 
-
     bool cmp(pan x, pan y){
         return x.z < y.z;    以pan中的z小到大排序
     }
     sort(a , a + n, cmp);    排序, cmp：排序规则
     ```
+
 19. 与其用else if 一个个地判断，还不如用数组来打表 / 枚举
 
     ```C++
     像是 int day[] = {31,28,31,30,31,30,31,31,30,31,30,31);
     void函数 →  if(是闰年)  day[1] = 29;
-    
     ```
+
 20. 知道递推公式，f (n) = f ( n+1 ) + f  ( n+2 )，可以直接套   —> 不是模拟，可以暴力但爆，手动推一下递推公式
 
     ```C++
@@ -163,20 +171,21 @@
             printf("factorial[%d]=%d\n", i, arr[i]);
         }
     ```
+
 21. C++11 新特性：
 
     ```C++
     int a[10] = {0};
-        for (int &c : a)   要改变值时要加 & ，不然只是 只读 模式
-            c++;
-        for (int i : a)
-            cout << a[i] << " ";
+    for (int &c : a)   要改变值时要加 & ，不然只是 只读 模式
+        c++;
+    for (int i : a)
+        cout << a[i] << " ";
     
     string s;
     for (char c : s)
         cout << c;
-    
     ```
+
 22. 梯形数字：    要想一下，多个for循环是 **嵌套关系** 还是 **并列关系**
 
     ```C++
@@ -189,6 +198,7 @@
             printf("\n");
         }
     ```
+
 23. **前缀和** ： 还可以求区间内的和
 
     ```C++
@@ -197,6 +207,7 @@
             sum[i] = sum[i - 1] + a[i];
         }
     ```
+
     二维数组：
     ![](image/image_1.png)
 
@@ -207,18 +218,21 @@
                 sum[i][j] = mpa[i][j] + sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
             }
     ```
+
     ![](image/image_2.png)
 
     ```C++
      cin >> x1 >> y1 >> x2 >> y2;   //求表
         cout << sum[x2][y2] - sum[x1 - 1][y2] - sum[x2][y1 - 1] + sum[x1 - 1][y1 - 1];
     ```
+
 24. 数组的最大值：
 
     ```C++
         int p[5] = {3, 4, 5333, 2, 3};
         int pos = *max_element(p, p + 5);
     ```
+
 25. s
 
     ```C++
@@ -227,6 +241,7 @@
         int *p = lower_bound(a, a + 5, 3);  必须是已经排好序的数组
         cout << "*p = " << *p << endl;
     ```
+
 26. 否命题原理 ：**`if (c != 'a' && c != 'b')`** 两个不等于用and，等于用or
 27. 相同情况循环了n次的周期，那只要将结果乘以n再加上周期以外的就行
 28. 定义无穷大：int a = INT_MAX;
@@ -239,8 +254,8 @@
         ...
         maxx = max(maxx, a[i]);
     }
-    
     ```
+
 30. 方向数组：用数组来控制方向                    —>注意，用fang（i，j ）时，数组要从1开始
 
     ```C++
@@ -256,8 +271,8 @@
                 ......;
         }
     }
-    
     ```
+
     ```C++
     void fang4(int x, int y)  //4个方向 上下左右
     {
@@ -271,6 +286,7 @@
         }
     }
     ```
+
 31. 让函数return数组：
 
     ```C++
@@ -282,13 +298,16 @@
     int main()
     {
         int a[10];
-        int *b = xxx(a);   -->指针也就是数组，int len = sizeof(b)/sizeof(int); 得数组b的长度
+        int *b = xxx(a);   
+    -->指针也就是数组，int len = sizeof(b)/sizeof(int); 得数组b的长度
     }
     ```
+
 32. memset 批量赋值只能是char用，int只能给-1 或0， 而：
 
     ```C++
     赋值无穷大：memset(a, 127, sizeof(a))
     赋值无穷小：memset(a, 128, sizeof(a))
     ```
+
 33.

@@ -1,8 +1,8 @@
 {
-  "C_Cpp_Runner.cCompilerPath": "C:\\mingw64\\bin\\gcc.exe",
-  "C_Cpp_Runner.cppCompilerPath": "C:\\mingw64\\bin\\g++.exe",
-  "C_Cpp_Runner.debuggerPath": "C:\\mingw64\\bin\\gdb.exe",
-  "C_Cpp_Runner.makePath": "C:\\mingw64\\bin\\make.exe",
+  "C_Cpp_Runner.cCompilerPath": "C:\\CodePath\\mingw64\\bin\\gcc.exe",
+  "C_Cpp_Runner.cppCompilerPath": "C:\\CodePath\\mingw64\\bin\\g++.exe",
+  "C_Cpp_Runner.debuggerPath": "C:\\CodePath\\mingw64\\bin\\gdb.exe",
+  "C_Cpp_Runner.makePath": "C:\\CodePath\\mingw64\\bin\\make.exe",
   "C_Cpp_Runner.warnings": [
     "-Wall",
     "-Wextra",
