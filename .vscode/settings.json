@@ -120,6 +120,8 @@
     "galgame",
     "Huaihua",
     "huic",
+    "isdigit",
+    "isprime",
     "jiaozi",
     "Jishou",
     "marginheight",
@@ -141,6 +143,7 @@
     "struct",
     "stsrt",
     "Tari",
+    "tolower",
     "vocaloid",
     "winer"
   ],
