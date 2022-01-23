@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.16)  9 JAN 2022 23:30
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.16)  21 JAN 2022 10:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/vscode/Latex/tese
-(c:/vscode/Latex/tese.tex
+**tese
+(./tese.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18> (d:/LaTex/texlive/2021/texmf-dist/tex/latex/ctex/ctexart.cls (d:/LaTex/texlive/2021/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg
 File: ctexbackend.cfg 2021/03/14 v2.5.6 Backend configuration file (CTEX)
@@ -284,12 +284,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ] (./tese.aux) ) 
 Here is how much of TeX's memory you used:
- 6339 strings out of 478866
- 192441 string characters out of 5864966
+ 6338 strings out of 478866
+ 192395 string characters out of 5864966
  516074 words of memory out of 5000000
  26182 multiletter control sequences out of 15000+600000
  404450 words of font info for 43 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 101i,4n,104p,372b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,4n,104p,356b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on tese.pdf (1 page).
