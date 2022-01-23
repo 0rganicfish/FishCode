@@ -9,7 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "C:/VScode/exe/${fileBasenameNoExtension}.exe",
                 "-IC:/CodePath/SFML-2.5.1/include",
                 "-LC:/SFML-2.5.1/lib",
                 "-lsfml-graphics",
