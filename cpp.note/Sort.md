@@ -1,8 +1,6 @@
 # 排序
 
-[C / C++](https://www.wolai.com/swnDZwpSdSHokZ4M7ipUsw)
-
-[首页](note/../../note.md)
+[首页](main.md)
 
 1. 选择排序
 
@@ -19,6 +17,7 @@
        }
    }
    ```
+
 2. 空间换时间的桶排序
 
    ```C++
