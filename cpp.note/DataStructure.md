@@ -14,11 +14,12 @@
   - [Stack](#stack)
   - [queue、priority_queue](#queuepriority_queue)
 - [迭代器](#迭代器)
+- [STL函数](#stl函数)
+
+
 </br></br>
 
 ## **序列式容器（可序）**
----
-
 ### **Vector**
 
   ```C++
@@ -54,17 +55,18 @@
   ```
 
 ---
+
 ### **Deque**
 
 
 ---
+
 ### **List**
 
 
+</br></br>
 
 ## **关联式容器 （已序）**
----
-
 ### **Map、multimap**
 
   ```C++
@@ -89,15 +91,13 @@
   ```
 
 ---
+
 ### **Set、multiset**
 
-
+</br></br>
 
 ## **其他**
----
-
 ### **Stack**
-
 
   ```C++
   x = n.top();           //取栈与栈运算
@@ -110,6 +110,7 @@
   ```
 
 ---
+
 ### **queue、priority_queue**
 
   ```C++
@@ -120,8 +121,18 @@
   n.back();            //pop是删除队列的第一个元素
   ```
 
----
+</br></br>
+
 ## **迭代器**
+
 - 迭代器要遍历，随机访问是指用下标或 at()
 
-  vector 随机访问， deque 随机访问， list 双向，set 双向， multiset 双向 ， map 双向， multimap 双向， stack 不支持， queue 不支持， priority_queue 不支持
+    - vector 随机访问， deque 随机访问， stack 不支持， queue 不支持， priority_queue 不支持
+
+    - list 双向，set 双向， multiset 双向 ， map 双向， multimap 双向
+
+</br></br>
+
+## **STL函数**
+
+1. 
