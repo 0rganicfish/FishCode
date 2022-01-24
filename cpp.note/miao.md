@@ -1,18 +1,16 @@
-# 喵啊
-
- [首页](main.md)
+# 喵 啊
 
 ## **目 录**
-
-### 1. [周期循环 --> 打表](#t1)
-
-### 2. [拼接数字取模%!](#t2)
+  - [首页](main.md)
+  1. [周期循环 --> 打表](#t1)
+  2. [拼接数字取模%!](#t2)
 
 </br></br>
 
 <a id = "t1"> </a>
 
 1. **[周期循环 --> 打表](https://ac.nowcoder.com/acm/contest/22672/B)**
+
     ![img](image/miao_1.png)
 
     ```C++
@@ -45,6 +43,7 @@
 </br> <a id = "t2"> </a>
 
 2. **[拼接数字取模%!](https://ac.nowcoder.com/acm/contest/23846/D)**
+
    ![img](image/miao_2.png)
 
    ```C++
