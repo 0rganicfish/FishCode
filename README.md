@@ -1,0 +1,3 @@
+- 笔记根文件在 [main.md](cpp.note/main.md)
+- 主要的cpp在 [CPP.code](CPP.code)
+- **(ﾟ∇ﾟ)**
