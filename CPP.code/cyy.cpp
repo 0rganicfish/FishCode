@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#include <iostream>
-#include <queue>
-using namespace std;
+
 struct student
 {
     string name;
@@ -15,6 +13,11 @@ struct cmp
         return a.score < b.score || (a.score == b.score && a.name > b.name);
     }
 };
+ostream &operator<<(ostream &out, const student &O)
+{
+    return out << O.name << " " << O.score << endl;
+}
+
 priority_queue<student, vector<student>, cmp> pq;
 int main()
 {
@@ -27,7 +30,6 @@ int main()
         cin >> name >> score;
         pq.push({name, score});
     }
-    student rk1 = pq.top();
-    cout << rk1.name << ' ' << rk1.score << endl;
+    cout << pq.top();
     return 0;
 }
