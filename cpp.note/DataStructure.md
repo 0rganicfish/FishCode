@@ -22,38 +22,39 @@
 
 ### **Vector**
 
-```C++ {.line-numbers}
-vector<int>a;        初始化则是 vector<int>a(10, 1);  a有10个为1的元素
-cin >> x;
-a.push_back(x);
-int pos = find(a.begin(), a.end(), x) //返回位置
-a.pop_back(); 移出最后一个元素
+- 一些定义
 
-同时也能当做数组来使用：a[i]， sort(a.begin(), a.end());
-定义动态二维数组：vector<vector<int> > shu(N, vector<int>(M)); -->N行M列
+  ```C++ {.line-numbers}
+  vector<int>a;        初始化则是 vector<int>a(10, 1);  a有10个为1的元素
+  cin >> x;
+  a.push_back(x);
+  int pos = find(a.begin(), a.end(), x) //返回位置
+  a.pop_back(); 移出最后一个元素
+  ```
 
-#include<vector>
-vector<int> a, b;
-0. a.insert(a.begin() + n, x)  在 下标 n - 1 之前插入 x
-1. a.push_back(x)  在数组的最后添加一个数据
-2. a.pop_back()  去掉数组的最后一个数据
-3. a.at(pos)  得到编号位置的数据
-4. a.begin()  得到数组头的指针
-5. a.end()   得到数组的最后一个单元 + 1 的指针
-6. a.front()  得到数组头的引用
-7. a.back()  得到数组的最后一个单元的引用
-8. a.max_size()   得到vector最大可以是多大
-9. a.capacity()   当前vector分配的大小
-10. a.size()   当前使用数据的大小
-11. a.resize()   改变当前使用数据的大小，如果它比当前使用的大，者填充默认值
-12. a.reserve()   改变当前vecotr所分配空间的大小
-13. a.erase(a.begin() + n)   删除 下标 n 的元素， (也可以有范围)
-14. a.clear()   清空当前的vector
-15. a.rbegin()   将vector反转后的开始指针返回(其实就是原来的end-1)
-16. a.rend()   将vector反转构的结束指针返回(其实就是原来的begin-1)
-17. a.empty()   判断vector是否为空
-18. a.swap(b)   与另一个vector交换数据
-```
+- 同时也能当做数组来使用：a[i]， `sort(a.begin(), a.end());`
+- 定义动态二维数组：`vector<vector<int> > shu(N, vector<int>(M));` -->N 行 M 列
+
+- `vector<int> a, b;`
+  1. `a.insert(a.begin() + n, x)` 在 下标 n - 1 之前插入 x
+  2. `a.push_back(x)` 在数组的最后添加一个数据
+  3. `a.pop_back()` 去掉数组的最后一个数据
+  4. `a.at(pos)` 得到编号位置的数据
+  5. `a.begin()` 得到数组头的指针
+  6. `a.end()` 得到数组的最后一个单元 + 1 的指针
+  7. `a.front()` 得到数组头的引用
+  8. `a.back()` 得到数组的最后一个单元的引用
+  9. `a.max_size()` 得到 `vector` 最大可以是多大
+  10. `a.capacity()` 当前 `vector` 分配的大小
+  11. `a.size()` 当前使用数据的大小
+  12. `a.resize()` 改变当前使用数据的大小，如果它比当前使用的大，者填充默认值
+  13. `a.reserve()` 改变当前 `vecotr` 所分配空间的大小
+  14. `a.erase(a.begin() + n)` 删除 下标 n 的元素， (也可以有范围)
+  15. `a.clear()` 清空当前的 `vector`
+  16. `a.rbegin()` 将 `vector` 反转后的开始指针返回(其实就是原来的 end-1)
+  17. `a.rend()` 将 `vector` 反转构的结束指针返回(其实就是原来的 begin-1)
+  18. `a.empty()` 判断` vector` 是否为空
+  19. `a.swap(b)` 与另一个 `vector` 交换数据
 
 ---
 
