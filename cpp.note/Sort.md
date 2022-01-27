@@ -4,7 +4,7 @@
 
 1. 选择排序
 
-   ```C++
+   ```C++ {.line-numbers}
    void pai(int a[], int n)
    {
        for (int i = 0; i < n - 1; i++)
@@ -20,7 +20,7 @@
 
 2. 空间换时间的桶排序
 
-   ```C++
+   ```C++ {.line-numbers}
        cin >> n;
        for (i = 0; i < n; i++)
        {

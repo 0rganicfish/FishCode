@@ -1,12 +1,12 @@
-# 动态规划DP
+# 动态规划 DP
 
- [首页](main.md)
+[首页](main.md)
 
 ### 空间换时间
 
 1. 斐波那契数列
 
-   ```C++
+   ```C++ {.line-numbers} {line-numbers}
    int dp[50] = {0};
    int fib(int n)   //递归法
    {
@@ -33,7 +33,7 @@
 
 2. 使用硬币的个数
 
-   ```C++
+   ```C++ {.line-numbers} {line-numbers}
    const int MAXM = 1000;
    const int type = 6;
    int money[MAXM] = {0};
@@ -53,12 +53,12 @@
 
 3. 背包
 
-   1. 01背包
+   1. 01 背包
 
-      ```C++
+      ```C++ {.line-numbers} {line-numbers}
       void solve()
       {
-          for (i = 1; i <= num; i++) 
+          for (i = 1; i <= num; i++)
               for (j = 1; j <= w; j++)
                   if (j < weight[i])
                       dp[i][j] = dp[i - 1][j];

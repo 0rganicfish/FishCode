@@ -2,9 +2,9 @@
 
 [首页](main.md)
 
-1. 二分搜锁  // 数组要放在全局
+1. 二分搜锁 // 数组要放在全局
 
-   ```C++
+   ```C++ {.line-numbers}
    bool mids(int n, int x)   //n为数组的长度， x为要找的数
    {
        int rit = n, lef = 0, mid;
@@ -26,7 +26,7 @@
 
    - 数字全排列
 
-   ```C++
+   ```C++ {.line-numbers}
    int a[10];
    bool used[10];
    int n; //要全局
@@ -59,8 +59,8 @@
 
    - 选数，求质数和
 
-   ```C++
-   void dfs(int m, int sum, int startx)   
+   ```C++ {.line-numbers}
+   void dfs(int m, int sum, int startx)
     //k：边界，m：判断是否到了边界，sum：一个值，startx：用于排列组合地选的 地址
    {
        if (m == k)
