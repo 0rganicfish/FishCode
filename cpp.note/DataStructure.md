@@ -24,18 +24,20 @@
 
 - 一些定义
 
-  ```C++ {.line-numbers}
-  vector<int>a;        初始化则是 vector<int>a(10, 1);  a有10个为1的元素
-  cin >> x;
-  a.push_back(x);
-  int pos = find(a.begin(), a.end(), x) //返回位置
-  a.pop_back(); 移出最后一个元素
-  ```
+```C++ {.line-numbers}
+vector<int>a;        初始化则是 vector<int>a(10, 1);  a有10个为1的元素
+cin >> x;
+a.push_back(x);
+int pos = find(a.begin(), a.end(), x) //返回位置
+a.pop_back(); 移出最后一个元素
+```
 
 - 同时也能当做数组来使用：a[i]， `sort(a.begin(), a.end());`
+
 - 定义动态二维数组：`vector<vector<int> > shu(N, vector<int>(M));` -->N 行 M 列
 
 - `vector<int> a, b;`
+
   1. `a.insert(a.begin() + n, x)` 在 下标 n - 1 之前插入 x
   2. `a.push_back(x)` 在数组的最后添加一个数据
   3. `a.pop_back()` 去掉数组的最后一个数据
@@ -172,76 +174,76 @@ while (!n.empty())  来循环操作栈
 
 ### **queue、priority_queue**
 
-- queue
+#### queue
+
+```C++ {.line-numbers}
+#include <queue>
+queue<int>a;
+n.push(n.front())   ///实现队列的循环  push是在队列的尾部添加
+n.back();            //pop是删除队列的第一个元素
+```
+
+#### 优先队列
+
+- 定义：`priority_queue<元素类型, 基础序列的类型，比较的类型> name;`
+  基础序列默认为 `vector` ，比较类型默认为 `less<value_type>`
 
   ```C++ {.line-numbers}
-  #include <queue>
-  queue<int>a;
-  n.push(n.front())   ///实现队列的循环  push是在队列的尾部添加
-  n.back();            //pop是删除队列的第一个元素
+  priority_queue <pair<int, int>, vector<pair<int, int> >, cmp> q;
+  priority_queue <int,vector<int>,greater<int> > q;
   ```
 
-- 优先队列
+- 一则：
 
-  - 定义：`priority_queue<元素类型, 基础序列的类型，比较的类型> name;`
-    基础序列默认为 `vector` ，比较类型默认为 `less<value_type>`
-
-    ```C++ {.line-numbers}
-    priority_queue <pair<int, int>, vector<pair<int, int> >, cmp> q;
-    priority_queue <int,vector<int>,greater<int> > q;
-    ```
-
-  - 一则：
-
-    ```C++ {.line-numbers}
-    typedef pair<int, int> Pair;
-    struct cmp
-    {
-        bool operator()(const Pair &a, const Pair &b)
-        {
-            return a.first == b.first ? a.second > b.second : a.first > b.first;
-        } // 先按first小到大排序，first相等时按second小到大排序, 而且与 sort 的 cmp 的 < 相反
-    };
-    ostream &operator<<(ostream &out, const Pair &O)
-    {
-        return out << "(" << O.first << ", " << O.second << ")" << endl;
-    }  // 重载输出符 <<
-
-    int main()
-    {
-        priority_queue<Pair, vector<Pair>, cmp> q;
-        int n, a, b;
-        cin >> n;
-        for (int i = 0; i < n; ++i)
-            cin >> a >> b, q.push(make_pair(a, b));
-        while (!q.empty())  // 队列没有迭代器
-            cout << q.top(), q.pop();
-    }
-    ```
-
-    当然，也可以用 `struct` 代替 `pair`
-
-    ```C++ {.line-numbers}
-
-    struct student
-    {
-      string name;
-      int score;
-    };
-    struct cmp
-    {
-      bool operator()(const student &a, const student &b) const
+  ```C++ {.line-numbers}
+  typedef pair<int, int> Pair;
+  struct cmp
+  {
+      bool operator()(const Pair &a, const Pair &b)
       {
-          return a.score < b.score || (a.score == b.score && a.name > b.name);
-      }
-    };
-    priority_queue <student, vector<student>, cmp> pq;
-    // in main:
+          return a.first == b.first ? a.second > b.second : a.first > b.first;
+      } // 先按first小到大排序，first相等时按second小到大排序, 而且与 sort 的 cmp 的 < 相反
+  };
+  ostream &operator<<(ostream &out, const Pair &O)
+  {
+      return out << "(" << O.first << ", " << O.second << ")" << endl;
+  }  // 重载输出符 <<
+
+  int main()
+  {
+      priority_queue<Pair, vector<Pair>, cmp> q;
+      int n, a, b;
+      cin >> n;
+      for (int i = 0; i < n; ++i)
+          cin >> a >> b, q.push(make_pair(a, b));
+      while (!q.empty())  // 队列没有迭代器
+          cout << q.top(), q.pop();
+  }
+  ```
+
+  当然，也可以用 `struct` 代替 `pair`
+
+  ```C++ {.line-numbers}
+
+  struct student
+  {
     string name;
     int score;
-    cin >> name >> score;
-    pq.push({name, score});
-    ```
+  };
+  struct cmp
+  {
+    bool operator()(const student &a, const student &b) const
+    {
+        return a.score < b.score || (a.score == b.score && a.name > b.name);
+    }
+  };
+  priority_queue <student, vector<student>, cmp> pq;
+  // in main:
+  string name;
+  int score;
+  cin >> name >> score;
+  pq.push({name, score});
+  ```
 
 </br></br>
 
@@ -257,18 +259,64 @@ while (!n.empty())  来循环操作栈
 
 ## **STL 函数**
 
-- `find`：顺序查找。`find(v.begin(), v.end(), value)`，其中 value 为需要查找的值。
-- `find_end`：逆序查找。`find_end(v.begin(), v.end(), value)`。
-- `reverse`：翻转数组、字符串。`reverse(v.begin(), v.end())` 或 `reverse(a + begin, a + end)`。
+- `find`：顺序查找。
+
+  - `find(v.begin(), v.end(), value)`，其中 `value` 为需要查找的值。
+
+- `find_end`：逆序查找。
+
+  - `find_end(v.begin(), v.end(), value)`。
+
+- `reverse`：翻转数组、字符串。
+
+  - `reverse(v.begin(), v.end())` 或 `reverse(a + begin, a + end)`。
+
 - `unique`：去除容器中相邻的重复元素。
-  `unique(ForwardIterator first, ForwardIterator last)`，返回值为指向 **去重后** 容器结尾的迭代器，原容器大小不变。与 `sort` 结合使用可以实现完整容器去重。
-- `random_shuffle`：随机地打乱数组。`random_shuffle(v.begin(), v.end())` 或 r`andom_shuffle(v + begin, v + end)`。
-- `sort`：排序。`sort(v.begin(), v.end(), cmp)` 或 `sort(a + begin, a + end, cmp)`，其中 end 是排序的数组最后一个元素的后一位，cmp 为自定义的比较函数。
+
+  - `unique(ForwardIterator first, ForwardIterator last)`，返回值为指向 **去重后** 容器结尾的迭代器，原容器大小不变。与 `sort` 结合使用可以实现完整容器去重。
+
+- `random_shuffle`：随机地打乱数组。
+
+  - `random_shuffle(v.begin(), v.end())` 或 `random_shuffle(v + begin, v + end)`。
+
+- `sort`：排序。
+
+  - `sort(v.begin(), v.end(), cmp)` 或 `sort(a + begin, a + end, cmp)`，其中 `end` 是排序的数组最后一个元素的后一位，cmp 为自定义的比较函数。
+
 - `stable_sort`：稳定排序，用法同 `sort()`。
-- `nth_element`：按指定范围进行分类，即找出序列中第 大的元素，使其左边均为小于它的数，右边均为大于它的数。`nth_element(v.begin(), v.begin() + mid, v.end(), cmp)` 或 `nth_element(a + begin, a + begin + mid, a + end, cmp)`。
-- `binary_search`：二分查找。`binary_search(v.begin(), v.end(), value)`，其中 `value` 为需要查找的值。
-- `merge`：将两个（已排序的）序列 **有序合并** 到第三个序列的 **插入迭代器** 上。`merge(v1.begin(), v1.end(), v2.begin(), v2.end() ,back_inserter(v3))`。
-- `inplace_merge`：将两个（已按小于运算符排序的）：`[first,middle), [middle,last)` 范围 **原地合并为一个有序序列**。`inplace_merge(v.begin(), v.begin() + middle, v.end())`。
-- `lower_bound`：在一个有序序列中进行二分查找，返回指向第一个 **大于等于** 的元素的位置的迭代器。如果不存在这样的元素，则返回尾迭代器。`lower_bound(v.begin(),v.end(),x)`。 -` upper_bound`：在一个有序序列中进行二分查找，返回指向第一个 **大于** 的元素的位置的迭代器。如果不存在这样的元素，则返回尾迭代器。`upper_bound(v.begin(),v.end(),x)`。
-- `next_permutation`：将当前排列更改为 **全排列中的下一个排列**。如果当前排列已经是 **全排列中的最后一个排列**（元素完全从大到小排列），函数返回 `false` 并将排列更改为 **全排列中的第一个排列**（元素完全从小到大排列）；否则，函数返回 `true`。`next_permutation(v.begin(), v.end()) ` 或 `next_permutation(v + begin, v + end)`。
-- `partial_sum`：求前缀和。设源容器为 $ x $，目标容器为 $ y$ ，则令 $ y[i]=x[0]+x[1]+...+x[i] $ 。`partial_sum(src.begin(), src.end(), back_inserter(dst))`。
+
+- `nth_element`：按指定范围进行分类，即找出序列中第 大的元素，使其左边均为小于它的数，右边均为大于它的数。
+
+  - `nth_element(v.begin(), v.begin() + mid, v.end(), cmp)` 或 `nth_element(a + begin, a + begin + mid, a + end, cmp)`。
+
+- `binary_search`：二分查找。
+
+  - `binary_search(v.begin(), v.end(), value)`，其中 `value` 为需要查找的值。
+
+- `merge`：将两个（已排序的）序列 **有序合并** 到第三个序列的 **插入迭代器** 上。
+
+  - `merge(v1.begin(), v1.end(), v2.begin(), v2.end() ,back_inserter(v3))`。
+
+- `inplace_merge`：将两个（已按小于运算符排序的）：
+
+  - `[first,middle), [middle,last)` 范围 **原地合并为一个有序序列**。
+
+  - `inplace_merge(v.begin(), v.begin() + middle, v.end())`。
+
+- `lower_bound`：在一个有序序列中进行二分查找，返回指向第一个 **大于等于** 的元素的位置的迭代器。如果不存在这样的元素，则返回尾迭代器。
+
+  - `lower_bound(v.begin(),v.end(),x)`。
+
+- ` upper_bound`：在一个有序序列中进行二分查找，返回指向第一个 **大于** 的元素的位置的迭代器。如果不存在这样的元素，则返回尾迭代器。
+
+  - `upper_bound(v.begin(),v.end(),x)`。
+
+- `next_permutation`：将当前排列更改为 **全排列中的下一个排列**。
+
+  - 如果当前排列已经是 **全排列中的最后一个排列**（元素完全从大到小排列），函数返回 `false` 并将排列更改为 **全排列中的第一个排列**（元素完全从小到大排列）；否则，函数返回 `true`。
+  - `next_permutation(v.begin(), v.end()) ` 或 `next_permutation(v + begin, v + end)`。
+
+- `partial_sum`：求前缀和。
+
+  - 设源容器为 $ x $，目标容器为 $ y$ ，则令 $ y[i]=x[0]+x[1]+...+x[i] $ 。
+  - `partial_sum(src.begin(), src.end(), back_inserter(dst))`。

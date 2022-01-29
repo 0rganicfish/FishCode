@@ -96,8 +96,10 @@
   "cSpell.words": [
     "adfadfd",
     "andom",
+    "anguage",
     "ansa",
     "ansb",
+    "arkup",
     "arrr",
     "asdd",
     "atof",
@@ -108,6 +110,7 @@
     "cout",
     "coutvec",
     "deque",
+    "erence",
     "Erini",
     "fcaller",
     "fcrossjumping",
@@ -132,6 +135,7 @@
     "galgame",
     "getchar",
     "getline",
+    "herf",
     "hesdings",
     "Huaihua",
     "huic",
@@ -189,7 +193,9 @@
     "vecint",
     "vecotr",
     "vocaloid",
-    "winer"
+    "winer",
+    "yper",
+    "ypertext"
   ],
   "C_Cpp.errorSquiggles": "Enabled",
   "cmake.configureOnOpen": false
