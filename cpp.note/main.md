@@ -27,7 +27,6 @@
         if (n > 9) write(n / 10);
         putchar(n % 10 + '0');
     }
-
     int read()
     {
         int x = 0, f = 1;
