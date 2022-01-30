@@ -2,6 +2,8 @@
 
 - [cpp.note.main](../cpp.note/main.md)
 - [关键字缩写](#关键字缩写)
+- [CSS](#CSS)
+- [大杂烩](sample.html)
 
 ## 关键字缩写
 
@@ -67,4 +69,13 @@
 |       `"`        |           引号            |            `&quot;`            |
 |       `'`        |           撇号            |      `&apos;` (IE 不支持)      |
 
-##
+## CSS
+
+### 字体基础
+
+- `line-height: 1.2;`，行间距，默认 1.2
+- `font-weight: 700;`，字重(粗细)，加粗：`bold`，细：`height`
+- `font-size: 16px;`，字体大小，默认 16px
+- `font-family: "fangsong";`，字体样式
+- `text-decoration: none;`，下划线类型
+- `color: #282c34;`，颜色值

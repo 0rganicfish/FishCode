@@ -1,0 +1,33 @@
+.light_h1 {
+  color: #4b5757;
+  font-weight: 1000;
+  font-family: zillaslab, palatino, "kaiti", serif;
+  letter-spacing: 0.035rem;
+  line-height: 1.2;
+}
+
+
+p {
+  line-height: 1.2;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  color: #282c34;
+}
+
+h2 {
+  font-family: "fangsong";
+  color: #282c34;
+  font-weight: bold;
+}
+
+li {
+  list-style-type: square;
+}
+
+a:link {
+  color: rgba(251, 114, 153, 0.9);
+  font-weight: bold;
+  font-family: "Courier New";
+  text-decoration: none;
+}

@@ -1,15 +1,16 @@
 # C / C++
 
 - **C/C++**
-    - **[C++ string](String.md)**
-    - **[数据结构(STL)](DataStructure.md)**
-    - **[排序](Sort.md)**
-    - **[数学](Math.md)**
-    - **[搜索](Search.md)**
-    - **[动态规划 DP](DP.md)**
-    - **[喵啊](miao.md)**
+  - **[C++ String](String.md)**
+  - **[数据结构(STL)](DataStructure.md)**
+  - **[排序](Sort.md)**
+  - **[数学](Math.md)**
+  - **[搜索](Search.md)**
+  - **[动态规划 DP](DP.md)**
+  - **[喵啊](miao.md)**
 - **外链**
   - **[HTML.note](../HTML/HTML.note.md)**
+  - **[SomeNote](../../others/SomeNotes.md)**
 
 </br> </br>
 
@@ -345,5 +346,3 @@
     赋值无穷大：memset(a, 127, sizeof(a))
     赋值无穷小：memset(a, 128, sizeof(a))
     ```
-
-{喜大普奔|hē hē hē hē}
