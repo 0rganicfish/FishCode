@@ -1,0 +1,530 @@
+body,
+html {
+  height: 1000px;
+  width: auto;
+  background-image: url(img/bili-backbround.png);
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+* 全局属性 
+*/
+
+a {
+  outline: none;
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover.unselect {
+  color: rgb(0, 181, 229);
+}
+
+/* 
+* 导航栏 
+*/
+.header-box-con {
+  background-color: #fff;
+  width: 100%;
+  height: 56px;
+  position: absolute;
+  display: block;
+}
+
+.header-box {
+  box-sizing: border-box;
+  padding: 10px;
+  line-height: 30px;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.block {
+  width: 30px;
+  height: auto;
+}
+
+.header-link {
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.header-link-ul {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.header-link-item {
+  font-size: 14px;
+  color: #fff;
+  line-height: 32px;
+  margin: 8px 7px;
+  white-space: nowrap;
+  display: flex;
+}
+
+.left-logo {
+  width: 130px;
+  height: 32px;
+  display: flex;
+}
+
+.logo {
+  width: 70px;
+  height: 32px;
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  width: 200px;
+  height: 20px;
+  padding: 8px 0px 8px 20px;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+}
+.search-text {
+  color: #757575;
+  margin-right: 16px;
+  font-size: 13px;
+}
+.search-icon-box {
+  width: 45px;
+  height: 36px;
+  background-color: #e7e7e7;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.header-user {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background: #fff center/36px no-repeat;
+  cursor: pointer;
+}
+
+.upper {
+  width: 100px;
+  background-color: #fb7299;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/*
+* 正文 
+*/
+
+.home-content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 60px;
+}
+
+.home-box {
+  width: 1160px;
+  height: 100%;
+  margin: 8px 0px 0px;
+  display: flex;
+}
+
+/*
+* 左边 
+*/
+
+.left-box {
+  width: 260px;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+/*
+* 左边的用户栏 
+*/
+.user-box {
+  background-color: #fff;
+  width: 250px;
+  height: 180px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  position: relative;
+}
+.user-background {
+  width: 250px;
+  height: 64px;
+  border-radius: 5px;
+}
+.user-head-con {
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  left: 16px;
+  top: 45px;
+}
+.header-user-box {
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  background: #fff center/56px no-repeat;
+}
+.left-user-name {
+  height: 25px;
+  width: auto;
+  margin-left: 80px;
+  padding-top: 3px;
+}
+.left-name {
+  font-size: 13px;
+  color: #000;
+}
+
+.left-info-box {
+  height: 90px;
+  margin: 0px 16px;
+  display: flex;
+  justify-content: center;
+}
+.left-info {
+  margin: 8px 16px;
+  cursor: pointer;
+}
+a:hover.left-info {
+  color: rgb(0, 181, 229);
+}
+.left-num {
+  font-size: 13px;
+  font-weight: bold;
+}
+.left-text {
+  font-size: 12px;
+  color: #a0a9b0;
+}
+
+/*
+* 直播 
+*/
+.live-box {
+  position: relative;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  padding-bottom: 12px;
+  display: inline-block;
+}
+
+.live-title {
+  margin: 16px 0px 0px 16px;
+  height: 30px;
+}
+.live-title-text {
+  font-size: 16px;
+  line-height: 22px;
+  margin-right: 3px;
+}
+.live-num {
+  font-size: 15px;
+  line-height: 22px;
+  color: #a0a9b0;
+}
+.live-more {
+  font-size: 13px;
+  line-height: 22px;
+  color: #a0a9b0;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+a:hover.live-more {
+  color: rgb(0, 181, 229);
+}
+
+.live-up {
+  height: 44px;
+  padding: 8px 0px 10px 12px;
+  position: relative;
+  display: flex;
+}
+.live-img {
+  display: block;
+  width: 38px;
+  height: 38px;
+  border-radius: 22px;
+  position: relative;
+  background-color: #fff;
+  margin: 1px;
+  margin-right: 11px;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  background-size: cover;
+  background-color: #ddd;
+  -webkit-box-shadow: 0 0 0 1px #f25d8e;
+  box-shadow: 0 0 0 1px #f25d8e;
+  border: 1px solid #fff;
+}
+.live-info {
+  font-size: 12px;
+  color: #a0a9b0;
+  position: relative;
+}
+
+/*
+* 中间 
+*/
+
+.middle-box {
+  width: 650px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  margin: 0 8px 0 8px;
+}
+
+/* 发布动态 */
+.post-box {
+  background-color: #fff;
+  width: 650px;
+  height: 130px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/* 最常访问 */
+.most-view {
+  background-color: #fff;
+  width: 650px;
+  height: 110px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+/*  */
+.tab-bar {
+  background-color: #fff;
+  width: 650px;
+  height: 50px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.tab {
+  height: 50px;
+  width: 60px;
+  display: inline-block;
+  text-align: center;
+  padding-left: 20px;
+  vertical-align: top;
+}
+
+.tab-text {
+  display: inline-block;
+  min-width: 60px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  letter-spacing: 0;
+  color: rgb(153, 162, 170);
+}
+
+.select {
+  color: rgb(0, 181, 229);
+  border-bottom: 2px inset rgb(3, 142, 197);
+}
+
+/* 当有新动态 */
+.new-space-box {
+  background: #fcf9d7;
+  border-radius: 5px;
+  height: 36px;
+  width: 100%;
+  line-height: 36px;
+  text-align: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.new-space-text {
+  color: #e3b43d;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+/*
+* 动态卡片
+*/
+
+.new-card {
+  background-color: #fff;
+  width: 100%;
+  min-height: 155px;
+  border-radius: 5px;
+  margin: 0px 0px 8px 0px;
+  position: relative;
+  top: 0;
+}
+
+.user-head-container {
+  display: block;
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 24px;
+  left: 24px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.user-head {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  background: #fff center/48px no-repeat;
+}
+
+.card-main {
+  margin: 0 8px 0 85px;
+  padding-top: 30px;
+}
+
+.username,
+.user-name {
+  color: #fb7299;
+  font-size: 16px;
+  max-width: 500px;
+  display: inline-block;
+}
+a:link.time,
+a:visited.time,
+.card-time {
+  color: #99a2aa;
+  font-size: 12px;
+  margin: 3px 0px 10px 0px;
+}
+a:hover.time {
+  color: #fb7299;
+}
+
+.more {
+  display: inline-block;
+  color: #ccd0d7;
+  font-size: 26px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+a:link.more-,
+a:visited.more- {
+  color: #ccd0d7;
+}
+a:hover.more- {
+  color: #00a1d6;
+}
+
+.card-text {
+  height: auto;
+  min-height: 32px;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.card-button {
+  height: 50px;
+}
+.button-con {
+  height: auto;
+  width: 90px;
+  display: inline-block;
+  position: relative;
+  font-size: 12px;
+  line-height: 48px;
+  cursor: pointer;
+  color: #99a2aa;
+}
+
+.button-card {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: center/contain no-repeat;
+  vertical-align: text-top;
+  margin-right: 4px;
+  margin-top: -2px;
+  background-size: 15px;
+}
+
+.button-card.like {
+  background-image: url(img/like.svg);
+}
+.button-card.repose {
+  background-image: url(img/repose.png);
+}
+.button-card.comment {
+  background-image: url(img/comment.png);
+}
+
+/*
+* 右边 
+*/
+
+.right-box {
+  width: 260px;
+  height: 100%;
+  display: inline-block;
+}
+
+.notice-box {
+  background-color: #fff;
+  height: 130px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  padding: 16px;
+}
+.notice-text {
+  font-size: 14px;
+  margin: 0px auto 8px 0px;
+  display: flex;
+}
+.notice-img,
+.notice-img-container {
+  height: 100px;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  background: #fff center/cover no-repeat;
+}
+
+.topic-box {
+  background-color: #fff;
+  height: 450px;
+  border-radius: 5px;
+  padding: 16px;
+  position: sticky;
+  top: 8px;
+}
+
+.topic-title {
+  font-size: 15px;
+  margin: 0px auto 8px 0px;
+}

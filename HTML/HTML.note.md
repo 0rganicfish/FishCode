@@ -7,6 +7,8 @@
 
 ## 关键字缩写
 
+- 参考字典：[HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element)
+
 |    HTML 标签     |         英文全称          |            中文释义            |
 | :--------------: | :-----------------------: | :----------------------------: |
 |      `<a>`       |          Anchor           |               锚               |
@@ -78,4 +80,37 @@
 - `font-size: 16px;`，字体大小，默认 16px
 - `font-family: "fangsong";`，字体样式
 - `text-decoration: none;`，下划线类型
+- `text-indent` : 第一行文字缩进长度
+- `text-indent` 缩进元素中文本的首行
+- `text-shadow` 设置文本阴影
+- `text-transform` 控制元素中的字母
+- `text-align` , 文字对齐方式
+  - `left` ：行内内容向左侧边对齐。
+  - `right` ：行内内容向右侧边对齐。
+  - `center` ：行内内容居中。
+  - `justify` ：文字向两侧对齐，对最后一行无效。
+  - `justify-all` ：和 justify 一致，但是强制使最后一行两端对齐。
+- `direction` 设置文本方向。
+- `letter-spacing` 设置字符间距
+- `unicode-bidi` 设置或返回文本是否被重写
+- `vertical-align` 设置元素的垂直对齐
+- `white-space` 设置元素中空白的处理方式
+- `word-spacing` 设置字间距
 - `color: #282c34;`，颜色值
+
+### 图片
+
+- `opacity` , 透明度
+
+### 按钮/边框
+
+- `border-radius` , 圆角半径
+- `margin` , 外边距
+  - 当只指定一个值时，该值会统一应用到**全部四个边**的外边距上。
+  - 指定两个值时，第一个值会应用于**上边和下边**的外边距，第二个值应用于**左边和右边**。
+  - 指定三个值时，第一个值应用于**上边**，第二个值应用于**右边和左边**，第三个则应用于**下边**的外边距。
+  - 指定四个值时，依次（**顺时针方向**）作为上边，右边，下边，和左边的外边距。
+  - 也可以单是 `margin-right: `来指定
+- `padding` , 内边距
+- `height`、`width` , 宽高
+-

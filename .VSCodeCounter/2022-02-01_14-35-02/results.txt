@@ -1,0 +1,70 @@
+Date : 2022-02-01 14:35:02
+Directory : c:\VScode
+Total : 30 files,  3171 codes, 46 comments, 411 blanks, all 3628 lines
+
+Languages
++-------------+------------+------------+------------+------------+------------+
+| language    | files      | code       | comment    | blank      | total      |
++-------------+------------+------------+------------+------------+------------+
+| Markdown    |         10 |      1,223 |          0 |        292 |      1,515 |
+| Django txt  |          4 |        618 |          0 |          3 |        621 |
+| CSS         |          2 |        341 |         33 |         39 |        413 |
+| C++         |          8 |        334 |         13 |         25 |        372 |
+| Django HTML |          2 |        330 |          0 |         38 |        368 |
+| Log         |          1 |        283 |          0 |         13 |        296 |
+| C           |          1 |         37 |          0 |          1 |         38 |
+| LaTeX       |          1 |          4 |          0 |          0 |          4 |
+| Python      |          1 |          1 |          0 |          0 |          1 |
++-------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------+------------+------------+------------+------------+------------+
+| path                                | files      | code       | comment    | blank      | total      |
++-------------------------------------+------------+------------+------------+------------+------------+
+| .                                   |         30 |      3,171 |         46 |        411 |      3,628 |
+| CPP.code                            |          8 |        166 |          0 |         17 |        183 |
+| HTML                                |          5 |        776 |         33 |         89 |        898 |
+| HTML\CSS                            |          2 |        341 |         33 |         39 |        413 |
+| Items                               |          5 |        823 |         13 |         12 |        848 |
+| Items\Regex                         |          3 |        640 |          0 |          4 |        644 |
+| Latex                               |          2 |        287 |          0 |         13 |        300 |
+| Python                              |          1 |          1 |          0 |          0 |          1 |
+| cpp.note                            |          8 |      1,115 |          0 |        280 |      1,395 |
++-------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------+-------------+------------+------------+------------+------------+
+| filename                            | language    | code       | comment    | blank      | total      |
++-------------------------------------+-------------+------------+------------+------------+------------+
+| c:\VScode\CPP.code\LuoGuuu.cpp      | C++         |         29 |          0 |          3 |         32 |
+| c:\VScode\CPP.code\TOOLman.cpp      | C++         |         36 |          0 |          5 |         41 |
+| c:\VScode\CPP.code\Temp.cpp         | C++         |          5 |          0 |          2 |          7 |
+| c:\VScode\CPP.code\Test.c           | C           |         37 |          0 |          1 |         38 |
+| c:\VScode\CPP.code\cyy.cpp          | C++         |         33 |          0 |          2 |         35 |
+| c:\VScode\CPP.code\input.txt        | Django txt  |          1 |          0 |          1 |          2 |
+| c:\VScode\CPP.code\led-1.cpp        | C++         |         24 |          0 |          3 |         27 |
+| c:\VScode\CPP.code\output.txt       | Django txt  |          1 |          0 |          0 |          1 |
+| c:\VScode\HTML\CSS\bili.css         | CSS         |        196 |         20 |         27 |        243 |
+| c:\VScode\HTML\CSS\sample.css       | CSS         |        145 |         13 |         12 |        170 |
+| c:\VScode\HTML\HTML.note.md         | Markdown    |        105 |          0 |         12 |        117 |
+| c:\VScode\HTML\bilibili.html        | Django HTML |        103 |          0 |         15 |        118 |
+| c:\VScode\HTML\sample.html          | Django HTML |        227 |          0 |         23 |        250 |
+| c:\VScode\Items\Regex\ans.txt       | Django txt  |        300 |          0 |          1 |        301 |
+| c:\VScode\Items\Regex\input.txt     | Django txt  |        316 |          0 |          1 |        317 |
+| c:\VScode\Items\Regex\regex.cpp     | C++         |         24 |          0 |          2 |         26 |
+| c:\VScode\Items\XOOOX.cpp           | C++         |        166 |         13 |          5 |        184 |
+| c:\VScode\Items\accounts.cpp        | C++         |         17 |          0 |          3 |         20 |
+| c:\VScode\Latex\tese.log            | Log         |        283 |          0 |         13 |        296 |
+| c:\VScode\Latex\tese.tex            | LaTeX       |          4 |          0 |          0 |          4 |
+| c:\VScode\Python\pyyy1.py           | Python      |          1 |          0 |          0 |          1 |
+| c:\VScode\README.md                 | Markdown    |          3 |          0 |          0 |          3 |
+| c:\VScode\cpp.note\DP.md            | Markdown    |         65 |          0 |         14 |         79 |
+| c:\VScode\cpp.note\DataStructure.md | Markdown    |        234 |          0 |         89 |        323 |
+| c:\VScode\cpp.note\Math.md          | Markdown    |        228 |          0 |         41 |        269 |
+| c:\VScode\cpp.note\Search.md        | Markdown    |         69 |          0 |         11 |         80 |
+| c:\VScode\cpp.note\Sort.md          | Markdown    |         28 |          0 |          6 |         34 |
+| c:\VScode\cpp.note\String.md        | Markdown    |        155 |          0 |         39 |        194 |
+| c:\VScode\cpp.note\main.md          | Markdown    |        286 |          0 |         62 |        348 |
+| c:\VScode\cpp.note\miao.md          | Markdown    |         50 |          0 |         18 |         68 |
+| Total                               |             |      3,171 |         46 |        411 |      3,628 |
++-------------------------------------+-------------+------------+------------+------------+------------+
