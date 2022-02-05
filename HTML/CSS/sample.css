@@ -1,43 +1,11 @@
+html {
+  margin: 0;
+  padding: 0;
+}
 body {
   width: 1000px;
+  height: auto;
   margin: 0 auto;
-}
-
-.inline {
-  display: inline-block;
-}
-
-.light_h1 {
-  color: #7693e4d3;
-  font-weight: 1000;
-  font-family: "kaiti", serif;
-  letter-spacing: 0.035rem;
-  line-height: 1.2;
-}
-
-h2 {
-  font-family: "fangsong";
-  color: #282c34;
-  font-weight: bold;
-}
-
-p {
-  line-height: 1.4;
-  font-weight: 500;
-  font-size: 16px;
-  text-decoration: none;
-  color: #282c34;
-}
-
-li {
-  list-style-type: square;
-}
-
-.pic {
-  background-image: url(../img/backimg.jpg);
-  opacity: 1;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
 }
 
 /*
@@ -54,12 +22,67 @@ a:visited {
 }
 a:focus,
 a:hover {
-  border-bottom: 1px solid;
   background: rgba(251, 114, 153, 0.082);
 }
 a:active {
   background: rgba(251, 114, 153, 0.26);
   color: rgba(251, 114, 153, 0.9);
+}
+
+/*
+*
+* 导航栏 
+*
+*/
+
+.dao {
+  height: 40px;
+  width: 480px;
+  margin: 10px auto;
+  background-color: rgba(69, 111, 189, 0.644);
+  border-radius: 5px;
+}
+.dao ul {
+  padding: 0;
+}
+.dao li {
+  float: left;
+  text-align: center;
+  line-height: 40px;
+  list-style-type: none;
+}
+.dao .dao-text {
+  display: block;
+  width: 80px;
+  padding: 0;
+  text-decoration: none;
+  color: white;
+}
+.dao .dao-text:hover {
+  background: rgb(43, 85, 165);
+  color: rgb(238, 65, 94);
+  border-radius: 5px;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown-box {
+  display: none;
+  position: absolute;
+  left: -20px;
+  background-color: #f9f9f9;
+  min-width: 80px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+}
+.dropdown:hover .dropdown-box {
+  display: block;
+}
+.dropdown-box a:hover {
+  background-color: #f1f1f1;
+  color: black;
 }
 
 /*
@@ -100,70 +123,66 @@ caption {
 
 */
 
-.verify-form .button-large {
-  border-radius: 4px;
-  margin-left: 14px;
-  height: 36px;
-  line-height: 36px;
+.img-cont {
+  width: 70px;
+  height: 70px;
+  padding: 15px;
+  margin: 10px;
+  border: 2px dotted black;
+  text-align: center;
 }
-.verify-form .submit-a .text {
-  width: auto;
-  color: #fff;
-  display: inline-block;
-  font-size: 13px;
-  margin-left: 2px;
-  margin-right: 2px;
-  vertical-align: baseline;
-  height: 36px;
-  line-height: 36px;
-}
-.verify-input .input-area {
-  position: relative;
-}
-.verify-form .submit-a .g-button-right {
-  padding-right: 13px;
+.img-text {
+  font-size: 12px;
+  margin: 0;
+  color: #777d8b;
 }
 
-.tab-bar[data-v-58304b2a] {
-  width: 100%;
-  height: 48px;
-  background: #fff;
-  border-radius: 4px;
-  position: relative;
-  margin-bottom: 8px;
-}
-.tab-bar .tab[data-v-58304b2a] {
+.inline {
   display: inline-block;
-  min-width: 56px;
-  height: 48px;
-  text-align: center;
-  padding-left: 20px;
-  vertical-align: top;
 }
-.tab-bar .tab .tab-text[data-v-58304b2a] {
-  display: inline-block;
-  min-width: 56px;
-  height: 48px;
-  line-height: 48px;
-  font-size: 14px;
-  letter-spacing: 0;
-  cursor: pointer;
+
+.light_h1 {
+  color: #7693e4d3;
+  font-weight: 1000;
+  font-family: "kaiti", serif;
+  letter-spacing: 0.035rem;
+  line-height: 1.2;
 }
-.tab-bar .tab .tab-text.selected[data-v-58304b2a],
-.tab-bar .tab .tab-text[data-v-58304b2a]:hover {
-  color: #00b5e5;
+
+h2 {
+  font-family: "fangsong";
+  color: #282c34;
+  font-weight: bold;
 }
-.tab-bar .line[data-v-58304b2a] {
-  position: absolute;
-  width: 56px;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #00a1d6;
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
-  transition-property: transform;
-  transition-property: transform, -webkit-transform;
-  -webkit-transition-duration: 0.2s;
-  transition-duration: 0.2s;
+
+p {
+  line-height: 1.4;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  color: #282c34;
+  margin: 0;
+  width: fit-content;
+  height: fit-content;
+}
+
+li {
+  list-style-type: square;
+}
+
+.pic {
+  background-image: url(../img/backimg.jpg);
+  opacity: 1;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.iv {
+  width: 110px;
+  height: 100px;
+  margin: 50px auto;
+  background: linear-gradient(53deg, #ccfffc, #ffcccf);
+}
+.iv:hover {
+  transform: scale(2.1);
 }

@@ -1,18 +1,22 @@
 # C / C++
 
-- **C/C++**
-  - **[C++ String](String.md)**
-  - **[数据结构(STL)](DataStructure.md)**
-  - **[排序](Sort.md)**
-  - **[数学](Math.md)**
-  - **[搜索](Search.md)**
-  - **[动态规划 DP](DP.md)**
-  - **[喵啊](miao.md)**
-- **外链**
-  - **[HTML.note](../HTML/HTML.note.md)**
-  - **[SomeNote](../../others/SomeNotes.md)**
+## C/C++
 
-</br> </br>
+- **[C++ String](String.md)**
+- **[数据结构(STL)](DataStructure.md)**
+- **[排序](Sort.md)**
+- **[数学](Math.md)**
+- **[搜索](Search.md)**
+- **[动态规划 DP](DP.md)**
+- **[喵啊](miao.md)**
+
+## 外链
+
+- **[md 快捷键](../../Users/Organic_Fish/AppData/Roaming/Code/User/snippets/markdown.json)**
+- **[HTML.note](../HTML/HTML.note.md)**
+- **[SomeNote](../../others/SomeNotes.md)**
+
+<br><br>
 
 1.  命名规范：**[编程语言中常用的变量命名缩写](https://blog.csdn.net/qq_37851620/article/details/94731227)**
 
@@ -345,4 +349,3 @@
     赋值无穷大：memset(a, 127, sizeof(a))
     赋值无穷小：memset(a, 128, sizeof(a))
     ```
-

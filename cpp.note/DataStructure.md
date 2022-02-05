@@ -16,7 +16,7 @@
 - [**迭代器**](#迭代器)
 - [**STL 函数**](#stl-函数)
 
-</br></br>
+<br><br>
 
 ## **序列式容器（可序）**
 
@@ -84,7 +84,7 @@ a.pop_back(); 移出最后一个元素
 - List 是 stl 实现的双向链表，与向量(`vectors`)相比, 它允许快速的插入和删除，但是随机访问却比较慢。
 - 可以直接` s.sort();` 或 `s.sort(greater<name>());`
 
-</br></br>
+<br><br>
 
 ## **关联式容器 （已序）**
 
@@ -154,7 +154,7 @@ a.pop_back(); 移出最后一个元素
   a.erase(*a.begin() + n)  //删除下标n
   ```
 - 其实道理和 map 差不多 hh
-  </br></br>
+  <br><br>
 
 ## **其他**
 
@@ -245,7 +245,7 @@ n.back();            //pop是删除队列的第一个元素
   pq.push({name, score});
   ```
 
-</br></br>
+<br><br>
 
 ## **迭代器**
 
@@ -255,7 +255,7 @@ n.back();            //pop是删除队列的第一个元素
 
   - `list` 双向，`set` 双向， `multiset` 双向 ， `map` 双向， `multimap` 双向
 
-</br></br>
+<br><br>
 
 ## **STL 函数**
 
