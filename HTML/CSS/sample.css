@@ -4,7 +4,6 @@ html {
 }
 body {
   width: 1000px;
-  height: auto;
   margin: 0 auto;
 }
 
@@ -57,6 +56,7 @@ a:active {
   padding: 0;
   text-decoration: none;
   color: white;
+  transform: 300ms;
 }
 .dao .dao-text:hover {
   background: rgb(43, 85, 165);
@@ -67,6 +67,7 @@ a:active {
 .dropdown {
   display: inline-block;
   position: relative;
+  transform: 300ms;
 }
 .dropdown-box {
   display: none;
@@ -76,6 +77,7 @@ a:active {
   min-width: 80px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
+  transform: 1s;
 }
 .dropdown:hover .dropdown-box {
   display: block;
@@ -181,8 +183,46 @@ li {
   width: 110px;
   height: 100px;
   margin: 50px auto;
-  background: linear-gradient(53deg, #ccfffc, #ffcccf);
+  background: linear-gradient(53deg, #cccfff, #ffcccf);
+  transform: 2s;
 }
 .iv:hover {
-  transform: scale(2.1);
+  width: 140px;
+  background: linear-gradient(53deg, #ffcccf, #cccfff);
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button span::after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button:hover span {
+  padding-right: 25px;
+}
+.button:hover span::after {
+  opacity: 1;
+  right: 0;
 }

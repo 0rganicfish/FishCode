@@ -1,11 +1,12 @@
 # HTML.note
 
 - [cpp.note.main](../cpp.note/main.md)
+- [JavaScript.note](JavaScript.note.md.md)
 - [关键字缩写](#关键字缩写)
 - [CSS](#CSS)
 - [大杂烩](sample.html)
 
-## 关键字缩写
+# HTML 关键字缩写
 
 - 参考字典：[HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element)
 
@@ -71,9 +72,11 @@
 |       `"`        |           引号            |            `&quot;`            |
 |       `'`        |           撇号            |      `&apos;` (IE 不支持)      |
 
-## CSS
+# CSS
 
-### 字体基础
+<br>
+
+## 字体基础
 
 - `line-height`，行间距，默认 1.2 ，当行间距等于盒子高度时，就可以使文字**垂直居中**
 - `font-weight`，字重(粗细)，加粗：`bold`，细：`height`
@@ -92,16 +95,26 @@
 - `direction` 设置文本方向。
 - `letter-spacing` 设置字符间距
 - `unicode-bidi` 设置或返回文本是否被重写
-- `vertical-align` 设置元素的垂直对齐
+- `vertical-align` 设置元素的**垂直对齐**
 - `white-space` 设置元素中空白的处理方式
 - `word-spacing` 设置字间距
 - `color`，字体颜色值
 
-### 图片
+<br>
+
+## 图片
 
 - `opacity` , 透明度
+- `object-fit` , 调整内容长宽比 属性可接受如下值：
+  - `fill` - 默认值。调整替换后的内容大小，以填充元素的内容框。如有必要，将拉伸或挤压物体以适应该对象。
+  - `contain` - 缩放替换后的内容以保持其纵横比，同时将其放入元素的内容框。
+  - `cover` - 调整替换内容的大小，以在填充元素的整个内容框时保持其长宽比。该对象将被裁剪以适应。
+  - `none` - 不对替换的内容调整大小。
+  - `scale-down` - 调整内容大小就像没有指定内容或包含内容一样（将导致较小的具体对象尺寸）
 
-### 按钮/边框
+<br>
+
+## 按钮/边框
 
 - `border-radius` , 圆角半径
 - `margin` , 外边距
@@ -117,7 +130,9 @@
   <br><img src="img/border.png" height="150px">
 - h
 
-### 列表
+<br>
+
+## 列表
 
 - 下列是对 `list-style` 属性的常见属性值的描述：
   - `none`：不使用项目符号
@@ -130,22 +145,21 @@
   - `lower-roman`：小写罗马数字
   - `upper-roman`：大写罗马数字
 
-### 表格
+<br>
 
--
-
-### 组合选择与继承
+## 组合选择与继承
 
 - `div p {xxx}` ，是指以`div`父项的所有**子孙项**`p`的样式都受 xxx 影响
 - `div>p {}` ，只有`div`的直接**子项**`p`才算，而孙项的`p`不受影响：`in html： <div><span><p>`
 - `div+p{}` ，拥有**共同父项**的`div`和`p`（兄弟项），且`p`位于`div`下的**第一项**，`p`的样式才受影响；这时`div`的**子项**`p`不受影响
 - `div~p{}` ，所有与`div`互为兄弟关系的`p`都受样式影响
 - 但还有 **属性选择器**：
-  - `input[type="text"] {}` ：类型为 input 且是`text`的样式受影响
+  - `input[type="text"] {}` ：类型为 `input` 且是`text`的样式受影响
+  - 自定义属性：如 `<div data-123="texts"></div>` `->` `div[data-123] {}`
 
-### 伪类与伪元素
+<br>
 
-#### 伪类选择器分为两种。
+## 伪类与伪元素
 
 - **伪类**
 
@@ -161,30 +175,119 @@
   - `：first-line` 选择每个元素的第一行
   - `：first-child` 选择器匹配属于任意元素的第一个**子元素**
   - `：before` 在每个元素之前插入内容
-  - `：after` 在每个元素之后插入内容
+  - `：after` 在每个元素之后插入内容 (通常配合`:hover`)
 
-### 布局
+<br>
 
-#### flex
+## 布局方式
 
-##### 定义
+### flex 弹性
 
-&emsp;&emsp; 只要给`flex`元素的父元素声明 `display： flex` ，默认地所有子元素就会排成一行，且自动分配小大以充分展示元素的内容。所以是，**在父元素定义 `flex`，然后再在子元素再定义下列属性**（参考：[CSS flex 布局](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)）
+#### 定义
 
-##### 子元素的分布
+&emsp;&emsp; 基于一维的布局。只要给`flex`元素的父元素声明 `display： flex` ，默认地所有子元素就会排成一行，且自动分配小大以充分展示元素的内容。所以是，**在父元素定义 `flex`，然后再在子元素再定义下列属性**
 
-- **`flex-direction`**：默认为`row` 水平排列，`column`为竖直排列。`wrap`：溢出时自动换行换行。
+#### 子元素的分布
+
+- **`flex-direction`**：默认为`row` 水平排列，`column`为竖直排列。`flex-wrap`：溢出时自动换行换行。
   - 可以将两个属性 `flex-direction` 和 `flex-wrap` 组合为简写属性 `flex-flow`。第一个指定的值为 `flex-direction` ，第二个指定的值为 `flex-wrap`.
-- **`flex-basic`**：设置子元素初始化大小
-  - 默认 auto、百分比或具体数
-- **`flex-grow`**：设置子项目如何瓜分剩余空间
-  - 默认 0、百分比
-- （可简写：`flex: grow basic`）
+- **`flex-grow`**：元素放大比例。值为 0 或 正整数(按比例分配多余的空间)
+- **`flex-shrink`**：元素缩小比例。值为 1 或 0；
+- **`flex-basic`**：设置子元素初始化大小，给上面两个属性分配多余空间之前，计算项目是否有多余空间，默认值为 auto,即项目本身的大小
+- （可简写：`flex: grow shrink basic`）
 
-##### 子元素对齐方式
+#### 子元素对齐方式
 
 - **`align-items`**： 属性可以使元素在**交叉轴**方向对齐。这个属性的初始值为`stretch`。
   - 可分为：`center`、`flex-start`、`flex-end`、`stretch`(在交叉轴上撑满整个父元素)、`baseline`(基于内容基线)
 - **`justify-content`** ： 属性用来使元素在**主轴**方向上对齐，主轴方向是通过`flex-direction` 设置的方向。初始值是`flex-start`。
   - 可分 为：`center`、`flex-start`、`flex-end`、`stretch`、`space-around`(元素之间的距离相等)、`space-between`(元素左右的空间相等、贴边)
 - **`align-content`**：当 `flex-wrap：wrap*` 时(即 子元素 换行排列)，控制 子元素 在 cross axis(**交叉轴**)上的对齐方式。
+- **`align-self`**：单独的对齐方式
+
+### grid 网格
+
+### float 浮动
+
+- 创建：`float: left | right | none (默认值) | inherit (继承父元素的浮动属性)`
+- 清除：`clear: left | right | both`
+
+### position 定位
+
+- 静态定位(`Static` positioning)是每个元素默认的属性——它表示“将元素放在文档布局流的默认位置——没有什么特殊的地方”。
+- 相对定位(`Relative` positioning)允许我们相对于元素在正常的文档流中的位置移动它——包括将两个元素叠放在页面上。
+- 绝对定位(`Absolute` positioning)将元素完全从页面的正常布局流中移出，类似将它单独放在一个图层中。我们可以将元素相对于页面的 `<html>` 元素边缘固定，或者相对于该元素的**最近被定位祖先元素**。
+- 固定定位(`Fixed` positioning)与绝对定位非常类似，但是它是将一个元素相对浏览器视口固定，而不是相对另外一个元素。
+- 粘性定位(`Sticky` positioning) 当元素移动到预设位置时遍黏住似的固定住。
+
+### column 多列布局
+
+- `column-count: number`：列数
+- `column-gap: number`：列间间隔
+- `column-rule: style color`：间隔样式，同`border`
+- `column-width: number`：列宽
+
+### 参考链接
+
+- [flex 与 grid 区别](https://juejin.cn/post/6940627375537258527#heading-9)
+- [CSS flex 布局](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+
+<br>
+
+## transition 过渡
+
+- `transition-property` 指定使用过渡效果的 css 属性
+- `transition-duration` 设置过渡动画持续时间
+- `transition-timing-function` 设置动画的时间函数。
+  - `liner` ：匀速
+  - `ease-in`：减速
+  - `ease-out`：加速
+  - `ease-in-out`：先加速再减速
+  - `cubic-bezier`：三次贝塞尔曲线，[可以定制](http://cubic-bezier.com)
+- `transition-delay` 设置动画的延迟时间
+- 简写：`transition: 属性 持续 函数 延迟`
+- transition 的优点在于简单易用，但是它有几个很大的局限。
+  1. 需要事件触发，所以没法在网页加载时自动发生。
+  2. 是一次性的，不能重复发生，除非一再触发。
+  3. 只能定义开始状态和结束状态，不能定义中间状态，也就是说只有两个状态。
+  4. 规则，只能定义一个属性的变化，不能涉及多个属性。
+- [深入理解 transition](https://www.cnblogs.com/xiaohuochai/p/5347930.html)
+
+#### 可过渡的样式
+
+```css
+颜色: color background-color border-color outline-color
+位置: background-position left right top bottom
+长度:
+    [1]max-height min-height max-width min-width height width
+    [2]border-width margin padding outline-width outline-offset
+    [3]font-size line-height text-indent vertical-align
+    [4]border-spacing letter-spacing word-spacing
+数字: opacity visibility z-index font-weight zoom
+组合: text-shadow transform box-shadow clip
+其他: gradient
+```
+
+## animation 动画
+
+- `animation-name`：none 为默认值，将没有任何动画效果，其可以用来覆盖任何动画
+- `animation-duration`：默认值为 0，意味着动画周期为 0，也就是没有任何动画效果
+- `animation-timing-function`：与 `transition-timing-function` 一样
+- `animation-delay`：在开始执行动画时需要等待的时间
+- `animation-iteration-count`：定义动画的播放次数，默认为 1，如果为 `infinite`，则无限次循环播放
+- `animation-direction`：动画播放方向
+  - 默认为 `normal`，每次循环都是向前播放，（0-100）
+  - 另一个值为 `alternate`，动画播放为偶数次则向前播放，如果为基数词就反方向播放
+- `animation-state`：动画播放状态
+  - 默认为 `running`，播放
+  - `paused`，暂停
+- `animation-fill-mode`：定义动画开始之前和结束之后发生的操作.
+  - 默认值为 `none`，动画结束时回到动画没开始时的状态
+  - `forwards`，动画结束后继续应用最后关键帧的位置，即保存在结束状态
+  - `backwards`，让动画回到第一帧的状态
+  - `both`：轮流应用 `forwards` 和 `backwards` 规则。
+- 简写： `animation: duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name`
+
+#### 关键帧 @keyframes + name
+
+&emsp;&emsp;在 animation 申明 name 后，再另写关键帧动画样式

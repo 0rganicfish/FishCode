@@ -14,6 +14,7 @@
 
 - **[md 快捷键](../../Users/Organic_Fish/AppData/Roaming/Code/User/snippets/markdown.json)**
 - **[HTML.note](../HTML/HTML.note.md)**
+- **[JavaScript.note](../HTML/JavaScript.note.md)**
 - **[SomeNote](../../others/SomeNotes.md)**
 
 <br><br>
