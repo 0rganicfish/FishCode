@@ -10,10 +10,8 @@
    int dp[50] = {0};
    int fib(int n)   //递归法
    {
-       if (n <= 1)
-           return dp[n] = 1;
-       if (dp[n])
-           return dp[n];
+       if (n <= 1) return dp[n] = 1;
+       if (dp[n]) return dp[n];
        return dp[n] = fib(n - 1) + fib(n - 2);
    }
 
@@ -66,7 +64,7 @@
                       dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - weight[i]] + value[i]);
       }
 
-      一维数组优化（覆盖过程，防爆空间）
+      //一维数组优化（覆盖过程，防爆空间）
       void solvee()
       {
           for (i = 1; i <= num; i++)
