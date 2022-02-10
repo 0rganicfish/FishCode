@@ -320,3 +320,4 @@ n.back();            //pop是删除队列的第一个元素
 
   - 设源容器为 $ x $，目标容器为 $ y$ ，则令 $ y[i]=x[0]+x[1]+...+x[i] $ 。
   - `partial_sum(src.begin(), src.end(), back_inserter(dst))`。
+- `*max_element`: 返回最大元素的迭代器
