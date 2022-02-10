@@ -1,9 +1,11 @@
 # C / C++
 
-## C/C++
+## 算法
 
-- **[C++ String](String.md)**
-- **[数据结构(STL)](DataStructure.md)**
+- **数据结构**
+  - **[String](String.md)**
+  - **[STL](STL.md)**
+  - **[树、图](Tree-Graph.md)**
 - **[排序](Sort.md)**
 - **[数学](Math.md)**
 - **[搜索](Search.md)**
@@ -51,10 +53,15 @@
 5.  **[C++模板 template 用法总结](https://blog.csdn.net/qq_35637562/article/details/55194097)**
 
     ```C++ {.line-numbers}
-    template <class T>
+    template <class T>  //单个类型
     T big(T x, T y)
     {
         return x > y ? x : y;
+    }
+    template <class T1, class T2>  //不同类型
+    inline const T2 Max(const T1 a, const T2 b)
+    {
+        return a > b ? a : b;
     }
     ```
 
