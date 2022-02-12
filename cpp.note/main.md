@@ -109,16 +109,16 @@ int read()
   ```C++ {.line-numbers}
   struct pan
   {
-      double x, y, z;   相当于定义了一个三维数组
+      double x, y, z;   //相当于定义了一个三维数组
   } a[51];
 
   for (i = 0; i < n; i++)
           cin >> a[i].x >> a[i].y >> a[i].z;  输入
 
   bool cmp(pan x, pan y){
-      return x.z < y.z;    以pan中的z小到大排序
+      return x.z < y.z;    //以pan中的z小到大排序
   }
-  sort(a , a + n, cmp);    排序, cmp：排序规则
+  sort(a , a + n, cmp);    //排序, cmp：排序规则
   ```
 
 #### 前缀和 / 区间和
@@ -222,7 +222,7 @@ int read()
 11. 知道递推公式，f (n) = f ( n+1 ) + f ( n+2 )，可以直接套 —> 不是模拟，可以暴力但爆，手动推一下递推公式
 
     ```C++ {.line-numbers}
-    for (int i = 0; i <= size; i++)                     ↑也就是说，只注重结果而不是过程
+    for (int i = 0; i <= size; i++)                     //↑也就是说，只注重结果而不是过程
         {
             if (i > 1)
                 arr[i] = arr[i - 2] + arr[i - 1]; //递推算法
@@ -234,7 +234,7 @@ int read()
 
     ```C++ {.line-numbers}
     int a[10] = {0};
-    for (int &c : a)   要改变值时要加 & ，不然只是 只读 模式
+    for (int &c : a)   //要改变值时要加 & ，不然只是 只读 模式
         c++;
     for (int i : a)
         cout << a[i] << " ";
