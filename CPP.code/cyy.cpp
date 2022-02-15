@@ -1,35 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-struct student
-{
-    string name;
-    int score;
-};
-struct cmp
-{
-    bool operator()(const student &a, const student &b) const
-    {
-        return a.score < b.score || (a.score == b.score && a.name > b.name);
-    }
-};
-ostream &operator<<(ostream &out, const student &O)
-{
-    return out << O.name << " " << O.score << endl;
-}
-
-priority_queue<student, vector<student>, cmp> pq;
+const int Max = 1e6 + 5;
+int a[Max];
 int main()
 {
-    int n;
-    cin >> n;
-    for (int i = 1; i <= n; i++)
-    {
-        string name;
-        int score;
-        cin >> name >> score;
-        pq.push({name, score});
-    }
-    cout << pq.top();
-    return 0;
+    int n, mod;
+    cin >> n >> mod;
+    for (int i = 0; i < n; ++i)
+        cin >> a[i];
+    sort(a, a + n);
+    for (int k = mod; k; --k)
+        for (int i = 0; i < n - 1; ++i)
+            for (int j = i + 1; j < n; ++j)
+                if ((a[i] + a[j]) % mod == k)
+                {
+                    cout << k;
+                    return 0;
+                }
 }

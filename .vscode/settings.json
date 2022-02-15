@@ -273,5 +273,6 @@
     "ypertext"
   ],
   "C_Cpp.errorSquiggles": "Enabled",
-  "cmake.configureOnOpen": false
+  "cmake.configureOnOpen": false,
+  "liveServer.settings.port": 81
 }
