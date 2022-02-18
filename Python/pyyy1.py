@@ -1,1 +1,1 @@
-print: "sda"
+print(123)
