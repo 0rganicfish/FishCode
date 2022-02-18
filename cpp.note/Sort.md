@@ -3,6 +3,8 @@
 - [首页](main.md)
 - [图解排序](https://zhuanlan.zhihu.com/p/437834776)
 
+[TOC]
+
 ### 选择排序
 
 ```C++ {.line-numbers}

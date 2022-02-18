@@ -136,7 +136,7 @@ p {
 }
 
 .home-box {
-  background: url(img/bili-backbround.png) no-repeat fixed;
+  background: url(../img/bili-backbround.png) no-repeat fixed;
   padding: 8px 30px;
   display: flex;
 }

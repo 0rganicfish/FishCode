@@ -1,7 +1,7 @@
 # HTML.note
 
-- [cpp.note.main](../cpp.note/main.md)
-- [JavaScript.note](JavaScript.note.md.md)
+- [README.md](../README.md)
+- [JavaScript.note](JavaScript.note.md)
 - [关键字缩写](#关键字缩写)
 - [CSS](#CSS)
 - [大杂烩](sample.html)

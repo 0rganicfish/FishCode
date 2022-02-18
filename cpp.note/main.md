@@ -1,7 +1,8 @@
-# 导航
+<h1 style="text-align: center"> C / C++ </h1>
 
-## cpp.note
+### 算法
 
+- **[README.md](../README.md)**
 - **[数据结构](#)**
   - **[String](String.md)**
   - **[STL](STL.md)**
@@ -12,17 +13,11 @@
 - **[动态规划 DP](DP.md)**
 - **[喵啊](miao.md)**
 
-## 外链
+---
 
-- **[md 快捷键](../../Users/Organic_Fish/AppData/Roaming/Code/User/snippets/markdown.json)**
-- **[HTML.note](../HTML/HTML.note.md)**
-- **[JavaScript.note](../HTML/JavaScript.note.md)**
-- **[SomeNote](../../others/SomeNotes.md)**
+[TOC]
 
 <br><br>
-
-<h1 style="text-align: center"> C / C++ </h1>
-<hr>
 
 ### 一些算法、语法
 

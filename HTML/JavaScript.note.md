@@ -1,6 +1,6 @@
 # JavaScript.note
 
-- [cpp.note.main](../cpp.note/main.md)
+- [README.md](../README.md)
 - [HTML.note](HTML.note.md)
 
 ### 输出

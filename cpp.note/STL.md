@@ -3,24 +3,14 @@
 **[STL 详解](https://blog.csdn.net/u010183728/article/details/81913729)**
 
 - [首页](main.md)
-- [**序列式容器（可序）**](#序列式容器可序)
-  - [**Vector**](#vector)
-  - [**deque**](#`deque`)
-  - [**List**](#list)
-- [**关联式容器 （已序）**](#关联式容器-已序)
-  - [**Map、multimap**](#mapmultimap)
-  - [**Set、multiset**](#setmultiset)
-- [**其他**](#其他)
-  - [**Stack**](#stack)
-  - [**queue、priority_queue**](#queuepriority_queue)
-- [**迭代器**](#迭代器)
-- [**STL 函数**](#stl-函数)
+
+[TOC]
 
 <br><br>
 
-## **序列式容器（可序）**
+## 序列式容器（可序）
 
-### **Vector**
+### Vector
 
 - 一些定义
 
@@ -60,7 +50,7 @@ a.pop_back(); 移出最后一个元素
 
 ---
 
-### **deque**
+### deque
 
 #### deque（双向队列）的一些特点
 
@@ -77,7 +67,7 @@ a.pop_back(); 移出最后一个元素
 
 ---
 
-### **List**
+### List
 
 #### list 定义
 
@@ -86,9 +76,9 @@ a.pop_back(); 移出最后一个元素
 
 <br><br>
 
-## **关联式容器 （已序）**
+## 关联式容器 （已序）
 
-### **Map、multimap**
+### Map、multimap
 
 - 对 `map` 的定义：
   ```C++ {.line-numbers}
@@ -141,7 +131,7 @@ a.pop_back(); 移出最后一个元素
 
 ---
 
-### **Set、multiset**
+### Set、multiset
 
 - set 也是在输入时排序、去重
 - `set` 的定义
@@ -156,9 +146,9 @@ a.pop_back(); 移出最后一个元素
 - 其实道理和 map 差不多 hh
   <br><br>
 
-## **其他**
+## 其他
 
-### **Stack**
+### Stack
 
 ```C++ {.line-numbers}
 x = n.top();           //取栈与栈运算
@@ -172,7 +162,7 @@ while (!n.empty())  来循环操作栈
 
 ---
 
-### **queue、priority_queue**
+### queue、priority_queue
 
 #### queue
 
@@ -247,7 +237,7 @@ n.back();            //pop是删除队列的第一个元素
 
 <br><br>
 
-## **迭代器**
+## 迭代器
 
 - 迭代器要遍历，随机访问是指用下标或 at()
 
@@ -257,7 +247,7 @@ n.back();            //pop是删除队列的第一个元素
 
 <br><br>
 
-## **STL 函数**
+## STL 函数
 
 - `find`：顺序查找。
 

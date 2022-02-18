@@ -3,10 +3,10 @@
   "configurations": [
     {
       "type": "java",
-      "name": "java",
+      "name": "Launch temp",
       "request": "launch",
-      "mainClass": "HelloWorld",
-      "projectName": "vscode_dd112ee2"
+      "mainClass": "temp",
+      "projectName": "VScode_a4b32ae2"
     },
     {
       "name": "C++",
@@ -34,7 +34,9 @@
       "name": "JavaScript",
       "type": "node",
       "request": "launch",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "stopOnEntry": false,
       "internalConsoleOptions": "openOnSessionStart",
       "env": {
