@@ -2,9 +2,9 @@
 
 - [README.md](../README.md)
 - [JavaScript.note](JavaScript.note.md)
-- [关键字缩写](#关键字缩写)
-- [CSS](#CSS)
-- [大杂烩](sample.html)
+- [大杂烩](root/sample.html)
+
+[TOC]
 
 # HTML 关键字缩写
 
@@ -114,7 +114,7 @@
 
 <br>
 
-## 按钮/边框
+## 盒子
 
 - `border-radius` , 圆角半径
 - `margin` , 外边距
@@ -128,7 +128,7 @@
 - `height`、`width` , 宽高
 - 但是，如图 完整的框是指 长：`width + 2\*(margin + padding + border)`
   <br><img src="img/border.png" height="150px">
-- h
+- 而用了 **`box-sizing: border-box;`** 后，边距不影响宽度了（放全局）
 
 <br>
 

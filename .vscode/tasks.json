@@ -1,28 +1,26 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "shell",
-            "label": "compile",
-            "command": "g++",
-            "args": [
-                "-g",
-                "${file}",
-                "-o",
-                "C:/VScode/exe/${fileBasenameNoExtension}.exe",
-                "-IC:/CodePath/SFML-2.5.1/include",
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "compile",
+      "command": "g++",
+      "args": [
+        "-g",
+        "${file}",
+        "-o",
+        "C:/VScode/exe/${fileBasenameNoExtension}.exe"
+        /*"-IC:/CodePath/SFML-2.5.1/include",
                 "-LC:/SFML-2.5.1/lib",
                 "-lsfml-graphics",
                 "-lsfml-window",
-                "-lsfml-system"
-            ],
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        }
-    ]
+                "-lsfml-system"*/
+      ],
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
 }

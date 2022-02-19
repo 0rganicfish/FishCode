@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.16)  18 FEB 2022 22:51
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.16)  19 FEB 2022 11:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -287,15 +287,21 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 4.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.53937> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 8.
  [1
 
 ] (./tese.aux) ) 
 Here is how much of TeX's memory you used:
- 7045 strings out of 478866
- 201129 string characters out of 5864966
- 516074 words of memory out of 5000000
- 26884 multiletter control sequences out of 15000+600000
- 403534 words of font info for 40 fonts, out of 8000000 for 9000
+ 7078 strings out of 478866
+ 203106 string characters out of 5864966
+ 519074 words of memory out of 5000000
+ 26914 multiletter control sequences out of 15000+600000
+ 404466 words of font info for 45 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  101i,4n,104p,385b,246s stack positions out of 5000i,500n,10000p,200000b,80000s
 
