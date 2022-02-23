@@ -24,7 +24,14 @@
        str1.resize(s.length());
    ```
 
-3. STL 函数
+3. 不用带转译的纯文本格式
+
+   ```C++ {.line-numbers}
+   string s = R"(content)";
+   // content 的内容不需用带转译符号
+   ```
+
+4. STL 函数
 
    ```C++ {.line-numbers}
    1. 替换     c.replace(a, b, "xxx")  a：替换的初始位置，b：替换的长度

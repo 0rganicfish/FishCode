@@ -7,15 +7,16 @@
 - 后端
   - C++及算法 [cpp.note](cpp.note/main.md)
   - Java [Java.note](Java/Java.md)
-  - Python [Python](Python/Python.md)
+  - Python [Python.md](Python/Python.md)
 - 数据库
   - &emsp;
-- 移动端 / 客户端
+- 移动端 \\ 客户端
   - Android
   - 桌面端
 - 其他一些......
-  - 一些教材 [清华\_参考书目](清华_参考书目.md)
-  - $\LaTeX$ [ LaTeX.note](LaTeX/LaTeX.md)
+  - 一些教材 [清华\_参考书目](chaos/清华_参考书目.md)
+  - $\LaTeX$ [LaTeX.md](LaTeX/LaTeX.md)
+  - 正则表达式 [Regex.md](chaos/Regex.md)
   - [SomeNote](../others/SomeNotes.md)
-  - [md 快捷键](../Users/Organic_Fish/AppData/Roaming/Code/User/snippets/markdown.json)
+  - [md 快捷键.json](../Users/Organic_Fish/AppData/Roaming/Code/User/snippets/markdown.json)
 - (\* ﾟ ∇ ﾟ)
