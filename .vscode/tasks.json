@@ -10,11 +10,6 @@
         "${file}",
         "-o",
         "C:/VScode/exe/${fileBasenameNoExtension}.exe"
-        /*"-IC:/CodePath/SFML-2.5.1/include",
-                "-LC:/SFML-2.5.1/lib",
-                "-lsfml-graphics",
-                "-lsfml-window",
-                "-lsfml-system"*/
       ],
       "problemMatcher": ["$gcc"],
       "group": {

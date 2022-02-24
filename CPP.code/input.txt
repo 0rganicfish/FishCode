@@ -1,1 +1,3 @@
-321 423
+C:\VScode\CPP.code\input.txt
+C:\VScode\CPP.code\input.txt
+咩咩咩啊

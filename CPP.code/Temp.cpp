@@ -4,10 +4,12 @@ typedef long long ll;
 
 int main()
 {
-    string s;
-    while (1)
-    {
-        cin >> s;
-        cout << s << endl;
-    }
+    int n;
+    cin >> n;
+    if (n > 90)
+        cout << "a";
+    else if (n > 60)
+        cout << "b";
+    else
+        cout << "c";
 }
