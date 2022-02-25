@@ -1,7 +1,7 @@
 # JavaScript.note
 
 - [README.md](../README.md)
-- [HTML.note](HTML.note.md)
+- [HTML.note](HTML.md)
 
 ### 输出
 

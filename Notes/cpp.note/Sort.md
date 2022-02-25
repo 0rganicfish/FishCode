@@ -1,6 +1,6 @@
 # 排序
 
-- [首页](main.md)
+- [首页](../cpp.main.md)
 - [图解排序](https://zhuanlan.zhihu.com/p/437834776)
 
 [TOC]

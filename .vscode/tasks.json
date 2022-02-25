@@ -9,7 +9,7 @@
         "-g",
         "${file}",
         "-o",
-        "C:/VScode/exe/${fileBasenameNoExtension}.exe"
+        "C:/VScode/CPP/${fileBasenameNoExtension}.exe"
       ],
       "problemMatcher": ["$gcc"],
       "group": {

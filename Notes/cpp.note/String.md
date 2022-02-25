@@ -1,6 +1,6 @@
 # 数据结构 string
 
-- [首页](main.md)
+- [首页](../cpp.main.md)
 - [string 容器详解](https://blog.csdn.net/wzh1378008099/article/details/105687998)
 
 [TOC]

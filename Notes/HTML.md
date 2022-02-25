@@ -1,7 +1,7 @@
 # HTML.note
 
 - [README.md](../README.md)
-- [JavaScript.note](JavaScript.note.md)
+- [JavaScript.note](JavaScript.md)
 - [大杂烩](root/sample.html)
 
 [TOC]

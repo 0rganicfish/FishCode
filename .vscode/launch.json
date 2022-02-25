@@ -12,7 +12,7 @@
       "name": "C++",
       "type": "cppdbg",
       "request": "launch",
-      "program": "C:/VScode/exe/${fileBasenameNoExtension}.exe",
+      "program": "C:/VScode/CPP/${fileBasenameNoExtension}.exe",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
