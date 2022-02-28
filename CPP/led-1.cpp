@@ -13,5 +13,4 @@ int main()
         cout << cont;
         cont = cont.substr(1, len) + cont[0];
     }
-    return 0;
 }
