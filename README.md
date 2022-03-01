@@ -1,8 +1,8 @@
 # 导航
 
 - 前端
-  - HTML 及 CSS [HTML.note](Notes/HTML.md)
-  - JS [JavaScript.note](Notes/JavaScript.md)
+  - HTML 及 CSS [HTML.note](Notes/Web/HTML.md)
+  - JS [JavaScript.note](Notes/Web/JavaScript.md)
   - Vue.js
 - 后端
   - C++及算法 [cpp.note](Notes/cpp.main.md)

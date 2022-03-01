@@ -1,7 +1,11 @@
 # JavaScript.note
 
-- [README.md](../README.md)
+- [README.md](../../README.md)
 - [HTML.note](HTML.md)
+- [DOM API](JavaScript_DOM.md)
+  [TOC]
+
+## 基本语法
 
 ### 输出
 
@@ -9,3 +13,7 @@
 - 使用 `document.write()` 方法将内容写到 HTML 文档中。
 - 使用 `innerHTML` 写入到 HTML 元素。
 - 使用 `console.log()` 写入到浏览器的控制台。
+
+## DOM 与 API
+
+令见：[DOM API](JavaScript_DOM.md)

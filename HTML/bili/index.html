@@ -45,7 +45,7 @@
             <div class="block"></div>
             <div class="search-box">
                 <div class="search-text">
-                    你所热爱的生活都在b站
+                    <p>你所热爱的生活都在b站</p>
                 </div>
                 <div class="search-icon-box">
                     <img width="30px" height="30px" src="img/search.svg">
@@ -131,6 +131,9 @@
                         </a>
                     </div>
                 </div>
+                <div class="update-card" onclick="updatebar()">
+                    <p>更新动态</p>
+                </div>
             </div>
 
             <div class="middle-box">
@@ -155,96 +158,94 @@
                     </div>
                 </div>
 
-                <div class="new-space-box">
-                    <p class="new-space-text">有新动态，点击查看</p>
+                <div class="new-space" onclick="updatecard()">
+                    有新动态，点击查看
                 </div>
-
-                <div class="new-card">
-                    <a class="user-head-container" href="https://space.bilibili.com/8047632">
-                        <div class="user-head" style="background-image: url(&quot;img/bilidanmu.jpg&quot;);">
-                        </div>
-                    </a>
-                    <div class="card-main">
-                        <div class="username">
-                            <a class="user-name" href="https://space.bilibili.com/8047632">哔哩哔哩弹幕网</a>
-                        </div>
-                        <div class="more">
-                            <a class="more-" href="#">⋮</a>
-                        </div>
-                        <div class="card-time">
-                            <a class="time" href="#">刚刚</a>
-                        </div>
-                        <div class="cardcontent">
-                            <div class="card-text">
-                                哔哩哔哩 干杯 ( ゜- ゜)つロ
+                <div id="card-content">
+                    <div class="new-card">
+                        <a class="user-head-container" href="https://space.bilibili.com/8047632">
+                            <div class="user-head" style="background-image: url(&quot;img/bilidanmu.jpg&quot;);">
                             </div>
-                            <!--只会做纯文本hh-->
-                            <div class="card-repost"></div>
-                            <div class="card-viode"></div>
-                            <div class="card-image"></div>
-                            <div class="card-article"></div>
-                            <div class="card-audio"></div>
-                        </div>
-                        <div class="card-button">
-                            <div class="button-con">
-                                <span class="button-card repose"></span>
-                                <span class="repose">转发</span>
+                        </a>
+                        <div class="card-main">
+                            <div class="username">
+                                <a class="user-name" href="https://space.bilibili.com/8047632">哔哩哔哩弹幕网</a>
                             </div>
-                            <div class="button-con">
-                                <span class="button-card comment"></span>
-                                <span class="comment">评论</span>
+                            <div class="more">
+                                <a class="more-" href="#">⋮</a>
                             </div>
-                            <div class="button-con">
-                                <span class="button-card like"></span>
-                                <span>点赞</span>
+                            <div class="card-time">
+                                <a class="time" href="#">刚刚</a>
+                            </div>
+                            <div class="cardcontent">
+                                <div class="card-text">
+                                    哔哩哔哩 干杯 ( ゜- ゜)つロ
+                                </div>
+                                <!--只会做纯文本hh-->
+                                <div class="card-repost"></div>
+                                <div class="card-viode"></div>
+                                <div class="card-image"></div>
+                                <div class="card-article"></div>
+                                <div class="card-audio"></div>
+                            </div>
+                            <div class="card-button">
+                                <div class="button-con">
+                                    <span class="button-card repose"></span>
+                                    <span class="repose">转发</span>
+                                </div>
+                                <div class="button-con">
+                                    <span class="button-card comment"></span>
+                                    <span class="comment">评论</span>
+                                </div>
+                                <div class="button-con">
+                                    <span class="button-card like"></span>
+                                    <span>点赞</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="new-card">
-                    <a class="user-head-container" href="#">
-                        <div class="user-head" style="background-image: url(&quot;img/fish.jpg&quot;);">
-                        </div>
-                    </a>
-                    <div class="card-main">
-                        <div class="username">
-                            <a class="user-name" href="#">有机鱼</a>
-                        </div>
-                        <div class="more">
-                            <a class="more-" href="#">⋮</a>
-                        </div>
-                        <div class="card-time">
-                            <a class="time" href="#">刚刚</a>
-                        </div>
-                        <div class="cardcontent">
-                            <div class="card-text">
-                                有域名了好耶(*ﾟ∇ﾟ)
+                    <div class="new-card">
+                        <a class="user-head-container" href="#">
+                            <div class="user-head" style="background-image: url(&quot;img/fish.jpg&quot;);">
                             </div>
-                            <!--只会做纯文本hh-->
-                            <div class="card-repost"></div>
-                            <div class="card-viode"></div>
-                            <div class="card-image"></div>
-                            <div class="card-article"></div>
-                            <div class="card-audio"></div>
-                        </div>
-                        <div class="card-button">
-                            <div class="button-con">
-                                <span class="button-card repose"></span>
-                                <span class="repose">转发</span>
+                        </a>
+                        <div class="card-main">
+                            <div class="username">
+                                <a class="user-name" href="#">有机鱼</a>
                             </div>
-                            <div class="button-con">
-                                <span class="button-card comment"></span>
-                                <span class="comment">评论</span>
+                            <div class="more">
+                                <a class="more-" href="#">⋮</a>
                             </div>
-                            <div class="button-con">
-                                <span class="button-card like"></span>
-                                <span>点赞</span>
+                            <div class="card-time">
+                                <a class="time" href="#">刚刚</a>
+                            </div>
+                            <div class="cardcontent">
+                                <div class="card-text">
+                                    有域名了好耶(*ﾟ∇ﾟ)
+                                </div>
+                                <!--只会做纯文本hh-->
+                                <div class="card-repost"></div>
+                                <div class="card-viode"></div>
+                                <div class="card-image"></div>
+                                <div class="card-article"></div>
+                                <div class="card-audio"></div>
+                            </div>
+                            <div class="card-button">
+                                <div class="button-con">
+                                    <span class="button-card repose"></span>
+                                    <span class="repose">转发</span>
+                                </div>
+                                <div class="button-con">
+                                    <span class="button-card comment"></span>
+                                    <span class="comment">评论</span>
+                                </div>
+                                <div class="button-con">
+                                    <span class="button-card like"></span>
+                                    <span>点赞</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="new-card">
-                    <button onclick="username()">点</button>
                 </div>
             </div>
 

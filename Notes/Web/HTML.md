@@ -1,6 +1,6 @@
 # HTML.note
 
-- [README.md](../README.md)
+- [README.md](../../README.md)
 - [JavaScript.note](JavaScript.md)
 - [大杂烩](root/sample.html)
 
@@ -127,7 +127,7 @@
 - `padding` , 内边距
 - `height`、`width` , 宽高
 - 但是，如图 完整的框是指 长：`width + 2\*(margin + padding + border)`
-  <br><img src="img/border.png" height="150px">
+  <br><img src="img/HTML_border.png" height="150px">
 - 而用了 **`box-sizing: border-box;`** 后，边距不影响宽度了（放全局）
 
 <br>

@@ -95,7 +95,7 @@ int read()
 - 在函数(非递归)中，一维数组大小不超过 1e5.
 - 在全局变量中，一维数组大小不超过 1e8，二维数组大小不超过 1e4
 - 对于 1s 的时间限制，需要保证程序的所有语句的总执行次数不超过 1e8.
-  <img src="image/main_1.png" width="70%">
+  <img src="img/cpp_1.png" width="70%">
 
 #### 结构体
 
@@ -151,7 +151,7 @@ int read()
 - 二维：
 
   - 求表
-    <img src="image/main_2.png" width="70%">
+    <img src="img/cpp_2.png" width="70%">
 
     ```C++ {.line-numbers}
     for (i = 1; i <= n; i++)  //打表
@@ -162,7 +162,7 @@ int read()
     ```
 
   - 还原：
-    <img src="image/main_3.png" width="70%">
+    <img src="img/cpp_3.png" width="70%">
 
     ```C++ {.line-numbers}
     cin >> x1 >> y1 >> x2 >> y2;   //求表
