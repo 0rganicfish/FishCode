@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div {
+            height: 60px;
+            display: flex;
+        }
+
+        .aaa {
+
+            background: rgba(255, 0, 0, 0.438);
+            margin-right: 80px;
+            cursor: pointer;
+            transform: 1s;
+        }
+
+        .aaa::before {
+            content: "";
+            border-bottom: 3px solid rgb(0, 132, 255);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <span class="aaa">aaa</span>
+            <span class="bbb">bbb</span>
+        </div>
+    </div>
+</body>
+
+</html>

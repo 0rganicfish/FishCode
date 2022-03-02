@@ -1,9 +1,5 @@
 [TOC]
 
-# DOM
-
-文档对象模型 (DOM) 是 HTML 和 XML 文档的编程接口。它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容。
-
 # API
 
 ## 节点查询型 API
@@ -192,11 +188,15 @@ var dupNode = node.cloneNode(deep);
    - 如果是通过 `addEventListener` 或者比如 onclick 进行绑定事件，则副本节点不会绑定该事件
    - 如果是内联方式绑定比如：`<div onclick="showParent()"></div>`，这样的话，副本节点同样会触发事件。
 
-# DOM 事件
+<br><br><hr>
 
-详见：[DOM 事件](https://www.jianshu.com/p/b815ae507ed8)
+# DOM
 
-## 鼠标事件
+文档对象模型 (DOM) 是 HTML 和 XML 文档的编程接口。它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容。
+
+## DOM 事件
+
+### 鼠标事件
 
 |      属性       | 描述                                   |
 | :-------------: | :------------------------------------- |
@@ -211,7 +211,7 @@ var dupNode = node.cloneNode(deep);
 |  `onmouseout`   | 鼠标从某元素移开。                     |
 |   `onmouseup`   | 鼠标按键被松开。                       |
 
-## 键盘事件
+### 键盘事件
 
 |     属性     | 描述                       |
 | :----------: | :------------------------- |
@@ -219,7 +219,7 @@ var dupNode = node.cloneNode(deep);
 | `onkeypress` | 某个键盘按键被按下并松开。 |
 |  `onkeyup`   | 某个键盘按键被松开。       |
 
-## 框架/对象（Frame/Object）事件
+### 框架/对象（Frame/Object）事件
 
 |       属性       | 描述                                                                |
 | :--------------: | :------------------------------------------------------------------ |
@@ -234,7 +234,7 @@ var dupNode = node.cloneNode(deep);
 |    `onscroll`    | 当文档被滚动时发生的事件。                                          |
 |    `onunload`    | 用户退出页面。 ( `<body>` 和 `<frameset>`)                          |
 
-## 剪贴板事件
+### 剪贴板事件
 
 |   属性    | 描述                           |
 | :-------: | :----------------------------- |
@@ -242,3 +242,9 @@ var dupNode = node.cloneNode(deep);
 |  `oncut`  | 该事件在用户剪切元素内容时触发 |
 | `onpaste` | 该事件在用户粘贴元素内容时触发 |
 
+<br><br><hr>
+
+# 参考
+
+1. [DOM 事件](https://www.jianshu.com/p/b815ae507ed8)
+2. [JavaScript 操作 DOM 常用的 API](https://juejin.cn/post/6844903604445249543#heading-2)
