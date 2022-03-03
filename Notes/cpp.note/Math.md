@@ -1,8 +1,9 @@
-# 数学
+<p style="font-size: 40px; color: #fff"><b>数学</b></p>
 
 [首页](../cpp.main.md)
-
 [TOC]
+
+<br><br>
 
 ## 基础数学
 
@@ -70,6 +71,7 @@
       return ans;
   }
   ```
+
 - 十进制转二进制：
 
   ```C++ {.line-numbers}
@@ -80,6 +82,7 @@
   while (i > 0)
       cout << er[i--];
   ```
+
 - 十六进制转十进制：
 
   ```C++ {.line-numbers}
@@ -97,6 +100,22 @@
   }
   ```
 
+### 回文数（数学方法）
+
+- 会比 `to_string` 快得多
+
+```C++ {.line-numbers}
+bool hui(int x)
+{
+    int y = x * 10, num = 0;
+    while (y /= 10)
+        num = num * 10 + y % 10;
+    if (num == x)
+        return 1;
+    return 0;
+}
+```
+
 ### 求质数与质数筛
 
 - 估算范围内质数的数量：$n=\frac{x}{\ln x}$
@@ -113,6 +132,7 @@
     return true;
   }
   ```
+
 - 倍数筛：
 
   ```C++ {.line-numbers}
@@ -131,6 +151,7 @@
     return k;  //k为最后一个质数的位置
   }
   ```
+
 - 欧拉筛
 
   ```C++ {.line-numbers}
@@ -158,7 +179,8 @@
 
 ### mod 与 阶乘
 
-令 a 为 mod 的最大质因数，那大于等于 a 的数的阶乘都能被 mod 整除 即：`a！% mod == 0`
+- 令 a 为 mod 的最大质因数，那大于等于 a 的数的阶乘都能被 mod 整除
+  即：`a！% mod == 0`
 
 ### 高精度
 
@@ -188,6 +210,7 @@
   vecint x(numpush(a));
   coutvec(x);
   ```
+
 - 加法
 
   ```C++ {.line-numbers}
@@ -209,6 +232,7 @@
       return ans;
   }
   ```
+
 - 乘法
 
   ```C++ {.line-numbers}
@@ -249,6 +273,7 @@
       Perm(a, 0, 4);
   }
   ```
+
 - STL 实现：
 
   ```C++ {.line-numbers}
@@ -274,6 +299,7 @@
       return ans;
   }
   ```
+
 - 排列 $A_{m}^{n}$
 
   ```C++ {.line-numbers}
@@ -287,4 +313,35 @@
   }
   ```
 
-## 高阶数学
+## 高阶数学（数论）
+
+### Miller-Robin 的素数判断
+
+- 利用随机化算法判断一个数是合数还是可能是素数（毫秒级判断大数）。（玄学）
+
+  ```C++ {.line-numbers}
+  ll fpow(int a, int x, int mod) //快速幂
+  {
+      int ans = 1;
+      while (x)
+      {
+          if (x & 1)
+              (ans *= a) %= mod;
+          (a *= a) %= mod, x >>= 1;
+      }
+      return ans;
+  }
+
+  bool Miller_Rabbin(int x)
+  {
+      if (x == 1) return false;
+      if (x == 2) return true;
+      for (int i = 1; i <= 30; ++i)
+      {
+          int now = rand() % (x - 2) + 2;
+          if ((int)(fpow(now, x - 1, x)) != 1)
+              return false;
+      }
+      return true;
+  }
+  ```

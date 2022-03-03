@@ -34,20 +34,20 @@
 4. STL 函数
 
    ```C++ {.line-numbers}
-   1. 替换     c.replace(a, b, "xxx")  a：替换的初始位置，b：替换的长度
-   2. 查找     b.find(c, a) ：从位置a开始，在b中找c      b.rfind 为从后往前找
+   替换     c.replace(a, b, "xxx")  a：替换的初始位置，b：替换的长度
+   查找     b.find(c, a) ：从位置a开始，在b中找c      b.rfind 为从后往前找
        str.find_first_of(str1) ：找第一次出现的位置    找不到就返回 -1
        find 需要子串和父串全部匹配，find_first_of 只需匹配一个字符就可以
-   3. 删除     c.erase(a, b)  a：删除的初始位置，b：删除的个数；仅有a的话，则删除位置a后面的字符
-   4. 截取     string s = c.substr(a, b);  a：截取的初始位置，b：截取的长度
-   5. 插入     c.insert(a, "xxx") a：在位置a之前插入
-   6. 翻转顺序  reverse(s.begin() + a, s.end() - b); 指定位置翻转,从a到b
-   7. 赋值     str.assign(str1.begin()+1, str1.end()-1); 将区间内str1的元素赋值给 str
+   删除     c.erase(a, b)  a：删除的初始位置，b：删除的个数；仅有a的话，则删除位置a后面的字符
+   截取     string s = c.substr(a, b);  a：截取的初始位置，b：截取的长度
+   插入     c.insert(a, "xxx") a：在位置a之前插入
+   翻转顺序  reverse(s.begin() + a, s.end() - b); 指定位置翻转,从a到b
+   赋值     str.assign(str1.begin()+1, str1.end()-1); 将区间内str1的元素赋值给 str
    ```
 
 ### cctype
 
-- 其实算是 `bool` 类型的 `—>` 多用于 `if` 判断的
+- 返回 `bool` 
 
   ```C++ {.line-numbers}
   //只能用在单个字符
@@ -79,7 +79,7 @@
 
 ### 但在 C++11 之前， 没有 to_string ：
 
-- #include <sstream>
+- `#include <sstream>`
 
   ```C++ {.line-numbers}
   string Itos(int x)  //int Stoi(string x)
@@ -141,11 +141,8 @@
       string ch;
       bool s[100] = {false};
       for (int i = 0; i < c.length(); i++)
-      {
           if (s[c[i] - ' '] == false)
-              ch += c[i];
-          s[c[i] - ' '] = true;
-      }
+              ch += c[i], s[c[i] - ' '] = true;
       return ch;
   }
   ```

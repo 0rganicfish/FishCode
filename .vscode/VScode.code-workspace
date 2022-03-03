@@ -82,6 +82,21 @@
       "move.h": "c",
       "c++config.h": "c"
     },
-    "liveServer.settings.port": 81
+    "liveServer.settings.port": 81,
+    "sqltools.connections": [
+      {
+        "mysqlOptions": {
+          "authProtocol": "default"
+        },
+        "previewLimit": 50,
+        "server": "localhost",
+        "port": 233,
+        "driver": "MySQL",
+        "name": "FishDB",
+        "username": "Fish",
+        "password": "Fish1026",
+        "database": "123"
+      }
+    ]
   }
 }
