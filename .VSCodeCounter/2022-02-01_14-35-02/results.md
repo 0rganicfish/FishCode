@@ -9,6 +9,7 @@ Total : 30 files,  3171 codes, 46 comments, 411 blanks, all 3628 lines
 summary / [details](details.md) / [diff summary](diff.md) / [diff details](diff-details.md)
 
 ## Languages
+
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | Markdown | 10 | 1,223 | 0 | 292 | 1,515 |

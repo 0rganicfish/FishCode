@@ -102,6 +102,24 @@ ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
 - 对于 1s 的时间限制，需要保证程序的所有语句的总执行次数不超过 1e8.
   <img src="img/cpp_1.png" width="70%">
 
+一般 ACM 或者笔试题的时间限制是 1 秒或 2 秒。
+在这种情况下，C++代码中的操作次数控制在 $10^7∼10^8$ 为最佳。
+
+下面给出在不同数据范围下，代码的时间复杂度和算法该如何选择：
+
+- $n \le 30$, 指数级别, dfs+剪枝，状态压缩 dp
+- $n \le 100  \to  O(n^3)$，floyd，dp，高斯消元
+- $n \le 1000  \to  O(n^2), O(n^2logn)$ ，dp，二分，朴素版 Dijkstra、朴素版 Prim、Bellman-Ford
+- $n \le 10^4  \to  O(n \times \sqrt n)$，块状链表、分块、莫队
+- $n \le 10^5  \to  O(nlogn)$ $\to$ 各种 sort，线段树、树状数组、set/map、heap、拓扑排序、dijkstra+heap、prim+heap、Kruskal、spfa、求凸包、求半平面交、二分、CDQ 分治、整体二分、后缀数组、树链剖分、动态树
+- $n \le 10^6  \to  O(n)$, 以及常数较小的 $O(nlogn)$ 算法 $ \to $ 单调队列、 hash、双指针扫描、并查集，kmp、AC 自动机，常数比较小的 $O(nlogn)$ 的做法：sort、树状数组、heap、dijkstra、spfa
+- $n \le 10^7  \to  O(n)$，双指针扫描、kmp、AC 自动机、线性筛素数
+- $n \le 10^9  \to  O(\sqrt n)$，判断质数
+- $n \le 10^{18}  \to  O(logn)$，最大公约数，快速幂，数位 DP
+- $n \le 10^{1000}  \to  O((logn)^2)$，高精度加减乘除
+- $n \le 10^{100000}  \to  O(logk \times loglogk)$，k 表示位数，高精度加减、FFT/NTT
+-
+
 ### 结构体
 
 - 结构体数组：用一维数组**代替**多维数组

@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#include <windows.h>
 int main()
 {
     string cont = "Welcome all leaders to guide us!   ";

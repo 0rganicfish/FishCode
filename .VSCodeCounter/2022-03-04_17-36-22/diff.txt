@@ -1,0 +1,175 @@
+Date : 2022-03-04 17:36:22
+Directory : c:\VScode
+Total : 103 files,  2327 codes, 106 comments, 531 blanks, all 2964 lines
+
+Languages
++-------------+------------+------------+------------+------------+------------+
+| language    | files      | code       | comment    | blank      | total      |
++-------------+------------+------------+------------+------------+------------+
+| CSS         |          5 |        861 |         59 |         93 |      1,013 |
+| Markdown    |         32 |        656 |          0 |        383 |      1,039 |
+| HTML        |          6 |        630 |          6 |         35 |        671 |
+| XML         |         18 |        600 |          2 |         13 |        615 |
+| JSON        |          4 |        157 |          0 |          0 |        157 |
+| Java        |          4 |         42 |          0 |          4 |         46 |
+| JavaScript  |          3 |         36 |         16 |          9 |         61 |
+| C#          |          4 |         30 |         12 |          7 |         49 |
+| Python      |          2 |         23 |         10 |          2 |         35 |
+| Log         |          2 |         13 |          0 |          0 |         13 |
+| Properties  |          1 |         10 |          1 |          0 |         11 |
+| LaTeX       |          2 |          3 |          0 |          2 |          5 |
+| Ini         |          1 |          1 |          0 |          0 |          1 |
+| PHP         |          1 |          0 |          0 |          1 |          1 |
+| C           |          2 |          0 |          0 |          0 |          0 |
+| SQL         |          1 |          0 |          0 |          1 |          1 |
+| C++         |         10 |        -14 |          0 |         -1 |        -15 |
+| Django HTML |          1 |       -103 |          0 |        -15 |       -118 |
+| Django txt  |          4 |       -618 |          0 |         -3 |       -621 |
++-------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |        103 |      2,327 |        106 |        531 |      2,964 |
+| C#                                                                                   |         12 |        223 |         13 |          7 |        243 |
+| C#\program                                                                           |         12 |        223 |         13 |          7 |        243 |
+| C#\program\bin                                                                       |          2 |         32 |          0 |          0 |         32 |
+| C#\program\bin\Debug                                                                 |          2 |         32 |          0 |          0 |         32 |
+| C#\program\bin\Debug\net6.0                                                          |          2 |         32 |          0 |          0 |         32 |
+| C#\program\obj                                                                       |          8 |        171 |         13 |          7 |        191 |
+| C#\program\obj\Debug                                                                 |          4 |         29 |         13 |          7 |         49 |
+| C#\program\obj\Debug\net6.0                                                          |          4 |         29 |         13 |          7 |         49 |
+| CPP                                                                                  |          6 |        150 |          0 |         15 |        165 |
+| CPP.code                                                                             |          8 |       -166 |          0 |        -17 |       -183 |
+| DataBase                                                                             |          1 |          0 |          0 |          1 |          1 |
+| HTML                                                                                 |         32 |      1,894 |         83 |        123 |      2,100 |
+| HTML\CSS                                                                             |          3 |        -77 |        -15 |        -21 |       -113 |
+| HTML\bili                                                                            |          8 |      1,006 |         48 |         76 |      1,130 |
+| HTML\bili\img                                                                        |          5 |        260 |          1 |          4 |        265 |
+| HTML\root                                                                            |         14 |      1,061 |         48 |         81 |      1,190 |
+| HTML\root\img                                                                        |          5 |        260 |          1 |          4 |        265 |
+| HTML\root\web_config                                                                 |          4 |         41 |          0 |          4 |         45 |
+| Items                                                                                |          2 |       -616 |          0 |         -2 |       -618 |
+| Items\Regex                                                                          |          2 |       -616 |          0 |         -2 |       -618 |
+| Java                                                                                 |          4 |         42 |          0 |          4 |         46 |
+| LaTeX                                                                                |          2 |        303 |          0 |         15 |        318 |
+| LaTeX\tese                                                                           |          2 |        303 |          0 |         15 |        318 |
+| Latex                                                                                |          2 |       -287 |          0 |        -13 |       -300 |
+| Notes                                                                                |         22 |      1,852 |          0 |        661 |      2,513 |
+| Notes\Web                                                                            |          4 |        424 |          0 |        150 |        574 |
+| Notes\cpp.note                                                                       |          8 |        874 |          0 |        246 |      1,120 |
+| PHP                                                                                  |          1 |          0 |          0 |          1 |          1 |
+| Python                                                                               |          2 |         23 |         10 |          2 |         35 |
+| cpp.note                                                                             |          8 |     -1,115 |          0 |       -280 |     -1,395 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
+| filename                                                                             | language    | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
+| c:\VScode\C#\program\C#.csproj                                                       | XML         |          9 |          0 |          0 |          9 |
+| c:\VScode\C#\program\Program.cs                                                      | C#          |         11 |          0 |          0 |         11 |
+| c:\VScode\C#\program\bin\Debug\net6.0\C#.deps.json                                   | JSON        |         23 |          0 |          0 |         23 |
+| c:\VScode\C#\program\bin\Debug\net6.0\C#.runtimeconfig.json                          | JSON        |          9 |          0 |          0 |          9 |
+| c:\VScode\C#\program\obj\C#.csproj.nuget.dgspec.json                                 | JSON        |         60 |          0 |          0 |         60 |
+| c:\VScode\C#\program\obj\C#.csproj.nuget.g.props                                     | XML         |         15 |          0 |          0 |         15 |
+| c:\VScode\C#\program\obj\C#.csproj.nuget.g.targets                                   | XML         |          2 |          0 |          0 |          2 |
+| c:\VScode\C#\program\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs | C#          |          3 |          1 |          1 |          5 |
+| c:\VScode\C#\program\obj\Debug\net6.0\C#.AssemblyInfo.cs                             | C#          |          9 |         10 |          5 |         24 |
+| c:\VScode\C#\program\obj\Debug\net6.0\C#.GeneratedMSBuildEditorConfig.editorconfig   | Properties  |         10 |          1 |          0 |         11 |
+| c:\VScode\C#\program\obj\Debug\net6.0\C#.GlobalUsings.g.cs                           | C#          |          7 |          1 |          1 |          9 |
+| c:\VScode\C#\program\obj\project.assets.json                                         | JSON        |         65 |          0 |          0 |         65 |
+| c:\VScode\CPP.code\LuoGuuu.cpp                                                       | C++         |        -29 |          0 |         -3 |        -32 |
+| c:\VScode\CPP.code\TOOLman.cpp                                                       | C++         |        -36 |          0 |         -5 |        -41 |
+| c:\VScode\CPP.code\Temp.cpp                                                          | C++         |         -5 |          0 |         -2 |         -7 |
+| c:\VScode\CPP.code\Test.c                                                            | C           |        -37 |          0 |         -1 |        -38 |
+| c:\VScode\CPP.code\cyy.cpp                                                           | C++         |        -33 |          0 |         -2 |        -35 |
+| c:\VScode\CPP.code\input.txt                                                         | Django txt  |         -1 |          0 |         -1 |         -2 |
+| c:\VScode\CPP.code\led-1.cpp                                                         | C++         |        -24 |          0 |         -3 |        -27 |
+| c:\VScode\CPP.code\output.txt                                                        | Django txt  |         -1 |          0 |          0 |         -1 |
+| c:\VScode\CPP\LuoGuuu.cpp                                                            | C++         |         29 |          0 |          3 |         32 |
+| c:\VScode\CPP\TOOLman.cpp                                                            | C++         |         36 |          0 |          5 |         41 |
+| c:\VScode\CPP\Temp.cpp                                                               | C++         |         21 |          0 |          2 |         23 |
+| c:\VScode\CPP\Test.c                                                                 | C           |         37 |          0 |          1 |         38 |
+| c:\VScode\CPP\cyy.cpp                                                                | C++         |         12 |          0 |          3 |         15 |
+| c:\VScode\CPP\led-1.cpp                                                              | C++         |         15 |          0 |          1 |         16 |
+| c:\VScode\DataBase\Untitled-1.sql                                                    | SQL         |          0 |          0 |          1 |          1 |
+| c:\VScode\HTML\CSS\Water.css                                                         | CSS         |         68 |          0 |          2 |         70 |
+| c:\VScode\HTML\CSS\bili.css                                                          | CSS         |       -196 |        -20 |        -27 |       -243 |
+| c:\VScode\HTML\CSS\sample.css                                                        | CSS         |         51 |          5 |          4 |         60 |
+| c:\VScode\HTML\HTML.note.md                                                          | Markdown    |       -105 |          0 |        -12 |       -117 |
+| c:\VScode\HTML\Water.html                                                            | HTML        |         26 |          0 |          3 |         29 |
+| c:\VScode\HTML\b.html                                                                | HTML        |         11 |          0 |          1 |         12 |
+| c:\VScode\HTML\bili\bili.css                                                         | CSS         |        469 |         37 |         57 |        563 |
+| c:\VScode\HTML\bili\bili.js                                                          | JavaScript  |         18 |          8 |          4 |         30 |
+| c:\VScode\HTML\bili\img\1.svg                                                        | XML         |         10 |          0 |          1 |         11 |
+| c:\VScode\HTML\bili\img\bili-logo.svg                                                | XML         |          6 |          0 |          1 |          7 |
+| c:\VScode\HTML\bili\img\bp-svg-icon.eb35343a.svg                                     | XML         |        234 |          1 |          1 |        236 |
+| c:\VScode\HTML\bili\img\like.svg                                                     | XML         |          1 |          0 |          0 |          1 |
+| c:\VScode\HTML\bili\img\search.svg                                                   | XML         |          9 |          0 |          1 |         10 |
+| c:\VScode\HTML\bili\index.html                                                       | HTML        |        259 |          2 |         11 |        272 |
+| c:\VScode\HTML\bilibili.html                                                         | Django HTML |       -103 |          0 |        -15 |       -118 |
+| c:\VScode\HTML\root\.user.ini                                                        | Ini         |          1 |          0 |          0 |          1 |
+| c:\VScode\HTML\root\bili.css                                                         | CSS         |        469 |         37 |         57 |        563 |
+| c:\VScode\HTML\root\bili.js                                                          | JavaScript  |         18 |          8 |          4 |         30 |
+| c:\VScode\HTML\root\img\1.svg                                                        | XML         |         10 |          0 |          1 |         11 |
+| c:\VScode\HTML\root\img\bili-logo.svg                                                | XML         |          6 |          0 |          1 |          7 |
+| c:\VScode\HTML\root\img\bp-svg-icon.eb35343a.svg                                     | XML         |        234 |          1 |          1 |        236 |
+| c:\VScode\HTML\root\img\like.svg                                                     | XML         |          1 |          0 |          0 |          1 |
+| c:\VScode\HTML\root\img\search.svg                                                   | XML         |          9 |          0 |          1 |         10 |
+| c:\VScode\HTML\root\index.html                                                       | HTML        |        259 |          2 |         11 |        272 |
+| c:\VScode\HTML\root\web.config                                                       | XML         |         13 |          0 |          1 |         14 |
+| c:\VScode\HTML\root\web_config\default.config                                        | XML         |         16 |          0 |          1 |         17 |
+| c:\VScode\HTML\root\web_config\httpErrors.config                                     | XML         |          2 |          0 |          1 |          3 |
+| c:\VScode\HTML\root\web_config\php.config                                            | XML         |         19 |          0 |          1 |         20 |
+| c:\VScode\HTML\root\web_config\rewrite.config                                        | XML         |          4 |          0 |          1 |          5 |
+| c:\VScode\HTML\sample.html                                                           | HTML        |         40 |          2 |          3 |         45 |
+| c:\VScode\HTML\sample.js                                                             | JavaScript  |          0 |          0 |          1 |          1 |
+| c:\VScode\HTML\test.html                                                             | HTML        |         35 |          0 |          6 |         41 |
+| c:\VScode\Items\Regex\ans.txt                                                        | Django txt  |       -300 |          0 |         -1 |       -301 |
+| c:\VScode\Items\Regex\input.txt                                                      | Django txt  |       -316 |          0 |         -1 |       -317 |
+| c:\VScode\Java\Date.class                                                            | Java        |          8 |          0 |          0 |          8 |
+| c:\VScode\Java\Date.java                                                             | Java        |         11 |          0 |          3 |         14 |
+| c:\VScode\Java\temp.class                                                            | Java        |         13 |          0 |          0 |         13 |
+| c:\VScode\Java\temp.java                                                             | Java        |         10 |          0 |          1 |         11 |
+| c:\VScode\LaTeX\tese\tese.log                                                        | Log         |        296 |          0 |         13 |        309 |
+| c:\VScode\LaTeX\tese\tese.tex                                                        | LaTeX       |          7 |          0 |          2 |          9 |
+| c:\VScode\Latex\tese.log                                                             | Log         |       -283 |          0 |        -13 |       -296 |
+| c:\VScode\Latex\tese.tex                                                             | LaTeX       |         -4 |          0 |          0 |         -4 |
+| c:\VScode\Notes\CSharp.md                                                            | Markdown    |          3 |          0 |          3 |          6 |
+| c:\VScode\Notes\Java.md                                                              | Markdown    |          2 |          0 |          1 |          3 |
+| c:\VScode\Notes\LaTeX.md                                                             | Markdown    |          9 |          0 |          7 |         16 |
+| c:\VScode\Notes\Python.md                                                            | Markdown    |         18 |          0 |         10 |         28 |
+| c:\VScode\Notes\QT.md                                                                | Markdown    |          3 |          0 |          3 |          6 |
+| c:\VScode\Notes\Regex.md                                                             | Markdown    |         60 |          0 |         29 |         89 |
+| c:\VScode\Notes\SQL.md                                                               | Markdown    |          3 |          0 |          2 |          5 |
+| c:\VScode\Notes\Web\HTML.md                                                          | Markdown    |        244 |          0 |         58 |        302 |
+| c:\VScode\Notes\Web\HTTP.md                                                          | Markdown    |          0 |          0 |          1 |          1 |
+| c:\VScode\Notes\Web\JavaScript.md                                                    | Markdown    |         13 |          0 |          7 |         20 |
+| c:\VScode\Notes\Web\JavaScript_DOM.md                                                | Markdown    |        167 |          0 |         84 |        251 |
+| c:\VScode\Notes\cpp.main.md                                                          | Markdown    |        278 |          0 |         75 |        353 |
+| c:\VScode\Notes\cpp.note\DP.md                                                       | Markdown    |         64 |          0 |         15 |         79 |
+| c:\VScode\Notes\cpp.note\Math.md                                                     | Markdown    |        290 |          0 |         58 |        348 |
+| c:\VScode\Notes\cpp.note\STL.md                                                      | Markdown    |        224 |          0 |         89 |        313 |
+| c:\VScode\Notes\cpp.note\Search.md                                                   | Markdown    |         71 |          0 |         13 |         84 |
+| c:\VScode\Notes\cpp.note\Sort.md                                                     | Markdown    |         30 |          0 |          7 |         37 |
+| c:\VScode\Notes\cpp.note\String.md                                                   | Markdown    |        139 |          0 |         40 |        179 |
+| c:\VScode\Notes\cpp.note\Tree-Graph.md                                               | Markdown    |          6 |          0 |          6 |         12 |
+| c:\VScode\Notes\cpp.note\miao.md                                                     | Markdown    |         50 |          0 |         18 |         68 |
+| c:\VScode\Notes\一些Temp.md                                                            | Markdown    |         48 |          0 |         13 |         61 |
+| c:\VScode\Notes\清华_参考书目.md                                                           | Markdown    |        130 |          0 |        122 |        252 |
+| c:\VScode\PHP\new.php                                                                | PHP         |          0 |          0 |          1 |          1 |
+| c:\VScode\Python\pyy.py                                                              | Python      |         24 |         10 |          2 |         36 |
+| c:\VScode\Python\pyyy1.py                                                            | Python      |         -1 |          0 |          0 |         -1 |
+| c:\VScode\README.md                                                                  | Markdown    |         24 |          0 |         14 |         38 |
+| c:\VScode\cpp.note\DP.md                                                             | Markdown    |        -65 |          0 |        -14 |        -79 |
+| c:\VScode\cpp.note\DataStructure.md                                                  | Markdown    |       -234 |          0 |        -89 |       -323 |
+| c:\VScode\cpp.note\Math.md                                                           | Markdown    |       -228 |          0 |        -41 |       -269 |
+| c:\VScode\cpp.note\Search.md                                                         | Markdown    |        -69 |          0 |        -11 |        -80 |
+| c:\VScode\cpp.note\Sort.md                                                           | Markdown    |        -28 |          0 |         -6 |        -34 |
+| c:\VScode\cpp.note\String.md                                                         | Markdown    |       -155 |          0 |        -39 |       -194 |
+| c:\VScode\cpp.note\main.md                                                           | Markdown    |       -286 |          0 |        -62 |       -348 |
+| c:\VScode\cpp.note\miao.md                                                           | Markdown    |        -50 |          0 |        -18 |        -68 |
+| Total                                                                                |             |      2,327 |        106 |        531 |      2,964 |
++--------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
