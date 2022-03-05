@@ -190,7 +190,7 @@ bool hui(int x)
   typedef long long ll;
   typedef vector<int> vecint;
 
-  vecint numpush(ll n)  //数字转vector
+  vecint vecin(ll n)  //数字转vector
   {
       vecint t;
       while (n)
