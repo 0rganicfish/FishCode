@@ -1,4 +1,7 @@
-[TOC]
+<p style="font-size: 40px; color: #fff"><b>DOM | API</b></p>
+
+- [JavaScript.note](JavaScript.md)
+  [TOC]
 
 # API
 

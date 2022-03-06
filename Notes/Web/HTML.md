@@ -1,4 +1,4 @@
-# HTML.note
+<p style="font-size: 40px; color: #fff"><b>HTML | CSS</b></p>
 
 - [README.md](../../README.md)
 - [JavaScript.note](JavaScript.md)
@@ -76,29 +76,78 @@
 
 <br>
 
-## 字体基础
+## 字体
 
 - `line-height`，行间距，默认 1.2 ，当行间距等于盒子高度时，就可以使文字**垂直居中**
-- `font-weight`，字重(粗细)，加粗：`bold`，细：`height`
+- `font-weight: bold | hight`，字重(粗细)
 - `font-size`，字体大小，默认 16px, 最小是 12px
 - `font-family: "fangsong";`，字体样式
 - `text-decoration`，下划线类型
 - `text-indent` ： 第一行文字缩进长度
 - `text-shadow` 设置文本阴影
 - `text-transform` 控制元素中的字母
-- `text-align` , 文字对齐方式
-  - `left` ：行内内容向左侧边对齐。
-  - `right` ：行内内容向右侧边对齐。
-  - `center` ：行内内容**水平居中**。
-  - `justify` ：文字向两侧对齐，对最后一行无效。
-  - `justify-all` ：和 justify 一致，但是强制使最后一行两端对齐。
-- `direction` 设置文本方向。
-- `letter-spacing` 设置字符间距
-- `unicode-bidi` 设置或返回文本是否被重写
-- `vertical-align` 设置元素的**垂直对齐**
+- `text-align: left | right | center | justify (文字向两侧对齐)` , 文字对齐方式
+- `write-mode: horizontal-tb | vertical-rl | vertical-lr ` 文字书写方向
+  - <img src="img/write-mode.png" width=40%>
 - `white-space` 设置元素中空白的处理方式
-- `word-spacing` 设置字间距
+- `word-spacing` 设置单词间距
+- `letter-spacing` 设置字母间距
 - `color`，字体颜色值
+
+<br>
+
+## 单位
+
+### 绝对长度
+
+绝对长度单位是固定的，用任何一个绝对长度表示的长度都将恰好显示为这个尺寸。
+
+不建议在屏幕上使用绝对长度单位，因为屏幕尺寸变化很大。但是，如果已知输出介质，则可以使用它们，例如用于打印布局（print layout）
+
+| 单位 | 描述                       |
+| :--- | :------------------------- |
+| cm   | 厘米                       |
+| mm   | 毫米                       |
+| in   | 英寸 (1in = 96px = 2.54cm) |
+| px   | 像素 (1px = 1/96th of 1in) |
+| pt   | 点 (1pt = 1/72 of 1in)     |
+
+像素（px）是相对于观看设备的。对于低 dpi 的设备，1px 是显示器的一个设备像素（点）。对于打印机和高分辨率屏幕，1px 表示多个设备像素。
+
+### 相对长度
+
+相对长度单位规定相对于另一个长度属性的长度。相对长度单位在不同渲染介质之间缩放表现得更好。
+
+em 和 rem 单元可用于创建完美的可扩展布局！
+
+| 单位 | 描述                                                             |
+| :--- | :--------------------------------------------------------------- |
+| em   | 相对于元素的字体大小（font-size）（2em 表示当前字体大小的 2 倍） |
+| ex   | 相对于当前字体的 x-height(极少使用)                              |
+| ch   | 相对于 "0"（零）的宽度                                           |
+| rem  | 相对于根元素的字体大小（font-size）                              |
+| vw   | 相对于视口\*宽度的 1%                                            |
+| vh   | 相对于视口\*高度的 1%                                            |
+| vmin | 相对于视口\*较小尺寸的 1％                                       |
+| vmax | 相对于视口\*较大尺寸的 1％                                       |
+| %    | 相对于父元素                                                     |
+
+- 视口（Viewport）= 浏览器窗口的尺寸。如果视口宽 50 里面，则 1vw = 0.5cm。
+
+<br>
+
+## background
+
+简写：`background: color | image | origin | position | repeat | size | attachment`
+
+- `background-size: contain | cover | num`
+  - `contain` 是缩放以填充盒子，并会 `repeat`
+  - `cover` 是剪裁以填充盒子
+  - 若为具体数值，百分比或长宽(拉伸), 则 `repeat` 填充盒子
+- `background-attachment: scroll | fixed | local`
+  - `scroll` 随整体滚动而不随图片内容
+  - `fixed` 不随任何滚动
+  - `local` 随图片内容而滚动
 
 <br>
 
@@ -127,7 +176,7 @@
 - `padding` , 内边距
 - `height`、`width` , 宽高
 - 但是，如图 完整的框是指 长：`width + 2\*(margin + padding + border)`
-  <br><img src="img/HTML_border.png" height="150px">
+  <img src="img/border.png" width=60%>
 - 而用了 **`box-sizing: border-box;`** 后，边距不影响宽度了（放全局）
 
 <br>
@@ -206,6 +255,8 @@
 
 #### 子元素对齐方式
 
+**要先定义父元素的长宽，子元素才会对齐**
+
 - **`align-items`**： 属性可以使元素在**交叉轴**方向对齐。这个属性的初始值为`stretch`。
   - 可分为：`center`、`flex-start`、`flex-end`、`stretch`(在交叉轴上撑满整个父元素)、`baseline`(基于内容基线)
 - **`justify-content`** ： 属性用来使元素在**主轴**方向上对齐，主轴方向是通过`flex-direction` 设置的方向。初始值是`flex-start`。
@@ -264,8 +315,8 @@
 #### 可过渡的样式
 
 ```css
-颜色: color background-color border-color outline-color
-位置: background-position left right top bottom
+颜色: color color border-color outline-color
+位置: position left right top bottom
 长度:
     [1]max-height min-height max-width min-width height width
     [2]border-width margin padding outline-width outline-offset

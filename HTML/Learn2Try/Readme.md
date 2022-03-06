@@ -7,4 +7,4 @@
 
 |  #  | 项目              |                        预览                        |
 | :-: | :---------------- | :------------------------------------------------: |
-| 00  | [00](00_/00.html) | [预览](http://www.organicfish.top:233/00_/00.html) |
+| 00  | [Expanding Cards](00_expanding_cards/index.html) | [预览](http://www.organicfish.top:233/00_expanding_cards/index.html) |
