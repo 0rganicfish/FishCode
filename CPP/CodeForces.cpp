@@ -3,19 +3,22 @@ using namespace std;
 #define endl "\n"
 #define ll long long
 
-int f[15000] = {0}, a[105];
+string er(int n)
+{
+    string ans;
+    while (n)
+        ans = char(n % 2) + ans, n /= 2;
+    return ans;
+}
+
 signed main()
 {
-    int n, ans = 0, sum = 0;
-    cin >> n;
-    for (int i = 0; i < n; ++i)
-        cin >> a[i], sum += a[i];
-    for (int i = 0; i < n - 1; ++i)
-        for (int j = i + 1; j < n; ++j)
-            f[a[i] + a[j]] = 1, f[abs(a[i] - a[j])] = 1;
-
-    for (int i = 0; i <= sum; ++i)
-        if (f[i])
-            ++ans;
-    cout << ans + n;
+    int a[] = {6, 6, 6, 7};
+    string s = "1234";
+    // s.begin();
+    // cout << *(lower_bound(a, a + 4, 6));
+    // sort(s.begin(), s.end());
+    // sort(a, a + 4);
+    s.insert(s.end(), 3, '9');
+    cout << s;
 }

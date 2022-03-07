@@ -37,5 +37,4 @@
 - $\LaTeX$ [LaTeX.md](Notes/LaTeX.md)
 - 正则表达式 [Regex.md](Notes/Regex.md)
 - [SomeNote](../others/SomeNotes.md)
-- [md 快捷键.json](../Users/Organic_Fish/AppData/Roaming/Code/User/snippets/markdown.json)
 - **(\* ﾟ ∇ ﾟ)**

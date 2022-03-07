@@ -75,12 +75,7 @@
 - 十进制转二进制：
 
   ```C++ {.line-numbers}
-  int n, er[20], i = 0;
-  cin >> n;
-  while (n > 0)
-      er[++i] = n % 2, n /= 2;
-  while (i > 0)
-      cout << er[i--];
+
   ```
 
 - 十六进制转十进制：

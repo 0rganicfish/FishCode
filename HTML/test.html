@@ -4,31 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            box-sizing: border-box;
-            height: 100vh;
-            width: 90vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        div {
-            width: 300px;
-            height: 300px;
-            background-color: antiquewhite;
-            background-image: url(Learn2Try/00_expanding_cards/img/miao.png) ;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-    </style>
 </head>
 
 <body>
-    <div>
-        ddd
+    <div id="demo">
+        <p>p1</p>
+        <p>p2</p>
+        <p>p3</p>
+        <p>p4</p>
+        <p>p5</p>
     </div>
+    <script type="text/javascript">
+        var oDiv = document.getElementById("demo");
+        var eles = oDiv.getElementsByTagName("p");
+
+        /** 1. 自执行函数方式一 */
+        for (var k = 0; k < eles.length; k++) {
+            (function (k) {
+                eles[k].addEventListener('click', function (e) {
+                    console.log(e);
+                    alert("index is: " + k + ", and this ele is: " + eles[k].innerHTML);
+                });
+            })(k);
+        }
+    </script>
 </body>
 
 </html>

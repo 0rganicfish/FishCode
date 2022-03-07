@@ -214,6 +214,8 @@ var dupNode = node.cloneNode(deep);
 |  `onmouseout`   | 鼠标从某元素移开。                     |
 |   `onmouseup`   | 鼠标按键被松开。                       |
 
+> \* 装多个 `onclick` 触发事件时，只执行最后安装的那一个。
+
 ### 键盘事件
 
 |     属性     | 描述                       |
