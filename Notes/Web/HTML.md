@@ -106,11 +106,11 @@
 
 | 单位 | 描述                       |
 | :--- | :------------------------- |
-| cm   | 厘米                       |
-| mm   | 毫米                       |
-| in   | 英寸 (1in = 96px = 2.54cm) |
-| px   | 像素 (1px = 1/96th of 1in) |
-| pt   | 点 (1pt = 1/72 of 1in)     |
+| `cm` | 厘米                       |
+| `mm` | 毫米                       |
+| `in` | 英寸 (1in = 96px = 2.54cm) |
+| `px` | 像素 (1px = 1/96th of 1in) |
+| `pt` | 点 (1pt = 1/72 of 1in)     |
 
 像素（px）是相对于观看设备的。对于低 dpi 的设备，1px 是显示器的一个设备像素（点）。对于打印机和高分辨率屏幕，1px 表示多个设备像素。
 
@@ -120,17 +120,17 @@
 
 em 和 rem 单元可用于创建完美的可扩展布局！
 
-| 单位 | 描述                                                             |
-| :--- | :--------------------------------------------------------------- |
-| em   | 相对于元素的字体大小（font-size）（2em 表示当前字体大小的 2 倍） |
-| ex   | 相对于当前字体的 x-height(极少使用)                              |
-| ch   | 相对于 "0"（零）的宽度                                           |
-| rem  | 相对于根元素的字体大小（font-size）                              |
-| vw   | 相对于视口\*宽度的 1%                                            |
-| vh   | 相对于视口\*高度的 1%                                            |
-| vmin | 相对于视口\*较小尺寸的 1％                                       |
-| vmax | 相对于视口\*较大尺寸的 1％                                       |
-| %    | 相对于父元素                                                     |
+| 单位   | 描述                                                             |
+| :----- | :--------------------------------------------------------------- |
+| `em`   | 相对于元素的字体大小（font-size）（2em 表示当前字体大小的 2 倍） |
+| `ex`   | 相对于当前字体的 x-height(极少使用)                              |
+| `ch`   | 相对于 "0"（零）的宽度                                           |
+| `rem`  | 相对于根元素的字体大小（font-size）                              |
+| `vw`   | 相对于视口\*宽度的 1%                                            |
+| `vh`   | 相对于视口\*高度的 1%                                            |
+| `vmin` | 相对于视口\*较小尺寸的 1％                                       |
+| `vmax` | 相对于视口\*较大尺寸的 1％                                       |
+| `%`    | 相对于父元素                                                     |
 
 - 视口（Viewport）= 浏览器窗口的尺寸。如果视口宽 50 里面，则 1vw = 0.5cm。
 
@@ -264,7 +264,11 @@ em 和 rem 单元可用于创建完美的可扩展布局！
 - **`align-content`**：当 `flex-wrap：wrap*` 时(即 子元素 换行排列)，控制 子元素 在 cross axis(**交叉轴**)上的对齐方式。
 - **`align-self`**：单独的对齐方式
 
+<br>
+
 ### grid 网格
+
+<br>
 
 ### float 浮动
 
@@ -312,20 +316,20 @@ em 和 rem 单元可用于创建完美的可扩展布局！
   4. 规则，只能定义一个属性的变化，不能涉及多个属性。
 - [深入理解 transition](https://www.cnblogs.com/xiaohuochai/p/5347930.html)
 
-#### 可过渡的样式
+### 可过渡的样式
 
-```css
-颜色: color color border-color outline-color
-位置: position left right top bottom
-长度:
-    [1]max-height min-height max-width min-width height width
-    [2]border-width margin padding outline-width outline-offset
-    [3]font-size line-height text-indent vertical-align
-    [4]border-spacing letter-spacing word-spacing
-数字: opacity visibility z-index font-weight zoom
-组合: text-shadow transform box-shadow clip
-其他: gradient
-```
+- 颜色: `color` `border-color` `outline-color`
+- 位置: `position` `left` `right` `top` `bottom`
+- 长度:
+  - `height` `width`
+  - `border-width` `margin` `padding` `outline-width`
+  - `font-size` `line-height` `text-indent` `vertical-align`
+  - `border-spacing` `letter-spacing` `word-spacing`
+- 数字: `opacity` `visibility` `z-index` `font-weight` `zoom`
+- 组合: `text-shadow` `transform` `box-shadow` `clip`
+- 其他: `gradient`
+
+<br>
 
 ## animation 动画
 
@@ -347,6 +351,6 @@ em 和 rem 单元可用于创建完美的可扩展布局！
   - `both`：轮流应用 `forwards` 和 `backwards` 规则。
 - 简写： `animation: duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name`
 
-#### 关键帧 @keyframes + name
+### 关键帧 @keyframes + name
 
 &emsp;&emsp;在 animation 申明 name 后，再另写关键帧动画样式

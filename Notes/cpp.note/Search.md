@@ -1,17 +1,16 @@
 # 搜索
 
 [首页](../cpp.main.md)
-
 [TOC]
 
-#### 二分搜索
+## 二分搜索
 
 - 数组要放在全局
 
   ```C++ {.line-numbers}
   bool mids(int n, int x)   //n为数组的长度， x为要找的数
   {
-      int rit = n, lef = 0, mid;
+      int rit = n, lef = 0, mid; 
       while (rit > lef)
       {
           mid = (rit + lef) / 2;
@@ -26,7 +25,7 @@
   }
   ```
 
-#### 深搜
+## 深搜
 
 - 数字全排列
 
@@ -80,4 +79,4 @@
   }
   ```
 
-#### 广搜
+## 广搜

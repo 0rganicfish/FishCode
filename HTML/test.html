@@ -7,27 +7,18 @@
 </head>
 
 <body>
-    <div id="demo">
-        <p>p1</p>
-        <p>p2</p>
-        <p>p3</p>
-        <p>p4</p>
-        <p>p5</p>
-    </div>
-    <script type="text/javascript">
-        var oDiv = document.getElementById("demo");
-        var eles = oDiv.getElementsByTagName("p");
+    <tt>Hello world!</tt>
 
-        /** 1. 自执行函数方式一 */
-        for (var k = 0; k < eles.length; k++) {
-            (function (k) {
-                eles[k].addEventListener('click', function (e) {
-                    console.log(e);
-                    alert("index is: " + k + ", and this ele is: " + eles[k].innerHTML);
-                });
-            })(k);
-        }
+
+    <script>
+        let ul = document.querySelector('ul');
+        //我们可以通过事件对象（e）中的target属性可以访问到事件源（也就事件的触发元素）
+        ul.addEventListener('click', function () {
+            console.log(ul.innerHTML);
+        }, false);
     </script>
 </body>
+
+
 
 </html>
