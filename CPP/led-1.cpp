@@ -1,15 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
-#include <windows.h>
+
+const double PI = 3.14159;
+
+class circle
+{
+    double m(int r)
+    {
+        return PI * r * r;
+    }
+};
+
 int main()
 {
-    string cont = "Welcome all leaders to guide us!   ";
-    int len = cont.length();
-    while (true)
-    {
-        Sleep(200);
-        system("cls");
-        cout << cont;
-        cont = cont.substr(1, len) + cont[0];
-    }
+    circle C;
+    int n;
+    cin >> n;
+    cout << 
 }

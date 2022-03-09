@@ -68,55 +68,6 @@ for (var i of a)
 
 <br>
 
-## Array 数组
-
-### 函数方法
-
-- `array.concat(array | value)` : 合并拼接数组
-
-  ```JavaScript {.line-numbers}
-  var num1 = [1, 2, 3],
-    num2 = [4, 5, 6],
-  var num = num1.concat(num2); // [1, 2, 3, 4 ,5 ,6]
-  ```
-
-- `array.forEach(fun)` : 遍历数组
-
-  ```JavaScript {.line-numbers}
-  var a = [1, 2, 3];
-  a.forEach((i) => {
-    console.log(i);
-  });
-  // fun 多用箭头或匿名函数
-  ```
-
-- `array.join(value)` : 将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。
-
-  ```JavaScript {.line-numbers}
-  var numbers = [4, 2, 5, 1, 3];
-  console.log(numbers.join("--"));
-  //4--2--5--1--3
-  ```
-
-- `array.includes(value | index)` : 从`index`开始判断一个数组是否包含一个指定的值，如果包含则返回 true，否则返回 false。
-- `array.pop()`, `array.push()` : 队尾增删
-
-- `array.sort(fun)` : 排序
-
-  ```JavaScript {.line-numbers}
-  var numbers = [4, 2, 5, 1, 3];
-  numbers.sort((a, b) => a - b);
-  console.log(numbers);
-  //也能是排序数组中的对象
-  items.sort(function (a, b) {
-    return (a.value - b.value)
-  });
-  ```
-
-> 参考：[MDN Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E6%8F%8F%E8%BF%B0)
-
-<br>
-
 ## 表达式与运算符
 
 ### 对象运算符
@@ -357,6 +308,145 @@ obj.ff(); // obj 环境执行  // 2
 
 ```
 
+## 标准内置对象
+
+### Array 数组
+
+#### 函数方法
+
+- `array.concat(array | value)` : 合并拼接数组
+
+  ```JavaScript {.line-numbers}
+  var num1 = [1, 2, 3],
+    num2 = [4, 5, 6],
+  var num = num1.concat(num2); // [1, 2, 3, 4 ,5 ,6]
+  ```
+
+- `array.forEach(fun)` : 遍历数组
+
+  ```JavaScript {.line-numbers}
+  var a = [1, 2, 3];
+  a.forEach((i) => {
+    console.log(i);
+  });
+  // fun 多用箭头或匿名函数
+  ```
+
+- `array.join(value)` : 将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。
+
+  ```JavaScript {.line-numbers}
+  var numbers = [4, 2, 5, 1, 3];
+  console.log(numbers.join("--"));
+  //4--2--5--1--3
+  ```
+
+- `array.includes(value | index)` : 从`index`开始判断一个数组是否包含一个指定的值，如果包含则返回 true，否则返回 false。
+- `array.pop()`, `array.push()` : 队尾增删
+
+- `array.sort(fun)` : 排序
+
+  ```JavaScript {.line-numbers}
+  var numbers = [4, 2, 5, 1, 3];
+  numbers.sort((a, b) => a - b);
+  console.log(numbers);
+  //也能是排序数组中的对象
+  items.sort(function (a, b) {
+    return (a.value - b.value)
+  });
+  ```
+
+> 参考：[MDN Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E6%8F%8F%E8%BF%B0)
+
+<br>
+
+### Date 对象
+
+#### 定义
+
+```JavaScript {.line-numbers}
+var date = new Date(year | monthIndex | day | hours | minutes | seconds);
+// 参数可选，否则返回当前的本地时间
+date.method();
+```
+
+#### 函数方法
+
+|        方法         | 描述                                        |
+| :-----------------: | :------------------------------------------ |
+|     `getDate()`     | 从 Date 对象返回一个月中的某一天 (1 ~ 31)。 |
+|     `getDay()`      | 从 Date 对象返回一周中的某一天 (0 ~ 6)。    |
+|   `getFullYear()`   | 从 Date 对象以四位数字返回年份。            |
+|    `getHours()`     | 返回 Date 对象的小时 (0 ~ 23)。             |
+| `getMilliseconds()` | 返回 Date 对象的毫秒(0 ~ 999)。             |
+|   `getMinutes()`    | 返回 Date 对象的分钟 (0 ~ 59)。             |
+|    `getMonth()`     | 从 Date 对象返回月份 (0 ~ 11)。             |
+|   `getSeconds()`    | 返回 Date 对象的秒数 (0 ~ 59)。             |
+|     `getTime()`     | 返回 1970 年 1 月 1 日至今的毫秒数。        |
+
+> 设置则将 get 改为 set ，时间前加上 UTC 代表 UTC 时
+
+### Math 对象
+
+Math 是一个内置对象，它拥有一些数学常数属性和数学函数方法。
+
+#### 属性
+
+- `Math.E` : 欧拉常数，也是自然对数的底数，约等于 2.718。
+- `Math.LN2` ： 2 的自然对数，约等于 0.693。
+- `Math.PI` : 圆周率，约等于 3.14159。
+
+#### 函数方法
+
+- `Math.floor(x)`: 返回 x 的向下取整后的值
+- `Math.hypot(x, y,..)`: 返回参数的平方和的平方根
+- `Math.random()` : 返回 0 到 1 内的随机数
+  - 0 到最大值的随机数：
+    ```JavaScript {.line-numbers}
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+    ```
+  - 包含范围在内的随机数：
+    ```JavaScript {.line-numbers}
+    function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //含最大值，含最小值
+    }
+    ```
+- `Math.round(x)` : 返回 x 四舍五入后的值
+- `Math.trunc(x)` : 返回 x 的整数部分
+
+### Map 对象
+
+#### 属性
+
+一个 Map 的键可以是任意值，包括函数、对象或任意基本类型。且 Map 中的 key 是有序的。因此当迭代的时候以插入的顺序返回键值。
+
+- 定义
+
+  ```JavaScript {.line-numbers}
+  var mpa = new Map();
+  mpa.set("key", "value");
+  mpa.set("name", "haha");
+  mpa.set("age", 14);
+  console.log(mpa.size); // 3
+  ```
+
+- 遍历
+
+  ```JavaScript {.line-numbers}
+  for (let [i, j] of mpa)
+  console.log(i, ":", j);
+
+  for (let key of mpa.keys())
+  console.log(key);
+
+  mpa.forEach((value, key) => {
+    console.log(key, ":", value);
+  });
+  ```
+
 <br><hr>
 
 # API
@@ -365,7 +455,7 @@ obj.ff(); // obj 环境执行  // 2
 
 令见：[DOM API](JavaScript_DOM.md)
 
-<br><hr>
+<br>
 
 ## BOM
 
@@ -380,3 +470,5 @@ obj.ff(); // obj 环境执行  // 2
 &emsp;&emsp; 浏览器里面，window 对象指当前的浏览器窗口。它也是当前页面的**顶层对象**，即最高一层的对象，所有其他对象都是它的下属。一个变量如果未声明，那么默认就是顶层对象的属性。
 
 详见：[window 对象](JavaScript_BOM_window.md)
+
+###

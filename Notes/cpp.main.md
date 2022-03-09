@@ -299,36 +299,7 @@ ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
     maxx = *max_element(a, a + n); // STL
     ```
 
-17. **方向数组**：用数组来控制方向 —>注意，用 fang（i，j ）时，数组要从 1 开始
-
-    ```C++ {.line-numbers}
-    void fang8(int x, int y)  //8个方向  九宫格中心的四周
-    {
-        int spy[] = {0, 1, 0, -1, 1, 1, -1, -1};
-        int spx[] = {1, 0, -1, 0, -1, 1, 1, -1};
-        for (int i = 0; i < 8; ++i)
-        {
-            int nx = x + spx[i], ny = y + spy[i];
-            if (......)
-                ......;
-        }
-    }
-    ```
-
-    ```C++ {.line-numbers}
-    void fang4(int x, int y)  //4个方向 上下左右
-    {
-        int dxy[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-        for (int i = 0; i < 4; i++)
-        {
-            int nx = x + dxy[i][0], ny = y + dxy[i][1];
-            if(......)
-                ......;
-        }
-    }
-    ```
-
-18. 让函数 return 数组：
+17. 让函数 return 数组：
 
     ```C++ {.line-numbers}
     int *xxx(int a[])
@@ -344,7 +315,7 @@ ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
     }
     ```
 
-19. `memset` 批量赋值只能是 `char` 用，`int` 只能给 -1 或 0， 而：
+18. `memset` 批量赋值只能是 `char` 用，`int` 只能给 -1 或 0， 而：
 
     ```C++ {.line-numbers}
     memset(a, 127, sizeof(a))   //赋值无穷大

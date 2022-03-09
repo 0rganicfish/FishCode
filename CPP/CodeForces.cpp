@@ -5,12 +5,27 @@ using namespace std;
 #define Paint pair<int, int>
 
 queue<Paint> q;
-int dx[8] = {1, 2, 1, 2, -1, -2, -1, -2}, dy[8] = {2, 1, -2, -1, 2, 1, -2, -1};
+int n, m, x, y;
 int mpa[500][500];
 bool vis[500][500] = {false};
+
+void fang(int xx, int yy)
+{
+    int dx[8] = {1, 2, 1, 2, -1, -2, -1, -2};
+    int dy[8] = {2, 1, -2, -1, 2, 1, -2, -1};
+    for (int i = 0; i < 8; ++i)
+    {
+        int xi = dx[i] + xx, yj = dy[i] + yy;
+        if (xi < 1 or xi > n or yj < 1 or yj > m or vis[xi][yj])
+            continue;
+        vis[xi][yj] = true, mpa[xi][yj] = mpa[xx][yy] + 1;
+        q.push(make_pair(xi, yj));
+    }
+}
+ 
 signed main()
 {
-    int n, m, x, y;
+
     cin >> n >> m >> x >> y;
     memset(mpa, -1, sizeof(mpa));
     mpa[x][y] = 0, vis[x][y] = true, q.push(make_pair(x, y));
@@ -19,14 +34,7 @@ signed main()
     {
         int xx = q.front().first, yy = q.front().second;
         q.pop();
-        for (int i = 0; i < 8; ++i)
-        {
-            int xi = dx[i] + xx, yj = dy[i] + yy;
-            if (xi < 1 or xi > n or yj < 1 or yj > m or vis[xi][yj])
-                continue;
-            vis[xi][yj] = true, mpa[xi][yj] = mpa[xx][yy] + 1;
-            q.push(make_pair(xi, yj));
-        }
+        fang(xx, yy);
     }
 
     for (int i = 1; i <= n; i++)
