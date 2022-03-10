@@ -2,8 +2,8 @@
 using namespace std;
 #define endl "\n"
 #define ll long long
-#define Paint pair<int, int>
 
+#define Paint pair<int, int>
 queue<Paint> q;
 int n, m, x, y;
 int mpa[500][500];

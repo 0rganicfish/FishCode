@@ -57,27 +57,6 @@ setTimeout(fun, delay, arg)
 
 `clearTimeout(timeoutID)`。该 ID 值为 `setTimeout()` 的返回值
 
-<br>
-
-## addEventListener
-
-`addEventListener()` 方法将指定的监听器注册到 EventTarget 上，当该对象**触发指定的事件**时，指定的回调**函数就会被执行**。
-
-**定义：**
-
-```JavaScript {.line-numbers}
-addEventListener(type, listener, options);
-// type：DOM事件 (没有on)
-// listener 函数或对象
-```
-
-**例：**
-
-```JavaScript {.line-numbers}
-card.addEventListener("click", () => {
-  console.log("Hello);
-});
-```
 
 <br>
 

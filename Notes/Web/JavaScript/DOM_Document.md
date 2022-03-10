@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff"><b>DOM | API</b></p>
+<p style="font-size: 40px; color: #fff"><b>Document</b></p>
 
 - [JavaScript.note](JavaScript.md)
   [TOC]
@@ -193,13 +193,11 @@ var dupNode = node.cloneNode(deep);
 
 <br><br><hr>
 
-# DOM
 
-文档对象模型 (DOM) 是 HTML 和 XML 文档的编程接口。它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容。
 
-## DOM 事件
+# DOM 事件
 
-### 鼠标事件
+## 鼠标事件
 
 |      属性       | 描述                                   |
 | :-------------: | :------------------------------------- |
@@ -216,7 +214,7 @@ var dupNode = node.cloneNode(deep);
 
 > \* 装多个 `onclick` 触发事件时，只执行最后安装的那一个。
 
-### 键盘事件
+## 键盘事件
 
 |     属性     | 描述                       |
 | :----------: | :------------------------- |
@@ -224,7 +222,7 @@ var dupNode = node.cloneNode(deep);
 | `onkeypress` | 某个键盘按键被按下并松开。 |
 |  `onkeyup`   | 某个键盘按键被松开。       |
 
-### 框架/对象（Frame/Object）事件
+## 框架/对象（Frame/Object）事件
 
 |       属性       | 描述                                                                |
 | :--------------: | :------------------------------------------------------------------ |
@@ -239,7 +237,7 @@ var dupNode = node.cloneNode(deep);
 |    `onscroll`    | 当文档被滚动时发生的事件。                                          |
 |    `onunload`    | 用户退出页面。 ( `<body>` 和 `<frameset>`)                          |
 
-### 剪贴板事件
+## 剪贴板事件
 
 |   属性    | 描述                           |
 | :-------: | :----------------------------- |

@@ -1,7 +1,7 @@
 <p style="font-size: 40px; color: #fff"><b>HTML | CSS</b></p>
 
 - [README.md](../../README.md)
-- [JavaScript.note](JavaScript.md)
+- [JavaScript.note](JavaScript/JavaScript.md)
 - [大杂烩](root/sample.html)
 
 [TOC]
@@ -277,11 +277,11 @@ em 和 rem 单元可用于创建完美的可扩展布局！
 
 ### position 定位
 
-- 静态定位(`Static` positioning)是每个元素默认的属性——它表示“将元素放在文档布局流的默认位置——没有什么特殊的地方”。
-- 相对定位(`Relative` positioning)允许我们相对于元素在正常的文档流中的位置移动它——包括将两个元素叠放在页面上。
-- 绝对定位(`Absolute` positioning)将元素完全从页面的正常布局流中移出，类似将它单独放在一个图层中。我们可以将元素相对于页面的 `<html>` 元素边缘固定，或者相对于该元素的**最近被定位祖先元素**。
-- 固定定位(`Fixed` positioning)与绝对定位非常类似，但是它是将一个元素相对浏览器视口固定，而不是相对另外一个元素。
-- 粘性定位(`Sticky` positioning) 当元素移动到预设位置时遍黏住似的固定住。
+- `static` : **默认**的定位方式，没有特别的地方
+- `relative` : **相对定位**，不添加偏移量则与 `static` 没差
+- `absolute` : **绝对定位**，往上冒泡地找定位方式**不是 `static`**的祖先(父)元素，并相对于该元素绝对定位
+- `fixed` : 相对于浏览器窗口固定
+- `sticky` : **粘性定位**，当元素(滚动条)移动到预设位置时固定
 
 ### column 多列布局
 
@@ -328,6 +328,10 @@ em 和 rem 单元可用于创建完美的可扩展布局！
 - 数字: `opacity` `visibility` `z-index` `font-weight` `zoom`
 - 组合: `text-shadow` `transform` `box-shadow` `clip`
 - 其他: `gradient`
+
+### 过渡函数
+
+- `scale(value)` : 用于修改元素的大小。可以通过向量形式定义的缩放值来放大或缩小元素，同时可以在不同的方向设置不同的缩放值。
 
 <br>
 
