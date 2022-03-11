@@ -6,10 +6,7 @@ using namespace QAQ;
 
 signed main()
 {
-    double n, ans = 0;
-    while (cin >> n and n)
-        ans += n;
-    cout << ans;
+
     return 0;
 }
 
