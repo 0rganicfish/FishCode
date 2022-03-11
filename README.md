@@ -9,7 +9,6 @@
 - HTML 及 CSS [HTML.note](Notes/Web/HTML.md)
 - JS [JavaScript.note](Notes/Web/JavaScript/JavaScript.md)
 - 练手项目 [HTML|CSS|JS](HTML/Learn2Try/Readme.md)
-- Node.js
 
 ### Android
 

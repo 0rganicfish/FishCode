@@ -2,8 +2,10 @@
 
 - **外链**
   - [README.md](../../README.md)
+  - [现代 JavaScript 教程](https://zh.javascript.info/)
+  - [MDN 官方文档](https://developer.mozilla.org/zh-CN/)
   - [HTML.note](../HTML.md)
-  - [DOM](DOM.md)
+  - [DOM,note](DOM.md)
     [TOC]
 
 <br><hr>

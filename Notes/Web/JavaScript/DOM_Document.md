@@ -67,21 +67,25 @@ var elements = document.getElementsByName(name)
 
 **注意**：
 
-1. 返回对象是一个即时的 `NodeList`，它是随时变化的
+1. 返回对象是一个**即时**的 `NodeList`，它是随时变化的
 2. 在 HTML 元素中，并不是所有元素都有 name 属性，比如 div 是没有 name 属性的，但是如果强制设置 div 的 name 属性，它也是可以被查找到的
 3. 在 IE 中，如果 id 设置成某个值，然后传入 `getElementsByName` 的参数值和 id 值一样，则这个元素是会被找到的，所以最好不好设置同样的值给 id 和 name
 
 ### document.querySelector
 
-通过 css 选择器来查找，使用**深度优先搜索**返回第一个匹配的元素，如果没有匹配的元素，则返回 null。
+&emsp;&emsp; 通过 css 选择器来查找，使用**深度优先搜索**返回第一个匹配的元素，如果没有匹配的元素，则返回 null。
 
-即：若有相同的选择器，优先返回嵌套最深的那一个
+**即**：若有相同的选择器，优先返回嵌套最深的那一个
 
 **语法**
 
 ```JavaScript {.line-numbers}
 var element = document.querySelector(selectors);
 ```
+
+**注**：
+
+&emsp;&emsp;`querySelector` 是**静态**的，不随文档而变化，且没有 `length`
 
 ## 页面修改型 API
 
@@ -192,8 +196,6 @@ var dupNode = node.cloneNode(deep);
    - 如果是内联方式绑定比如：`<div onclick="showParent()"></div>`，这样的话，副本节点同样会触发事件。
 
 <br><br><hr>
-
-
 
 # DOM 事件
 

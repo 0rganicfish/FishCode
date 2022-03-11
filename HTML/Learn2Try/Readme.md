@@ -1,10 +1,11 @@
 # HTML/CSS and JavaScript 的练手
 
 - [主 README](../../README.md)
-- 参考： <a href="D:\文档\GitHub\HTML——50projects50days\README.md">Github</a>
+- 参考： <a href="D:\文档\GitHub\HTML——50projects50days\README.md">**Github**</a>
 
 ---
 
-|  #  | 项目              |                        预览                        |
-| :-: | :---------------- | :------------------------------------------------: |
-| 00  | [Expanding Cards](00_expanding_cards/index.html) | [预览](http://www.organicfish.top:233/00_expanding_cards/index.html) |
+|  #  | 项目                                            |                                预览                                 |
+| :-: | :---------------------------------------------- | :-----------------------------------------------------------------: |
+| 00  | [Expanding Cards](00_ExpandingCards/index.html) | [预览](http://www.organicfish.top:233/00_ExpandingCards/index.html) |
+| 01  | [进度条](01_Progress/index.html)                |    [预览](http://www.organicfish.top:233/01_Progress/index.html)    |
