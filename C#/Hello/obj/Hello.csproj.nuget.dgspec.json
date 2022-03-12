@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\VScode\\C#\\C#.csproj": {}
+    "C:\\VScode\\C#\\Hello\\Hello.csproj": {}
   },
   "projects": {
-    "C:\\VScode\\C#\\C#.csproj": {
+    "C:\\VScode\\C#\\Hello\\Hello.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\VScode\\C#\\C#.csproj",
-        "projectName": "C#",
-        "projectPath": "C:\\VScode\\C#\\C#.csproj",
+        "projectUniqueName": "C:\\VScode\\C#\\Hello\\Hello.csproj",
+        "projectName": "Hello",
+        "projectPath": "C:\\VScode\\C#\\Hello\\Hello.csproj",
         "packagesPath": "C:\\Users\\Organic_Fish\\.nuget\\packages\\",
-        "outputPath": "C:\\VScode\\C#\\obj\\",
+        "outputPath": "C:\\VScode\\C#\\Hello\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Organic_Fish\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Organic_Fish\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -52,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
