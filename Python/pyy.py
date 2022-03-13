@@ -1,3 +1,2 @@
-鱼鱼 = int(input())
-咩咩 = int(input())
-print(鱼鱼 + 咩咩)
+f = [{1, 2}, {3, 4}]
+print(len(f))
