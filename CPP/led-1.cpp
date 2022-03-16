@@ -3,36 +3,32 @@ using namespace std;
 typedef long long ll;
 
 bool v[10000];
-int n, m, i, j, sum = 0, k;
-
-bool isprime(int n)
+int n, m, i = 0, j, sum = 1, sum1, k;
+int minn = 999999999;
+int a[10000], b[10000];
+void dfs(int u)
 {
-    for (i = 2; i <= sqrt(n); i++)
-        if (n % i == 0)
-            return false;
-    return true;
-}
-int a[25];
-long long ans;
-void dfs(int m, int sum, int startx)
-{
-    if (m == k)
-    {
-        if (isprime(sum))
-            ans++;
+    if (u == n)
         return;
-    }
-    for (int i = startx; i < n; i++)
-        dfs(m + 1, sum + a[i], i + 1);
-    return;
+    sum *= a[u];
+    sum1 += b[u];
+    minn = min(abs(sum - sum1), minn);
+    // cout << "minn shang : " << minn << endl;
+    // cout<<"sum:shang " <<sum << " " << sum1 << endl;
+    // cout <<"u = " <<u<<endl;
+    dfs(u + 1);
+    sum /= a[u];
+    sum1 -= b[u];
+    // cout <<"xia: " <<sum << " " << sum1 << endl;
+    dfs(u + 1);
+    if (sum1 == 1 && sum == 0)
+        return;
 }
-
 int main()
 {
-    scanf("%d%d", &n, &k);
-    for (int i = 0; i < n; i++)
-        scanf("%d", &a[i]);
-    dfs(0, 0, 0);
-    printf("%d\n", ans);
-    return 0;
+    cin >> n;
+    for (i = 0; i < n; i++)
+        cin >> a[i] >> b[i];
+    dfs(0);
+    cout << minn;
 }

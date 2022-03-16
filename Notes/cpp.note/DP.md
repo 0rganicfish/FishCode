@@ -38,12 +38,11 @@ const int MAXM = 1000;
 const int type = 6;
 int money[MAXM] = {0};
 int coin[type] = {1, 5, 10, 20, 50, 100};
-int path[MAXM] = {0};
 void solve()
 {
     int i, j;
     for (i = 1; i < MAXM; i++)
-        money[i] = INT_MAX;
+        money[i] = INT_MAX - 1;
 
     for (i = 0; i < type; i++)
         for (j = coin[i]; j < MAXM; j++)
@@ -51,9 +50,9 @@ void solve()
 }
 ```
 
-### 背包
+# 背包
 
-#### 01 背包
+## 01 背包
 
 ```C++ {.line-numbers}
 void solve()
