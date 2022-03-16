@@ -1,22 +1,30 @@
 #include <bits/stdc++.h>
+#include <regex>
 #define endl "\n"
 #define ll long long
 #define QAQ std
 using namespace QAQ;
 
-int a[1100][1100];
-int dp[100][100] = {0};
+map<string, int> s = {{"Ox", 1}, {"Tiger", 2}, {"Rabbit", 3}, {"Dragon", 4}, {"Snake", 5}, {"Horse", 6}, {"Goat", 7}, {"Monkey", 8}, {"Rooster", 9}, {"Dog", 10}, {"Pig", 11}, {"Rat", 12}};
+string words[8];
+map<string, int> peo;
+int T;
+
 int main()
 {
-    int n, i, j;
-    cin >> n;
-    for (i = 1; i <= n; i++)
-        for (j = 1; j <= n; j++)
-            cin >> a[i][j];
+    peo["Bessie"] = 1;
+    cin >> T;
+    getchar();
+    while (T--)
+    {
+        for (int i = 0; i < 8; ++i)
+            cin >> words[i];
+        int f = words[3] == "next" ? 1 : -1;
+        string year = words[4], name1 = words[0], name2 = words[7];
+        int t = s[year] * f + peo[name2];
 
-    for (i = 1; i <= n; ++i)
-        for (j = 1; j <= n; ++j)
-            dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + a[i][j];
-    cout << a[n][n];
+        peo.insert(make_pair(name1, 1));
+    }
+
     return 0;
 }
