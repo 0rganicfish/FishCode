@@ -1,32 +1,21 @@
 #include <bits/stdc++.h>
-using namespace std;
+#define endl "\n"
+#define ll long long
+#define QAQ std
+using namespace QAQ;
 
-int a[100020];
-int ans[100020][2];
-
+int A[3], B[3], t, i;
+char c;
 int main()
 {
-    int T, n;
-    scanf("%d", &T);
-    
-    while (T--)
+    while (cin >> c)
     {
-        scanf("%d", &n);
-        for (int i = 1; i <= n; ++i)
-            scanf("%d", a + i);
-        int as = 0, cnt = 0;
-        for (int i = 1, j = 1; i <= n; i = ++j)
-        {
-            while (j < n && a[j] <= a[j + 1])
-                ++j;
-            if (a[j] - a[i] > as)
-                as = a[j] - a[i], cnt = 1, ans[1][0] = i, ans[1][1] = j;
-            else if (a[j] - a[i] == as)
-                ans[++cnt][0] = i, ans[cnt][1] = j;
-        }
-        for (int i = 1; i <= cnt; ++i)
-            printf("%d %d ", ans[i][0], ans[i][1]);
-        printf("\n");
+        t = c - '0';
+        for (i = 0; i < 3; i++)
+            B[(i + t) % 3] = A[i] + A[(i + t) % 3];
+        ++B[t % 3];
+        for (i = 0; i < 3; i++)
+            A[i] = B[i] % 1000000007;
     }
-    return 0;
+    cout << A[0];
 }

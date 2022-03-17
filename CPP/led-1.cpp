@@ -1,14 +1,34 @@
 #include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
+#define endl "\n"
+#define ll long long
+#define QAQ std
+using namespace QAQ;
 
-ll maxx = LONG_LONG_MAX, ans = 1;
-ll a[10000000] = {1, 1};
 int main()
 {
-    int i = 1;
-    cout << maxx << endl;
-    for (; ans <= maxx; ++i)
-        ans *= i;
-    cout << i << "! = " << ans;
+    map<string, int> quan;
+    set<string> fri;
+    string t;
+    int T, N, f = 0;
+    cin >> T;
+    while (T--)
+    {
+        cin >> N;
+        for (int i = 0; i < N; ++i)
+            cin >> t, quan.insert(make_pair(t, N));
+    }
+    cin >> N;
+    while (N--)
+    {
+        cin >> t;
+        if ((quan.find(t) == quan.end() or quan[t] == 1) and fri.find(t) == fri.end())
+        {
+            if (f)
+                cout << " ";
+            cout << t, f = 1;
+        }
+        fri.insert(t);
+    }
+    if (!f)
+        cout << "No one is handsome";
 }
