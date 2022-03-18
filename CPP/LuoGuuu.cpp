@@ -4,18 +4,27 @@
 #define QAQ std
 using namespace QAQ;
 
-int A[3], B[3], t, i;
-char c;
 int main()
 {
-    while (cin >> c)
-    {
-        t = c - '0';
-        for (i = 0; i < 3; i++)
-            B[(i + t) % 3] = A[i] + A[(i + t) % 3];
-        ++B[t % 3];
-        for (i = 0; i < 3; i++)
-            A[i] = B[i] % 1000000007;
-    }
-    cout << A[0];
+    string str, s, t = "GPLT";
+    cin >> str;
+    s.resize(str.length());
+    transform(str.begin(), str.end(), s.begin(), ::toupper);
+
+    str = "";
+    for (int j = 0; j < 4; ++j)
+        for (auto i : s)
+            if (i == t[j])
+                str += i;
+
+    s = "";
+    while (!str.empty())
+        for (int j = 0; j < 4; ++j)
+        {
+            int p = str.find_first_of(t[j]),
+                np = str.find_first_not_of(t[j]);
+            if (p != -1)
+                s += t[j], str.erase(p, 1);
+        }
+    cout << s;
 }
