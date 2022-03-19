@@ -48,13 +48,19 @@ int read()
 }
 ```
 
-### 和一些快优化
+### 头模板
 
 ```C++ {.line-numbers}
+#include <bits/stdc++.h>
+#pragma GCC optimize(3)
+#define endl "\n"
+#define ll long long
+#define QAQ std
+#define PII pair<int, int>
+#define all(s) s.begin(), s.end()
+using namespace QAQ;
+// in main:
 ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
-#define int long long //不开 ll 就**
-#define endl "\n" //endl 太慢啦
-#pragma GCC optimize(3) // 吸点臭氧净化下
 ```
 
 ### stringstream

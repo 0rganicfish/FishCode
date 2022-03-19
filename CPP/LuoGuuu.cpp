@@ -1,30 +1,23 @@
 #include <bits/stdc++.h>
+#pragma GCC optimize(3)
 #define endl "\n"
 #define ll long long
 #define QAQ std
+#define PII pair<int, int>
+#define all(s) s.begin(), s.end()
 using namespace QAQ;
+
+#include "Class.hpp"
 
 int main()
 {
-    string str, s, t = "GPLT";
-    cin >> str;
-    s.resize(str.length());
-    transform(str.begin(), str.end(), s.begin(), ::toupper);
-
-    str = "";
-    for (int j = 0; j < 4; ++j)
-        for (auto i : s)
-            if (i == t[j])
-                str += i;
-
-    s = "";
-    while (!str.empty())
-        for (int j = 0; j < 4; ++j)
-        {
-            int p = str.find_first_of(t[j]),
-                np = str.find_first_not_of(t[j]);
-            if (p != -1)
-                s += t[j], str.erase(p, 1);
-        }
-    cout << s;
+    Box box1[10];
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+        cin >> box1[i].a, box1[i].calc();
+    sort(box1, box1 + n, cmp_ans);
+    for (int i = 0; i < n; ++i)
+        box1[i].print();
+    return 0;
 }
