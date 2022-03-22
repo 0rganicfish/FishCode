@@ -7,6 +7,11 @@
 
 ## 基础数学
 
+### 其他
+
+1. `exp(a)` 是指 $e^{a}$ , 精度比自定义 $e = 2.71828182\dots $ 再 pow 要高
+2. $\pi$ 定义：$ \pi = \arccos(-1) $ : `#define PI acos(-1) `
+
 ### 位运算
 
 1. 偶数的二进制的最后一位是 0， 也就是 `if(n % 2)`等同于 `if(n & 1)`
@@ -16,7 +21,7 @@
 ### 取模公式
 
 1. $ (A + B) \% C = (A \% C + B \% C)\% C $
-2. $ (A × B) \% C = ((A \% C)×(B \% C))\% C $
+2. $ (A \times B) \% C = ((A \% C) \times (B \% C))\% C $
 
 ### 快速幂
 
@@ -315,17 +320,17 @@ bool hui(int x)
 - 利用随机化算法判断一个数是合数还是可能是素数（毫秒级判断大数）。（玄学）
 
   ```C++ {.line-numbers}
-  ll fpow(int a, int x, int mod) //快速幂
-  {
-      int ans = 1;
-      while (x)
-      {
-          if (x & 1)
-              (ans *= a) %= mod;
-          (a *= a) %= mod, x >>= 1;
-      }
-      return ans;
-  }
+    ll fpow(ll a, ll x, ll mod)
+    {
+        ll ans = 1;
+        while (x)
+        {
+            if (x & 1)
+                (ans *= a) %= mod;
+            (a *= a) %= mod, x >>= 1;
+        }
+        return ans;
+    }
 
   bool Miller_Rabbin(int x)
   {
