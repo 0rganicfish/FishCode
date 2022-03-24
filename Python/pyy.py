@@ -1,2 +1,3 @@
-f = [{1, 2}, {3, 4}]
-print(len(f))
+import math
+
+print(math.factorial(1000))
