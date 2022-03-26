@@ -80,7 +80,10 @@
 - 十进制转二进制：
 
   ```C++ {.line-numbers}
-
+    vector<int> a;
+    while (n)
+        a.push_back(n & 1), n >>= 1;
+    reverse(all(a));
   ```
 
 - 十六进制转十进制：
@@ -104,30 +107,30 @@
 
 - 会比 `to_string` 快得多
 
-```C++ {.line-numbers}
-bool hui(int x)
-{
-    int y = x * 10, num = 0;
-    while (y /= 10)
-        num = num * 10 + y % 10;
-    if (num == x)
-        return 1;
-    return 0;
-}
-```
+  ```C++ {.line-numbers}
+  bool hui(int x)
+  {
+      int y = x * 10, num = 0;
+      while (y /= 10)
+          num = num * 10 + y % 10;
+      if (num == x)
+          return 1;
+      return 0;
+  }
+  ```
 
 ### 求质数与质数筛
 
-- 估算范围内质数的数量：$n=\frac{x}{\ln x}$
+- 估算范围内质数的数量：**$n=\frac{x}{\ln x}$**
 - 判断质数
 
   ```C++ {.line-numbers}
   bool isprime(int n)
   {
-    if (n < 2 or n % 2 == 0)
+    if (n < 2 or !n & 1)
         return false;
-    for (int i = 3; i<= sqrt(n); i += 2)
-        if (n % i ==0 )
+    for (ll i = 3; i * i <= n; i += 2)
+        if (!n % i)
             return false;
     return true;
   }

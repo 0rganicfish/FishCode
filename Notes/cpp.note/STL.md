@@ -140,6 +140,7 @@ a.pop_back(); 移出最后一个元素
   ```
 - 一些函数：
   ```C++ {.line-numbers}
+  a.insert(key)  //插入key
   a.erase(key)  //删除key
   a.erase(*a.begin() + n)  //删除下标n
   ```
@@ -310,4 +311,5 @@ n.back();            //pop是删除队列的第一个元素
 
   - 设源容器为 $ x $，目标容器为 $ y$ ，则令 $ y[i]=x[0]+x[1]+...+x[i] $ 。
   - `partial_sum(src.begin(), src.end(), back_inserter(dst))`。
+
 - `*max_element`: 返回最大元素的迭代器

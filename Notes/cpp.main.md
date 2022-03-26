@@ -54,10 +54,13 @@ int read()
 #include <bits/stdc++.h>
 #pragma GCC optimize(3)
 #define endl "\n"
-#define ll long long
+#define ll unsigned long long
 #define QAQ std
 #define PII pair<int, int>
 #define all(s) s.begin(), s.end()
+#define rall(s) s.rbegin(), s.rend()
+#define FOR(n, m) for (int i = n; i <= m; ++i)
+#define ROF(n, m) for (int i = n; i >= m; --i)
 using namespace QAQ;
 // in main:
 ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
@@ -65,7 +68,18 @@ ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
 
 ### stringstream
 
-**[C++ stringstream 介绍](https://www.cnblogs.com/wuchanming/p/3906176.html)**
+- **[C++ stringstream 介绍](https://www.cnblogs.com/wuchanming/p/3906176.html)**
+
+- `getline` 与 `ss`
+
+```C++ {.line-numbers}
+    string s; int m; map<string, int> guo;
+    getline(cin, s);
+    stringstream ss;
+    ss << s;
+    while (ss >> s >> m)
+        guo[s] += m;
+```
 
 ### 模板 template
 
