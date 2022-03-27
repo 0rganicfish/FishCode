@@ -8,7 +8,7 @@
 ## 周期循环(观察到) --> 打表
 
 - **[题目链接](https://ac.nowcoder.com/acm/contest/22672/B)**
-  <img src="image/miao_1.png" width="70%">
+- <img src="image/miao_1.png" width="70%">
   <br>
 
 - **AC 码**
@@ -45,7 +45,7 @@
 ## 拼接数字取模
 
 - **[题目链接](https://ac.nowcoder.com/acm/contest/23846/D)**
-  <img src="image/miao_2.png" width="70%">
+- <img src="image/miao_2.png" width="70%">
   <br>
 
 - **AC 码**
@@ -72,7 +72,7 @@
 ## 幂运算 ->快速幂思想
 
 - **[题目链接](https://ac.nowcoder.com/acm/contest/30532/D)**
-  <img src="image/miao_3.png" width="70%">
+- <img src="image/miao_3.png" width="70%">
   <br>
 
 - **题解**
@@ -118,4 +118,3 @@
   }
   ```
 
-<br>

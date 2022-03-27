@@ -6,7 +6,6 @@
 
 **当然，杂而水**
 
-
 > 但是还有很多要做的事没能去做<br>
   可是我也没办法 闭上了双眼<br>
   逃避这无趣的生活吧 ♪<br>
@@ -54,5 +53,6 @@
 - 突然蹦出来的码 [没地方放的 Temp 码](Notes/一些Temp.md)
 - $\LaTeX$ [LaTeX.md](Notes/LaTeX.md)
 - 正则表达式 [Regex.md](Notes/Regex.md)
+- 数学 [Math.md](Notes/Math/README.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
 - **(\* ﾟ ∇ ﾟ)**

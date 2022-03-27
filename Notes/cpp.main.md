@@ -71,15 +71,14 @@ ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
 - **[C++ stringstream 介绍](https://www.cnblogs.com/wuchanming/p/3906176.html)**
 
 - `getline` 与 `ss`
-
-```C++ {.line-numbers}
-    string s; int m; map<string, int> guo;
-    getline(cin, s);
-    stringstream ss;
-    ss << s;
-    while (ss >> s >> m)
-        guo[s] += m;
-```
+  ```C++ {.line-numbers}
+      string s; int m; map<string, int> guo;
+      getline(cin, s);
+      stringstream ss;
+      ss << s;
+      while (ss >> s >> m)
+          guo[s] += m;
+  ```
 
 ### 模板 template
 
@@ -102,14 +101,14 @@ ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
   template <class out_type, class in_value>
   out_type transf(const in_value &t)
   {
-     stringstream stream; out_type result;
-     stream << t, stream >> result, stream.sync();
-     return result;
+    stringstream stream; out_type result;
+    stream << t, stream >> result, stream.sync();
+    return result;
   }
   int main()
   {
-     string s = "532";
-     double t = transf<double>(s); // <>里的是要转换的类型名，()里的是被转换的变量名
+    string s = "532";
+    double t = transf<double>(s); // <>里的是要转换的类型名，()里的是被转换的变量名
   }
   ```
 
