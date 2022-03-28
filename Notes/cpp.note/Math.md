@@ -66,10 +66,7 @@
       while (n != 0)
       {
           int t = n % radix;
-          if (t >= 0 && t <= 9)
-              ans += t + '0';
-          else
-              ans += t - 10 + 'a';
+          ans += (isdigit(t) ? t + '0' : t - 10 + 'a');
           n /= radix;
       }
       reverse(ans.begin(), ans.end());
@@ -320,7 +317,7 @@
 
 ### Miller-Robin 的素数判断
 
-- 利用随机化算法判断一个数是合数还是可能是素数（毫秒级判断大数）。（玄学）
+- 利用随机化算法判断一个数是合数还是可能是素数（毫秒级判断大数）。~~（玄学）~~
 
   ```C++ {.line-numbers}
     ll fpow(ll a, ll x, ll mod)
