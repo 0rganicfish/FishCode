@@ -52,18 +52,14 @@ int read()
 
 ```C++ {.line-numbers}
 #include <bits/stdc++.h>
-#pragma GCC optimize(3)
 #define endl "\n"
 #define ll unsigned long long
 #define QAQ std
 #define PII pair<int, int>
 #define all(s) s.begin(), s.end()
 #define rall(s) s.rbegin(), s.rend()
-#define FOR(n, m) for (int i = n; i <= m; ++i)
-#define ROF(n, m) for (int i = n; i >= m; --i)
+#define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 using namespace QAQ;
-// in main:
-ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
 ```
 
 ### stringstream
@@ -340,3 +336,28 @@ ios::sync_with_stdio(false), cin.tie(0), cout.tie(0); //解绑加速
     memset(a, 127, sizeof(a))   //赋值无穷大
     memset(a, 128, sizeof(a))   //赋值无穷小
     ```
+
+19. `ctime`
+
+    - 时间戳获取与转换
+
+      ```C++ {.line-numbers}
+      time_t t = time(0);
+      // cin >> t; //当然，也能输入时间戳（秒）
+      char tmp[32] = {}, form[] = "%Y-%m-%d %H:%M:%S";
+      strftime(tmp, sizeof(tmp), form, localtime(&t));
+      cout << tmp << endl;
+      ```
+
+    - 当前时间
+      ```C++ {.line-numbers}
+          time_t t = time(&t);
+          string s = ctime(&t);
+          cout << s << endl;
+      ```
+
+20. 符号优先级
+
+<table><caption>C++运算符优先级表</caption><tbody><tr><th>优先级</th><th>运算符</th><th>说明</th><th>结合性</th></tr><tr><td>1</td><td>::</td><td>范围解析</td><td rowspan="6">自左向右</td></tr><tr><td rowspan="5">2</td><td>++&nbsp;&nbsp;--</td><td>后缀自增/后缀自减</td></tr><tr><td>()</td><td>括号</td></tr><tr><td>[]</td><td>数组下标</td></tr><tr><td>.</td><td>成员选择（对象）</td></tr><tr><td>?&gt;</td><td>成员选择（指针）</td></tr><tr><td rowspan="9">3</td><td>++&nbsp;&nbsp;--</td><td>前缀自增/前缀自减</td><td rowspan="9">自右向左</td></tr><tr><td>+&nbsp;&nbsp;?</td><td>加/减</td></tr><tr><td>!&nbsp;&nbsp;~</td><td>逻辑非/按位取反</td></tr><tr><td>(type)</td><td>强制类型转换</td></tr><tr><td>*</td><td>取指针指向的值</td></tr><tr><td>&amp;</td><td>某某的地址</td></tr><tr><td>sizeof</td><td>某某的大小</td></tr><tr><td>new,new[]</td><td>动态内存分配/动态数组内存分配</td></tr><tr><td>delete,delete[]</td><td>动态内存释放/动态数组内存释放</td></tr><tr><td>4</td><td>.*&nbsp;&nbsp;-&gt;*</td><td>成员对象选择/成员指针选择</td><td rowspan="12">自左向右</td></tr><tr><td>5</td><td>*&nbsp;&nbsp;/&nbsp;&nbsp; %</td><td>乘法/除法/取余</td></tr><tr><td>6</td><td>+&nbsp;&nbsp;?</td><td>加号/减号</td></tr><tr><td>7</td><td>&lt;&lt;&nbsp;&nbsp;&gt;&gt;</td><td>位左移/位右移</td></tr><tr><td rowspan="2">8</td><td>&lt;&nbsp;&nbsp;&lt;=</td><td>小于/小于等于</td></tr><tr><td>&gt;&nbsp;&nbsp;&gt;=</td><td>大于/大于等于</td></tr><tr><td>9</td><td>==&nbsp;&nbsp;!=</td><td>等于/不等于</td></tr><tr><td>10</td><td>&amp;</td><td>按位与</td></tr><tr><td>11</td><td>^</td><td>按位异或</td></tr><tr><td>12</td><td>|</td><td>按位或</td></tr><tr><td>13</td><td>&amp;&amp;</td><td>与运算</td></tr><tr><td>14</td><td>||</td><td>或运算</td></tr><tr><td>15</td><td>?:</td><td>三目运算符</td><td rowspan="7">自右向左</td></tr><tr><td rowspan="5">16</td><td>=</td><td>赋值</td></tr><tr><td>+=&nbsp;&nbsp;?=</td><td>相加后赋值/相减后赋值</td></tr><tr><td>*=&nbsp;&nbsp;/=&nbsp;&nbsp; %=</td><td>相乘后赋值/相除后赋值/取余后赋值</td></tr><tr><td>&lt;&lt;=&nbsp;&nbsp;&gt;&gt;=</td><td>位左移赋值/位右移赋值</td></tr><tr><td>&amp;=&nbsp;&nbsp;^=&nbsp;&nbsp;|=</td><td>位与运算后赋值/位异或运算后赋值/位或运算后赋值</td></tr><tr><td>17</td><td>throw</td><td>抛出异常</td></tr><tr><td>18</td><td>,</td><td>逗号</td><td>自左向右</td></tr></tbody></table><br>
+
+21. 1

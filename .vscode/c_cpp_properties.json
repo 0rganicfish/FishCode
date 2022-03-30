@@ -3,7 +3,8 @@
     {
       "name": "windows-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "C:\\CodePath\\glfw-3.3.6.bin.WIN64\\include"
       ],
       "compilerPath": "C:\\CodePath\\mingw64\\bin\\gcc.exe",
       "cStandard": "c11",

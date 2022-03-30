@@ -9,7 +9,7 @@
 
 ### 其他
 
-1. `exp(a)` 是指 $e^{a}$ , 精度比自定义 $e = 2.71828182\dots $ 再 pow 要高
+1. `exp(a)` 是指 $ e^a $ , 精度比自定义 $ e = 2.71828182\dots $ 再 pow 要高
 2. $\pi$ 定义：$ \pi = \arccos(-1) $ : `#define PI acos(-1) `
 
 ### 位运算
@@ -60,16 +60,14 @@
 - 十进制转 xx 进制
 
   ```C++ {.line-numbers}
-  string jin(int n, int radix)
+  string jin(int n, const int x)
   {
-      string ans = "";
-      while (n != 0)
+      string ans(8, '0');
+      for (int i = 8; n; n /= x)
       {
-          int t = n % radix;
-          ans += (isdigit(t) ? t + '0' : t - 10 + 'a');
-          n /= radix;
+          int t = n % x;
+          ans[--i] = (t >= 0 and t <= 9 ? t + '0' : t - 10 + 'a');
       }
-      reverse(ans.begin(), ans.end());
       return ans;
   }
   ```
@@ -86,16 +84,12 @@
 - 十六进制转十进制：
 
   ```C++ {.line-numbers}
-  int hex(string x, int f)
+  int hex(string x)
   {
-      transform(x.begin(), x.end(), x.begin(), ::tolower);
+      transform(all(x), x.begin(), ::tolower);
       int ans = 0, l = x.length();
-      for (double i = 0, j = l - 1; i < l; i++, j--)
-          if (isdigit(x[i]))
-              ans += pow(16., j) *(x[i] - '0');
-      else
-              ans += pow(16., j)* (x[i] - 'a' + 10);
-      if (f == -1) ans = -ans;
+      for (ll i = 0, n = 1; i < l; i++, n *= 16)
+          ans += n * (isdigit(x[i]) ? x[i] - '0' : x[i] - 'a' + 10);
       return ans;
   }
   ```
@@ -287,7 +281,7 @@
 
 ### 排列组合
 
-- 组合 $C_{m}^{n}$
+- 组合 $ C_m^n $
 
   ```C++ {.line-numbers}
   ll C(int n, int m)
@@ -300,7 +294,7 @@
   }
   ```
 
-- 排列 $A_{m}^{n}$
+- 排列 $ A_m^n $
 
   ```C++ {.line-numbers}
   ll A(int n, int m)
