@@ -34,7 +34,7 @@
 ### 桌面端
 
 - C# [C#](Notes/CSharp.md)
-- QT GUI [QT](Notes/QT.md)
+- OpenGL
 
 ## 后端
 
@@ -51,7 +51,7 @@
 
 - 一些教材 [清华\_参考书目](Notes/清华_参考书目.md)
 - 突然蹦出来的码 [没地方放的 Temp 码](Notes/一些Temp.md)
-- $\LaTeX$ [LaTeX.md](Notes/LaTeX.md)
+- $ \LaTeX $ [LaTeX.md](Notes/LaTeX.md)
 - 正则表达式 [Regex.md](Notes/Regex.md)
 - 数学 [Math.md](Notes/Math/README.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
