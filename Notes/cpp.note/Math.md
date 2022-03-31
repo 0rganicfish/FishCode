@@ -17,6 +17,7 @@
 1. 偶数的二进制的最后一位是 0， 也就是 `if(n % 2)`等同于 `if(n & 1)`
 2. `a << b` 相当于 a 乘以 2 的 b 次方， 比一般的乘法要快
 3. `a >> b` 相当于 a 除以 2 的 b 次方并取整，`a >> 1` 也就是除以 2
+4. 相同数之间取 异或 `^` 得 0
 
 ### 取模公式
 
@@ -55,7 +56,46 @@
   }
   ```
 
+### 因数与质因数
+
+- $ O(\sqrt{n}) $ 下的因数分解
+
+  ```C++ {.line-numbers}
+  vector<ll> a;
+  for (ll i = 1; i <= n / i; ++i)
+      if (n % i == 0)
+      {
+          a.push_back(i);
+          if (n / i != i)
+              a.push_back(n / i);
+      }
+  ```
+
+- $ O(\sqrt[4]{n}) $ 下的 $ Pollard \ Pho $ 质因数分解
+
+  ```C++ {.line-numbers}
+  vector<ll> a;
+  for (ll i = 2; i <= n; ++i)
+      while (n != i)
+          if (n % i == 0)
+              a.push_back(i), n /= i;
+          else
+              break;
+  a.push_back(n);
+  ```
+
 ### 进制转换
+
+- C++ 下的 `iostream` 流特性：
+
+  ```C++ {.line-numbers}
+  int n;
+  cin >> hex >> n;          //输入 16 进制数，可含字母
+  cout << dec << n << endl; //输出 10 进制数
+  cout << oct << n << endl; //输出 8 进制数
+  ```
+
+  > 但转二进制要另外写......
 
 - 十进制转 xx 进制
 
@@ -75,10 +115,10 @@
 - 十进制转二进制：
 
   ```C++ {.line-numbers}
-    vector<int> a;
-    while (n)
-        a.push_back(n & 1), n >>= 1;
-    reverse(all(a));
+  vector<int> a;
+  while (n)
+      a.push_back(n & 1), n >>= 1;
+  reverse(all(a));
   ```
 
 - 十六进制转十进制：
