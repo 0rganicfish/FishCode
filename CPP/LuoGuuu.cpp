@@ -8,23 +8,20 @@
 #define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 using namespace QAQ;
 
-string ToBin(string x)
+class F
 {
-    string ans;
-    transform(x.begin(), x.end(), x.begin(), ::tolower);
-    for (int i = x.size() - 1; i >= 0; --i)
-    {
-        int t = isdigit(x[i]) ? x[i] - '0' : x[i] - 'a' + 10;
-        while (t)
-            ans = char(t % 2 + '0') + ans, t >>= 1;
-    }
-    return ans;
-}
+private:
+    int n;
+
+public:
+    F(int x = 1) : n(x) {}
+    void in() { cin >> n; }
+    void out() { cout << n * n << endl; }
+    bool operator()(F x, F y) { return x.n < y.n; }
+};
 
 int main()
 {
-    int T, n, t = 0;
-    for (cin >> T; T--;)
-        cin >> n, t ^= n;
-    cout << t;
+    int n = 23;
+    cout << (n |= 2);
 }

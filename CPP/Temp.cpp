@@ -1,29 +1,29 @@
 #include <bits/stdc++.h>
 #define endl "\n"
-#define ll unsigned long long
+#define ll long long
 #define QAQ std
-#define PII pair<int, int>
-#define all(s) s.begin(), s.end()
-#define rall(s) s.rbegin(), s.rend()
 using namespace QAQ;
 
-const int Max = 1005;
-ll a[Max][Max] = {0}, dp[Max][Max];
+int m[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+bool run(int x)
+{
+    if (x % 400 == 0 or (x % 4 == 0 and x % 100))
+        return 1;
+    return 0;
+}
 
 int main()
 {
-    int n;
-    cin >> n;
-    vector<int> a;
-    for (int i = 2; i <= n; ++i)
-        while (n != i)
-            if (n % i == 0)
-                a.push_back(i), n /= i;
-            else
-                break;
-    a.push_back(n);
-    for (auto i : a)
-        cout << i << " ";
-
-    return 0;
+    ll ans = 0, day = (52 + 12) * 20 + 47;
+    for (int i = 2000; i < 2020; ++i)
+    {
+        m[2] = run(i) ? 29 : 28;
+        for (int j = 1; j <= 12; ++j)
+            day += m[j];
+    }
+    m[2] = 29;
+    for (int i = 1; i < 10; ++i)
+        day += m[i];
+    cout << day;
 }
+// (i + 3) % 7 == 0
