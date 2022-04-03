@@ -8,20 +8,36 @@
 #define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 using namespace QAQ;
 
-class F
-{
-private:
-    int n;
+const ll Max = 1e3, len = Max / log(Max) + 100;
+vector<ll> primer(len, 0);
+vector<bool> P(Max, 0);
 
-public:
-    F(int x = 1) : n(x) {}
-    void in() { cin >> n; }
-    void out() { cout << n * n << endl; }
-    bool operator()(F x, F y) { return x.n < y.n; }
-};
+void ola(int x)
+{
+    for (ll i = 2, cnt = 0; i <= x; ++i)
+    {
+        if (!P[i])
+            primer[cnt++] = i;
+        for (ll j = 0; primer[j] <= x / i; ++j)
+        {
+            P[primer[j] * i] = 1;
+            if (i % primer[j] == 0)
+                break;
+        }
+    }
+}
 
 int main()
 {
-    int n = 23;
-    cout << (n |= 2);
+    ola(Max);
+    ll T;
+    for (cin >> T; T--;)
+    {
+        int n, i;
+        cin >> n;
+        for (i = 0; i <= len; ++i)
+            if (primer[i] > n)
+                break;
+        cout << i << endl;
+    }
 }

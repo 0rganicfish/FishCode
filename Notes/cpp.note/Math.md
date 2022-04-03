@@ -23,22 +23,23 @@
 
 1. $ (A + B) \% C = (A \% C + B \% C)\% C $
 2. $ (A \times B) \% C = ((A \% C) \times (B \% C))\% C $
+3. $ A^B\ \%C = (A\%C)^B\ \%C $
 
 ### 快速幂
 
-- 比一般的 `pow` 快
+- 比一般的 `pow` 快，且 $ x \% 0 = x $
 
   ```C++ {.line-numbers}
-  typedef long long ll;
-  ll qpow(ll a, ll b)
+  ll fpow(ll a, ll x, ll mod)
   {
-      ll ans = 1;
-      while (b)
-      {
-          if (b & 1) ans *= a;
-          a *= a, b >>= 1;
-      }
-      return ans;
+    ll ans = 1;
+    while (x)
+    {
+        if (x & 1)
+            (ans *= a) %= mod;
+        (a *= a) %= mod, x >>= 1;
+    }
+    return ans % mod;
   }
   ```
 
@@ -358,7 +359,35 @@
   }
   ```
 
+<br><br>
+
 ## 高阶数学（数论）
+
+### 蔡勒公式 - 日期
+
+- 用于判断某年的某一日是星期几
+- 公式： $ week=(y+ \left [ \frac{y}{4}\right ] + \left [ \frac{c}{4} \right ] - 2c +
+  \left[\frac{26 \times (m+1)}{10} \right ] + d -1) \% 7 $
+- 符号意义：
+  - $ week $ ：以周日为第一天
+  - $ c $ ：世纪
+  - $ \left [ x \right] $ ：对 $ x $ 取整
+- 且：在**蔡勒公式**中，某年的 1、2 月要看作**上一年**的 13、14 月来计算。比如 2003 年 1 月 1 日要看作 2002 年的 13 月 1 日来计算
+- 码：
+  ```C++ {.line-numbers}
+  string week[7] = {"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"};
+  string DayOfTheWeek(int year, int month, int day)
+  {
+      if (month <= 2)
+          month += 12, year -= 1;
+      int c = year / 100;
+      year %= 100;
+      int w = (year + year / 4 + c / 4 - 2 * c + (26 * (month + 1) / 10) + day - 1) % 7;
+      return week[(w + 7) % 7];
+  }
+  ```
+
+<br>
 
 ### Miller-Robin 的素数判断
 

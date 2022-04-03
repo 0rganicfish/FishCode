@@ -15,11 +15,10 @@
 - 一些定义
 
 ```C++ {.line-numbers}
-vector<int>a;        初始化则是 vector<int>a(10, 1);  a有10个为1的元素
-cin >> x;
+vector<int>a;        //初始化则是 vector<int>a(10, 1);  a有10个为1的元素
 a.push_back(x);
 int pos = find(a.begin(), a.end(), x) //返回位置
-a.pop_back(); 移出最后一个元素
+a.pop_back(); //移出最后一个元素
 ```
 
 - 同时也能当做数组来使用：a[i]， `sort(a.begin(), a.end());`

@@ -2,28 +2,24 @@
 #define endl "\n"
 #define ll long long
 #define QAQ std
+#define PII pair<int, int>
+#define all(s) s.begin(), s.end()
+#define rall(s) s.rbegin(), s.rend()
+#define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 using namespace QAQ;
 
-int m[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-bool run(int x)
+string week[7] = {"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"};
+string DayOfTheWeek(int year, int month, int day)
 {
-    if (x % 400 == 0 or (x % 4 == 0 and x % 100))
-        return 1;
-    return 0;
+    if (month <= 2)
+        month += 12, year -= 1;
+    int c = year / 100;
+    year %= 100;
+    int w = (year + year / 4 + c / 4 - 2 * c + (26 * (month + 1) / 10) + day - 1) % 7;
+    return week[(w + 7) % 7];
 }
 
 int main()
 {
-    ll ans = 0, day = (52 + 12) * 20 + 47;
-    for (int i = 2000; i < 2020; ++i)
-    {
-        m[2] = run(i) ? 29 : 28;
-        for (int j = 1; j <= 12; ++j)
-            day += m[j];
-    }
-    m[2] = 29;
-    for (int i = 1; i < 10; ++i)
-        day += m[i];
-    cout << day;
+    cout << DayOfTheWeek(2022, 4, 1);
 }
-// (i + 3) % 7 == 0
