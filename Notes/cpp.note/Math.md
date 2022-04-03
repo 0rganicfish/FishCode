@@ -21,13 +21,13 @@
 
 ### 取模公式
 
-1. $ (A + B) \% C = (A \% C + B \% C)\% C $
-2. $ (A \times B) \% C = ((A \% C) \times (B \% C))\% C $
-3. $ A^B\ \%C = (A\%C)^B\ \%C $
+1. $ (A + B) \bmod C = (A \bmod C + B \bmod C)\bmod C $
+2. $ (A \times B) \bmod C = ((A \bmod C) \times (B \bmod C))\bmod C $
+3. $ A^B\;\bmod C = (A \bmod C)^B\;\bmod C $
 
 ### 快速幂
 
-- 比一般的 `pow` 快，且 $ x \% 0 = x $
+- 比一般的 `pow` 快，且 $ x \bmod 0 = x $
 
   ```C++ {.line-numbers}
   ll fpow(ll a, ll x, ll mod)
@@ -72,7 +72,7 @@
       }
   ```
 
-- $ O(\sqrt[4]{n}) $ 下的 $ Pollard \ Pho $ 质因数分解
+- $ O(\sqrt[4]{n}) $ 下的 $ Pollard \; Pho $ 质因数分解
 
   ```C++ {.line-numbers}
   vector<ll> a;
@@ -367,12 +367,12 @@
 
 - 用于判断某年的某一日是星期几
 - 公式： $ week=(y+ \left [ \frac{y}{4}\right ] + \left [ \frac{c}{4} \right ] - 2c +
-  \left[\frac{26 \times (m+1)}{10} \right ] + d -1) \% 7 $
+  \left[\frac{26 \times (m+1)}{10} \right ] + d -1) \bmod 7 $
 - 符号意义：
   - $ week $ ：以周日为第一天
   - $ c $ ：世纪
   - $ \left [ x \right] $ ：对 $ x $ 取整
-- 且：在**蔡勒公式**中，某年的 1、2 月要看作**上一年**的 13、14 月来计算。比如 2003 年 1 月 1 日要看作 2002 年的 13 月 1 日来计算
+- 且：在 **蔡勒公式** 中，某年的 1、2 月要看作 **上一年** 的 13、14 月来计算。比如 2003 年 1 月 1 日要看作 2002 年的 13 月 1 日来计算
 - 码：
   ```C++ {.line-numbers}
   string week[7] = {"Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"};
