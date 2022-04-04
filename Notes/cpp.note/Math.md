@@ -43,6 +43,19 @@
   }
   ```
 
+### 快速乘
+
+- 利用了 `unsigned long long` 的自动溢出，且保证了它们溢出后的差值基本不变。且 $ O(1) $ ！
+
+  ```C++ {.line-numbers}
+  ll ksc(ll x, ll y, ll mod)
+  {
+      ll z = (long double)x / mod * y;
+      ll res = (ull)x * y - (ull)z * mod;
+      return (res + mod) % mod;
+  }
+  ```
+
 ### 最大公约数
 
 - 最小公倍数为 `a * b / 返回值 a`
@@ -72,7 +85,7 @@
       }
   ```
 
-- $ O(\sqrt[4]{n}) $ 下的 $ Pollard \; Pho $ 质因数分解
+- $ O(\sqrt[4]{n}) $ 下的 $ Pollard \ Pho $ 质因数分解
 
   ```C++ {.line-numbers}
   vector<ll> a;
@@ -140,9 +153,9 @@
 - 会比 `to_string` 快得多
 
   ```C++ {.line-numbers}
-  bool hui(int x)
+  bool hui(ll x)
   {
-      int y = x * 10, num = 0;
+      ll y = x * 10, num = 0;
       while (y /= 10)
           num = num * 10 + y % 10;
       if (num == x)
@@ -154,28 +167,49 @@
 ### 完全平方数
 
 - 主要是判断与被开方数相等
+- 原理：
+
+  - 观察到：$ 1=1，4=1+3，9=1+3+5，16=1+3+5+7 $
+  - 以此类推，可以从 $n$ 开始 不断减去一个从 1 开始不断增大的**奇数**，若最终减成了 0，说明是完全平方数，否则不是。
+
+- 字面解： $ O(\sqrt{n}) $
+
   ```C++ {.line-numbers}
-  cin >> n;
-  for (ll i = 2; i <= n / i; i++)
-      while (n % (i * i) == 0)
-          n /= i * i;
-  cout << n;
+  bool PerfectSquare(ll n)
+  {
+      for (ll t = 1; n > 0; t += 2)
+          n -= t;
+      return !n;
+  }
+  ```
+
+- **优化后：** $ O(\sqrt[4]{n}) $ ，最坏也有 $ O(\sqrt{n}) $
+
+  ```C++ {.line-numbers}
+  bool Perfect(ll n)
+  {
+      for (ll i = 2; i <= n / i; ++i)
+          while (n % (i * i) == 0)
+              n /= i * i;
+      return n == 1;
+  }
   ```
 
 ### 求质数与质数筛
 
-- 估算范围内质数的数量：**$n=\frac{x}{\ln x}$**
+- 估算范围内质数的数量：**$ n=\frac{x}{\ln x} $**
+
 - 判断质数
 
   ```C++ {.line-numbers}
-  bool isprime(int n)
+  bool isprime(ll n)
   {
-    if (n < 2 or !n & 1)
-        return false;
-    for (ll i = 3; i * i <= n; i += 2)
-        if (!n % i)
-            return false;
-    return true;
+      if (n < 2 or n & 1 == 0)
+          return false;
+      for (ll i = 3; i <= n / i; i += 2)
+          if (n % i == 0)
+              return false;
+      return true;
   }
   ```
 
@@ -201,25 +235,19 @@
 - 欧拉筛
 
   ```C++ {.line-numbers}
-  int a[10000];
-  int primer_ola(int n)
+  int N = 1e7 + 5, L = N / log(N) + 100;
+  ll *f = new ll[N], *primes = new ll[L];
+  void ola(int n)
   {
-      int i, j, k = 0;
-      bool p[n];
-      for (i = 0; i < n; i++)
-          p[i] = true;
-      for (i = 2; i <= n; i++)
+      for (int i = 2, cnt = 0; i <= n; i++)
       {
-          if (p[i])
-              a[k++] = i; //如果是质数
-          for (j = 0; j < k && i * a[j] <= n; j++)
+          if (!f[i])  primes[cnt++] = i;
+          for (int j = 0; primes[j] <= n / i; j++) //要确保质数的第i倍是小于等于n的。
           {
-              p[i * a[j]] = false; //把每一个求出来的质数的倍数都标记
-              if (i % a[j] == 0)
-                  break; //跳过已经被标记的
+              f[primes[j] * i] = 1;
+              if (i % primes[j] == 0)  break;
           }
       }
-      return k;
   }
   ```
 

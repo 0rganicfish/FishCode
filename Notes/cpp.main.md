@@ -30,21 +30,22 @@
 ### 快读快写：
 
 ```C++ {.line-numbers}
-void write(int n)
+template <typename T>
+void write(T n)
 {
     if (n < 0) putchar('-'), n = -n;
     if (n > 9) write(n / 10);
     putchar(n % 10 + '0');
 }
-int read()
+template <typename T>
+void read(T &x)
 {
-    int x = 0, f = 1;
-    char c;
+    x = 0; T f = 1; char c;
     while ((c = getchar()) and !isdigit(c))
         if (c == '-') f = -1;
     while (isdigit(c))
         x = x * 10 + c - '0', c = getchar();
-    return x * f;
+    x *= f;
 }
 ```
 
@@ -53,7 +54,8 @@ int read()
 ```C++ {.line-numbers}
 #include <bits/stdc++.h>
 #define endl "\n"
-#define ll unsigned long long
+#define ll long long
+#define ull unsigned ll
 #define QAQ std
 #define PII pair<int, int>
 #define all(s) s.begin(), s.end()
