@@ -11,10 +11,73 @@ using namespace QAQ;
 
 int main()
 {
-    cout << 13;
+    
 }
 
-//* 堆屎山 (´∀`)
+//* 04-05
+
+// int main()
+// {
+//     string s;
+//     cin >> s;
+//     for (auto i : s)
+//         if (i >= 'u')
+//             putchar('u');
+//         else if (i >= 'o' and i < 'u')
+//             putchar('o');
+//         else if (i >= 'i' and i < 'o')
+//             putchar('i');
+//         else if (i >= 'e' and i < 'i')
+//             putchar('e');
+//         else
+//             putchar('a');
+// } // aeiou
+
+// #define PSD pair<string, double>
+// bool cmp(const PSD &a, const PSD &b)
+// {
+//     return a.second == b.second ? a.first > b.first : a.second < b.second;
+// }
+
+// int main()
+// {
+//     double n, m;
+//     vector<PSD> npy;
+//     string ans, name, inp;
+//     cin >> n >> m >> ans;
+//     for (int i = 0; i < m; ++i)
+//     {
+//         cin >> name >> inp;
+//         double sum = 0;
+//         for (int j = 0; j < n; ++j)
+//             if (inp[j] == ans[j])
+//                 ++sum;
+//         npy.push_back(make_pair(name, sum / n * 100.));
+//     }
+//     sort(all(npy), cmp);
+//     cout << npy.back().first << endl
+//          << fixed << setprecision(2) << npy.back().second;
+// }
+
+// int main()
+// {
+//     string a, b, c, s;
+//     cin >> a >> b >> b >> c >> a >> c;
+//     int t;
+//     for (cin >> t; t--;)
+//     {
+//         cin >> s;
+//         if (s == a)
+//             cout << b;
+//         else if (s == b)
+//             cout << c;
+//         else if (s == c)
+//             cout << a;
+//         else
+//             cout << "Fake";
+//         cout << endl;
+//     }
+// }
 
 //* 04-04
 
