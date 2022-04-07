@@ -155,12 +155,10 @@
   ```C++ {.line-numbers}
   bool hui(ll x)
   {
-      ll y = x * 10, num = 0;
-      while (y /= 10)
-          num = num * 10 + y % 10;
-      if (num == x)
-          return 1;
-      return 0;
+      ll y = x, num = 0;
+      while (y)
+          num = num*10 + y%10, y/=10;
+      return num == x;
   }
   ```
 

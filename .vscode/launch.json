@@ -1,48 +1,54 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "java",
-      "name": "Launch temp",
-      "request": "launch",
-      "mainClass": "temp",
-      "projectName": "VScode_a4b32ae2"
-    },
-    {
-      "name": "C++",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
-      "environment": [],
-      "externalConsole": false,
-      "justMyCode": false,
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb.exe",
-      "preLaunchTask": "compile",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    },
-    {
-      "name": "JavaScript",
-      "type": "node",
-      "request": "launch",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
-      "stopOnEntry": false,
-      "internalConsoleOptions": "openOnSessionStart",
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "program": "${file}"
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "pwa-chrome",
+			"request": "launch",
+			"name": "PHP",
+			"url": "http://php13.com/${fileBasename}",
+			"webRoot": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+			"port": 9000
+		},
+		{
+			"type": "java",
+			"name": "Launch temp",
+			"request": "launch",
+			"mainClass": "temp",
+			"projectName": "VScode_a4b32ae2"
+		},
+		{
+			"name": "C++",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"justMyCode": false,
+			"MIMode": "gdb",
+			"miDebuggerPath": "gdb.exe",
+			"preLaunchTask": "compile",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "JavaScript",
+			"type": "node",
+			"request": "launch",
+			"skipFiles": ["<node_internals>/**"],
+			"stopOnEntry": false,
+			"internalConsoleOptions": "openOnSessionStart",
+			"env": {
+				"NODE_ENV": "development"
+			},
+			"program": "${file}"
+		}
+	]
 }

@@ -321,5 +321,20 @@
   ],
   "C_Cpp.errorSquiggles": "Enabled",
   "cmake.configureOnOpen": false,
-  "liveServer.settings.port": 81
+  "liveServer.settings.port": 81,
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "fish",
+      "database": "fish",
+      "username": "root",
+      "password": "fish"
+    }
+  ]
 }

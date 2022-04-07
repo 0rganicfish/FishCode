@@ -1,2 +1,5 @@
 <?php
-echo "Hello World!";
+$user = 'root';
+$ps = 'fish';
+echo phpinfo()
+?>
