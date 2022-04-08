@@ -6,10 +6,10 @@
 #define PII pair<int, int>
 #define all(s) s.begin(), s.end()
 #define rall(s) s.rbegin(), s.rend()
-#define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
+#define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
 int main()
 {
-    
+    cout << (int)1e8;
 }

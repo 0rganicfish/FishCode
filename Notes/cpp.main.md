@@ -156,6 +156,19 @@ using namespace QAQ;
   sort(a , a + n, cmp);    //排序, cmp：排序规则
   ```
 
+- 初始化结构体：
+
+  ```C++ {.line-numbers}
+  struct node
+  {
+    ll a, b, c;
+    node()
+    {
+      memset(this, 0, sizeof(node));
+    }
+  };
+  ```
+
 ### 前缀和 / 区间和
 
 - 一维：

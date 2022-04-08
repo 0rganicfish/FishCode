@@ -23,7 +23,7 @@
 
 1. $ (A + B) \bmod C = (A \bmod C + B \bmod C)\bmod C $
 2. $ (A \times B) \bmod C = ((A \bmod C) \times (B \bmod C))\bmod C $
-3. $ A^B\;\bmod C = (A \bmod C)^B\;\bmod C $
+3. $ A^B\ \bmod C = (A \bmod C)^B\ \bmod C $
 
 ### 快速幂
 
@@ -69,6 +69,8 @@
       return a;
   }
   ```
+
+- 且：辗转相减法求 GCD 的次数 竟然是 辗转相除法 每一次操作的 $ \bmod $的相加
 
 ### 因数与质因数
 
