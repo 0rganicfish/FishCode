@@ -1,1 +1,2 @@
-SHOW stuinfo;
+use fishfish;
+SELECT * FROM stuinfo;
