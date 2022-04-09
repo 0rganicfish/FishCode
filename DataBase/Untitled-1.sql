@@ -111,3 +111,5 @@ FROM employee
 WHERE salary.income < 2500;
 --
 --
+SELECT num
+FROM stuinfo

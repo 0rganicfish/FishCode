@@ -9,14 +9,3 @@
 #define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
-int main()
-{
-    ll n, m, mod = 1e9 + 7, ans = 1;
-    cin >> n;
-    while (n--)
-    {
-        cin >> m;
-        (ans *= m) %= mod;
-    }
-    cout << ans;
-}

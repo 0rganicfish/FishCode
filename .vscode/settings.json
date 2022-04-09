@@ -132,6 +132,7 @@
     "cardnumber",
     "cctype",
     "Cdefs",
+    "charlist",
     "cirlen",
     "classname",
     "clienttype",
@@ -230,6 +231,7 @@
     "multirow",
     "multiset",
     "myimage",
+    "mysqld",
     "netdisk",
     "nlogn",
     "nologin",
@@ -335,6 +337,19 @@
       "database": "fish",
       "username": "root",
       "password": "fish"
+    },
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "askForPassword": true,
+      "driver": "MySQL",
+      "name": "fishfish",
+      "database": "fishfish",
+      "username": "root"
     }
   ]
 }
