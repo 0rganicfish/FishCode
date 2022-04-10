@@ -293,6 +293,8 @@
     "strlen",
     "struct",
     "stsrt",
+    "stuinfo",
+    "stuscore",
     "sublist",
     "substr",
     "svga",

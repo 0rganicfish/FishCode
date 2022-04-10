@@ -1,3 +1,5 @@
 import math
 
-print(math.factorial(1000))
+a = str(10 ** 1000000)
+
+print(len(a))

@@ -39,9 +39,9 @@
 ## 后端
 
 - C++及算法 [cpp.note](Notes/cpp.main.md)
-- Java [Java.note](Notes/Java.md)
+- Java [Java.md](Notes/Java.md)
 - Python [Python.md](Notes/Python.md)
-- PHP
+- PHP [PHP.md](Notes/PHP.md)
 
 ## 数据库
 

@@ -9,35 +9,28 @@
 ### SELECT
 
 - **语法：**
-
   ```sql {.line-numbers}
-  SELECT column_name| *
-  FROM table_name;
+  SELECT column1
+  FROM table1;
   ```
-
-- **结果：** 列出 `table` 中列名为 `column_name`的数据，`*` 则为表中所有数据
+- **结果：** 列出 `table` 中列名为 `column1`的数据，`*` 则为表中所有数据
 
 ### DISTINCT
 
 - **语法：**
-
   ```sql {.line-numbers}
-  SELECT DISTINCT column_name
-  FROM table_name;
+  SELECT DISTINCT column1
+  FROM table1;
   ```
-
 - **结果：** 列出 **去重** 后的列数据
 
 ### WHERE
 
 - **语法：**
-
   ```sql {.line-numbers}
-  SELECT column_name, column_name
-  FROM table_name
-  WHERE column_name operator value;
+  SELECT column1 FROM table1
+  WHERE column1 operator value;
   ```
-
 - **结果：** 用于 **过滤** 列数据
 
 - **`operator` 运算符：**
@@ -51,69 +44,64 @@
   - 范围判断（闭区间）：`between a and b`，可以是数值、文本或日期
   - `IN`：用于匹配多组数据，类似于 `OR`。如：
     ```sql {.line-numbers}
-    SELECT stu_name FROM stuinfo
-    WHERE stu_name IN ('有机鱼', '张三')
+    SELECT stu1 FROM stuinfo
+    WHERE stu1 IN ('有机鱼', '张三')
     ```
 
 ### ORDER BY
 
 - **语法：**
-
   ```sql {.line-numbers}
-  SELECT column_name
-  FROM table_name
-  ORDER BY column_name ASC | DESC;
+  SELECT column1 FROM table1
+  ORDER BY column1 ASC | DESC;
   ```
-
 - **结果：** 用于排序，默认 `ASC` 升序
-- 多列排序：先按第一个 `column_name` 来排，然后类推
+- 多列排序：先按第一个 `column1` 来排，然后类推
 - 顺序：`desc` 或者 `asc` 只对它紧跟着的第一个列名有效，其他不受影响，仍然是默认的升序。
+- **自定义排序：**
+  ```sql {.line-numbers}
+  SELECT column1 FROM table1
+  ORDER BY FIELD(sorted_column, 'value1', 'value2');
+  ```
 
 ### INSERT INTO
 
 - **语法：**
-
   - 第一种形式无需指定要插入数据的列名，只需提供被插入的值即可：
-
     ```sql {.line-numbers}
-    INSERT INTO table_name
+    INSERT INTO table1
     VALUES (value1, value2, value3,...);
     ```
-
   - 第二种形式需要指定列名及被插入的值：
-
     ```sql {.line-numbers}
-    INSERT INTO table_name (column1, column2, column3,...)
+    INSERT INTO table1 (column1, column2, column3,...)
     VALUES (value1, value2, value3,...);
     ```
-
 - **结果：** 向表中插入新纪录
 
 ### UPDATE
 
 - **语法：**
-
   ```sql {.line-numbers}
-  UPDATE table_name
+  UPDATE table1
   SET column1 = value1, column2 = value2,...
-  WHERE some_column = some_value;
+  WHERE column1 = value1;
   ```
-
 - **结果：** 更新表中已有的数据，且一定要指定 `WHERE`
 
 ### DELETE
 
 - **语法：**
-
   ```sql {.line-numbers}
-  DELETE FROM table_name
-  WHERE some_column = some_value;
+  DELETE FROM table1
+  WHERE column1 = value1;
   ```
-
 - **结果：** 删除行。不带 `WHERE` 时则将整个表删除，但表的结构还在
 - 令：别的删除
-  - `DROP table_name`：将表完全删除
-  - `TRUNCATE table_name`：仅删除内容并释放空间，表的结构还在
+  - `DROP table1`：将表完全删除
+  - `TRUNCATE table1`：仅删除内容并释放空间，表的结构还在
+
+<br><br>
 
 ## 高级语句
 
@@ -126,17 +114,15 @@
 #### LIKE 通配符
 
 - **语法：**
+  ```sql {.line-numbers}
+  SELECT column1 FROM table1
+  WHERE column1 LIKE xx;
+  ```
+- **通配符**
 
-```sql {.line-numbers}
-xxx
-WHERE column LIKE xx;
-```
-
-|   通配符   |                 描述                 |
-| :--------: | :----------------------------------: |
-|     %      |          代替一个或多个字符          |
-|     \_     |            仅代替一个字符            |
-| [charlist] | 字符列中的任意一个字符（^ 表示取反） |
+  - `%` ： 代替零个或多个字符
+  - `_` ： 仅代替一个字符
+  - `[charlist]` ： 字符列中的任意一个字符（^ 表示取反）
 
 - **如：**
   - `%a` ：以 a 结尾的数据
@@ -150,10 +136,19 @@ WHERE column LIKE xx;
 #### REGEXP 正则表达式
 
 - **语法：**
-
   ```sql {.line-numbers}
-  xxx
-  WHERE column REGEXP 'xx';
+  SELECT column1 FROM table1
+  WHERE column1 REGEXP 'xx';
+  ```
+
+### 子查询
+
+- 如求某列最值的其他信息时，不能单用函数，只能是再套一层：
+  ```sql {.line-numbers}
+  SELECT column1 FROM table1
+  WHERE column1 = (
+    SELECT MAX(column1) FROM table1
+  );
   ```
 
 ### JOIN
@@ -163,40 +158,85 @@ WHERE column LIKE xx;
 #### INNER JOIN
 
 - **语法：**
-
   ```sql {.line-numbers}
-  SELECT column_name(s)
-  FROM table1
-  INNER JOIN table2
-  ON table1.column_name = table2.column_name;
+  SELECT column1 FROM table1
+  JOIN table2
+  ON table1.column1 = table2.column2;
+  ```
+- **结果：** 内连接，只连接匹配的行
+- 当两个表之间有相同的列名时，可用：`USING`
+  ```sql {.line-numbers}
+  JOIN stuscore USING (stu_id);
+  -- 相当于
+  JOIN stuscore ON stuinfo.stu_id = stuscore.stu_id;
   ```
 
-- **结果：** 内连接，只连接匹配的行
+#### LEFT | RIGHT JOIN
+
+- **结果：** 当左（右）值没有时，显示 `NULL`
 
 ### AS 别名
 
 - **语法：**
-
   ```sql {.line-numbers}
-  SELECT column AS '列别名'
-  FROM table AS '表别名';
+  SELECT column1  other_name
+  FROM table1 AS '表别名';
   ```
-
 - **结果：** 列别名则为展示表格时的表头名。别名主要是为了方便
+- 如果别名中有空格，则用 `' '` 括起来
+- `AS` 是可选的
+
+### LIMIT | OFFSET
+
+- **语法：**
+  ```sql {.line-numbers}
+  SELECT column1 FROM table1
+  LIMIT (pos,) count OFFSET count;
+  ```
+- **结果：**
+  - `LIMIT`： 仅列出从 `pos` 开始的 `count` 个数据。
+  - `OFFSET`：从 0 开始不取 `count` 个数据
+- 常结合用于分页数据
+
+### GROUP BY
+
+- **语法：**
+  ```sql {.line-numbers}
+  SELECT column1, column2, ... FROM table1
+  GROUP BY column1;
+  ```
+- **结果：** 将相同的值分组，常与 `COUNT` 一起。
+- 且：可以通过 **HAVING** 进行分组的筛选（像`WHERE`）
+
+###
+
+<br><br>
 
 ## SQL 函数
 
 - **固定格式：**
   ```sql {.line-numbers}
-  SELECT xx FROM xx
+  SELECT column1 FROM table1
   WHERE function();
   ```
 
 ### 常见
 
 - `AVG()`：求得平均数
-- 
+- `SUM()`：求和
+-
 
+### IF 函数
+
+- **语法：**
+  ```sql {.line-numbers}
+  IF (exp1, ret1, ret2)
+  ```
+- **结果：** 如果 exp1 为 true 则返回 ret1，否则返回 ret2
+
+<br><br>
+
+---
 
 ## 自救
 
