@@ -1,3 +1,67 @@
+-- --------
+-- 实验五 ↓
+-- --------
+
+SELECT stuinfo.stu_id,
+       stuinfo.stu_name,
+       source.sour_name,
+       stuscore.score
+FROM stuinfo
+         JOIN stuscore ON stuinfo.stu_id = stuscore.stu_id
+         JOIN source ON source.sour_id = stuscore.sour_id
+WHERE stuscore.score > 50
+  and source.sour_name = '离散数学';
+--
+--
+SELECT stuinfo.stu_name,
+       source.sour_name,
+       stuscore.score
+FROM stuscore
+         JOIN stuinfo ON stuinfo.stu_id = stuscore.stu_id
+         JOIN source ON stuscore.sour_id = source.sour_id;
+--
+--
+SELECT stuinfo.*,
+       stuscore.sour_id
+FROM stuinfo
+         JOIN stuscore ON stuscore.stu_id = stuinfo.stu_id;
+--
+--
+SELECT DISTINCT source.sour_name
+FROM source
+         JOIN stuscore ON source.sour_id = stuscore.sour_id;
+--
+--
+SELECT *
+FROM stuinfo
+WHERE stuinfo.stu_id = '081206';
+--
+--
+SElECT employee.*,
+       salary.income
+FROM employee
+         JOIN salary ON salary.id = employee.id;
+--
+--
+SELECT employee.name,
+       income,
+       expense
+FROM salary
+         JOIN employee ON employee.id = salary.id
+WHERE income > 2000;
+--
+--
+SELECT employee.*
+FROM employee
+         JOIN salary ON salary.id = employee.id
+WHERE salary.income < 2500;
+
+
+
+-- --------
+-- 实验六 ↓
+-- --------
+
 SELECT COUNT(IF(sex = '男', 1, NULL)) AS '男生数量',
        COUNT(IF(sex = '女', 1, NULL)) AS '女生数量'
 FROM stuinfo;
@@ -37,13 +101,14 @@ WHERE pro_name = '计算机'
 SELECT stu_name, pro_name, sour_name, score
 FROM stuscore
          JOIN stuinfo USING (stu_id)
-         JOIN sourse USING (sour_id)
+         JOIN source USING (sour_id)
 WHERE pro_name = '计算机'
   AND sour_name = '离散数学'
 ORDER BY score DESC;
 
 --
 --
+
 SELECT degree,
        COUNT(*) AS '数量'
 FROM employee
@@ -81,6 +146,24 @@ handler salary open;
 handler salary read first WHERE income > 2500;
 handler salary read next WHERE income > 2500;
 handler salary read next WHERE income > 2500;
+
+use fish;
+SELECT stu_id,
+       stu_name,
+       total_credit,
+       (
+           CASE
+               WHEN total_credit IS NULL THEN '未选课'
+               WHEN total_credit < 42 THEN '不及格'
+               WHEN total_credit >= 42 AND total_credit <= 46 THEN '合格'
+               WHEN total_credit >= 47 THEN '优秀'
+               END) '等级'
+FROM stuinfo;
+
+
+-- -----
+--
+-- -----
 
 
 

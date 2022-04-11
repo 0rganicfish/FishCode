@@ -240,14 +240,37 @@
 
 ## 自救
 
-1.  删除原有的数据库（注：执行该命令需要管理员权限，所以你在打开 cmd 时需要以管理员的身份运行）。
-    1. 查询 SQL 服务是否存在：
-       > sc query mysql （对应的 SQL 服务名称）如果存在则会弹出一些信息，不存在则提示未找到服务。
-    2. 删除服务：
-       > sc delete mysql（对应的 SQL 服务名称）执行该命令即可删除服务
-2.  初始化数据（注：root@localhost:后面的是你的登录密码）
-    > mysqld --initialize --user=mysql --console
-3.  安装服务（提示：Service successfully installed.就证明你安装成功了）
-    > mysqld --install
+1. 管理员 cmd `cd` 到 `bin`：
 
-> REF: [Access denied for user 'root'@'localhost' (using password: YES)](https://blog.csdn.net/huang6ing/article/details/103821495)
+```batch {.line-numbers}
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+```
+
+2. 关闭 MySQL 服务
+
+```batch {.line-numbers}
+net stop mysql
+```
+
+3. 跳过密码登录
+
+```batch {.line-numbers}
+mysqld --console --skip-grant-tables --shared-memory
+```
+
+4. 新建 cmd 窗口，输入 `mysql` 即可进入
+5. 更改密码
+   - 使用数据库：
+   ```batch {.line-numbers}
+   use mysql;
+   ```
+   - 一定要先更新权限：
+   ```batch {.line-numbers}
+   flush privileges;
+   ```
+   - 更新密码：
+   ```batch {.line-numbers}
+   alter user 'root' @'localhost' IDENTIFIED BY '新密码';
+   ```
+
+> REF: [MySQL8 root 密码](https://blog.csdn.net/weixin_42359480/article/details/89931700)
