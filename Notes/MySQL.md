@@ -26,14 +26,14 @@
      2. `unique`：唯一性约束
      3. `primary key`：住建约束
      4. `foreign key`：外键
-     5. `check`：检查 —— `enum`，`set`**^\*^**
-- ^\*^ 约束中的 `enum`，`set`：
+     5. `check`：检查 —— `enum`，`set` <sup><b>\*</b></sup>
+- <sup><b>\*</b></sup> 约束中的 `enum`，`set`：
   - `enum`：单选字符串数据类型，适合存储表单界面中的 “单选值”。设定 enum 的时候，需要给定“固定的几个选项”；存储的时候就只存储其中的一个值。
     - 设定 enum 的格式：
       ```sql {.line-numbers}
       enum("value1", "value2", "value3", ...);
       ```
-    &emsp;&emsp; 实际上，enum 的选项都会对应一个数字，依次是 1，2，3，4，5...，最多有 65535 个选项。使用的时候，可以使用选项的字符串格式，也可以使用对应的数字。
+      &emsp;&emsp; 实际上，enum 的选项都会对应一个数字，依次是 1，2，3，4，5...，最多有 65535 个选项。使用的时候，可以使用选项的字符串格式，也可以使用对应的数字。
   - `set`：其实就是可多选的 enum。可插入多值，select 出来的也是多值
 
 ### DROP
@@ -283,7 +283,9 @@
 
 ---
 
-## 自救
+## 自救救
+
+### 密码失败
 
 1. 管理员 cmd `cd` 到 `bin`：
 
@@ -305,7 +307,7 @@ mysqld --console --skip-grant-tables --shared-memory
 
 4. 新建 cmd 窗口，输入 `mysql` 即可进入
 5. 更改密码
-   - 使用数据库：
+   - 使用 MySQL 数据库：
    ```batch {.line-numbers}
    use mysql;
    ```
@@ -319,3 +321,17 @@ mysqld --console --skip-grant-tables --shared-memory
    ```
 
 > REF: [MySQL8 root 密码](https://blog.csdn.net/weixin_42359480/article/details/89931700)
+
+<br>
+
+### 无法 启动 | 关闭 MySQL 服务
+
+1. 查找端口占用
+
+```batch {.line-numbers}
+netstat -ano
+```
+
+2. 找到 (`Ctrl + F`) 3306 端口的 PID (行尾数字)
+3. 可以去 **任务管理器** $ \to $ 详细信息 $ \to $ 按 `PID` 排序 $ \to $ 找到并结束该端口的进程
+4. 就可以用管理员 cmd 启动 MySQL 服务了
