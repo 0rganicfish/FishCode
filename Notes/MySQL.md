@@ -6,6 +6,54 @@
 
 ## 基础语句
 
+### CREATE
+
+- **语法：**
+  ```sql {.line-numbers}
+  create table if not exists table1
+  (
+    column1 type
+  )ENGINE = InnoDb
+  DEFAULT CHARSET = utf8;
+  ```
+- **结果：** 创建表
+- **表属性**
+  1. 选项
+     1. 指定列选项：`default`，`comment`
+     2. 指定列选项：`engine`，`auto_increment`，`comment`
+  2. 约束
+     1. `not null`：非空约束
+     2. `unique`：唯一性约束
+     3. `primary key`：住建约束
+     4. `foreign key`：外键
+     5. `check`：检查 —— `enum`，`set`**^\*^**
+- ^\*^ 约束中的 `enum`，`set`：
+  - `enum`：单选字符串数据类型，适合存储表单界面中的 “单选值”。设定 enum 的时候，需要给定“固定的几个选项”；存储的时候就只存储其中的一个值。
+    - 设定 enum 的格式：
+      ```sql {.line-numbers}
+      enum("value1", "value2", "value3", ...);
+      ```
+    &emsp;&emsp; 实际上，enum 的选项都会对应一个数字，依次是 1，2，3，4，5...，最多有 65535 个选项。使用的时候，可以使用选项的字符串格式，也可以使用对应的数字。
+  - `set`：其实就是可多选的 enum。可插入多值，select 出来的也是多值
+
+### DROP
+
+- **语法：**
+  ```sql {.line-numbers}
+  DROP table table1;
+  ```
+- **结果：** 删除表
+
+### INSERT INTO
+
+- **语法：**
+  ```sql {.line-numbers}
+  insert into table1
+  value (column1, column2, ...),
+        (column1, column2, ...);
+  ```
+- **结果：** 插入数据
+
 ### SELECT
 
 - **语法：**
@@ -14,15 +62,7 @@
   FROM table1;
   ```
 - **结果：** 列出 `table` 中列名为 `column1`的数据，`*` 则为表中所有数据
-
-### DISTINCT
-
-- **语法：**
-  ```sql {.line-numbers}
-  SELECT DISTINCT column1
-  FROM table1;
-  ```
-- **结果：** 列出 **去重** 后的列数据
+- 加上 `DISTINCT` 则列出 去重 后的数据
 
 ### WHERE
 
@@ -63,6 +103,11 @@
   SELECT column1 FROM table1
   ORDER BY FIELD(sorted_column, 'value1', 'value2');
   ```
+- 随机选择 n 行：
+  ```sql {.line-numbers}
+  SELECT table1 FROM column1
+  ORDER BY rand() LIMIT n;
+  ```
 
 ### INSERT INTO
 
@@ -84,10 +129,10 @@
 - **语法：**
   ```sql {.line-numbers}
   UPDATE table1
-  SET column1 = value1, column2 = value2,...
+  SET column1 = value1
   WHERE column1 = value1;
   ```
-- **结果：** 更新表中已有的数据，且一定要指定 `WHERE`
+- **结果：** 更新(修改)表中已有的数据，且一定要指定 `WHERE`
 
 ### DELETE
 

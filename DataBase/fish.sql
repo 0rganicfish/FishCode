@@ -165,5 +165,71 @@ FROM stuinfo;
 --
 -- -----
 
+create table if not exists fishstu
+(
+    id    char(6)      not null primary key,
+    name  varchar(255) not null,
+    born  date         not null,
+    score int(3)       not null
+) ENGINE = InnoDb
+  DEFAULT CHARSET = utf8;
 
+insert into fishstu
+    value ('210101', '有机鱼', '2000-01-01', 75),
+    ('210102', '无机鱼', '2002-05-04', 77),
+    ('210201', '咩咩', '2001-10-30', 86),
+    ('210202', '蛤哦', '2003-05-02', 57);
+select *
+from fishstu;
+
+update fishstu
+set score = 76
+where id = '210102';
+
+select *
+from fishstu
+order by rand()
+limit 1;
+
+alter table fishstu
+    change column name name varchar(64) not null;
+
+create table fishes
+(
+    id     char(6) primary key auto_increment,
+    name   varchar(64) not null,
+    sex    char(1)     not null,
+    hashes char(8) unique
+
+);
+
+
+create or replace view csinfo
+as
+select stu_id, stu_name, pro_name, sour_id, score
+from stuinfo
+         join stuscore using (stu_id)
+where pro_name = '计算机';
+select *
+from csinfo;
+
+create or replace view stusour(stu_id, sour_count)
+as
+select stu_id, count(*)
+from stuscore
+group by stu_id;
+select *
+from stusour;
+
+create or replace view csavg(stu_id, avg_score)
+as
+select stu_id, avg(score)
+from csinfo
+group by stu_id;
+select *
+from csavg;
+
+select stu_id, avg_score
+from csavg
+where avg_score >= 75;
 
