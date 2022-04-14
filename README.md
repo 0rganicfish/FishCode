@@ -54,6 +54,6 @@
 - 突然蹦出来的码 [没地方放的 Temp 码](Notes/一些Temp.md)
 - $ \LaTeX $ [LaTeX.md](Notes/LaTeX.md)
 - 正则表达式 [Regex.md](Notes/Regex.md)
-- 数学 [Math.md](Notes/Math/README.md)
+- 数学 [Math.md](Notes/HyperMath/README.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
 - **(\* ﾟ ∇ ﾟ)**

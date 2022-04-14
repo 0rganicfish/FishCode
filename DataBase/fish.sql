@@ -37,23 +37,23 @@ FROM stuinfo
 WHERE stuinfo.stu_id = '081206';
 --
 --
-SElECT employee.*,
+SElECT employees.*,
        salary.income
-FROM employee
-         JOIN salary ON salary.id = employee.id;
+FROM employees
+         JOIN salary ON salary.id = employees.id;
 --
 --
-SELECT employee.name,
+SELECT employees.name,
        income,
-       expense
+       outcome
 FROM salary
-         JOIN employee ON employee.id = salary.id
+         JOIN employees ON employees.id = salary.id
 WHERE income > 2000;
 --
 --
-SELECT employee.*
-FROM employee
-         JOIN salary ON salary.id = employee.id
+SELECT employees.*
+FROM employees
+         JOIN salary ON salary.id = employees.id
 WHERE salary.income < 2500;
 
 
@@ -71,17 +71,17 @@ SELECT sex,
 FROM stuinfo
 GROUP BY sex;
 
-SELECT stu_name, total_credit
+SELECT stu_name, credit
 FROM stuinfo
-WHERE total_credit >= (
-    SELECT AVG(total_credit)
+WHERE credit >= (
+    SELECT AVG(credit)
     FROM stuinfo
 )
-ORDER BY total_credit DESC;
+ORDER BY credit DESC;
 
-SELECT pro_name                 '专业名',
-       FLOOR(AVG(total_credit)) '平均学分',
-       COUNT(pro_name)          '人数'
+SELECT pro_name           '专业名',
+       FLOOR(AVG(credit)) '平均学分',
+       COUNT(pro_name)    '人数'
 FROM stuinfo
 GROUP BY pro_name;
 
@@ -111,35 +111,35 @@ ORDER BY score DESC;
 
 SELECT degree,
        COUNT(*) AS '数量'
-FROM employee
+FROM employees
 GROUP BY degree
 ORDER BY degree;
 
 SELECT workname '部门名称',
        COUNT(*) '人数'
 FROM work
-         JOIN employee USING (workid)
+         JOIN employees USING (workid)
 GROUP BY workid
 HAVING COUNT(*) >= 3;
 
 SELECT worktime '工作时长',
        COUNT(*) '人数'
-FROM employee
+FROM employees
 GROUP BY worktime
 ORDER BY worktime DESC;
 
 SELECT name, sex, worktime
-FROM employee
+FROM employees
 ORDER BY (SELECT income
           FROM salary
-          WHERE employee.id = salary.id) DESC;
+          WHERE employees.id = salary.id) DESC;
 
 SELECT *
-FROM employee
+FROM employees
 WHERE degree = '本科'
 UNION
 SELECT *
-FROM employee
+FROM employees
 WHERE degree = '硕士';
 
 handler salary open;
@@ -150,13 +150,13 @@ handler salary read next WHERE income > 2500;
 use fish;
 SELECT stu_id,
        stu_name,
-       total_credit,
+       credit,
        (
            CASE
-               WHEN total_credit IS NULL THEN '未选课'
-               WHEN total_credit < 42 THEN '不及格'
-               WHEN total_credit >= 42 AND total_credit <= 46 THEN '合格'
-               WHEN total_credit >= 47 THEN '优秀'
+               WHEN credit IS NULL THEN '未选课'
+               WHEN credit < 42 THEN '不及格'
+               WHEN credit >= 42 AND credit <= 46 THEN '合格'
+               WHEN credit >= 47 THEN '优秀'
                END) '等级'
 FROM stuinfo;
 
@@ -203,13 +203,16 @@ create table fishes
 
 );
 
+-- ------
+-- 实验七
+-- -----
 
 create or replace view csinfo
 as
 select stu_id, stu_name, pro_name, sour_id, score
 from stuinfo
          join stuscore using (stu_id)
-where pro_name = '计算机';
+where pro_name = '通信工程';
 select *
 from csinfo;
 
@@ -219,7 +222,7 @@ select stu_id, count(*)
 from stuscore
 group by stu_id;
 select *
-from stusour;
+from cscore;
 
 create or replace view csavg(stu_id, avg_score)
 as
@@ -231,5 +234,68 @@ from csavg;
 
 select stu_id, avg_score
 from csavg
-where avg_score >= 75;
+where avg_score >= 85;
+
+create or replace view cs1994
+as
+select *
+from stuinfo
+where born like '1994%';
+insert into cs1994
+    value ('081256', '张三', '通信工程', 1, '1994-10-21', 50, NULL);
+select *
+from cs1994;
+
+update csinfo
+set score = 85
+where stu_id = '081210';
+select *
+from csinfo
+where stu_id = '081210';
+
+delete
+from cs1994
+where stu_id = '081256';
+
+create or replace view csinfo
+as
+select stu_id, stu_name, credit
+from stuinfo
+where pro_name = '通信工程';
+
+create view ds_view
+as
+select *
+from work;
+
+create or replace view emp_view
+as
+select id, name, income
+from employees
+         join salary using (id);
+
+create view emp_all
+as
+select id, name, workname, income
+from employees
+         join work using (workid)
+         join salary using (id);
+
+select workname
+from ds_view;
+
+select name, income
+from emp_view
+where name = '李丽';
+
+insert into ds_view
+    value (6, '财务部', '财务管理');
+
+update ds_view
+set workname = '生产部'
+where workid = 5;
+
+-- -----
+--
+-- -----
 

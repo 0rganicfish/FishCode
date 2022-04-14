@@ -9,18 +9,11 @@
 #define ios ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
-class te
-{
-private:
-    int num;
-
-public:
-    void scan() { cin >> this->num; }
-    void print() const { cout << this->num << endl; }
-};
 
 int main()
 {
-    te t1;
-    t1.scan(), t1.print();
+    string a, b;
+    cin >> a >> b;
+    cout << b << endl << a;
+    return 0;
 }
