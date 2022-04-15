@@ -13,6 +13,140 @@ int main()
 {
 }
 
+//* 04-15
+
+namespace Apr_15
+{
+    
+    //
+    //
+    //
+    class People
+    {
+    private:
+        string name;
+
+    public:
+        People(){};
+        People(string name_) : name(name_){};
+
+    public:
+        void set_name(string name_) { name = name_; }
+        string get_name() const { return name; }
+
+    protected:
+        string id;
+        void set_id(string id_) { this->id = id_; }
+        string get_id() const { return this->id; }
+    };
+
+    class Stu : public People
+    {
+    private:
+        int score;
+
+    public:
+        Stu(){};
+        Stu(int score_) : score(score_){};
+        Stu(string name_, int score_) : People(name_), score(score_){};
+
+    public:
+        void set_score(int score_) { score = score_; }
+        int get_score() const { return score; }
+        void print_info()
+        {
+            cout << "name: " << this->get_name() << endl
+                 << "score: " << this->get_score() << endl;
+        }
+    };
+
+    class Address : public Stu
+    {
+    private:
+        string county;
+
+    public:
+        Address(){};
+        Address(string county_) : county(county_){};
+        Address(string county_, string name_, int score_) : county(county_), Stu(name_, score_){};
+
+    public:
+        void set_county(string county_) { county = county_; }
+        string get_county() const { return county; }
+        void print_info()
+        {
+            cout << "county: " << this->get_county() << endl
+                 << "name: " << this->get_name() << endl
+                 << "score: " << this->get_score() << endl;
+        }
+    };
+
+    int main()
+    {
+        string name, county;
+        int score;
+        cin >> county >> name >> score;
+
+        Address mie(county, name, score);
+        mie.Stu::print_info();
+    }
+
+    //
+    //
+    //
+    class Point
+    {
+    private:
+        double x, y;
+
+    public:
+        Point();
+        Point(double x_, double y_);
+        double distance();
+        double distance(const Point &p);
+        double getX() { return x; }
+        double getY() { return y; }
+        void setX(double x_);
+        void setY(double y_);
+    };
+    /* 你的代码将被嵌入这里 */
+
+    Point::Point(double x_, double y_) : x(x_), y(y_){};
+    double Point::distance()
+    {
+        return sqrt((getX() * getX() + getY() * getY()));
+    }
+
+    class Circle
+    {
+    public:
+        Circle(Point p, double R) : x(p.getX()), y(p.getY()), rad(R) {}
+        string judge(Point p)
+        {
+            double dist = sqrt((pow(p.getX() - x, 2) + pow(p.getY() - y, 2)));
+            if (dist > rad)
+                return "outside";
+            else if (dist < rad)
+                return "inside";
+            else
+                return "on";
+        }
+
+    private:
+        double rad, x, y;
+    };
+
+    int main()
+    {
+        double x1, y1, x2, y2, r;
+        cin >> x1 >> y1 >> x2 >> y2 >> r;
+        Point p(x1, y1);
+        Point ctr(x2, y2);
+        Circle c(ctr, r);
+        cout << setprecision(3) << p.distance() << " " << c.judge(p) << endl;
+    }
+};
+
 //* 04-09
 // 大墨鱼
 

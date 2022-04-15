@@ -39,7 +39,7 @@
 
 ## 后端
 
-- C++及算法 [cpp.note](Notes/cpp.main.md)
+- C++ [cpp.note](Notes/Cpp.md)
 - Java [Java.md](Notes/Java.md)
 - Python [Python.md](Notes/Python.md)
 - PHP [PHP.md](Notes/PHP.md)
@@ -50,10 +50,11 @@
 
 ## 其他一些......
 
+- 算 法 [Algorithm](Notes/Algorithm/Main.md)
 - 一些教材 [清华\_参考书目](Notes/清华_参考书目.md)
 - 突然蹦出来的码 [没地方放的 Temp 码](Notes/一些Temp.md)
 - $ \LaTeX $ [LaTeX.md](Notes/LaTeX.md)
 - 正则表达式 [Regex.md](Notes/Regex.md)
-- 数学 [Math.md](Notes/HyperMath/README.md)
+- 数学 [HyperMath.md](Notes/HyperMath/README.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
 - **(\* ﾟ ∇ ﾟ)**
