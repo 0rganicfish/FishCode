@@ -13,11 +13,84 @@ int main()
 {
 }
 
+//* 04-16_ICPC_Pre
+// https://ac.nowcoder.com/acm/contest/32705#question
+namespace ICPC_Pre
+{
+    // A 签到
+    int main()
+    {
+        for (int k = 0; k < 2; ++k)
+        {
+            ll a, ans = 0, mie[] = {6, 3, 2, 1, 2};
+            for (int i = 0; i < 5; ++i)
+                cin >> a, ans += a * mie[i];
+            cout << ans << " ";
+        }
+        return 0;
+    }
+
+    // B 幂次
+    int main()
+    {
+        string s;
+        cin >> s;
+        ll up = 1, down, dd, sum = 0, len = s.length() - 1;
+        down = dd = 1 << len;
+        for (int i = len; i >= 0; --i)
+            sum += up * dd * (s[i] - '0'), up *= 3, dd /= 2;
+
+        cout << sum / down;
+        if (sum %= down)
+        {
+            ll gcd = __gcd(sum, down);
+            cout << " " << sum / gcd << "/" << down / gcd;
+        }
+        return 0;
+    }
+
+    // C- Wordle
+    int main()
+    {
+        string ans;
+        cin >> ans;
+        for (int i = 1; i <= 7; ++i)
+        {
+            string a, t;
+            cin >> a;
+            for (int j = 0; j < 5; ++j)
+            {
+                char c = 'X';
+                for (int k = 0; k < 5; ++k)
+                    if (a[j] == ans[k])
+                        if (j == k)
+                        {
+                            c = 'G';
+                            break;
+                        }
+                        else
+                            c = 'Y';
+                t += c;
+            }
+            if (t == "GGGGG")
+            {
+                cout << "WINNER";
+                return 0;
+            }
+            if (i == 7)
+                cout << "LOSER";
+            else
+                cout << t << endl;
+        }
+        return 0;
+    }
+};
+
 //* 04-15
 
 namespace Apr_15
 {
-    
+
     //
     //
     //
@@ -370,6 +443,7 @@ namespace Apr_08
         }
     }
 };
+
 //* 04-07
 
 // 又摸鱼了

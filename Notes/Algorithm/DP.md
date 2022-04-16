@@ -1,6 +1,6 @@
 # 动态规划 DP
 
-[首页](../cpp.main.md)
+[首页](Main.md)
 
 [TOC]
 

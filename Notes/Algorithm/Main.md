@@ -144,25 +144,7 @@ using namespace QAQ;
                 for (j = max(x1 - f, 0); j <= min(x1 + f, x); j++)
     ```
 
-2.  与其用 else if 一个个地判断，还不如用数组来打表 / 枚举
-
-    ```C++ {.line-numbers}
-    像是 int day[] = {31,28,31,30,31,30,31,31,30,31,30,31);
-    void函数 →  if(是闰年)  day[1] = 29;
-    ```
-
-3.  知道递推公式，f (n) = f ( n+1 ) + f ( n+2 )，可以直接套 —> 不是模拟，可以暴力但爆，手动推一下递推公式
-
-    ```C++ {.line-numbers}
-    for (int i = 0; i <= size; i++)    //↑也就是说，只注重结果而不是过程
-        {
-            if (i > 1)
-                arr[i] = arr[i - 2] + arr[i - 1]; //递推算法
-            printf("factorial[%d]=%d\n", i, arr[i]);
-        }
-    ```
-
-4.  梯形数字： 要想一下，多个 for 循环是 **嵌套关系** 还是 **并列关系**
+2.  梯形数字： 要想一下，多个 for 循环是 **嵌套关系** 还是 **并列关系**
 
     ```C++ {.line-numbers}
     for (t = 1, j = 1; j <= n; j++)           //         01
@@ -175,37 +157,6 @@ using namespace QAQ;
         }
     ```
 
-5.  否命题原理 ：**`if (c != 'a' && c != 'b')`** 两个不等于用 and，等于用 or
+3.  否命题原理 ：**`if (c != 'a' && c != 'b')`** 两个不等于用 and，等于用 or
 
-6.  相同情况循环了 n 次的周期，那只要将结果乘以 n 再加上周期以外的就行
-
-7.  定义无穷大：`int a = INT_MAX;`
-
-8.  找最大值不一定要排序数组，用一下比较
-
-    ```C++ {.line-numbers}
-    int maxx = INT_MIN;
-    for(...)
-    {
-        ...
-        maxx = max(maxx, a[i]);
-    }
-    // 或者直接
-    maxx = *max_element(a, a + n); // STL
-    ```
-
-9.  让函数 return 数组：
-
-    ```C++ {.line-numbers}
-    int *xxx(int a[])
-    {
-        ......
-        return a;
-    }
-    int main()
-    {
-        int a[10];
-        int *b = xxx(a);
-    // -->指针也就是数组
-    }
-    ```
+4.  相同情况循环了 n 次的周期，那只要将结果乘以 n 再加上周期以外的就行

@@ -1,6 +1,6 @@
 <p style="font-size: 40px; color: #fff"><b>数学</b></p>
 
-[首页](../cpp.main.md)
+[首页](Main.md)
 [TOC]
 
 <br><br>
@@ -27,7 +27,7 @@
 
 ### 快速幂
 
-- 比一般的 `pow` 快，且 $ x \bmod 0 = x $
+- 比一般的 `pow` 快，且 $ x \bmod y = x , y > x $
 
   ```C++ {.line-numbers}
   ll fpow(ll a, ll x, ll mod)

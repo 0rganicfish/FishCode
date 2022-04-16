@@ -1,6 +1,6 @@
 # 数据结构 string
 
-- [首页](../cpp.main.md)
+- [首页](Main.md)
 - [string 容器详解](https://blog.csdn.net/wzh1378008099/article/details/105687998)
 
 [TOC]
@@ -47,7 +47,7 @@
 
 ### cctype
 
-- 返回 `bool` 
+- 返回 `bool`
 
   ```C++ {.line-numbers}
   //只能用在单个字符
@@ -107,7 +107,7 @@
 
 ---
 
-## 算法
+## 别に
 
 ### 找连续的“0”的个数
 

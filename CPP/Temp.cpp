@@ -71,5 +71,6 @@ int main()
 {
     Stu mie("mie", 12), fish("fish", 14);
     Stu t = mie + fish;
+
     t.print_info();
 }

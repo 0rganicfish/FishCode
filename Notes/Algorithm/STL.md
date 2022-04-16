@@ -68,8 +68,6 @@ a.pop_back(); //移出最后一个元素
 
 ### List
 
-#### list 定义
-
 - List 是 stl 实现的双向链表，与向量(`vectors`)相比, 它允许快速的插入和删除，但是随机访问却比较慢。
 - 可以直接` s.sort();` 或 `s.sort(greater<name>());`
 

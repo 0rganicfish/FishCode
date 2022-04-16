@@ -2,7 +2,7 @@
 
 <hr>
 
-- [首页](../cpp.main.md)
+- [首页](Main.md)
 
 [TOC]
 

@@ -316,12 +316,14 @@
     "webpush",
     "whitespae",
     "winer",
+    "Wordle",
     "wuxiuran",
     "xlink",
     "yahei",
     "Yahei",
     "yper",
-    "ypertext"
+    "ypertext",
+    "zhiyin"
   ],
   "C_Cpp.errorSquiggles": "Enabled",
   "cmake.configureOnOpen": false,

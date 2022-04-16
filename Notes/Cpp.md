@@ -177,7 +177,6 @@
 3.  `ctime`
 
     - 时间戳获取与转换
-
       ```C++ {.line-numbers}
       time_t t = time(0);
       // cin >> t; //当然，也能输入时间戳（秒）
@@ -185,12 +184,11 @@
       strftime(tmp, sizeof(tmp), form, localtime(&t));
       cout << tmp << endl;
       ```
-
     - 当前时间
       ```C++ {.line-numbers}
-          time_t t = time(&t);
-          string s = ctime(&t);
-          cout << s << endl;
+      time_t t = time(&t);
+      string s = ctime(&t);
+      cout << s << endl;
       ```
 
 4.  符号优先级
