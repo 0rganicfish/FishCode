@@ -190,10 +190,10 @@ namespace Apr_15
         return sqrt((getX() * getX() + getY() * getY()));
     }
 
-    class Circle
+    class Circle : public Point
     {
     public:
-        Circle(Point p, double R) : x(p.getX()), y(p.getY()), rad(R) {}
+        Circle(Point p, double R) : Point(p), rad(R) {}
         string judge(Point p)
         {
             double dist = sqrt((pow(p.getX() - x, 2) + pow(p.getY() - y, 2)));

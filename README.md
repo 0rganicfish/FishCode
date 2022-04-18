@@ -50,6 +50,7 @@
 
 ## 其他一些......
 
+- [Github](https://github.com/0rganicfish/VScode) or <a href="D:/文档/VScode/README.md">本地</a>
 - 算 法 [Algorithm](Notes/Algorithm/Main.md)
 - 一些教材 [清华\_参考书目](Notes/清华_参考书目.md)
 - 突然蹦出来的码 [没地方放的 Temp 码](Notes/一些Temp.md)
