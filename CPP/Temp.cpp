@@ -29,22 +29,32 @@ class Stu : public People
 {
 private:
     int score;
-    string sscore = to_string(score);
+    Stu stu()
+    {
+        Stu t(this->id, this->name, this->score);
+        return t;
+    }
 
 public:
-    Stu(){};
-    Stu(int score_) : score(score_){};
-    Stu(string id_, string name_, int score_) : People(id_, name_), score(score_){};
+    Stu() { ++cnt; };
+    Stu(int score_) : score(score_) { ++cnt; };
+    Stu(string id_, string name_, int score_) : People(id_, name_), score(score_) { ++cnt; };
 
 public:
+    static int cnt;
     void set_score(int score_) { score = score_; }
     int get_score() const { return score; }
     void print_info()
     {
         cout << "id: " << this->id << endl
              << "name: " << this->name << endl
-             << "score: " << this->sscore << endl;
+             << "score: " << this->score << endl;
     }
+    static Stu min(Stu &a, Stu &b)
+    {
+        return a < b ? a : b;
+    }
+    friend void print_stu(Stu &a);
 
 public:
     Stu operator++() // 前缀自增：++mie;
@@ -57,22 +67,54 @@ public:
         ++*this;
         return *this;
     }
-
-    Stu operator+(const Stu &a)
+    Stu operator+(Stu &a) // 对象之间相加 --> this + a
     {
-        Stu ans;
-        ans.id = this->id + " | " + a.id,
-        ans.name = this->name + " | " + a.name,
-        ans.sscore = this->sscore + " | " + a.sscore;
+        a.id = this->id + " | " + a.id,
+        a.name = this->name + " | " + a.name,
+        a.score = this->score + a.score;
+        return a;
+    }
+    Stu operator+(int x)
+    {
+        Stu ans = stu();
+        ans.score += x;
         return ans;
+    }
+    friend Stu operator+(int x, Stu &stu)
+    {
+        stu.score += x;
+        return stu;
+    }
+
+    bool operator<(Stu &a)
+    {
+        return this->score < a.score;
+    }
+
+    friend ostream &operator<<(ostream &out, Stu &a)
+    {
+        out << "id: " << a.id << endl
+            << "name: " << a.name << endl
+            << "score: " << a.score << endl;
+        return out;
+    }
+    friend istream &operator>>(istream &in, Stu &a)
+    {
+        in >> a.id >> a.name >> a.score;
+        return in;
     }
 };
 
+int Stu::cnt = 0;
 int main()
 {
+
     Stu mie("081001", "mie", 12),
         fish("081002", "fish", 14);
+
     fish++, ++mie;
-    Stu t = mie + fish;
+    Stu t = fish + 100;
     t.print_info();
+
+    Stu::min(mie, fish).print_info();
 }

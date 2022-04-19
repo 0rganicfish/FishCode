@@ -65,22 +65,6 @@
 
 <br>
 
-## 结构体
-
-- **初始化结构体：**
-  ```C++ {.line-numbers}
-  struct node
-  {
-    ll a, b, c;
-    node()
-    {
-      memset(this, 0, sizeof(node));
-    }
-  };
-  ```
-
-<br>
-
 ## Class 类
 
 ### 定义类
@@ -92,7 +76,7 @@
   - `protected`：只能被 类内或被继承的子孙类 访问，构造的类不能访问。
     > 其实就是 不想放到 public 里但又想让子孙类访问，于是就有了 protected
   - `const` 限定：const 定义的类只能访问 类内的变量 _或_ 父类的非 private 的变量 _和_ 被 const 修饰的函数
-  - `static` 静态：只能在静态的函数、变量、类之间访问，非静态定义的不能访问。使用不了 `this` 指针
+  - `static` 静态：只能在静态的函数、变量、类之间访问，非静态定义的不能访问。使用不了 `this` 指针。且在非对象中调用对象内成员的 `::` 修饰符只能访问 静态成员
 
 - 与结构体类似，但是默认是以 `Private` 构造的。偏向 **数据结构** 的是结构体，偏向 **对象** 的是类
 
@@ -129,7 +113,7 @@
 
   > Ref：[拷贝构造函数\_知乎](https://zhuanlan.zhihu.com/p/157833251)
 
-- **友元：** 加上 `friend` 就可以有权访问 **任何** 成员。且能防止什么都放到 `public` 里，还能节省开支。**但是：**
+- **友元：** 需要事先在类内定义，然后 加上 `friend` 就可以有权访问 **任何** 成员。且能防止什么都放到 `public` 里，还能节省开支。**但是：**
   1. 友元关系 **不能被继承**；
   2. 友元关系是 **单向的**，不具有交换性。即类 B 是类 A 的友元，则类 A 不一定是类 B 的友元，需要看类中是否有相应的声明；
   3. 友元关系 **不具有传递性**。即类 B 是类 A 的友元，类 C 是类 B 的友元，但类 C 不一定是类 A 的友元，需要看类中是否有相应的声明。
@@ -167,7 +151,58 @@
       return *this;
   }
   ```
--
+- **二元运算符：** 加减乘除膜
+  - 对象之间相加：
+    ```C++ {.line-numbers}
+    Stu operator+(Stu &a) // c = b+a; --> c = this+a
+    {
+        a.score += this->score;
+        return a;
+    }
+    ```
+  - 对象与变量相加
+    - 对象加变量
+    ```C++ {.line-numbers}
+    Stu operator+(int x)
+    {
+        Stu a;
+        a.score = this->score + x;
+        return a;
+    }
+    ```
+    - 变量加对象，且要用 `friend`
+    ```C++ {.line-numbers}
+    friend Stu operator+(const int x, Stu &a)
+    {
+        a.score += x;
+        return a;
+    }
+    ```
+- **关系运算符重载：** 诸如大于号等比较符。用 bool 定义：
+  ```C++ {.line-numbers}
+  bool operator<(Stu &a)
+  {
+      return this->score < a.score;
+  }
+  ```
+- **输入输出流重载：** 当然也适用于文件流
+  ```C++ {.line-numbers}
+  friend ostream &operator<<(ostream &out, const Stu &a)
+  {
+      out << "score: " << a.score << endl;
+      return out;
+  }
+  friend istream &operator>>(istream &in, Stu &a)
+  {
+      in >> a.score;
+      return in;
+  }
+  // to use:
+  Stu mie;
+  cin >> mie; cout << mie;
+  ```
+
+
 
 <br><br>
 
@@ -206,3 +241,7 @@
 4.  符号优先级
 
     - <img src="img/cpp_priority.png" width="70%">
+
+```
+
+```

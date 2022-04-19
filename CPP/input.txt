@@ -1,3 +1,2 @@
-C:\VScode\CPP.code\input.txt
-C:\VScode\CPP.code\input.txt
-咩咩咩啊
+081001 mie 12
+081002 fish 1234
