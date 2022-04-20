@@ -221,8 +221,7 @@ as
 select stu_id, count(*)
 from stuscore
 group by stu_id;
-select *
-from cscore;
+
 
 create or replace view csavg(stu_id, avg_score)
 as
@@ -299,3 +298,4 @@ where workid = 5;
 --
 -- -----
 
+select 'I\nlove\nmy\nfamily';

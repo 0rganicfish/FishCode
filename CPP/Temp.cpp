@@ -29,6 +29,7 @@ class Stu : public People
 {
 private:
     int score;
+    friend void prints(Stu &a);
     Stu stu()
     {
         Stu t(this->id, this->name, this->score);
@@ -54,7 +55,6 @@ public:
     {
         return a < b ? a : b;
     }
-    friend void print_stu(Stu &a);
 
 public:
     Stu operator++() // Ç°×º×ÔÔö£º++mie;
@@ -105,16 +105,21 @@ public:
     }
 };
 
+void prints(Stu &a)
+{
+    cout << a.score << endl;
+}
+
 int Stu::cnt = 0;
 int main()
 {
-
     Stu mie("081001", "mie", 12),
         fish("081002", "fish", 14);
 
     fish++, ++mie;
     Stu t = fish + 100;
-    t.print_info();
 
     Stu::min(mie, fish).print_info();
+
+    prints(mie);
 }

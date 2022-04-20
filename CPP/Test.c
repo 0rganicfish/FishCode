@@ -7,6 +7,6 @@ typedef unsigned long long ll;
 
 int main()
 {
-    printf("%f", pow(3, 4));
+    printf("%d", log(123) / log(10));
     return 0;
 }

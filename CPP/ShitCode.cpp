@@ -5,13 +5,83 @@
 #define QAQ std
 #define PLL pair<ll, ll>
 #define all(s) s.begin(), s.end()
-#define rall(s) s.rbegin(), s.rend()
+#define x first
+#define y second
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
 int main()
 {
 }
+
+//* 04-20
+
+namespace Apr_20
+{
+
+    //
+    //
+    int main()
+    {
+        class Print
+        {
+        private:
+            ostream &out;
+            char end;
+
+        public:
+            Print(ostream &o = cout, char e = ' ') : out(o), end(e) {}
+            void operator()(const string &s) const { out << s << end; }
+        };
+        string s = "mie mie";
+        Print Out(cout, '\t');
+        for (int i = 0; i < 5; ++i)
+            Out(s);
+        //
+        //
+        class Lambda
+        {
+        private:
+            char c;
+
+        public:
+            Lambda(char cc) : c(cc) {}
+            bool operator()(const char &a) const { return a == c; }
+        };
+        string s = "abandon";
+        char c = 'a';
+        cout << count_if(all(s), Lambda(c));
+    }
+    //
+    // 什么测试点。。
+    struct node
+    {
+        string name;
+        int height, weight, id;
+        static bool cmp(const node &a, const node &b)
+        {
+            return a.height < b.height;
+        }
+    };
+    int main()
+    {
+        map<int, vector<node>> su;
+        int T;
+        for (cin >> T; T--;)
+        {
+            node t;
+            cin >> t.id >> t.name >> t.height >> t.weight;
+            su[t.id].push_back(t);
+        }
+        for (auto i : su)
+            sort(all(i.y), node::cmp);
+        for (auto i : su)
+            cout << setfill('0') << setw(6) << i.x << " "
+                 << i.y.front().name << " "
+                 << i.y.front().height << " "
+                 << i.y.front().weight << endl;
+    }
+};
 
 //* 04-19
 namespace Apr_19
@@ -906,5 +976,86 @@ namespace LL
                 printf("%-5d", mpa[i][j]);
             puts("");
         }
+    }
+};
+//
+//
+//
+namespace fish
+{
+#define FOR(n, m) for (int i = n; i <= m; ++i)
+    /**
+     * Copyright (C) Fish
+     *
+     * xxx some some some
+     *
+     * @file Class.hpp
+     * @author Fish
+     * @version 0.0.1
+     * @date 2022/20/22
+     * @brief This file ... just is a file
+     */
+
+    /** @brief Fish's class */
+
+    /**
+     * @brief 这是一个 circle 类.
+     */
+    class Circle
+    {
+    private:
+        double rad, area;
+
+    public:
+        double get_rad() { return rad; };
+        double get_area() { return area; };
+        void push();
+        void calc();
+        void print();
+    };
+
+    /** @brief 输入半径 */
+    void Circle::push()
+    {
+        scanf("%lf", &rad);
+    }
+
+    /**
+     * @brief 计算 圆 的面积
+     * @param none
+     * @return no return
+     */
+    void Circle::calc()
+    {
+        area = rad * rad * PI;
+    }
+
+    /** @brief 输出 圆 的半径及面积 */
+    void Circle::print()
+    {
+        printf("Radius: %.2f, area: %.2f.\n", rad, area);
+    }
+
+    /** @brief sort 中的 cmp，以 area 小到大排序 */
+    bool cmp_area(Circle x, Circle y)
+    {
+        return x.get_area() < y.get_area();
+    }
+
+    int main()
+    {
+        Circle c[10];
+        int n;
+        cin >> n;
+
+        FOR(0, n - 1)
+        c[i].push(), c[i].calc();
+        sort(c, c + n, cmp_area);
+
+        FOR(0, n - 1)
+        c[i].print();
+
+        cin >> n;
+        return 0;
     }
 };

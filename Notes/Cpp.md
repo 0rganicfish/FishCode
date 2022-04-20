@@ -186,6 +186,7 @@
   }
   ```
 - **输入输出流重载：** 当然也适用于文件流
+
   ```C++ {.line-numbers}
   friend ostream &operator<<(ostream &out, const Stu &a)
   {
@@ -202,7 +203,45 @@
   cin >> mie; cout << mie;
   ```
 
+-
 
+<br>
+
+## Lambda 匿名函数
+
+- **定义：**
+
+  - <img src="img/cpp_lambda.png" width="70%">
+  - **捕获**
+    - 当为默认的 `[]` 时，lambda 内是不能访问当前作用域中的变量的（除了全局）
+    - 而 `[&]` 表示按引用访问，`[=]` 表示按值访问，多变量见用逗号分隔
+  - **参数列表：** 可省略，带则和普通函数差不多
+  - **可变的 `mutable`：** 默认下 lambda 是 const 的，加了这个就可以改变捕获到的值
+
+- **原理：**
+  ```C++ {.line-numbers}
+  string s = "abandon";
+  char c = 'a';
+  cout << count_if(all(s), [c](char &a)
+                { return a == c; });
+  ```
+  ↑ 就相当于定义了这么一个：
+  ```C++ {.line-numbers}
+  class Lambda
+  {
+  private:
+      char c;
+  public:
+      Lambda(char cc) : c(cc) {}
+      bool operator()(const char &a) const { return a == c; }
+  };
+  //
+  count_if(all(s), Lambda(c));
+  ```
+
+<br>
+
+> REF: [C ++ Lambda 表达式详解](https://blog.csdn.net/A1138474382/article/details/111149792)
 
 <br><br>
 
@@ -241,7 +280,3 @@
 4.  符号优先级
 
     - <img src="img/cpp_priority.png" width="70%">
-
-```
-
-```
