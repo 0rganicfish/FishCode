@@ -295,7 +295,105 @@ set workname = '生产部'
 where workid = 5;
 
 -- -----
---
+-- 函数
 -- -----
 
-select 'I\nlove\nmy\nfamily';
+select 0x43, cast(0x43 as unsigned) as '数字';
+set @HI = hex('HI');
+select @HI, unhex(@HI) as '字符';
+select true, false;
+select ceil(2.23);
+select Greatest(1, 23, 4, 3, 24, 23, 4, 23, 3);
+select Ln(2), log(2);
+set @x = 1000;
+select floor(rand() * @x);
+select Round(1.643);
+select Length('miemie');
+Select Insert('mie.com', 1, 3, 'fish');
+Set @x = 123.345;
+Set @y = Format(@x, 2);
+Select @y;
+
+Set @s1 = 'mie.com', @s2 = 'fish';
+Set @ans = Insert(@s1, 1, Locate('.', @s1) - 1, @s2);
+Set @ans = 'mie.fish.com';
+Select Substr(@ans, 5);
+Select Position(@s2 in @ans);
+Select Locate('fish', 'mie.fish.com');
+
+Select Curdate(), -- 年-月-日
+       Curtime(), -- 时-分-秒
+       Current_timestamp(); -- 年月日时分秒
+
+Set @t = 6;
+select Adddate(Curdate(), 2000),
+       Addtime(Curtime(), @t);
+SELECT Hour(CURRENT_TIMESTAMP());
+SELECT Datediff(ADDDATE(CURRENT_TIMESTAMP(), 100), CURRENT_TIMESTAMP());
+SELECT Date_format(CURRENT_TIMESTAMP(), '%Y年%m月%d日 | %h时%m分%s秒');
+
+Select DayofMonth(Curdate()),
+       DayofWeek(Curdate()),
+       DayofYear(Curdate()),
+       Dayname(Curdate());
+
+Select Extract(day From CURRENT_TIMESTAMP());
+
+SELECT UNIX_TIMESTAMP();
+
+-- ----
+-- 存储
+-- ----
+
+delimiter //
+create procedure fishpro()
+begin
+    select stu_id, stu_name, born
+    from stuinfo;
+end //
+delimiter ;
+call fishpro();
+
+delimiter //
+create procedure mie(in a int)
+begin
+    select a;
+end //
+set @in_a = 123;
+call mie(@in_a);
+select @in_a;
+delimiter ;
+
+delimiter //
+create procedure fishstu(in in_sex int)
+begin
+    select stu_id, stu_name, sex
+    from stuinfo
+    where sex = in_sex;
+end //
+delimiter ;
+call fishstu(1);
+call fishstu(0);
+
+delimiter //
+create procedure fishsex(in in_sex int,
+                         out sex_total int)
+begin
+    select count(sex)
+    into sex_total
+    from stuinfo
+    where sex = in_sex;
+end //
+call fishsex(1, @sex1);
+select @sex1;
+
+delimiter //
+create procedure counts(INOUT cnt int, IN x int)
+begin
+    set cnt = cnt + x;
+end //
+set @a = 0;
+call counts(@a, 12);
+select @a;
+delimiter ;
+
