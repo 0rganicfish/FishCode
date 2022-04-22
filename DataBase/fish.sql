@@ -314,16 +314,19 @@ Set @x = 123.345;
 Set @y = Format(@x, 2);
 Select @y;
 
+Select Now(), sysdate(), time_to_sec(curtime());
+SELECT BINARY ('miemie');
+
 Set @s1 = 'mie.com', @s2 = 'fish';
 Set @ans = Insert(@s1, 1, Locate('.', @s1) - 1, @s2);
 Set @ans = 'mie.fish.com';
 Select Substr(@ans, 5);
-Select Position(@s2 in @ans);
+-- Select Position(@s2 in @ans);
 Select Locate('fish', 'mie.fish.com');
 
 Select Curdate(), -- 年-月-日
        Curtime(), -- 时-分-秒
-       Current_timestamp(); -- 年月日时分秒
+       Current_timestamp();
 
 Set @t = 6;
 select Adddate(Curdate(), 2000),
@@ -338,8 +341,22 @@ Select DayofMonth(Curdate()),
        Dayname(Curdate());
 
 Select Extract(day From CURRENT_TIMESTAMP());
-
 SELECT UNIX_TIMESTAMP();
+
+Select VERSION();
+
+Select case
+           WHEN '' Then ''
+           When ' ' Then ' '
+           else ';'
+           end;
+
+select CONNECTION_ID();
+select user();
+
+select *
+from stuinfo
+into outfile 'd:/mie.csv';
 
 -- ----
 -- 存储
@@ -396,4 +413,78 @@ set @a = 0;
 call counts(@a, 12);
 select @a;
 delimiter ;
+
+
+delimiter //
+drop procedure if exists mie;
+create procedure mie(in n int)
+begin
+    drop table if exists even;
+    create table if not exists even
+    (
+        even_num int not null
+    ) ENGINE = InnoDb;
+    set @x = 1;
+    loop_mie :
+    loop
+        if @x > n then
+            leave loop_mie;
+        elseif (@x % 2 = 0) then
+            insert into even
+                value (@x);
+        end if;
+        set @x = @x + 1;
+    end loop;
+    select even_num from even;
+end //
+call mie(20);
+
+
+-- ----
+-- 实验八
+-- ----
+
+Select Current_timestamp() '系统时间';
+
+Set @num = (
+    Select id
+    From employees
+    where name = '陈林琳');
+select @num;
+
+set @user1 = 010008;
+select *
+from employees
+where id = @user1;
+
+set @female = 0;
+select name, phone
+from employees
+where sex = @female;
+
+select 199 - 205, 0.14 - 0.1, -23.4, 1.2 + 3.09345;
+select 12 % 3, -32 % 7, 7 % 0;
+select '18AA' + '1', 'AA18' + 1, '11x' * 3 * 'qwe';
+# select 8 = '8ab', '8' = '8ab';
+# select 5<>5,5<>6,'a'<>'a','5a'<>'5b',NULL<>NULL, 0<>NULL, 0<>0;
+select (1 = 1) XOR (4 = 3), (1 < 2) XOR (9 < 10);
+
+select income
+from salary;
+
+select *
+from employees
+where degree = '本科'
+  and sex = 0;
+
+select date_add('2019-05-06', interval 33 day)  '33天后',
+       date_sub('2019-05-06', interval 2 month) '2月前';
+
+select now();
+select localtime;
+SELECT NOW(), SLEEP(3), NOW();
+SELECT SYSDATE(), SLEEP(3), SYSDATE();
+
+select utc_time;
+select convert_tz(utc_time, '+0:00', '+8:00');
 

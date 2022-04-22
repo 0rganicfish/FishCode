@@ -6,26 +6,13 @@
 
 **当然，杂而水**
 
-> 但是还有很多要做的事没能去做<br>
-  可是我也没办法 闭上了双眼<br>
-  逃避这无趣的生活吧 ♪<br>
-  ♪ ♪ ♪<br>
-  昨晚没有睡好 两眼惺忪 看闹钟没响<br>
-  又是一个不错的理由对吧 转身睡了吧<br>
-  昨日的重担又要 压在今日上<br>
-  可是最后还得做吧 ♪<br>
-
-<br>
-
----
-
 ## 前端
 
 ### Web 端
 
 - HTML 及 CSS [HTML.note](Notes/Web/HTML.md)
 - JS [JavaScript.note](Notes/Web/JavaScript/JavaScript.md)
-- 练手项目 [HTML | CSS | JS](HTML/Learn2Try/Readme.md)
+- [HTML | CSS | JS](HTML/Learn2Try/Readme.md)
 - HTTP 协议 及 [HTTP.md](Notes/Web/HTTP.md)
 
 ### Android

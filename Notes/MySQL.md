@@ -47,12 +47,17 @@
 ### Insert into
 
 - **语法：**
-  ```sql {.line-numbers}
-  Insert into table1
-  value (column1, column2, ...),
-        (column1, column2, ...);
-  ```
-- **结果：** 插入数据
+  - 第一种形式无需指定要插入数据的列名，只需提供被插入的值即可：
+    ```sql {.line-numbers}
+    Insert into table1
+    VALUES (value1, value2, value3,...);
+    ```
+  - 第二种形式需要指定列名及被插入的值：
+    ```sql {.line-numbers}
+    Insert into table1 (column1, column2, column3,...)
+    VALUES (value1, value2, value3,...);
+    ```
+- **结果：** 向表中插入新纪录
 
 ### Select
 
@@ -108,21 +113,6 @@
   Select table1 From column1
   Order by rand() Limit n;
   ```
-
-### Insert into
-
-- **语法：**
-  - 第一种形式无需指定要插入数据的列名，只需提供被插入的值即可：
-    ```sql {.line-numbers}
-    Insert into table1
-    VALUES (value1, value2, value3,...);
-    ```
-  - 第二种形式需要指定列名及被插入的值：
-    ```sql {.line-numbers}
-    Insert into table1 (column1, column2, column3,...)
-    VALUES (value1, value2, value3,...);
-    ```
-- **结果：** 向表中插入新纪录
 
 ### update
 
@@ -196,7 +186,7 @@
 ### Join
 
 - **结果：** 基于多个表之间 **相同的内容** 相联动
-- **INNER Join**
+- **inner join**
 
   - **语法：**
     ```sql {.line-numbers}
@@ -273,8 +263,7 @@
 
 ### 数字函数
 
-- `Avg()`：求得平均数
-- `Sum()`：求和
+- `Avg()`：求得平均数，`Sum()`：求和
 - `Ceil()`：向大取整； `floor`：向小取整
 - `Greatest()`：列表中的最大值； `Least`：最小值
 - `Floor(Rand() * @x)`：0 到 @x 之间的随机数
@@ -304,14 +293,17 @@
   ```sql {.line-numbers}
   Select Curdate(), -- 年-月-日
          Curtime(), -- 时-分-秒
+         Now(), -- 静态的时间
+         sysdate(), -- 动态获取的时间
+         localtime,
          Current_timestamp(); -- 年月日时分秒
   -- 时间戳：
   Select Unix_timestamp();
   ```
-- 加时间：
+- 加减时间：
   ```sql {.line-numbers}
-  Select Adddate(Curdate(), @t),
-        Addtime(Curtime(), @t); --加秒数，且只能小于 60
+  Select  date_sub(t, interval x day | hour ...),
+          date_add(t, interval x day | hour ...);
   ```
 - 提取时间：
   ```sql {.line-numbers}
@@ -326,28 +318,38 @@
   ```
 - 今天是第几？
   ```sql {.line-numbers}
-  Select DayofMonth(Curdate()), -- 本月第几天
-        DayofWeek(Curdate()), -- 本周第几天
-        DayofYear(Curdate()), -- 今年第几天
-        Dayname(Curdate()); -- 今天星期几
+  Select DayofMonth(t), -- 本月第几天
+        DayofWeek(t), -- 本周第几天
+        DayofYear(t), -- 今年第几天
+        Dayname(t), -- 今天星期几
+        Monthname(t); -- 今天几月
   ```
 - 格式化输出时间
   ```sql {.line-numbers}
   Select Date_format(t, '%Y年%m月%d日 %h时%m分%s秒');
   -- 格式化时间戳：
   Select From_unixtime(stamp, s);
+  -- 字符串到时间
+  Select str_to_date(str, 'format');
   ```
 
 ### 高级函数
 
-- if 函数
+- **if 函数**
   - **语法：**
     ```sql {.line-numbers}
     if (exp1, ret1, ret2)
     ```
   - **结果：** 如果 exp1 为 true 则返回 ret1，否则返回 ret2
+- **Cast**：类型转换
+  ```sql {.line-numbers}
+  Cast('mie' as Binary | Decimal | Char |
+                Signed | Unsigned | Date |
+                Datetime Time);
+  ```
+- **Conv(x, a, b)：** 将 a 进制的 x 转为 b 进制
 
-<br><br>
+  <br><br>
 
 ## 存储过程
 
@@ -403,6 +405,58 @@
     set @a = 0;
     call counts(@a, 12);
     Select @a --12
+    ```
+
+### 语句
+
+- **判断**
+
+  - **if**
+    ```sql {.line-numbers}
+    if exp1
+    then xx;
+    elseif exp2
+    then xx;
+    else xx;
+    end if;
+    ```
+  - **case**
+    ```sql {.line-numbers}
+    case
+      when exp1 then xx
+      when exp2 then xx
+      else xx
+      end;
+    ```
+
+- **循环：**
+
+  - **while**
+    ```sql {.line-numbers}
+    while exp do
+      xx;
+    end while;
+    ```
+  - **repeat**
+    ```sql {.line-numbers}
+    repeat
+      xx;
+    until exp
+    end repeat;
+    ```
+  - **loop**
+    ```sql {.line-numbers}
+    loop_name:
+    loop
+      if exp1 then
+        xx;
+      elseif exp2 then
+        leave loop_name; -- break
+      elseif exp3 then
+        iterate loop_name; -- continue
+      end if;
+      xx;
+    end loop;
     ```
 
 <br><br>

@@ -5,8 +5,6 @@
 #define QAQ std
 #define PLL pair<ll, ll>
 #define all(s) s.begin(), s.end()
-#define x first
-#define y second
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
@@ -14,13 +12,115 @@ int main()
 {
 }
 
+//* 04-22
+namespace Apr_22
+{
+    class Complex
+    {
+    private:
+        double x, y;
+
+    public:
+        Complex(double _x, double _y) : x(_x), y(_y) {}
+        Complex() {}
+
+    public:
+        Complex operator-()
+        {
+            return Complex(-x, -y);
+        }
+        Complex operator+(const Complex &a)
+        {
+            return Complex(a.x + x, a.y + y);
+        }
+        friend istream &operator>>(istream &in, Complex &a)
+        {
+            return in >> a.x >> a.y;
+        }
+        friend ostream &operator<<(ostream &out, const Complex &a)
+        {
+            return out << "(" << a.x << ", " << a.y << ")" << endl;
+        }
+    };
+
+    int main()
+    {
+        Complex a, b;
+        cin >> a >> b;
+        cout << a + b << a + (-b) << b;
+    }
+    //
+    //
+    //
+    class Donator
+    {
+    private:
+        string name;
+        float money; //单位：元
+    public:
+        void setName(string _name);
+        void setMoney(float _money);
+        string getName() { return name; }
+        float getMoney() { return money; }
+
+        /* 你编写的代码将被嵌入这里*/
+        static float totalMoney;
+        static void printTotal()
+        {
+            cout << "total:" << totalMoney << endl;
+        }
+
+        friend string getMaxName(const Donator a[], const int n)
+        {
+            float maxx = 0;
+            string ans;
+            for (int i = 0; i < n; ++i)
+                if (a[i].money > maxx)
+                    maxx = a[i].money, ans = a[i].name;
+            return ans;
+        }
+    };
+    void Donator::setMoney(float _money)
+    {
+        money = _money, totalMoney += _money;
+    }
+    void Donator::setName(string _name)
+    {
+        name = _name;
+    }
+    float Donator::totalMoney = 0;
+
+    //读取n个捐款人的姓名和捐款额
+    void read(Donator dt[], int n)
+    {
+        string name;
+        float money;
+        for (int i = 0; i < n; i++)
+        {
+            cin >> name >> money;
+            dt[i].setName(name);
+            dt[i].setMoney(money);
+        }
+    }
+
+    int main()
+    {
+        int n;
+        cin >> n;                   //输入本批次将参与的捐款人数
+        cin >> Donator::totalMoney; //输入目前已有的捐款总额
+        Donator::printTotal();
+        Donator d[n];
+        read(d, n);
+        Donator::printTotal();
+        cout << getMaxName(d, n) << endl; //输出本批次中捐款最高者姓名
+        return 0;
+    }
+};
+
 //* 04-20
 
 namespace Apr_20
 {
-
-    //
-    //
     int main()
     {
         class Print
@@ -54,6 +154,8 @@ namespace Apr_20
     }
     //
     // 什么测试点。。
+#define x first
+#define y second
     struct node
     {
         string name;
