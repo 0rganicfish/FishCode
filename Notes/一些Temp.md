@@ -22,18 +22,24 @@ void welcome()
 }
 ```
 
+<br>
+
 ## JavaScript
 
 ### UP 的新动态
 
 ```JavaScript {.line-numbers}
-var upname = document.getElementsByClassName("user-name"),
-  len = upname.length;
-console.log("共有", len, "位 up 主更新了动态。分别是：");
-for (var i = 0; i < len; ++i) {
-  console.log(upname[i].innerText);
-}
-// 没去重
+var upname = document.getElementsByClassName("bili-dyn-title"),
+	up = new Set()
+
+upname.forEach((element) => {
+	up.add(element.innerText)
+})
+
+console.log("共有", up.size, "位 up 主更新了动态。分别是：")
+up.forEach((element) => {
+	console.log(element)
+})
 ```
 
 ### 时间暂停！
@@ -56,5 +62,7 @@ function getTab(key) {
         return unescape(r[2]);
     return null;
 ```
+
+<br>
 
 ## Python

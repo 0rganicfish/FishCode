@@ -1,12 +1,23 @@
 <?php
 const EOL = "\n";
 
-$dd = 23.3424;
-echo '$dd is ', $dd, EOL, EOL;
 
-$a = [1, 23, "55"];
+$dd = 23.3424;
+echo '$dd is ', "$dd mie", PHP_EOL, EOL;
+// printf("\$dd is %f desu \n", $dd);
+
+
+$aa = [
+    12 => 23,
+    'mie' => 123
+];
+
+var_dump($aa);
+
+$a = [1, 23, "55mie"];
 $a[] = 4;
 //var_dump($a);
+
 print_r($a);
 echo EOL;
 //unset($a[2]);

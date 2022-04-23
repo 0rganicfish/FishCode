@@ -414,7 +414,6 @@ call counts(@a, 12);
 select @a;
 delimiter ;
 
-
 delimiter //
 drop procedure if exists mie;
 create procedure mie(in n int)
@@ -438,7 +437,6 @@ begin
     select even_num from even;
 end //
 call mie(20);
-
 
 -- ----
 -- 实验八
@@ -488,3 +486,10 @@ SELECT SYSDATE(), SLEEP(3), SYSDATE();
 select utc_time;
 select convert_tz(utc_time, '+0:00', '+8:00');
 
+-- ----
+--
+-- ----
+
+show columns from stuinfo;
+show tables;
+describe stuinfo;

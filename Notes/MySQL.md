@@ -413,20 +413,24 @@
 
   - **if**
     ```sql {.line-numbers}
-    if exp1
-    then xx;
-    elseif exp2
-    then xx;
-    else xx;
+    if exp1 then
+       xx;
+    elseif exp2 then
+       xx;
+    else
+       xx;
     end if;
     ```
   - **case**
     ```sql {.line-numbers}
     case
-      when exp1 then xx
-      when exp2 then xx
-      else xx
-      end;
+      when exp1 then
+         xx;
+      when exp2 then
+         xx;
+      else
+         xx;
+    end;
     ```
 
 - **循环：**

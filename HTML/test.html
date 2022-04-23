@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -10,13 +11,25 @@
 </head>
 
 <body>
-<div class="form">
-    <form method="post" action="test.php">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="user_name">
-        <input type="button" value="Submit">
-    </form>
-</div>
+    <div class="form">
+        <fieldset>
+            <legend>What is your favorite meal?</legend>
+            <ul>
+                <li>
+                    <label for="soup">Soup</label>
+                    <input type="radio" checked id="soup" name="meal" value="soup">
+                </li>
+                <li>
+                    <label for="curry">Curry</label>
+                    <input type="radio" id="curry" name="meal" value="curry">
+                </li>
+                <li>
+                    <label for="pizza">Pizza</label>
+                    <input type="radio" id="pizza" name="meal" value="pizza">
+                </li>
+            </ul>
+        </fieldset>
+    </div>
 </body>
 
 </html>

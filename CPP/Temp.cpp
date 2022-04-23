@@ -113,16 +113,13 @@ void prints(Stu &a)
 int Stu::cnt = 0;
 int main()
 {
-    // Stu mie("081001", "mie", 12),
-    //     fish("081002", "fish", 14);
+    Stu mie("081001", "mie", 12),
+        fish("081002", "fish", 14);
 
-    // fish++, ++mie;
-    // Stu t = fish + 100;
+    fish++, ++mie;
+    Stu t = fish + 100;
 
-    // Stu::min(mie, fish).print_info();
-
-    // prints(mie);
-    string s = "1234";
-    string ss = string(s.rbegin() + 1, s.rend());
-    cout << ss;
+    Stu::min(mie, fish).print_info();
+    vector<int> a;
+    
 }
