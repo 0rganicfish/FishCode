@@ -121,5 +121,4 @@ int main()
 
     Stu::min(mie, fish).print_info();
     vector<int> a;
-    
 }
