@@ -493,3 +493,15 @@ select convert_tz(utc_time, '+0:00', '+8:00');
 show columns from stuinfo;
 show tables;
 describe stuinfo;
+
+select id, income from salary
+where income in (
+    select income from salary
+    group by income
+    having count(*) > 1);
+
+
+select salary.id, salary.income
+from salary
+    join salary sa using (income)
+where salary.id != sa.id;

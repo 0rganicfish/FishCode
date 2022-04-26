@@ -215,6 +215,14 @@
 - **结果：** 列别名则为展示表格时的表头名。别名主要是为了方便
 - 如果别名中有空格，则用 `' '` 括起来
 - `As` 是可选的
+- 表别名就可当做是 一个临时表：
+  ```sql {.line-numbers}
+  -- 查询 income 相同的员工
+  select salary.id, salary.income
+  from salary
+      join salary sa using (income)
+  where salary.id != sa.id;
+  ```
 
 ### Limit | Offset
 

@@ -1,7 +1,8 @@
+
 // 1 引入
-const mysql = require("mysql")
+import { createConnection } from "mysql"
 // 2 创建链接配置
-const conn = mysql.createConnection({
+const conn = createConnection({
   host: "localhost", // 主机名 （服务器地址）
   user: "root", //用户名
   password: "fish", // 密码

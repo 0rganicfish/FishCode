@@ -1,21 +1,21 @@
 {
-  "C_Cpp_Runner.cCompilerPath": "C:\\CodePath\\mingw64\\bin\\gcc.exe",
-  "C_Cpp_Runner.cppCompilerPath": "C:\\CodePath\\mingw64\\bin\\g++.exe",
-  "C_Cpp_Runner.debuggerPath": "C:\\CodePath\\mingw64\\bin\\gdb.exe",
-  "C_Cpp_Runner.makePath": "C:\\CodePath\\mingw64\\bin\\make.exe",
-  "C_Cpp_Runner.warnings": [
-    "-Wall",
-    "-Wextra",
-    "-Wpedantic"
-  ],
-  "C_Cpp_Runner.compilerArgs": [],
-  "C_Cpp_Runner.includePaths": [],
-  "C_Cpp_Runner.linkerArgs": [],
-  "C_Cpp_Runner.cStandard": "",
-  "C_Cpp_Runner.cppStandard": "",
-  "C_Cpp_Runner.excludeSearch": [],
-  "C_Cpp_Runner.enableWarnings": true,
-  "C_Cpp_Runner.warningsAsError": false,
+  // "C_Cpp_Runner.cCompilerPath": "C:\\CodePath\\mingw64\\bin\\gcc.exe",
+  // "C_Cpp_Runner.cppCompilerPath": "C:\\CodePath\\mingw64\\bin\\g++.exe",
+  // "C_Cpp_Runner.debuggerPath": "C:\\CodePath\\mingw64\\bin\\gdb.exe",
+  // "C_Cpp_Runner.makePath": "C:\\CodePath\\mingw64\\bin\\make.exe",
+  // "C_Cpp_Runner.warnings": [
+  //   "-Wall",
+  //   "-Wextra",
+  //   "-Wpedantic"
+  // ],
+  // "C_Cpp_Runner.compilerArgs": [],
+  // "C_Cpp_Runner.includePaths": [],
+  // "C_Cpp_Runner.linkerArgs": [],
+  // "C_Cpp_Runner.cStandard": "",
+  // "C_Cpp_Runner.cppStandard": "",
+  // "C_Cpp_Runner.excludeSearch": [],
+  // "C_Cpp_Runner.enableWarnings": true,
+  // "C_Cpp_Runner.warningsAsError": false,
   "files.associations": {
     "chrono": "c",
     "random": "c",
@@ -93,6 +93,7 @@
     "move.h": "c",
     "c++config.h": "c"
   },
+
   "cSpell.words": [
     "aabab",
     "actlen",
@@ -165,6 +166,7 @@
     "expandmore",
     "favourite",
     "fcaller",
+    "fclose",
     "fcrossjumping",
     "fcse",
     "Fdefs",
@@ -172,12 +174,16 @@
     "fdevirtualize",
     "fdsfdsaf",
     "FEFF",
+    "feof",
     "fexpensive",
     "fgcse",
+    "fgetc",
+    "fgets",
     "fhoist",
     "fipa",
     "fishstu",
     "focusbtn",
+    "fopen",
     "foptimize",
     "forw",
     "fout",
@@ -200,6 +206,7 @@
     "herf",
     "hesdings",
     "hoverable",
+    "htmlspecialchars",
     "Huaihua",
     "huic",
     "imager",
@@ -300,6 +307,7 @@
     "stdlib",
     "stod",
     "stringstream",
+    "stripslashes",
     "strlen",
     "struct",
     "stsrt",
@@ -330,6 +338,8 @@
     "Wordle",
     "wuxiuran",
     "xlink",
+    "xmlhttp",
+    "XMLHTTP",
     "yahei",
     "Yahei",
     "yper",
@@ -337,34 +347,5 @@
     "zhiyin"
   ],
   "C_Cpp.errorSquiggles": "Enabled",
-  "cmake.configureOnOpen": false,
-  "liveServer.settings.port": 81,
-  "sqltools.connections": [
-    {
-      "mysqlOptions": {
-        "authProtocol": "default"
-      },
-      "previewLimit": 50,
-      "server": "localhost",
-      "port": 3306,
-      "driver": "MySQL",
-      "name": "fish",
-      "database": "fish",
-      "username": "root",
-      "password": "fish"
-    },
-    {
-      "mysqlOptions": {
-        "authProtocol": "default"
-      },
-      "previewLimit": 50,
-      "server": "localhost",
-      "port": 3306,
-      "askForPassword": true,
-      "driver": "MySQL",
-      "name": "fishfish",
-      "database": "fishfish",
-      "username": "root"
-    }
-  ]
+  "liveServer.settings.port": 81
 }

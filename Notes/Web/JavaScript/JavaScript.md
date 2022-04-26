@@ -1,12 +1,13 @@
 <p style="font-size: 40px; color: #fff"><b>JavaScript</b></p>
 
 - **外链**
-  - [README.md](../../README.md)
+  - [README](../README.md)
   - [现代 JavaScript 教程](https://zh.javascript.info/)
   - [MDN 官方文档](https://developer.mozilla.org/zh-CN/)
   - [HTML.note](../HTML.md)
-  - [DOM,note](DOM.md)
-    [TOC]
+  - [DOM.note](DOM.md)
+
+[TOC]
 
 <br><hr>
 
@@ -267,7 +268,7 @@
 
 <br>
 
-### for (.. of ..) 遍历
+### for 遍历
 
 - 纯对象是不能用 `for of` 遍历的(`myObj is not iterable`)，需要制定遍历的对象（值或键）
 
@@ -476,6 +477,14 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 - **方法**
   - `set.add(value)` : 添加值
   - 其他的和 map 类似
+
+<br>
+
+### 正则表达式
+
+- 
+
+> Ref: [MDN 中的正则](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
 <br>
 

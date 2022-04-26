@@ -14,7 +14,7 @@
     echo '<p>mie? miemie!</p>';
     echo '<p>', "Hello! ", $_POST["name"], '</p><br>';
 
-
+    echo $_SERVER['DOCUMENT_ROOT'];
 
 
     ?>

@@ -43,3 +43,5 @@ function multi($a, $b): int //非匿名函数必须声明函数的返回类型
     return $a * $b;
 }
 echo multi(3, 4), EOL;
+
+

@@ -1,6 +1,6 @@
 <p style="font-size: 40px; color: #fff"><b>PHP</b></p><br>
 
-- [README](../README.md)
+- [README](README.md)
 
 [TOC]
 
@@ -8,8 +8,8 @@
 
 ### 一些......
 
-- PHP 是**弱类型语言**，变量类型在运行时确定，所以不需要声明数据类型。另外，PHP 变量的声明和初始化是一步完成的，不需要也不支持单独的声明语句。
-
+- PHP 是**弱类型语言**，变量类型在运行时确定，所以不需要声明数据类型。且**变量类型是动态**的
+- 变量名区分大小写，**但** 函数却不区分大小写。两者还可以相等但不建议
 - **输出：**
   - `echo '$d is: ', "$d desu;", EOL` 中，单引号的变量输出变量名，双引号的输出变量值
   - 会输出到终端或浏览器页面上
@@ -42,9 +42,47 @@
 - 添加键值可直接用赋值：`$a['new'] = 'mie';`
   删除键值：`unset($a['key']);`，但下标并不会重新分配
 
-- 
-
 <br><br>
+
+### 文件操作
+
+- **语法：**
+  ```php {.line-numbers}
+  $file = fopen('name', 'mode'); // 打开文件
+  fclose($file); // 关闭文件
+  fgets($file); // 读取行
+  fgetc($file); //读取字符
+  fwrite($file, $mie); //写入
+  feof($file); // 文件尾 (return bool)
+  ```
+
+- **读写模式：**
+  - <img src="img/php_file.png" width="70%">
+
+<br>
 
 ## For Web
 
+### 表单
+
+- 在 <a href="html.md#表单"><b>HTML</b></a> 中的表单
+- **获取：** 且返回的是数组
+  ```php {.line-numbers}
+  $_POST[name] | $_GET | $_REQUEST // 必须全大写
+  ```
+- **常见表单元素处理：**
+  至于表单元素中的文本框文本域一类的元素，都是直接将元素的 name 属性值作为**键**，用户填写的信息作为**值**，发送到服务端
+
+  - 将 **多选** 或是 **下拉选项** 中将选项返回成数组，则 name 后加上 `[ ]`： `<input name="fish[]">`
+  - 防注入的表单验证：
+    ```php {.line-numbers}
+    function test_input($data): string
+    {
+        return htmlspecialchars(stripslashes(trim($data)));
+    }
+    ```
+    > `trim`：去除没必要的空格、换行
+    > `stripslashes`：去除反斜杠
+    > `htmlspecialchars`：转为 HTML 实体符号
+
+- 咩

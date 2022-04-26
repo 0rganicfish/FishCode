@@ -1,6 +1,6 @@
 <p style="font-size: 40px; color: #fff"><b>CSS | Less</b></p><br>
 
-- [README](../../README.md)
+- [README](../README.md)
 - [HTML](HTML.md)
 
 [TOC]

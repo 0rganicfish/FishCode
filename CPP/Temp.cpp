@@ -15,48 +15,57 @@ public:
     People(){};
     People(string id_, string name_) : id(id_), name(name_){};
 
-public:
-    void set_name(string name_) { name = name_; }
-    void set_id(string id_) { this->id = id_; }
-    string get_name() const { return name; }
-    string get_id() const { return this->id; }
-
 protected:
     string id, name;
+};
+
+class Tea : public People
+{
+private:
+    int salary;
+
+public:
+    Tea() {}
+    Tea(int _salary) : salary(_salary) {}
+    Tea(string _id, string _name, int _salary) : People(_id, _name), salary(_salary) {}
+
+public:
+    friend ostream &operator<<(ostream &out, const Tea &a)
+    {
+        return out << "id: " << a.id << endl
+                   << "name: " << a.name << endl
+                   << "salary: " << a.salary << endl
+                   << endl;
+    }
+    friend istream &operator>>(istream &in, Tea &a)
+    {
+        return in >> a.id >> a.name >> a.salary;
+    }
 };
 
 class Stu : public People
 {
 private:
     int score;
-    friend void prints(Stu &a);
-    Stu stu()
-    {
-        Stu t(this->id, this->name, this->score);
-        return t;
-    }
 
-public:
-    Stu() { ++cnt; };
-    Stu(int score_) : score(score_) { ++cnt; };
-    Stu(string id_, string name_, int score_) : People(id_, name_), score(score_) { ++cnt; };
+public: //构造析构区
+    Stu(){};
+    Stu(int score_) : score(score_){};
+    Stu(string id_, string name_, int score_) : People(id_, name_), score(score_){};
 
-public:
-    static int cnt;
+public: //普通的public区
     void set_score(int score_) { score = score_; }
-    int get_score() const { return score; }
-    void print_info()
-    {
-        cout << "id: " << this->id << endl
-             << "name: " << this->name << endl
-             << "score: " << this->score << endl;
-    }
-    static Stu min(Stu &a, Stu &b)
+    int Score() const { return score; }
+    static Stu min(const Stu a, const Stu b)
     {
         return a < b ? a : b;
     }
 
-public:
+public: //重载区
+    bool operator<(const Stu &a) const
+    {
+        return score < a.score;
+    }
     Stu operator++() // 前缀自增：++mie;
     {
         score++;
@@ -64,61 +73,54 @@ public:
     }
     Stu operator++(int) // 后缀自增：mie++:
     {
-        ++*this;
-        return *this;
+        return ++*this;
     }
-    Stu operator+(Stu &a) // 对象之间相加 --> this + a
+    Stu operator+(const Stu a) const // 对象之间相加 --> this + a
     {
-        a.id = this->id + " | " + a.id,
-        a.name = this->name + " | " + a.name,
-        a.score = this->score + a.score;
-        return a;
+        return Stu(name + " | " + a.name,
+                   id + " | " + a.id,
+                   score + a.score);
     }
-    Stu operator+(int x)
+    Stu operator+(const int x) const //不改变原来值的尽量加const修饰
     {
-        Stu ans = stu();
-        ans.score += x;
-        return ans;
+        return Stu(score + x);
     }
-    friend Stu operator+(int x, Stu &stu)
+    Stu operator+=(const Stu a) //与对象之间的 +=
     {
-        stu.score += x;
-        return stu;
+        return *this = a + *this;
     }
-
-    bool operator<(Stu &a)
+    Stu operator+=(const int x)
     {
-        return this->score < a.score;
+        return *this = Stu(name, id, score + x);
+    }
+    friend Stu operator+(const int x, const Stu stu)
+    {
+        return Stu(x + stu.score);
     }
 
-    friend ostream &operator<<(ostream &out, Stu &a)
+    friend ostream &operator<<(ostream &out, const Stu &a)
     {
-        out << "id: " << a.id << endl
-            << "name: " << a.name << endl
-            << "score: " << a.score << endl;
-        return out;
+        return out << "id: " << a.id << endl
+                   << "name: " << a.name << endl
+                   << "score: " << a.score << endl
+                   << endl;
     }
     friend istream &operator>>(istream &in, Stu &a)
     {
-        in >> a.id >> a.name >> a.score;
-        return in;
+        return in >> a.id >> a.name >> a.score;
     }
 };
 
-void prints(Stu &a)
-{
-    cout << a.score << endl;
-}
-
-int Stu::cnt = 0;
 int main()
 {
     Stu mie("081001", "mie", 12),
         fish("081002", "fish", 14);
-
     fish++, ++mie;
-    Stu t = fish + 100;
+    mie += 3;
 
-    Stu::min(mie, fish).print_info();
-    vector<int> a;
+    cout << "The min is :\n"
+         << Stu::min(mie, fish);
+
+    Tea sea("022001", "sea", 2022);
+    cout << sea;
 }

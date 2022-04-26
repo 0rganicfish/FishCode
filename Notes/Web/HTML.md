@@ -1,6 +1,6 @@
 <p style="font-size: 40px; color: #fff"><b>HTML</b></p>
 
-- [README.md](../../README.md)
+- [README](README.md)
 - [CSS | Less](CSS.md)
 - [JavaScript.note](JavaScript/JavaScript.md)
 - [大杂烩](../../HTML/sample.html)
@@ -17,7 +17,19 @@
 
 <br>
 
+## Skipping
+
 ## 表单
+
+- **形式：**
+
+  ```html {.line-numbers}
+  <form method="" action="">
+    <input type="" name="" />
+  </form>
+  ```
+
+  > `form` 中的 `method` 的 GET 方法通常只用于搜索查询，而不是写入数据
 
 ### input
 
@@ -32,8 +44,7 @@
   | checked | type 为 radio 或 checkbox 时，指定按钮是否是被选中 |
 
 - **type** 的类型
-  <img src="img/html_input.png" width="90%">
-
+- <img src="img/html_input.png" width="90%">
 
 ### button
 
@@ -42,13 +53,13 @@
 - 下拉内容
   ```html {.line-numbers}
   <form method="post" action="test.php">
-  	<span>选一个水果：</span>
-  	<select id="groups" name="groups">
-  		<option>Banana</option>
-  		<option>Cherry</option>
-  		<option>Lemon</option>
-  	</select>
+    <span>选一个水果：</span>
+    <label for="groups">
+      <select id="groups" name="groups">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Lemon</option>
+      </select>
+    </label>
   </form>
   ```
-
-<br>

@@ -1,7 +1,10 @@
-# 只是一些没地方放的 Temp 码
+<p style="font-size: 35px; color: #fff"><b>只是一些没地方放的 Temp 码</b></p><br>
 
 - [README](../README.md)
-  [TOC]
+
+[TOC]
+
+<br>
 
 ## C++
 
@@ -26,11 +29,32 @@ void welcome()
 
 ## JavaScript
 
+### 隐藏表单的参数
+
+```html {.line-numbers}
+<div>
+  <form id="fish">
+    <label>
+      Name: <input type="text" name="name" /><br />
+      E-Mail: <input id="email" type="email" name="email" /><br />
+    </label>
+    <input type="submit" /><br />
+  </form>
+  <script>
+    ;(() => {
+      let form = document.getElementById("fish")
+      form.action = "fish.php"
+      form.method = "post"
+    })()
+  </script>
+</div>
+```
+
 ### UP 的新动态
 
 ```JavaScript {.line-numbers}
 var upname = document.getElementsByClassName("bili-dyn-title"),
-	up = new Set()
+  up = new Set()
 
 upname.forEach((element) => {
 	up.add(element.innerText)
