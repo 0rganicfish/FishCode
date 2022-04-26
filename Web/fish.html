@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset='UTF-8'>
+    <link rel='stylesheet' href='sample.css'>
+    <link rel='icon' href=''>
+    <title>fish</title>
+</head>
+<body>
+
+<div>
+    <form id="fish">
+        <label>
+            Name: <input type="text" name="name"><br>
+            E-Mail: <input id="email" type="email" name="email"><br>
+        </label>
+        <label>
+            <input type="file"><br>
+        </label>
+        <input type="submit"><br>
+    </form>
+    <script>
+        (() => {
+            let form = document.getElementById('fish');
+            form.action = 'fish.php';
+            form.method = 'post';
+        })();
+    </script>
+</div>
+
+<div>
+    <button id="ajaxButton" type="button">Make a request</button>
+    <script src="fish.js"></script>
+</div>
+</body>
+</html>
