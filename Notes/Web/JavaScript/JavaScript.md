@@ -1,11 +1,11 @@
 <p style="font-size: 40px; color: #fff"><b>JavaScript</b></p>
 
 - **外链**
-  - [README](../README.md)
+  - [README.md](../README.md)
   - [现代 JavaScript 教程](https://zh.javascript.info/)
   - [MDN 官方文档](https://developer.mozilla.org/zh-CN/)
-  - [HTML.note](../HTML.md)
-  - [DOM.note](DOM.md)
+  - [HTML.md](../HTML.md)
+  - [DOM.md](DOM.md)
 
 [TOC]
 

@@ -42,11 +42,31 @@
 - 添加键值可直接用赋值：`$a['new'] = 'mie';`
   删除键值：`unset($a['key']);`，但下标并不会重新分配
 
+- **循环：**
+
+  - 普通 for
+    ```php {.line-numbers}
+    for ($i = 0; $i < count($a); ++$i){
+        echo $i, ": ", $a[$i], EOL;
+    }
+    ```
+  - foreach
+    ```php {.line-numbers}
+    foreach ($arr as $key => $value) {
+        echo $key, ': ', $value, EOL;
+    }
+    ```
+
+- **排序：**
+  - `sort`、`asort`：按值升序
+  - `ksort`：按键升序
+
 <br><br>
 
 ### 文件操作
 
 - **语法：**
+
   ```php {.line-numbers}
   $file = fopen('name', 'mode'); // 打开文件
   fclose($file); // 关闭文件
@@ -61,9 +81,9 @@
 
 <br>
 
-## For Web
+## 表单
 
-### 表单
+### 创建表单
 
 - 在 <a href="html.md#表单"><b>HTML</b></a> 中的表单
 - **获取：** 且返回的是数组
@@ -72,7 +92,6 @@
   ```
 - **常见表单元素处理：**
   至于表单元素中的文本框文本域一类的元素，都是直接将元素的 name 属性值作为**键**，用户填写的信息作为**值**，发送到服务端
-
   - 将 **多选** 或是 **下拉选项** 中将选项返回成数组，则 name 后加上 `[ ]`： `<input name="fish[]">`
   - 防注入的表单验证：
     ```php {.line-numbers}
@@ -85,4 +104,31 @@
     > `stripslashes`：去除反斜杠
     > `htmlspecialchars`：转为 HTML 实体符号
 
-- 咩
+### 处理登录
+
+
+
+<br>
+
+## 连接 MySQL
+
+### 连接
+
+- 用 **PDO：**
+  ```php {.line-numbers}
+  $servername = "localhost";
+  $username = "root";
+  $password = "pw";
+  $con = new PDO("mysql:host=$servername;dbname=xx", $username, $password);
+  ```
+- 用 **MySQLi：**
+  ```php {.line-numbers}
+  $servername = "localhost";
+  $username = "username";
+  $password = "password";
+  $con = new  mysqli_connect($servername, $username, $password);
+  ```
+
+### PDO
+
+###

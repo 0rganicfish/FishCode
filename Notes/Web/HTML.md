@@ -2,8 +2,8 @@
 
 - [README](README.md)
 - [CSS | Less](CSS.md)
-- [JavaScript.note](JavaScript/JavaScript.md)
-- [大杂烩](../../HTML/sample.html)
+- [JavaScript.md](JavaScript/JavaScript.md)
+- [大杂烩](../../Web/sample.html)
 
 [TOC]
 

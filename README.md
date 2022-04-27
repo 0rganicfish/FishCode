@@ -1,4 +1,4 @@
-# 导航
+<p style="font-size: 40px; color: #fff"><b>导航</b></p><br>
 
 <br>
 
@@ -8,13 +8,14 @@
 
 ### Web 端
 
-- Web 的 [README](Notes/Web/README.md)
+- Web 的 [README.md](Notes/Web/README.md)
 - HTTP 协议 及 [HTTP.md](Notes/Web/HTTP.md)
-- HTML[HTML.note](Notes/Web/HTML.md)
+- HTML [HTML.md](Notes/Web/HTML.md)
 - CSS [CSS | Less](Notes/Web/CSS.md)
-- JS [JavaScript.note](Notes/Web/JavaScript/JavaScript.md)
-- [HTML | CSS | JS](HTML/Learn2Try/Readme.md)
+- JS [JavaScript.md](Notes/Web/JavaScript/JavaScript.md)
+- Ajax [Ajax.md](Notes/Web/Ajax.md)
 - PHP [PHP.md](Notes/Web/PHP.md)
+- [HTML | CSS | JS](HTML/Learn2Try/Readme.md)
 
 ### Android
 
@@ -22,18 +23,18 @@
 
 ### 桌面端
 
-- C# [C#](Notes/CSharp.md)
+- C# [C#.md](Notes/CSharp.md)
 - OpenGL
 
 ## 后端
 
-- C++ [cpp.note](Notes/Cpp.md)
+- C++ [cpp.md](Notes/Cpp.md)
 - Java [Java.md](Notes/Java.md)
 - Python [Python.md](Notes/Python.md)
 
 ## 数据库
 
-- MySQL [MySQL](Notes/MySQL.md)
+- MySQL [MySQL.md](Notes/MySQL.md)
 
 ## 其他一些......
 
@@ -43,6 +44,6 @@
 - $ \LaTeX $ [LaTeX.md](Notes/LaTeX.md)
 - 正则表达式 [Regex.md](Notes/Regex.md)
 - 数学 [HyperMath.md](Notes/HyperMath/README.md)
-- 词？ [Wordle](Notes/words.md)
+- 词？ [Wordle.md](Notes/words.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
 - **(\* ﾟ ∇ ﾟ)**
