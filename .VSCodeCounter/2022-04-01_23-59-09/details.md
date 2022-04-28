@@ -106,7 +106,7 @@ Total : 99 files,  6009 codes, 131 comments, 1479 blanks, all 7619 lines
 | [Notes/words.md](/Notes/words.md) | Markdown | 6 | 0 | 5 | 11 |
 | [Notes/一些Temp.md](/Notes/%E4%B8%80%E4%BA%9BTemp.md) | Markdown | 48 | 0 | 13 | 61 |
 | [Notes/清华_参考书目.md](/Notes/%E6%B8%85%E5%8D%8E_%E5%8F%82%E8%80%83%E4%B9%A6%E7%9B%AE.md) | Markdown | 130 | 0 | 122 | 252 |
-| [PHP/new.php](/PHP/new.php) | PHP | 2 | 0 | 0 | 2 |
+| [PHP/new.php](/Web/PHP/new.php) | PHP | 2 | 0 | 0 | 2 |
 | [Python/ddns.py](/Python/ddns.py) | Python | 45 | 5 | 11 | 61 |
 | [Python/pyy.py](/Python/pyy.py) | Python | 2 | 0 | 2 | 4 |
 | [README.md](/README.md) | Markdown | 39 | 0 | 19 | 58 |

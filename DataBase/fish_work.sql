@@ -465,7 +465,7 @@ select 12 % 3, -32 % 7, 7 % 0;
 select '18AA' + '1', 'AA18' + 1, '11x' * 3 * 'qwe';
 # select 8 = '8ab', '8' = '8ab';
 # select 5<>5,5<>6,'a'<>'a','5a'<>'5b',NULL<>NULL, 0<>NULL, 0<>0;
-select (1 = 1) XOR (4 = 3), (1 < 2) XOR (9 < 10);
+# select (1 = 1) XOR (4 = 3), (1 < 2) XOR (9 < 10);
 
 select income
 from salary;
@@ -494,14 +494,80 @@ show columns from stuinfo;
 show tables;
 describe stuinfo;
 
-select id, income from salary
+select id, income
+from salary
 where income in (
-    select income from salary
+    select income
+    from salary
     group by income
     having count(*) > 1);
 
 
 select salary.id, salary.income
 from salary
-    join salary sa using (income)
+         join salary sa using (income)
 where salary.id != sa.id;
+
+
+-- -----
+-- 实验九
+-- -----
+
+select greatest(105, 35, 12, 98, 18) 最大值,
+       least(105, 35, 12, 98, 18)    最小值;
+select floor(greatest(9.8, 1.2, -9.8, -1.2)) 最大整数,
+       ceil(least(9.8, 1.2, -9.8, -1.2))     最小整数;
+select round(truncate(1.2426889, 2))   '0',
+       round(truncate(288.1234567, 2)) '1',
+       round(truncate(0.464789, 2))    '2';
+select abs(-288)  '0'
+     , abs(-8.04) '1'
+     , abs(88)    '2'
+     , abs(0.12)  '3';
+select sign(9), sign(-9), sign(0);
+select sqrt(645), sqrt(4), sqrt(1);
+select pow(4, 4), pow(10, -3), pow(8, 0);
+select conv(55, 10, 2), conv(55, 10, 8), conv(55, 10, 16);
+
+select count(*) 人数
+from salary
+where income > 2000;
+
+select ascii('H'),
+       char(97, 98, 99);
+
+select left(address, 3)
+from employees;
+select concat('我的', '理想');
+
+select lpad('我的', 5, '*'),
+       rpad('理想', 5, '*');
+
+select TIMESTAMPDIFF(YEAR, born, CURDATE())
+from employees
+         join work using (workid)
+where workname = '研发部';
+
+select database(), version();
+
+select left(name, 1)                                        姓,
+       if(length(name) = 6, right(name, 1), right(name, 2)) 名
+from employees
+         join work using (workid)
+where workname = '研发部'
+   or workname = '财务部';
+
+
+-- ----
+--
+-- ----
+
+create table userinfo
+(
+    username varchar(255) primary key,
+    password varchar(30) not null
+) auto_increment = 0,
+  character set = utf8;
+
+insert into userinfo
+    value ('fish', 'fish');

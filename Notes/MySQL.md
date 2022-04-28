@@ -290,6 +290,7 @@
 - `Upper(s)`、`Lower(s)`：全部转为大写 | 小写
 - `Trim(s)`：去掉 s 所有的空格（也有 LTrim 和 RTrim）
 - `Substr(s, pos, len)`：返回从 pos 开始截取 s 长度为 len 的字符串
+- `left(s, len)`：截取 s 左边 len 的字符串
 - `Locate(s1, s2)`：返回 s1 在 s2 的位置
 - `Repeat(s, n)`：返回将 s 重复 n 次
 - `Reverse(s)`：返回将 s 翻转
@@ -471,6 +472,22 @@
     end loop;
     ```
 
+## 事务
+
+&emsp;&emsp; 事务有一个最显著的特征，就是它包含的所有 SQL 语句作为一个整体向数据库提交，只有所有的 SQL 语句都执行完成，整个事务才算成功，一旦某个 SQL 语句执行失败，整个事务就失败了。事务失败后需要回滚所有的 SQL 语句
+&emsp;&emsp; 事务中的所有 SQL 语句是一个整体，要么全部执行成功，要么全部执行失败
+
+- 与事务控制有关的 SQL 命令包括：
+  - BEGIN 或者 START TRANSACTION：开始事务
+  - COMMIT：提交事务
+  - ROLLBACK：回滚事务
+  - SAVEPOINT：在事务内部设置回滚标记点
+  - RELEASE SAVEPOINT：删除回滚标记点
+  - ROLLBACK TO：将事务回滚到标记点（ROLLBACK 命令的一种变形写法）
+
+&emsp;&emsp; 一个事务要么提交，要么回滚，提交意味着成功，回滚意味着失败。编写事务代码时，以 **BEGIN** 命令开头，后跟一条或者多条 SQL 语句，最后书写 **COMMIT** 或者 **ROLLBACK** 命令
+&emsp;&emsp; 事务控制命令仅能与 DML 类别的 SQL 命令一起使用，包括 INSERT、UPDATE、DELETE 和 SELECT，在创建或者删除表时不能使用事务，因为这些操作在数据库中是自动提交的。
+
 <br><br>
 
 ---
@@ -493,16 +510,9 @@
   ```
 - 新建 cmd 窗口，输入 `mysql` 即可进入
 - 更改密码
-  - 使用 MySQL 数据库：
-  ```batch {.line-numbers}
-  use mysql;
-  ```
-  - 一定要先更新权限：
-  ```batch {.line-numbers}
-  flush privileges;
-  ```
-  - 更新密码：
-  ```batch {.line-numbers}
+  ```sql {.line-numbers}
+  use mysql; -- 用 MySQL 数据库
+  flush privileges; --一定要先更新权限
   alter user 'root' @'localhost' IDENTifIED BY '新密码';
   ```
   > REF: [MySQL8 root 密码](https://blog.csdn.net/weixin_42359480/article/details/89931700)

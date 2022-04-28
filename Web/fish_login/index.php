@@ -25,33 +25,25 @@ if (isset($_SESSION['is_login'])) {
             <a href='logout.php'> 注销 </a><br>
         </div>
 
-        <div id="mysql" style="display: none;">
+        <div id="table" style="">
             <?php
-            try {
-                $db = new PDO('mysql:host=localhost;dbname=fish', 'root', 'fish');
-                $sql = 'select stu_id, stu_name, sex from stuinfo;';
-
-                $row = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-                $col = ['stu_id', 'stu_name', 'sex'];
-
-                $db = null;
-            } catch (PDOException $err) {
-                echo '连接失败！ ', $err->getMessage(), ' <br>';
-                die();
-            }
+            include 'database.php';
+            $mysql = new sql_query('localhost', 'root', 'fish', 'fish');
+            $mysql->Import('fish.sql');
+            $mysql->Run();
             ?>
             <table>
-                <tr>
-                    <th>学号</th>
-                    <th>姓名</th>
-                    <th>性别</th>
-                </tr>
+                <caption>学生信息表</caption>
                 <?php
-                foreach ($row as $rows) {
+                echo '<tr>';
+                foreach ($mysql->head as $item)
+                    echo '<th>', $item, '</th>';
+                echo '</tr>';
+
+                foreach ($mysql->arr as $row) {
                     echo '<tr>';
-                    foreach ($col as $cols) {
-                        echo '<th>', $rows[$cols], '</th>';
-                    }
+                    foreach ($mysql->head as $col)
+                        echo '<th>', $row[$col], '</th>';
                     echo '</tr>';
                 }
                 ?>
@@ -59,7 +51,7 @@ if (isset($_SESSION['is_login'])) {
         </div>
 
         <script>
-            let table = document.getElementById('mysql'),
+            let table = document.getElementById('table'),
                 play = document.getElementById('play'),
                 none = document.getElementById('none')
             play.addEventListener('click', () => {
@@ -75,7 +67,7 @@ if (isset($_SESSION['is_login'])) {
 } else {
     ?>
     <div>
-        <p>您还没有登录,请<a href='login.php'><b> 登录。</b></a></p>
+        <p>您还没有登录,请<a href='login.php'><b> 登录</b></a>。</p>
     </div>
     <?php
 }

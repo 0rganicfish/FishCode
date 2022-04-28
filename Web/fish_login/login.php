@@ -29,7 +29,6 @@
     </script>
 
     <?php
-    header('Content-type:text/html; charset=utf-8');
     session_start();
     if (isset($_POST['login'])) {
         $name = trim($_POST['name']);
