@@ -8,6 +8,104 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+//* 04-29
+namespace Apr_29
+{
+    int main()
+    {
+        float x, y, r;
+        cin >> x >> y >> r;
+        float ans = r * 2 * acos(-1);
+        cout << "Point constructor called\nCircle constructor called\n"
+             << fixed << setprecision(2) << ans << endl
+             << "Circle destructor called\nPoint destructor called\n";
+        return 0;
+    }
+    //
+    //
+    class Animal
+    {
+    protected:
+        int age;
+
+    public:
+        Animal(int _age) : age(_age) {}
+        int getAge() const { return age; }
+    };
+    class Dog : public Animal
+    {
+    private:
+        string info;
+
+    public:
+        Dog(int _age, string _info) : Animal(_age), info(_info) {}
+        void showInfor()
+        {
+            cout << "age:" << age << endl
+                 << "colcor:" << info << endl;
+        }
+    };
+
+    int main()
+    {
+        Animal ani(5);
+        cout << "age of ani:" << ani.getAge() << endl;
+        Dog dog(5, "black");
+        cout << "infor of dog:" << endl;
+        dog.showInfor();
+    }
+
+    //
+    //
+    class Student
+    {
+    public:
+        Student(int n, string nam, char s)
+        {
+            num = n;
+            name = nam;
+            sex = s;
+        }
+        ~Student() {}
+
+    protected:
+        int num;
+        string name;
+        char sex;
+    };
+
+    class Student1 : public Student
+    {
+    private:
+        int age;
+        string address;
+
+    public:
+        Student1(int _num, string _name, char _sex, int _age, string _address) : Student(_num, _name, _sex), age(_age), address(_address) {}
+
+        void show()
+        {
+            cout << "num: " << num << endl
+                 << "name: " << name << endl
+                 << "sex: " << sex << endl
+                 << "age: " << age << endl
+                 << "address: " << address << endl
+                 << endl;
+        }
+    };
+
+    /* 请在这里添加派生类定义 */
+
+    int main()
+    {
+        Student1 stud1(10010, "Wang-li", 'f', 19, "115 Beijing Road,Shanghai");
+        Student1 stud2(10011, "Zhang-fun", 'm', 21, "213 Shanghai Road,Beijing");
+        stud1.show();
+        stud2.show();
+        return 0;
+    }
+};
+
 //* 04-25
 namespace Apr_25 //主要更新了 class Stu；
 {

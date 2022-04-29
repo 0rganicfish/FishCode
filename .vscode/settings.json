@@ -215,6 +215,8 @@
     "imager",
     "imagesbox",
     "INET",
+    "infor",
+    "Infor",
     "inplace",
     "isalnum",
     "isalpha",
@@ -352,6 +354,7 @@
     "Yahei",
     "yper",
     "ypertext",
+    "Zhang",
     "zhiyin"
   ],
   "C_Cpp.errorSquiggles": "Enabled",

@@ -4,3 +4,5 @@ select stu_id   学号,
        pro_name 专业,
        credit   学分
 from stuinfo;
+##
+

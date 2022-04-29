@@ -1,7 +1,8 @@
+<?php session_start(); ?>
 <html lang="zh-cn">
 <head>
     <meta charset='UTF-8'>
-    <script src=''></script>
+    <script src='fish.js'></script>
     <link rel='stylesheet' href='../sample.css'>
     <link rel='icon' href='../img/bili.ico'>
     <title> 咩！</title>
@@ -9,7 +10,6 @@
 <body>
 
 <?php
-session_start();
 if (isset($_COOKIE['name'])) {
     $_SESSION['name'] = $_COOKIE['name'];
     $_SESSION['is_login'] = 1;
@@ -18,49 +18,44 @@ if (isset($_SESSION['is_login'])) {
     echo '<p>', "你好! ", $_SESSION['name'], '</p>';
     ?>
 
-    <div>
-        <div id="">
-            <button id="play">点击</button>
-            <button id="none">关闭</button>
-            <a href='logout.php'> 注销 </a><br>
+    <div id="app">
+        <div>
+            <input type="button" value="点击" id="play">
+            <input type="button" value="关闭" id="close">
+            <input type="button" value="注销" id="logout">
+            <form>
+                <div>
+                    <label>
+                        <span>筛选：</span>
+                        <select name="sel" onchange="Ajax(this.value)">
+                            <option value="sel=all">全选</option>
+                            <optgroup label="性别">
+                                <option value="sex=男">男</option>
+                                <option value="sex=女">女</option>
+                            </optgroup>
+                            <optgroup label="专业">
+                                <option value="pro_name=计算机">计算机</option>
+                                <option value="pro_name=通信工程">通信工程</option>
+                            </optgroup>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <span>排序：</span>
+                        <select name="sort" onchange="Ajax(this.value)">
+                            <option value="sort=stu_id">学号</option>
+                            <option value="sort=stu_name">姓名</option>
+                            <option value="sort=sex">性别</option>
+                            <option value="sort=pro_name">专业名</option>
+                            <option value="sort=credit">学分</option>
+                        </select>
+                    </label>
+                </div>
+            </form>
         </div>
 
-        <div id="table" style="">
-            <?php
-            include 'database.php';
-            $mysql = new sql_query('localhost', 'root', 'fish', 'fish');
-            $mysql->Import('fish.sql');
-            $mysql->Run();
-            ?>
-            <table>
-                <caption>学生信息表</caption>
-                <?php
-                echo '<tr>';
-                foreach ($mysql->head as $item)
-                    echo '<th>', $item, '</th>';
-                echo '</tr>';
-
-                foreach ($mysql->arr as $row) {
-                    echo '<tr>';
-                    foreach ($mysql->head as $col)
-                        echo '<th>', $row[$col], '</th>';
-                    echo '</tr>';
-                }
-                ?>
-            </table>
-        </div>
-
-        <script>
-            let table = document.getElementById('table'),
-                play = document.getElementById('play'),
-                none = document.getElementById('none')
-            play.addEventListener('click', () => {
-                table.style.display = 'flex';
-            });
-            none.addEventListener('click', () => {
-                table.style.display = 'none';
-            });
-        </script>
+        <div></div>
     </div>
 
     <?php

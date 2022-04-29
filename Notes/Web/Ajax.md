@@ -28,5 +28,5 @@
   - `async`：默认 true（异步）或 false（同步）
 - `xmlhttp.send(string)` ：将请求发送到服务器。
   - `string`：仅用于 POST 请求
-
--
+- 发送过程的状态：
+- <img src="img/Ajax_onreadystate.png" width="70%">

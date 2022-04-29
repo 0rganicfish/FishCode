@@ -3,20 +3,34 @@
 
 <head>
     <meta charset='UTF-8'>
-    <link rel='stylesheet' href='../sample.css'>
+    <link rel='stylesheet' href='fish.css'>
     <link rel='icon' href=''>
     <title>fish</title>
 </head>
 
 <body>
 
-<div>
+<div id="app">
     <form id="fish">
-        <label>
-            账号：<input type="text" name="name"><span id="err"></span><br>
-            密码：<input type="password" name="password"><span id="err"></span><br>
-        </label>
-        <input type="submit" value="提交" name="login"><br>
+        <div id="form">
+            <label>
+                <div id="input">
+                    <span>账号</span>
+                    <input type="text" name="name">
+                    <span id="err"></span>
+                </div>
+                <div id="input">
+                    <span>密码</span>
+                    <input type="password" name="password">
+                    <span id="err"></span>
+                </div>
+            </label>
+
+            <div id="submit">
+                <input type="submit" value="登录" name="login">
+                <input type="submit" value="注册" name="register">
+            </div>
+        </div>
     </form>
 
     <script>
@@ -51,11 +65,6 @@
     ?>
 
 </div>
-
-<!--<div>-->
-<!--    <button id="ajaxButton" type="button">Make a request</button>-->
-<!--    <script src="fish.js"></script>-->
-<!--</div>-->
 </body>
 
 </html>

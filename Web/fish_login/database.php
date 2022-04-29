@@ -2,8 +2,10 @@
 
 class fish_sql
 {
-    protected PDO $db;
+    public PDO $db;
+    public array $head, $arr;
     protected array $sqlarr;
+    private string $sql = "select stu_id 学号,stu_name 名字,sex 性别,pro_name 专业,credit 学分 from stuinfo ";
 
     public function __construct($host, $user, $pw, $dbname)
     {
@@ -22,13 +24,12 @@ class fish_sql
         $sqlfile = file_get_contents($url);
         if (!$sqlfile)
             exit('文件打开错误');
+
         // 将表导到数组
         $str = $sqlfile;
-        $str = preg_replace('/--.*/i', '', $str);
-        $str = preg_replace('/\/\*.*\*\/(;)?/i', '', $str);
-        $str = explode(";\n", $str);
+        $a = explode("##", $str);
 
-        foreach ($str as $v) {
+        foreach ($a as $v) {
             $v = trim($v);
             if (empty($v))
                 continue;
@@ -36,17 +37,30 @@ class fish_sql
                 $this->sqlarr[] = $v;
         }
     }
-}
 
-class sql_query extends fish_sql
-{
-    public array $head, $arr;
-
-    public function Run()
+    private function Run($str)
     {
-        foreach ($this->sqlarr as $item)
-            $this->arr = $this->db->query($item)->fetchAll(PDO::FETCH_ASSOC);
-
+        $run = $this->db->prepare($this->sql . $str);
+        $run->execute();
+        $this->arr = $run->fetchAll(PDO::FETCH_ASSOC);
         $this->head = array_keys($this->arr[0]);
+    }
+
+    public function Query($q)
+    {
+        $key = array_keys($q)[0];
+        $x = $key;
+        if ($x === "sel") {
+            $x = 1;
+            $y = 1;
+        } else
+            $y = $q[$key];
+        $sql = " where $x = '$y';";
+        $this->Run($sql);
+    }
+
+    public function Sort($q)
+    {
+        $this->Run(" order by $q ;");
     }
 }
