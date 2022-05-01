@@ -38,7 +38,7 @@
 
 ## 其他一些......
 
-- [Github](https://github.com/0rganicfish/VScode) or <a href="D:/文档/VScode/README.md">本地</a>
+- [Github](https://github.com/0rganicfish/FishCode) or <a href="D:\文档\GitHub\FishCode\README.md">本地</a>
 - 算 法 [Algorithm](Notes/Algorithm/Main.md)
 - 突然蹦出来的码 [没地方放的 Temp 码](Notes/一些Temp.md)
 - $ \LaTeX $ [LaTeX.md](Notes/LaTeX.md)
@@ -47,4 +47,3 @@
 - 词？ [Wordle.md](Notes/words.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
 - **(\* ﾟ ∇ ﾟ)**
- 
