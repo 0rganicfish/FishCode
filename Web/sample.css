@@ -4,10 +4,14 @@
   box-sizing: border-box;
 }
 
+body {
+  padding: 50px;
+}
+
 /*
 *链接 
 */
-a {
+/* a {
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
@@ -23,7 +27,7 @@ a:hover {
 a:active {
   background: rgba(251, 114, 153, 0.26);
   color: rgba(251, 114, 153, 0.9);
-}
+} */
 
 /*
 *

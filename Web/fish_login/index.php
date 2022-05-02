@@ -14,6 +14,7 @@ if (isset($_SESSION['is_login'])) {
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
     <script src='fish.js'></script>
     <link rel='stylesheet' href='fish.css'>
+    <link rel="stylesheet" href="../Template.css"
     <link rel='icon' href='img/bili.ico'>
     <title> 咩！</title>
 </head>

@@ -3,38 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* body {
-  width: 1200px;
-  height: 70px;
-} */
 
-/*
-*表格*
-*/
-table {
-  border: 2px solid #ddd;
-  font-size: 0.8rem;
-  margin: 10px;
-  border-collapse: collapse;
-}
-caption {
-  font-weight: bold;
-  padding: 10px;
-}
-td,
-th {
-  border: 1px solid #ddd;
-  padding: 1em 1.5em;
-}
-thead th {
-  background-color: #eff3f5;
-}
-tr:nth-child(even) {
-  background-color: #f7f7f7;
-}
-tr:nth-child(odd) {
-  background-color: #fff;
-}
 
 #app {
   padding-top: 50px;
