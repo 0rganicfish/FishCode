@@ -5,7 +5,7 @@ class fish_sql
     public PDO $db;
     public array $head, $arr;
     protected array $sqlarr;
-    private string $sql = "select stu_id 学号,stu_name 名字,sex 性别,pro_name 专业,credit 学分 from stuinfo ";
+    private string $sql = "select stu_id 学号,stu_name 姓名,sex 性别,pro_name 专业,credit 学分 from stuinfo ";
 
     public function __construct($host, $user, $pw, $dbname)
     {

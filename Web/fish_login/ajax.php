@@ -12,18 +12,18 @@ function print_ans($q)
     else
         $mysql->Query($q);
 
-    echo '<table><caption>学生信息表</caption><tr>';
+    echo '<table style="text-align: center;"><caption>学生信息表</caption><thead><tr>';
     foreach ($mysql->head as $item)
         echo '<th>', $item, '</th>';
-    echo '</tr>';
+    echo '</tr></thead><tbody>';
 
     foreach ($mysql->arr as $row) {
         echo '<tr>';
         foreach ($mysql->head as $col)
-            echo '<th>', $row[$col], '</th>';
+            echo '<td>', $row[$col], '</td>';
         echo '</tr>';
     }
-    echo '</table>';
+    echo '</tbody></table>';
 }
 
 //var_dump($_GET);

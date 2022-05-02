@@ -12,7 +12,6 @@ window.onload = () => {
 function Ajax(str) {
   let xhr = new XMLHttpRequest()
   xhr.onreadystatechange = () => {
-    // console.log(xhr.readyState, xhr.status, str);
     if (xhr.readyState === 4 && xhr.status === 200)
       document.getElementById("app").lastElementChild.innerHTML =
         xhr.responseText

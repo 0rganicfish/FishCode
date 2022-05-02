@@ -1,64 +1,65 @@
-<?php session_start(); ?>
-<html lang="zh-cn">
-<head>
-    <meta charset='UTF-8'>
-    <script src='fish.js'></script>
-    <link rel='stylesheet' href='../sample.css'>
-    <link rel='icon' href='../img/bili.ico'>
-    <title> 咩！</title>
-</head>
-<body>
-
 <?php
+session_start();
 if (isset($_COOKIE['name'])) {
     $_SESSION['name'] = $_COOKIE['name'];
     $_SESSION['is_login'] = 1;
 }
 if (isset($_SESSION['is_login'])) {
-    echo '<p>', "你好! ", $_SESSION['name'], '</p>';
-    ?>
+?>
 
-    <div id="app">
-        <div>
-            <input type="button" value="点击" id="play">
-            <input type="button" value="关闭" id="close">
-            <input type="button" value="注销" id="logout">
-            <form>
-                <div>
-                    <label>
-                        <span>筛选：</span>
-                        <select name="sel" onchange="Ajax(this.value)">
-                            <option value="sel=all">全选</option>
-                            <optgroup label="性别">
-                                <option value="sex=男">男</option>
-                                <option value="sex=女">女</option>
-                            </optgroup>
-                            <optgroup label="专业">
-                                <option value="pro_name=计算机">计算机</option>
-                                <option value="pro_name=通信工程">通信工程</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <span>排序：</span>
-                        <select name="sort" onchange="Ajax(this.value)">
-                            <option value="sort=stu_id">学号</option>
-                            <option value="sort=stu_name">姓名</option>
-                            <option value="sort=sex">性别</option>
-                            <option value="sort=pro_name">专业名</option>
-                            <option value="sort=credit">学分</option>
-                        </select>
-                    </label>
-                </div>
-            </form>
-        </div>
+<html lang="zh-cn">
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+    <script src='fish.js'></script>
+    <link rel='stylesheet' href='fish.css'>
+    <link rel='icon' href='img/bili.ico'>
+    <title> 咩！</title>
+</head>
+<body>
 
-        <div></div>
+<div id="app">
+    <div>
+        <input type="button" value="点击" id="play">
+        <input type="button" value="关闭" id="close">
+        <input type="button" value="注销" id="logout">
+        <form>
+            <div>
+                <label>
+                    <span>筛选：</span>
+                    <select name="sel" onchange="Ajax(this.value)">
+                        <option value="sel=all">全选</option>
+                        <optgroup label="性别">
+                            <option value="sex=男">男</option>
+                            <option value="sex=女">女</option>
+                        </optgroup>
+                        <optgroup label="专业">
+                            <option value="pro_name=计算机">计算机</option>
+                            <option value="pro_name=通信工程">通信工程</option>
+                        </optgroup>
+                    </select>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span>排序：</span>
+                    <select name="sort" onchange="Ajax(this.value)">
+                        <option value="sort=stu_id">学号</option>
+                        <option value="sort=stu_name">姓名</option>
+                        <option value="sort=sex">性别</option>
+                        <option value="sort=pro_name">专业名</option>
+                        <option value="sort=credit">学分</option>
+                    </select>
+                </label>
+            </div>
+        </form>
     </div>
 
-    <?php
+    <div></div>
+</div>
+
+<?php
 } else {
     ?>
     <div>
