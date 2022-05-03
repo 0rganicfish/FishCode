@@ -12,7 +12,7 @@ function print_ans($q)
     else
         $mysql->Query($q);
 
-    echo '<table style="text-align: center;"><caption>学生信息表</caption><thead><tr>';
+    echo "<div id=\"tables\"><table style=\"text-align: center;\"><caption>学生信息表</caption><thead><tr>";
     foreach ($mysql->head as $item)
         echo '<th>', $item, '</th>';
     echo '</tr></thead><tbody>';
@@ -23,7 +23,7 @@ function print_ans($q)
             echo '<td>', $row[$col], '</td>';
         echo '</tr>';
     }
-    echo '</tbody></table>';
+    echo "</tbody></table></div>";
 }
 
 //var_dump($_GET);

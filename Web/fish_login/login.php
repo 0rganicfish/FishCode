@@ -3,8 +3,8 @@
 
 <head>
     <meta charset='UTF-8'>
-    <link rel='stylesheet' href='fish.css'>
-    <link rel='icon' href=''>
+    <link rel='stylesheet' href='styles/fish.css'>
+    <link rel='icon' href='img/bili.ico'>
     <title>fish</title>
 </head>
 

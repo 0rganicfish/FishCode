@@ -6,18 +6,20 @@ if (isset($_COOKIE['name'])) {
 }
 if (isset($_SESSION['is_login'])) {
 ?>
-
+<!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
-    <script src='fish.js'></script>
-    <link rel='stylesheet' href='fish.css'>
-    <link rel="stylesheet" href="../Template.css"
+    <script src='styles/fish.js'></script>
+    <link rel='stylesheet' href='styles/fish.css'>
+    <link rel="stylesheet" href="styles/Template.css">
     <link rel='icon' href='img/bili.ico'>
     <title> 咩！</title>
 </head>
+
 <body>
 
 <div id="app">
@@ -27,8 +29,8 @@ if (isset($_SESSION['is_login'])) {
         <input type="button" value="注销" id="logout">
         <form>
             <div>
+                <span>筛选：</span>
                 <label>
-                    <span>筛选：</span>
                     <select name="sel" onchange="Ajax(this.value)">
                         <option value="sel=all">全选</option>
                         <optgroup label="性别">
@@ -43,8 +45,8 @@ if (isset($_SESSION['is_login'])) {
                 </label>
             </div>
             <div>
+                <span>排序：</span>
                 <label>
-                    <span>排序：</span>
                     <select name="sort" onchange="Ajax(this.value)">
                         <option value="sort=stu_id">学号</option>
                         <option value="sort=stu_name">姓名</option>
@@ -56,7 +58,6 @@ if (isset($_SESSION['is_login'])) {
             </div>
         </form>
     </div>
-
     <div></div>
 </div>
 
@@ -70,4 +71,5 @@ if (isset($_SESSION['is_login'])) {
 }
 ?>
 </body>
+
 </html>

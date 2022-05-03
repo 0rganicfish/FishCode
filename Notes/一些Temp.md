@@ -41,11 +41,11 @@ void welcome()
     <input type="submit" /><br />
   </form>
   <script>
-    ;(() => {
-      let form = document.getElementById("fish")
-      form.action = "fish.php"
-      form.method = "post"
-    })()
+    (() => {
+      let form = document.getElementById("fish");
+      form.action = "fish.php";
+      form.method = "post";
+    })();
   </script>
 </div>
 ```

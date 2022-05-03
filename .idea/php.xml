@@ -2,7 +2,7 @@
 <project version="4">
   <component name="PhpProjectServersManager">
     <servers>
-      <server host="localhost" id="91d9f68c-ebbe-49ce-a83f-f29abe4aaf78" name="localhost" port="233" use_path_mappings="true">
+      <server host="192.168.151.39" id="91d9f68c-ebbe-49ce-a83f-f29abe4aaf78" name="Fish" port="233" use_path_mappings="true">
         <path_mappings>
           <mapping local-root="$PROJECT_DIR$" remote-root="VScode" />
         </path_mappings>
