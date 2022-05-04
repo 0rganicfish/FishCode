@@ -22,12 +22,23 @@
 
 - 现代浏览器可直接 new 出来，要兼容则：
   ```JavaScript {.line-numbers}
-  var xmlhttp
-  if (window.XMLHttpRequest)
-      //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-      xmlhttp = new XMLHttpRequest()
-  // IE6, IE5 浏览器执行代码
-  else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+  function getXHR() {
+    var xhr = null;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+      try {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {
+        try {
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e) {
+          alert("您的浏览器暂不支持Ajax!");
+        }
+      }
+    }
+    return xhr;
+  }
   ```
 
 ## 发送请求
@@ -90,7 +101,7 @@ xhr 提供了 3 个属性来获取请求返回的数据，分别是：`xhr.respo
 
 ### 事件触发条件
 
-- <img src="img/Ajax_onxxx.png" width="90%">
+- <img src="img/Ajax_onxxx.png">
 
 ### 事件触发顺序
 

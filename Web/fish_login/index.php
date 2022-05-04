@@ -27,7 +27,7 @@ if (isset($_SESSION['is_login'])) {
         <input type="button" value="点击" id="play">
         <input type="button" value="关闭" id="close">
         <input type="button" value="注销" id="logout">
-        <form>
+        <form id="form">
             <div>
                 <span>筛选：</span>
                 <label>
@@ -65,7 +65,7 @@ if (isset($_SESSION['is_login'])) {
 } else {
     ?>
     <div>
-        <p>您还没有登录,请<a href='login.php'><b> 登录</b></a>。</p>
+        <p>您还没有登录,请 <a href='login.php'>登录</a> 。</p>
     </div>
     <?php
 }

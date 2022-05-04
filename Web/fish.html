@@ -6,7 +6,7 @@
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src='fish.js'></script>
     <link rel='stylesheet' href=''>
-    <link rel='icon' href=''>
+    <link rel='icon' href='img/bili.ico'>
 
     <title> </title>
 </head>
@@ -14,11 +14,9 @@
 <body>
     <div id="app">
         <div>
-            <span id="ajax_btn" style="cursor: pointer;"><b>点击获得请求：</b></span>
+            <span id="ajax_btn" style="cursor: pointer;"><b>点击获得请求</b> txt: </span>
             <span id="ans"></span>
             <script>
-                const ajax_btn = document.getElementById('ajax_btn'),
-                    ans = document.getElementById("ans");
                 ajax_btn.addEventListener('click', () => {
                     ajax({
                         url: 'fish.txt',
@@ -36,12 +34,44 @@
             </script>
         </div>
 
-        <div id="upload">
-            <input type="file" id="input" value="上传头像">
-            <div id="preview"></div>
+        <div>
+            <span id="btn" style="cursor: pointer;"><b>点击获得请求</b> JSON: </span>
+            <span id="anss"></span>
             <script>
-                let data = new FormData();
-                
+                // console.log(btn);
+                btn.addEventListener("click", () => {
+                    ajax({
+                        url: "fish.json",
+                        success: res => {
+                            let jsons = JSON.parse(res);
+                            anss.innerHTML = "name: " + jsons.data.name +
+                                ", age: " + jsons.data.age;
+                            // console.log(jsons);
+                        }
+                    })
+                })
+            </script>
+        </div>
+        <div>
+            <form action="" id="myForm">
+                <input type="text" name="first_input" value="初始值为text">
+                <input type="text" id="second_input">
+                <input type="radio" name="danxuankuang">男</input>
+                <input type="radio" value="女" name="danxuankuang" checked> 女</input>
+            
+                <input type="reset">
+                <input type="submit" name="sb">
+            </form>
+            <script type="text/javascript">
+                var form = document.getElementById("myForm");
+                form.addEventListener("submit", function () {
+                    alert("点击了提交按钮");
+                    var sb = form.elements["sb"];
+                    sb.disabled = true;//提交成功后，会自动还原
+                    sb.style.backgroundColor = "red";
+                    //event.preventDefault();
+                    //这里写提交
+                })
             </script>
         </div>
     </div>

@@ -19,25 +19,25 @@ protected:
     string id, name;
 };
 
-class Tea : public People
+class Teacher : public People
 {
 private:
     int salary;
 
 public:
-    Tea() {}
-    Tea(int _salary) : salary(_salary) {}
-    Tea(string _id, string _name, int _salary) : People(_id, _name), salary(_salary) {}
+    Teacher() {}
+    Teacher(int _salary) : salary(_salary) {}
+    Teacher(string _id, string _name, int _salary) : People(_id, _name), salary(_salary) {}
 
 public:
-    friend ostream &operator<<(ostream &out, const Tea &a)
+    friend ostream &operator<<(ostream &out, const Teacher &a)
     {
         return out << "id: " << a.id << endl
                    << "name: " << a.name << endl
                    << "salary: " << a.salary << endl
                    << endl;
     }
-    friend istream &operator>>(istream &in, Tea &a)
+    friend istream &operator>>(istream &in, Teacher &a)
     {
         return in >> a.id >> a.name >> a.salary;
     }
@@ -121,6 +121,6 @@ int main()
     cout << "The min is :\n"
          << Stu::min(mie, fish);
 
-    Tea sea("022001", "sea", 2022);
+    Teacher sea("022001", "sea", 2022);
     cout << sea;
 }

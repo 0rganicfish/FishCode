@@ -1,0 +1,13 @@
+{
+  "data": {
+    "name": "fish",
+    "age": 14,
+    "school": {
+      "name": "HZU",
+      "degree": "first",
+      "major": "CS"
+    }
+  },
+  "message": "successful",
+  "date": "2022-05-04"
+}

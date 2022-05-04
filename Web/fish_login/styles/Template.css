@@ -12,7 +12,7 @@
   --deep_purple: #36447b;
   --blue: #648ab9;
   --grey: #d2dbf4;
-  --blue_green: #588bb9;
+  --blue_green: #6499c7;
 }
 
 /*
@@ -58,9 +58,9 @@ a:visited {
 a:active,
 a:focus,
 a:hover {
+  color: var(--blue_green);
   text-decoration: underline;
 }
-
 /* 
 * 列表 */
 ul,

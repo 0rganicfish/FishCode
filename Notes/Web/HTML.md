@@ -13,42 +13,43 @@
 
 <img src="img/html_label.png">
 
-> 参考字典：[HTML 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element)
+> 参考字典：[HTML 元素参考\_MDN ](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element)
 
 <br>
 
-## `<meta>` 文档级元数据元素
-
-
+## \<meta\> 文档级元数据元素
 
 ## Skipping
 
 ## 表单
 
-- **形式：**
+### 概述
 
-  ```html {.line-numbers}
-  <form method="" action="">
-    <input type="" name="" />
-  </form>
-  ```
+- 表单的属性和方法
+- <img src="img/html_form.png" width="80%">
 
-  > `form` 中的 `method` 的 GET 方法通常只用于搜索查询，而不是写入数据
+- **且：**
+
+  - `form` 中的 `method` 的 GET 方法通常只用于搜索查询，而不是写入数据
+  - 有 `name` 值才会才 URL 中有值传递
+
+- **获取表单方式：**
+
+  - 通过 id 获取。如 var form = document.getElementById(“form1”);
+  - 通过 document.forms 可以取得页面中所有的表单。如
+
+    ```JavaScript {.line-numbers}
+    var firstForm = document.forms[0];//取得页面中的第一个表单
+    var myForm = document.forms[“form2”];//取得页面中名称为"form2"的表单
+    ```
 
 ### input
 
 - **定义：**
-  | 属性 | 说明 |
-  | :-------: | :------- |
-  | type | 指定元素的类型。默认为 text |
-  | name | 指定表单元素的名称 |
-  | value | 元素的初始值。type 为 radio 时必须指定一个值 |
-  | size | 指定表单元素的初始宽度。当 type 为 text 或 password 时，表单元素的大小以字符为单位。对于其他类型，宽度以像素为单位 |
-  | maxlength | type 为 text 或 password 时，输入的最大字符数 |
-  | checked | type 为 radio 或 checkbox 时，指定按钮是否是被选中 |
+- <img src="img/html_input.png">
 
 - **type** 的类型
-- <img src="img/html_input.png" width="90%">
+- <img src="img/html_input_type.png">
 
 ### button
 
