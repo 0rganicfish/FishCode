@@ -5,7 +5,6 @@
   - [现代 JavaScript 教程](https://zh.javascript.info/)
   - [MDN 官方文档](https://developer.mozilla.org/zh-CN/)
   - [HTML.md](../HTML.md)
-  - [DOM.md](DOM.md)
 
 [TOC]
 
@@ -482,7 +481,7 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 
 ### 正则表达式
 
-- 
+-
 
 > Ref: [MDN 中的正则](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 
@@ -541,6 +540,16 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 
 &emsp;&emsp; 浏览器里面，window 对象指当前的浏览器窗口。它也是当前页面的**顶层对象**，即最高一层的对象，所有其他对象都是它的下属。一个变量如果未声明，那么默认就是顶层对象的属性。
 
-详见：[BOM window](BOM_window.md)
+**详见：**[BOM window](BOM_window.md)
+
+<br>
+
+## 浏览器事件
+
+&emsp;&emsp; **事件** 是某事发生的信号。所有的 DOM 节点都生成这样的信号（但事件不仅限于 DOM）。
+&emsp;&emsp; 为了对事件作出响应，我们可以分配一个 处理程序（handler）—— 一个在事件发生时运行的**函数**。
+&emsp;&emsp; 处理程序是在发生用户行为（action）时运行 JavaScript 代码的一种方式。
+
+**详见：**[Evens.md](Evens.md)
 
 ## 第三方 API

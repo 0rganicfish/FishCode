@@ -571,3 +571,112 @@ create table userinfo
 
 insert into userinfo
     value ('fish', 'fish');
+
+-- -----
+-- 实验十
+-- -----
+
+delimiter //
+drop procedure if exists emp;
+create procedure emp(in names char(10))
+begin
+    delete
+    from employees
+    where name = names;
+end //
+call emp('刘明');
+select name
+from employees;
+
+delimiter //
+drop procedure if exists emp;
+create procedure emp(in x float, in y float)
+begin
+    select if(x > y, '大于', '小于') 比较;
+end //
+call emp(34, 22);
+
+delimiter //
+drop procedure if exists emp;
+create procedure emp(in names char(10))
+begin
+    select workname 部门名称
+    from work
+             join employees using (workid)
+    where name = names;
+end //
+call emp('王林');
+
+delimiter //
+drop procedure if exists emp;
+create procedure emp(in name1 char(10), in name2 char(10))
+begin
+    set @ans = '',
+        @income1 = (select income
+                    from salary
+                             join employees using (id)
+                    where name = name1),
+        @income2 = (select income
+                    from salary
+                             join employees using (id)
+                    where name = name2);
+
+    if (@income1 > @income2) then
+        set @ans = 1;
+    elseif (@income1 < @income2) then
+        set @ans = -1;
+    else
+        set @ans = 0;
+    end if;
+
+    select @ans;
+end //
+call emp('王林', '伍容华');
+
+delimiter //
+drop procedure if exists emp;
+create procedure emp()
+begin
+    select count(*)
+    from employees;
+end //
+call emp();
+
+delimiter //
+drop procedure if exists emp;
+create procedure emp(in names char(20), out ans char(20))
+begin
+    set @max_income = (select max(income) from salary
+                            join employees using (id)
+                            join work using (workid)
+                     where workname = names);
+
+    set ans = (select name from employees
+        join salary using (id)
+    where income = @max_income);
+end //
+call emp('财务部', @ans);
+select @ans;
+
+delimiter //
+drop procedure if exists emp;
+create procedure emp(out cnt int)
+begin
+    declare names char(10);
+    declare counts cursor for
+        select name from employees;
+    declare found bool default true;
+    declare continue handler for not found
+        set found = 0;
+
+    set cnt = 0;
+    open counts;
+    while found
+        do
+            fetch counts into names;
+            set cnt = cnt + 1;
+        end while;
+    close counts;
+end //
+call emp(@ans);
+select @ans;
