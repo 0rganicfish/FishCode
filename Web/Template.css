@@ -62,10 +62,8 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 
-* 列表 */
 ul,
-ol,
 li {
-  list-style: none;
+  box-sizing: content-box;
+ 
 }

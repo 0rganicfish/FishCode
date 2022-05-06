@@ -1,13 +1,18 @@
 <!DOCTYPE html>
+<html>
 
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src='fish.js'></script>
-    <link rel='stylesheet' href=''>
+    <link rel='stylesheet' href='Template.css'>
     <link rel='icon' href='img/bili.ico'>
-
+    <style>
+        /* div {
+            margin-top: 300px;
+        } */
+    </style>
     <title> </title>
 </head>
 
@@ -53,26 +58,21 @@
             </script>
         </div>
         <div>
-            <form action="" id="myForm">
-                <input type="text" name="first_input" value="初始值为text">
-                <input type="text" id="second_input">
-                <input type="radio" name="danxuankuang">男</input>
-                <input type="radio" value="女" name="danxuankuang" checked> 女</input>
-            
-                <input type="reset">
-                <input type="submit" name="sb">
-            </form>
-            <script type="text/javascript">
-                var form = document.getElementById("myForm");
-                form.addEventListener("submit", function () {
-                    alert("点击了提交按钮");
-                    var sb = form.elements["sb"];
-                    sb.disabled = true;//提交成功后，会自动还原
-                    sb.style.backgroundColor = "red";
-                    //event.preventDefault();
-                    //这里写提交
-                })
+            <span id="hid" style="cursor: pointer;" data-ables-id="hid_ans"><b>点击切换</b></span>
+            <span id="hid_ans" hidden>mie!</span>
+            <script>
+                hid.addEventListener("click", (e) => {
+                    let id = e.target.closest("span").dataset.ablesId;
+                    if (!id) return;
+                    let elem = document.getElementById(id);
+
+                    elem.hidden = !elem.hidden;
+                }, false)
             </script>
+        </div>
+
+        <div>
+             
         </div>
     </div>
 </body>

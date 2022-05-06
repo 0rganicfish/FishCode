@@ -7,3 +7,8 @@
 #define all(s) s.begin(), s.end()
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
+
+int main()
+{
+    
+}

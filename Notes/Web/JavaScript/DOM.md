@@ -81,29 +81,3 @@
 ## NodeList
 
 ## 其他 API
-
-### EventTarget
-
-EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦听器的对象实现。
-
-**方法**
-
-- `addEventListener()` 方法将指定的监听器注册到 EventTarget 上，当该对象**触发指定的事件**时，指定的回调**函数就会被执行**。
-
-  - **定义：**
-
-  ```JavaScript {.line-numbers}
-  addEventListener(type, listener, options);
-  // type：DOM事件 (没有on)
-  // listener 函数或对象
-  ```
-
-  - **例：**
-
-  ```JavaScript {.line-numbers}
-  card.addEventListener("click", () => {
-  console.log("Hello);
-  });
-  ```
-
-###

@@ -12,10 +12,15 @@ function print_ans($q)
     else
         $mysql->Query($q);
 
-    echo "<div id=\"tables\"><table style=\"text-align: center;\"><caption>学生信息表</caption><thead><tr>";
-    foreach ($mysql->head as $item)
-        echo '<th>', $item, '</th>';
-    echo '</tr></thead><tbody>';
+    echo "<table style=\"text-align: center;\" id=\"table\"><caption>学生信息表</caption><thead id=\"thead\"><tr>";
+    foreach ($mysql->head as $item) {
+        if ($item === "学分")
+            echo "<th data-type=\"number\">";
+        else
+            echo "<th data-type=\"string\">";
+        echo $item, '</th>';
+    }
+    echo "</tr></thead><tbody id=\"tbody\">";
 
     foreach ($mysql->arr as $row) {
         echo '<tr>';
@@ -23,7 +28,8 @@ function print_ans($q)
             echo '<td>', $row[$col], '</td>';
         echo '</tr>';
     }
-    echo "</tbody></table></div>";
+    echo "</tbody></table>";
+    echo "<script src='styles/fish.js'>sort_table()</script>";
 }
 
 //var_dump($_GET);

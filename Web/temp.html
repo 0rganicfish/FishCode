@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -44,6 +44,142 @@
         }
     </script>
     
+</body>
+
+</html> -->
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <link rel='stylesheet' href='Template.css'>
+    <link rel='icon' href='img/bili.ico'>
+    <title>Temp</title>
+</head>
+
+<body>
+    <div>
+        <table id="grid">
+            <thead>
+                <tr>
+                    <th data-type="number">Age</th>
+                    <th data-type="string">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td>John</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Pete</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Ann</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Eugene</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Ilya</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+
+            grid.onclick = function (e) {
+                if (e.target.tagName != 'TH') return;
+                let th = e.target;
+                // if TH, then sort
+                // cellIndex is the number of th:
+                //   0 for the first column
+                //   1 for the second column, etc
+                sortGrid(th.cellIndex, th.dataset.type);
+            };
+
+            function sortGrid(colNum, type) {
+                let tbody = grid.querySelector('tbody');
+                let rowsArray = Array.from(tbody.rows);
+                // compare(a, b) compares two rows, need for sorting
+                let compare;
+
+                switch (type) {
+                    case 'number':
+                        compare = function (rowA, rowB) {
+                            return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+                        };
+                        break;
+                    case 'string':
+                        compare = function (rowA, rowB) {
+                            return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML;
+                        };
+                        break;
+                }
+
+                // sort
+                rowsArray.sort(compare);
+                tbody.append(...rowsArray);
+            }
+        </script>
+    </div>
+
+    <div>
+        <style>
+            .selected {
+                background: rgb(174, 248, 174);
+            }
+
+            li {
+                cursor: pointer;
+            }
+        </style>
+
+        Click on a list item to select it.
+        <br>
+
+        <ul id="ul">
+            <li>Christopher Robin</li>
+            <li>Winnie-the-Pooh</li>
+            <li>Tigger</li>
+            <li>Kanga</li>
+            <li>Rabbit. Just rabbit.</li>
+        </ul>
+
+        <script>
+            ul.onclick = function (event) {
+                if (event.target.tagName != "LI") return;
+                if (event.ctrlKey || event.metaKey)
+                    toggleSelect(event.target);
+                else
+                    singleSelect(event.target);
+                console.log(event.target);
+            }
+
+            ul.onmousedown = function () {
+                return false;
+            };
+            function toggleSelect(li) {
+                li.classList.toggle('selected');
+            }
+            function singleSelect(li) {
+                let selected = ul.querySelectorAll('.selected');
+                for (let elem of selected)
+                    elem.classList.remove('selected');
+
+                li.classList.add('selected');
+            }
+
+        </script>
+    </div>
+
 </body>
 
 </html>
