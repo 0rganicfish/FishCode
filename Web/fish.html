@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport"
@@ -9,15 +8,19 @@
     <link rel='stylesheet' href='Template.css'>
     <link rel='icon' href='img/bili.ico'>
     <style>
-        /* div {
-            margin-top: 300px;
-        } */
+        div {
+            margin: 10px;
+        }
+        .app{
+            display: flex;
+            flex-direction: column;
+        }
     </style>
-    <title> </title>
+    <title>堆......</title>
 </head>
 
 <body>
-    <div id="app">
+    <div class="app">
         <div>
             <span id="ajax_btn" style="cursor: pointer;"><b>点击获得请求</b> txt: </span>
             <span id="ans"></span>
@@ -25,9 +28,6 @@
                 ajax_btn.addEventListener('click', () => {
                     ajax({
                         url: 'fish.txt',
-                        data: {},
-                        header: {},
-                        timeout: 20 * 1000,
                         success: res => {
                             ans.innerHTML = res;
                         },
@@ -41,17 +41,15 @@
 
         <div>
             <span id="btn" style="cursor: pointer;"><b>点击获得请求</b> JSON: </span>
-            <span id="anss"></span>
+            <span id="ans1"></span>
             <script>
-                // console.log(btn);
                 btn.addEventListener("click", () => {
                     ajax({
                         url: "fish.json",
                         success: res => {
                             let jsons = JSON.parse(res);
-                            anss.innerHTML = "name: " + jsons.data.name +
+                            ans1.innerHTML = "name: " + jsons.data.name +
                                 ", age: " + jsons.data.age;
-                            // console.log(jsons);
                         }
                     })
                 })
@@ -64,17 +62,93 @@
                 hid.addEventListener("click", (e) => {
                     let id = e.target.closest("span").dataset.ablesId;
                     if (!id) return;
-                    let elem = document.getElementById(id);
 
+                    let elem = document.getElementById(id);
                     elem.hidden = !elem.hidden;
                 }, false)
             </script>
         </div>
 
         <div>
-             
+            <div>
+                <b>键盘事件：</b>
+                <label for="kinput">
+                    <input type="text" placeholder="按下键盘~" id="kinput">
+                </label>
+                <input type="button" id="clear" value="清除">
+            </div>
+            <label for="area"><textarea id="area" readonly></textarea></label>
+            <style>
+                #kinput {
+                    width: 190px;
+                }
+
+                #area {
+                    margin: 6px;
+                    width: 300px;
+                    height: 200px;
+                    resize: none;
+                    font-size: smaller;
+                }
+            </style>
+            <script>
+                area.value = kinput.value = "";
+                kinput.onkeydown = kinput.onkeyup = kinput.onkeypress = handle;
+                let lastTime = Date.now();
+
+                function handle(e) {
+                    if (area.value && Date.now() - lastTime > 250)
+                        area.value += new Array(20).join('-') + '\n';
+                    lastTime = Date.now();
+
+                    let text = e.type + ' key=' + e.key + "\n";
+                    if (!e.repeat)
+                        area.value += text;
+                }
+
+                clear.addEventListener("click", () => {
+                    area.value = kinput.value = "";
+                })
+            </script>
         </div>
+
+        <div>
+            <span><b>滚动坐标：</b></span>
+            <span id="showScroll">0px</span>
+            <script>
+                window.addEventListener('scroll', () => {
+                    showScroll.innerHTML = window.pageYOffset + 'px';
+                });
+            </script>
+        </div>
+
+        <div><img src="img/waiting.svg"></div>
+
+        <div>
+            <input type="text" id="input"> oninput: <span id="result"></span>
+            <script>
+                input.oninput = function () {
+                    result.innerHTML = input.value;
+                };
+
+            </script>
+        </div>
+
+        <div>
+            <form id="noform">
+                <label>
+                    <span>提交禁止：</span>
+                    <input type="text">
+                    <input type="submit">
+                </label>
+            </form>
+            <script>
+                noform.onsubmit = () => { return false; }
+            </script>
+        </div>
+
     </div>
+
 </body>
 
 </html>

@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="PHP Web" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" singleton="false" document_root="$PROJECT_DIR$/Web/fish_login" host="192.168.151.39" port="233">
-    <method v="2" />
-  </configuration>
-</component>

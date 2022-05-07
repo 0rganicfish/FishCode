@@ -66,25 +66,56 @@ up.forEach((element) => {
 })
 ```
 
-### 时间暂停！
+### 浏览器 UA
 
 ```JavaScript {.line-numbers}
-var sleep = function (time) {
-  var startTime = new Date().getTime() + parseInt(time, 10);
-  while (new Date().getTime() < startTime) {}
-};
-// 单位：毫秒
-```
+class getVersion {
+  constructor() {
+    this.versions = (() => {
+      const u = navigator.userAgent;
+      return {
+        trident: u.indexOf("Trident") > -1,
+        weixin: u.indexOf("MicroMessenger") > -1,
+        presto: u.indexOf("Presto") > -1,
+        webKit: u.indexOf("AppleWebKit") > -1,
+        chrome: u.indexOf("Chrome") > -1,
+        gecko: u.indexOf("Gecko") > -1 && u.indexOf("KHTML") === -1,
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/),
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+        android: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1,
+        iPhone: u.indexOf("iPhone") > -1,
+        iPad: u.indexOf("iPad") > -1
+      };
+    })();
 
-### 获取 URL 的 ? 参数
+    this.browserVersion = () => {
+      let UA = "";
+      if (this.versions.weixin) {
+        UA = "微信";
+      } else if (this.versions.android) {
+        UA = "安卓";
+      } else if (
+        this.versions.ios ||
+        this.versions.iPhone ||
+        this.versions.iPad
+      ) {
+        UA = "苹果";
+      } else if (this.versions.chrome) {
+        UA = "谷歌";
+      } else if (this.versions.trident) {
+        UA = "IE";
+      } else if (this.versions.gecko) {
+        UA = "火狐";
+      } else {
+        UA = "其他";
+      }
+      alert("浏览器 UA 为" + UA);
+    };
+  }
+}
 
-```JavaScript {.line-numbers}
-function getTab(key) {
-    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
-    var r = location.search.substr(1).match(reg);
-    if (r != null)
-        return unescape(r[2]);
-    return null;
+const version = new getVersion();
+version.browserVersion();
 ```
 
 <br>

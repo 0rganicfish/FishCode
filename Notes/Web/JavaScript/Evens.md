@@ -133,20 +133,31 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
   如果在事件期间按下了相应的键，则它们为 `true`
 
 - **坐标：** 所有的鼠标事件都提供了两种形式的坐标：
+
   - 相对于窗口的坐标：`clientX` 和 `clientY`
   - 相对于文档的坐标：`pageX` 和 `pageY` （随滚动而变
 
+>
 
+- **元素拖拽：**
 
 <br>
 
 ### 键盘事件
 
-|    属性    | 描述                       |
-| :--------: | :------------------------- |
-| `keydown`  | 某个键盘按键被按下。       |
-| `keypress` | 某个键盘按键被按下并松开。 |
-|  `keyup`   | 某个键盘按键被松开。       |
+按一个按键总是会产生一个键盘事件，无论是符号键，还是例如 Shift 或 Ctrl 等特殊按键
+
+**键盘事件：**
+
+- `keydown` —— 在按下键时（如果长按按键，则将自动重复），
+- `keyup` —— 释放按键时。
+
+**键盘事件的主要属性：**
+
+- `code` —— “按键代码”（"KeyA"，"ArrowLeft" 等），特定于键盘上按键的物理位置。
+- k`ey —— 字符（"A"，"a" 等），对于非字符（non-character）的按键，通常具有与 code 相同的值。
+
+<br>
 
 ## 表单事件
 
@@ -163,6 +174,17 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
 |  `select`  | 选取文本时触发 ( `<input>` 和` <textarea>`)                                     |
 |  `submit`  | 表单提交时触发                                                                  |
 
+**访问：**
+
+- `document.forms` 一个表单元素可以通过 `document.forms[name/index]` 访问到。
+- `form.elements` 表单元素可以通过 `form.elements[name/index]` 的方式访问，或者也可以使用 `form[name/index]`。elements 属性也适用于 `<fieldset>`。
+- `element.form` 元素通过 form 属性来引用它们所属的表单。
+- `value` 可以被通过 `input.value` 等来获取到。
+  - 对于单选按钮（radio button）和复选框（checkbox），可以使用 `input.checked` 来确定是否选择了一个值。
+  - 对于 `<select>`，可以通过索引 `select.selectedIndex` 来获取它的 value，也可以通过 `<option>` 集合 `select.options` 来获取它的 value
+
+<br>
+
 ## 框架/对象（Frame/Object）事件
 
 |      属性      | 描述                                                                |
@@ -178,13 +200,11 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
 |    `scroll`    | 当文档被滚动时发生的事件。                                          |
 |    `unload`    | 退出页面。 ( `<body>` 和 `<frameset>`)                              |
 
-## 剪贴板事件
+## 数据更改事件
 
-|  属性   | 描述                 |
-| :-----: | :------------------- |
-| `copy`  | 在拷贝元素内容时触发 |
-|  `cut`  | 在剪切元素内容时触发 |
-| `paste` | 在粘贴元素内容时触发 |
+- `change` 值被改变 => 对于文本输入，当失去焦点时触发
+- `input` 文本输入的每次更改 => 立即触发，与 `change` 不同
+- `cut | copy | paste` 剪贴/拷贝/粘贴行为 => 行为可以被阻止。`event.clipboardData` 属性可以用于访问剪贴板
 
 <br>
 
