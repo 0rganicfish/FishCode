@@ -8,3 +8,10 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+int main()
+{
+    int a[10];
+    for (int i = 1; i <= 10; ++i)
+        a[i] = 0;
+    cout << a[9];
+}

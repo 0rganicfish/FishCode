@@ -48,12 +48,12 @@ class Stu : public People
 private:
     int score;
 
-public: //¹¹ÔìÎö¹¹Çø
+public: //æ„é€ ææ„åŒº
     Stu(){};
     Stu(int score_) : score(score_){};
     Stu(string id_, string name_, int score_) : People(id_, name_), score(score_){};
 
-public: //ÆÕÍ¨µÄpublicÇø
+public: //æ™®é€šçš„publicåŒº
     void set_score(int score_) { score = score_; }
     int Score() const { return score; }
     static Stu min(const Stu a, const Stu b)
@@ -61,31 +61,31 @@ public: //ÆÕÍ¨µÄpublicÇø
         return a < b ? a : b;
     }
 
-public: //ÖØÔØÇø
+public: //é‡è½½åŒº
     bool operator<(const Stu &a) const
     {
         return score < a.score;
     }
-    Stu operator++() // Ç°×º×ÔÔö£º++mie;
+    Stu operator++() // å‰ç¼€è‡ªå¢ï¼š++mie;
     {
         score++;
         return *this;
     }
-    Stu operator++(int) // ºó×º×ÔÔö£ºmie++:
+    Stu operator++(int) // åç¼€è‡ªå¢ï¼šmie++:
     {
         return ++*this;
     }
-    Stu operator+(const Stu a) const // ¶ÔÏóÖ®¼äÏà¼Ó --> this + a
+    Stu operator+(const Stu a) const // å¯¹è±¡ä¹‹é—´ç›¸åŠ  --> this + a
     {
         return Stu(name + " | " + a.name,
                    id + " | " + a.id,
                    score + a.score);
     }
-    Stu operator+(const int x) const //²»¸Ä±äÔ­À´ÖµµÄ¾¡Á¿¼ÓconstĞŞÊÎ
+    Stu operator+(const int x) const //ä¸æ”¹å˜åŸæ¥å€¼çš„å°½é‡åŠ constä¿®é¥°
     {
         return Stu(score + x);
     }
-    Stu operator+=(const Stu a) //Óë¶ÔÏóÖ®¼äµÄ +=
+    Stu operator+=(const Stu a) //ä¸å¯¹è±¡ä¹‹é—´çš„ +=
     {
         return *this = a + *this;
     }

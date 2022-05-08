@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
-    <script src='fish.js'></script>
+    <script async src='fish.js'></script>
     <link rel='stylesheet' href='Template.css'>
     <link rel='icon' href='img/bili.ico'>
     <style>
         div {
             margin: 10px;
         }
-        .app{
+
+        .app {
             display: flex;
             flex-direction: column;
         }
@@ -25,12 +27,15 @@
             <span id="ajax_btn" style="cursor: pointer;"><b>点击获得请求</b> txt: </span>
             <span id="ans"></span>
             <script>
+                set_ans = res => {
+                    ans.innerHTML = res;
+                }
+
                 ajax_btn.addEventListener('click', () => {
-                    ajax({
+                    let ajax = new Ajax();
+                    ajax.main({
                         url: 'fish.txt',
-                        success: res => {
-                            ans.innerHTML = res;
-                        },
+                        success: res => { set_ans(res) },
                         fail: err => {
                             throw err;
                         }
@@ -43,16 +48,23 @@
             <span id="btn" style="cursor: pointer;"><b>点击获得请求</b> JSON: </span>
             <span id="ans1"></span>
             <script>
-                btn.addEventListener("click", () => {
-                    ajax({
-                        url: "fish.json",
-                        success: res => {
-                            let jsons = JSON.parse(res);
-                            ans1.innerHTML = "name: " + jsons.data.name +
-                                ", age: " + jsons.data.age;
-                        }
-                    })
-                })
+                let ans_obj = {
+                    set_ans: res => {
+                        let jsons = JSON.parse(res);
+                        ans1.innerHTML = "name: " + jsons.data.name +
+                            ", age: " + jsons.data.age;
+                    },
+                    URL: "fish.json",
+                    handleEvent: function () {
+                        let ajax = new Ajax();
+                        ajax.main({
+                            url: this.URL,
+                            success: res => { this.set_ans(res) }
+                        })
+                    }
+                }
+
+                btn.addEventListener("click", ans_obj)
             </script>
         </div>
         <div>
@@ -122,7 +134,17 @@
             </script>
         </div>
 
-        <div><img src="img/waiting.svg"></div>
+        <div>
+            <div>拖动阻止了 ↓</div>
+            <img src="img/waiting.svg">
+            <script>
+                var img = document.querySelector("img");
+                img.addEventListener("mousedown", mouseHandler);
+                function mouseHandler(e) {
+                    e.preventDefault();
+                }
+            </script>
+        </div>
 
         <div>
             <input type="text" id="input"> oninput: <span id="result"></span>
@@ -147,6 +169,62 @@
             </script>
         </div>
 
+        <div>
+            <span><b>时间~ </b><span id="mie"></span></span>
+            <script>
+                class Clock {
+                    constructor({ template }) {
+                        this.template = template;
+                    }
+                    render() {
+                        let date = new Date();
+
+                        let hours = date.getHours();
+                        if (hours < 10) hours = '0' + hours;
+                        let mins = date.getMinutes();
+                        if (mins < 10) mins = '0' + mins;
+                        let secs = date.getSeconds() + 1;
+                        if (secs < 10) secs = '0' + secs;
+
+                        let output = this.template
+                            .replace('h', hours)
+                            .replace('m', mins)
+                            .replace('s', secs);
+                        document.getElementById("mie").innerHTML = output
+                    }
+                    stop() {
+                        clearInterval(this.timer);
+                    }
+                    start() {
+                        this.render();
+                        setInterval(() => this.render(), 1000);
+                    }
+                }
+
+                let clock = new Clock({ template: 'h : m : s' });
+                clock.start();
+            </script>
+        </div>
+
+        <div>
+            <span id="cnt" style="cursor: pointer;"><b>计数：</b></span>
+            <span id="progress"></span>
+            <script>
+                let i = 0;
+                count = () => {
+                    do {
+                        progress.innerHTML = i++ / 100.;
+                    } while (i % 1);
+                    if (i <= 1e3)
+                        setTimeout(count);
+                }
+                cnt.onclick = count;
+            </script>
+        </div>
+
+        <div>
+
+        </div>
     </div>
 
 </body>

@@ -42,7 +42,9 @@
 			"name": "JavaScript",
 			"type": "node",
 			"request": "launch",
-			"skipFiles": ["<node_internals>/**"],
+			"skipFiles": [
+				"<node_internals>/**"
+			],
 			"stopOnEntry": false,
 			"internalConsoleOptions": "openOnSessionStart",
 			"env": {

@@ -1,16 +1,19 @@
 {
   "configurations": [
     {
-      "name": "windows-gcc-x64",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "C:\\CodePath\\glfw-3.3.6.bin.WIN64\\include"
+      "cStandard": "c11",
+      "compilerArgs": [
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic"
       ],
       "compilerPath": "C:\\CodePath\\mingw64\\bin\\gcc.exe",
-      "cStandard": "c11",
       "cppStandard": "c++17",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
       "intelliSenseMode": "windows-gcc-x64",
-      "compilerArgs": ["-Wall", "-Wextra", "-Wpedantic"]
+      "name": "windows-gcc-x64"
     }
   ],
   "version": 4

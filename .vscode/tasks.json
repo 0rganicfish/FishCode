@@ -11,7 +11,9 @@
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}.exe"
       ],
-      "problemMatcher": ["$gcc"],
+      "problemMatcher": [
+        "$gcc"
+      ],
       "group": {
         "kind": "build",
         "isDefault": true

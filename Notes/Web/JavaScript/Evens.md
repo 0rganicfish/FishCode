@@ -81,6 +81,11 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
 
 - **但是：** 在 `elem.addxx("xx", (event)=>{code;});` 中，如果 elem 的结构存在着嵌套：`<span><b>mie</b></span>`，那么，`even` 将指向的是**最深**一层的那个。要如期，则应该加上：`event.target.closest("elem")`，才匹配最近的祖先 `<span>`
 
+>
+
+- **事件阻止：**
+  - `event.preventDefault()`
+
 <br>
 
 ## 默认的浏览器行为
@@ -132,10 +137,10 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
 
   如果在事件期间按下了相应的键，则它们为 `true`
 
-- **坐标：** 所有的鼠标事件都提供了两种形式的坐标：
-
+- **坐标：**
   - 相对于窗口的坐标：`clientX` 和 `clientY`
   - 相对于文档的坐标：`pageX` 和 `pageY` （随滚动而变
+  - 相对于元素的坐标：`offsetX` 和 `offsetY`
 
 >
 
