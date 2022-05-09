@@ -3,48 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Fish</title>
-    <style>
-        #ajax {
-            background: #7d96bd;
-            color: #fff;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            margin: 20px;
-            text-align: center;
-            line-height: 40px;
-        }
-    </style>
 </head>
 <body>
 
 <div>
     <form action="fish.php" method="post" enctype="multipart/form-data">
-        <label>
-            上传：<input type="file" name="file">
-        </label>
+        上传：<input type="file" name="file">
         <input type="submit" value="提交"><br>
     </form>
 </div>
-
-<div>
-    <div id="ajax">变</div>
-    <div id="ans"></div>
-    <script>
-        document.getElementById('ajax').addEventListener("click", () => {
-                let xmlH = new XMLHttpRequest();
-                xmlH.onreadystatechange = () => {
-                    console.log(xmlH.status, xmlH.readyState);
-                    if (xmlH.readyState === 4 && xmlH.status === 200)
-                        document.getElementById('ans').innerHTML = xmlH.responseText;
-                }
-                xmlH.open("GET", "../fish.txt", true);
-                xmlH.send();
-            }
-        );
-    </script>
-</div>
-
 
 </body>
 </html>

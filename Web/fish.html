@@ -7,10 +7,14 @@
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script async src='fish.js'></script>
     <link rel='stylesheet' href='Template.css'>
-    <link rel='icon' href='img/bili.ico'>
+    <link rel='icon' href='img/waiting.svg'>
     <style>
         div {
             margin: 10px;
+        }
+
+        span {
+            cursor: pointer;
         }
 
         .app {
@@ -24,7 +28,7 @@
 <body>
     <div class="app">
         <div>
-            <span id="ajax_btn" style="cursor: pointer;"><b>点击获得请求</b> txt: </span>
+            <span id="ajax_btn"><b>点击获得请求</b> txt: </span>
             <span id="ans"></span>
             <script>
                 set_ans = res => {
@@ -45,7 +49,7 @@
         </div>
 
         <div>
-            <span id="btn" style="cursor: pointer;"><b>点击获得请求</b> JSON: </span>
+            <span id="btn"><b>点击获得请求</b> JSON: </span>
             <span id="ans1"></span>
             <script>
                 let ans_obj = {
@@ -68,7 +72,7 @@
             </script>
         </div>
         <div>
-            <span id="hid" style="cursor: pointer;" data-ables-id="hid_ans"><b>点击切换</b></span>
+            <span id="hid" data-ables-id="hid_ans"><b>点击切换</b></span>
             <span id="hid_ans" hidden>mie!</span>
             <script>
                 hid.addEventListener("click", (e) => {
@@ -207,23 +211,52 @@
         </div>
 
         <div>
-            <span id="cnt" style="cursor: pointer;"><b>计数：</b></span>
-            <span id="progress"></span>
+            <span>
+                <span id="reset">重置</span>
+                <span> | </span>
+                <span id="cnt">计数：</span>
+                <span id="progress">0</span>
+            </span>
             <script>
                 let i = 0;
                 count = () => {
                     do {
-                        progress.innerHTML = i++ / 100.;
+                        progress.innerHTML = i++ / 10;
                     } while (i % 1);
                     if (i <= 1e3)
                         setTimeout(count);
+
                 }
                 cnt.onclick = count;
+                reset.onclick = () => { i = 0, progress.innerHTML = "0" }
             </script>
         </div>
 
         <div>
+            <script>
+                const toggleElements = document.querySelectorAll('div');
+                toggleElements.forEach(el => {
+                    el.addEventListener('click', function () {
+                        this.classList.toggle('active');
+                    });
+                });
+            </script>
+            <script>
+                const on = (el, evt, fn, opts = {}) => {
+                    const delegatorFn = e =>
+                        e.target.matches(opts.target) && fn.call(e.target, e)
+                    el.addEventListener(
+                        evt,
+                        opts.target ? delegatorFn : fn,
+                        opts.options || false
+                    );
+                    if (opts.target) return delegatorFn;
+                };
 
+                const fn = () => console.log("mie!");
+                on(document.body, 'click', fn, { target: "img" });
+                // logs '!' upon clicking a `img` element child of the body
+            </script>
         </div>
     </div>
 

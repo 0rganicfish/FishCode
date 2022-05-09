@@ -86,6 +86,32 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
 - **事件阻止：**
   - `event.preventDefault()`
 
+### 封装后的 addEventListener
+
+- **码：**
+  ```JavaScript {.line-numbers}
+  const on = (el, evt, fn, opts = {}) => {
+    const delegatorFn = (e) =>
+      e.target.matches(opts.target) && fn.call(e.target, e);
+    el.addEventListener(
+      evt,
+      opts.target ? delegatorFn : fn,
+      opts.option || false
+    );
+    if (opts.target) return delegatorFn;
+  };
+  ```
+- **Examples：**
+
+  ```JavaScript {.line-numbers}
+  const fn = () => console.log("mie!"),
+    user = document.getElementById("user");
+
+  on(user, "click", fn); //默认行为：点击 user 框后输出 mie，默认 冒泡
+  on(user, "click", fn, { target: "img" }); //点击 user 下的 img 标签，输出 mie
+  on(user, "click", fn, { option: true }); // 同默认，但是 捕获
+  ```
+
 <br>
 
 ## 默认的浏览器行为
