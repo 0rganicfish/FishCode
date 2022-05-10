@@ -229,7 +229,7 @@
 - **语法：**
   ```sql {.line-numbers}
   Select column1 From table1
-  Limit (pos,) count Offset count;
+  Limit (pos, ) count Offset count;
   ```
 - **结果：**
   - `Limit`： 仅列出从 `pos` 开始的 `count` 个数据。

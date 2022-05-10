@@ -1,3 +1,25 @@
+<?php
+session_start();
+if (isset($_POST['login'])) {
+    $name = trim($_POST['name']);
+    $password = trim($_POST['password']);
+    if ($name == '' || $password == '') {
+        echo "不准空";
+        exit;
+    } elseif ($name != 'fish' || $password != 'fish') {
+        echo "不准错";
+        exit;
+    } else {
+        $_SESSION['name'] = $name;
+        $_SESSION['is_login'] = 1;
+        setcookie('name', '', time() - 999);
+        setcookie('code', '', time() - 999);
+
+        header('location:index.php');
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -41,29 +63,6 @@
             form.method = 'post';
         })();
     </script>
-
-    <?php
-    session_start();
-    if (isset($_POST['login'])) {
-        $name = trim($_POST['name']);
-        $password = trim($_POST['password']);
-        if ($name == '' || $password == '') {
-            echo "不准空";
-            exit;
-        } elseif ($name != 'fish' || $password != 'fish') {
-            echo "不准错";
-            exit;
-        } else {
-            $_SESSION['name'] = $name;
-            $_SESSION['is_login'] = 1;
-            setcookie('name', '', time() - 999);
-            setcookie('code', '', time() - 999);
-
-            header('location:index.php');
-        }
-    }
-    ?>
-
 </div>
 </body>
 

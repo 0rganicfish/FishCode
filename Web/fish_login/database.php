@@ -17,28 +17,28 @@ class fish_sql
         }
     }
 
-    public function Import($url)
-    {
-        if (!file_exists($url))
-            exit('文件不存在');
-        $sqlfile = file_get_contents($url);
-        if (!$sqlfile)
-            exit('文件打开错误');
+    /*    public function Import($url): void
+        {
+            if (!file_exists($url))
+                exit('文件不存在');
+            $sqlfile = file_get_contents($url);
+            if (!$sqlfile)
+                exit('文件打开错误');
 
-        // 将表导到数组
-        $str = $sqlfile;
-        $a = explode("##", $str);
+            // 将表导到数组
+            $str = $sqlfile;
+            $a = explode("##", $str);
 
-        foreach ($a as $v) {
-            $v = trim($v);
-            if (empty($v))
-                continue;
-            else
-                $this->sqlarr[] = $v;
+            foreach ($a as $v) {
+                $v = trim($v);
+                if (empty($v))
+                    continue;
+                else
+                    $this->sqlarr[] = $v;
+            }
         }
-    }
-
-    private function Run($str)
+    */
+    private function Run($str): void
     {
         $run = $this->db->prepare($this->sql . $str);
         $run->execute();
@@ -46,7 +46,7 @@ class fish_sql
         $this->head = array_keys($this->arr[0]);
     }
 
-    public function Query($q)
+    public function Query($q): void
     {
         $key = array_keys($q)[0];
         $x = $key;
@@ -57,10 +57,5 @@ class fish_sql
             $y = $q[$key];
         $sql = " where $x = '$y';";
         $this->Run($sql);
-    }
-
-    public function Sort($q)
-    {
-        $this->Run(" order by $q ;");
     }
 }

@@ -1,23 +1,19 @@
 <?php
 include 'database.php';
 $mysql = new fish_sql('localhost', 'root', 'fish', 'fish');
-$mysql->Import('fish.sql');
 
-function print_ans($q)
+function print_ans($q): void
 {
     global $mysql;
     $key = array_keys($q)[0];
-    if ($key == "sort")
-        $mysql->Sort($q["sort"]);
-    else
-        $mysql->Query($q);
+    $mysql->Query($q);
 
-    echo "<table style=\"text-align: center;\" id=\"table\"><caption>学生信息表</caption><thead id=\"thead\"><tr>";
+    echo "<table style=\"text-align: center;\"><caption>学生信息表</caption><thead id=\"thead\"><tr>";
     foreach ($mysql->head as $item) {
         if ($item === "学分")
-            echo "<th data-type=\"number\">";
+            echo "<th id=\"number\">";
         else
-            echo "<th data-type=\"string\">";
+            echo "<th id=\"string\">";
         echo $item, '</th>';
     }
     echo "</tr></thead><tbody id=\"tbody\">";
@@ -29,7 +25,6 @@ function print_ans($q)
         echo '</tr>';
     }
     echo "</tbody></table>";
-    echo "<script src='styles/fish.js'>sort_table()</script>";
 }
 
 //var_dump($_GET);

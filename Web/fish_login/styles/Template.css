@@ -42,6 +42,9 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #fff;
 }
+tr:hover{
+  background-color: #f3f0f0d1;
+}
 
 /*
 * 链接

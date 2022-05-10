@@ -76,5 +76,6 @@
     "utility": "cpp",
     "valarray": "c",
     "vector": "cpp"
-  }
+  },
+  "liveServer.settings.port": 2334
 }

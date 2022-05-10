@@ -1,19 +1,14 @@
-const on = (el, evt, fn, opts = {}) => {
-  const delegatorFn = (e) =>
-    e.target.matches(opts.target) && fn.call(e.target, e);
-  el.addEventListener(
-    evt,
-    opts.target ? delegatorFn : fn,
-    opts.options || false
-  );
-  if (opts.target) return delegatorFn;
-};
+const http = require("http");
 
-const fn = () => console.log("mie!"),
-  user = document.getElementById("user");
-on(user, "click", fn, { target: "img" });
+const hostname = "127.0.0.1";
+const port = 3000;
 
-let obj = {
-  handleEvent: f,
-  
-};
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("Hello World\n");
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});

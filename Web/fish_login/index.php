@@ -13,7 +13,7 @@ if (isset($_SESSION['is_login'])) {
     <meta charset='UTF-8'>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
-    <script src='styles/fish.js'></script>
+    <script async src='styles/fish.js'></script>
     <link rel='stylesheet' href='styles/fish.css'>
     <link rel="stylesheet" href="styles/Template.css">
     <link rel='icon' href='img/bili.ico'>
@@ -24,7 +24,6 @@ if (isset($_SESSION['is_login'])) {
 
 <div id="app">
     <div>
-        <input type="button" value="点击" id="play">
         <input type="button" value="关闭" id="close">
         <input type="button" value="注销" id="logout">
         <form id="form">
@@ -44,21 +43,22 @@ if (isset($_SESSION['is_login'])) {
                     </select>
                 </label>
             </div>
-            <div>
-                <span>排序：</span>
-                <label>
-                    <select name="sort" onchange="Ajax(this.value)">
-                        <option value="sort=stu_id">学号</option>
-                        <option value="sort=stu_name">姓名</option>
-                        <option value="sort=sex">性别</option>
-                        <option value="sort=pro_name">专业名</option>
-                        <option value="sort=credit">学分</option>
-                    </select>
-                </label>
-            </div>
+            <!--  <div>
+                  <span>排序：</span>
+                  <label>
+                      <select name="sort" onchange="Ajax(this.value)">
+                          <option value="sort=stu_id">学号</option>
+                          <option value="sort=stu_name">姓名</option>
+                          <option value="sort=sex">性别</option>
+                          <option value="sort=pro_name">专业名</option>
+                          <option value="sort=credit">学分</option>
+                      </select>
+                  </label>
+              </div> <!-->
         </form>
     </div>
     <div></div>
+
 </div>
 
 <?php

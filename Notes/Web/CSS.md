@@ -197,6 +197,7 @@
 - `absolute` : **绝对定位**，往上冒泡地找定位方式**不是 `static`**的祖先(父)元素，并相对于该元素绝对定位
 - `fixed` : 相对于浏览器窗口固定
 - `sticky` : **粘性定位**，当元素(滚动条)移动到预设位置时固定
+- <img src="img/CSS_position.png" width="70%">
 
 ### column 多列布局
 
