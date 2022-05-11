@@ -77,5 +77,10 @@
     "valarray": "c",
     "vector": "cpp"
   },
-  "liveServer.settings.port": 2334
+  "liveServer.settings.port": 2334,
+  "cSpell.words": [
+    "Msxml",
+    "qqmail",
+    "XMLHTTP"
+  ]
 }

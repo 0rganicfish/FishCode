@@ -53,7 +53,7 @@ a {
 }
 a:link,
 a:visited {
-  color: var(--blue);
+  color: var(--deep_purple);
 }
 a:active,
 a:focus,

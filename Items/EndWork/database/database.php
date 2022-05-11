@@ -1,11 +1,11 @@
 <?php
 
-class fish_sql
+class SQL
 {
     public PDO $db;
     public array $head, $arr;
     protected array $sqlarr;
-    private string $sql = "select stu_id 学号,stu_name 姓名,sex 性别,pro_name 专业,credit 学分 from stuinfo ";
+    private string $sql = "";
 
     public function __construct($host, $user, $pw, $dbname)
     {
@@ -17,24 +17,17 @@ class fish_sql
         }
     }
 
-    private function Run($str): void
+    public function Run($str): void
     {
-        $run = $this->db->prepare($this->sql . $str);
+        $run = $this->db->prepare($str);
         $run->execute();
         $this->arr = $run->fetchAll(PDO::FETCH_ASSOC);
-        $this->head = array_keys($this->arr[0]);
+        if (!empty($this->arr))
+            $this->head = array_keys($this->arr[0]);
     }
 
     public function Query($q): void
     {
-        $key = array_keys($q)[0];
-        $x = $key;
-        if ($x === "sel") {
-            $x = 1;
-            $y = 1;
-        } else
-            $y = $q[$key];
-        $sql = " where $x = '$y';";
-        $this->Run($sql);
+
     }
 }

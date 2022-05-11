@@ -258,6 +258,28 @@
                 // logs '!' upon clicking a `img` element child of the body
             </script>
         </div>
+
+        <div>
+            <span id="copy">点击复制</span>
+            <script>
+                Copy = (copyString)=> {
+                    let textArea = document.createElement('textarea');
+                    textArea.value = copyString;
+                    copy.appendChild(textArea);
+                    textArea.focus(), textArea.select();
+                    document.execCommand('copy');
+                    textArea.style.visibility = 'hidden';
+                    copy.removeChild(textArea);
+                }
+
+                copy.addEventListener("click", () => {
+                    Copy("mie")
+                })
+
+
+            </script>
+
+        </div>
     </div>
 
 </body>
