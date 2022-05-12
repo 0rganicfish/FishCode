@@ -20,57 +20,63 @@ let QRcode = () => {
  * 登录检查 */
 
 let Login_check = () => {
-  const uid = document.getElementById("uid"),
-    password = document.getElementById("password"),
+  const uid = document.querySelector('input[name="uid"]'),
+    password = document.querySelector('input[name="password"]'),
     tips = document.querySelectorAll(".tips"),
     check = document.querySelector(".checkbox"),
-    form = document.querySelector("form");
+    form = document.querySelector("form"),
+    btn = document.querySelector('input[type="submit"]');
+  let flag = [0, 0];
+
+  const len = (x) => {
+      return x.length >= 8 && x.length <= 16;
+    },
+    err = (pos) => {
+      tips[pos].style.color = "red";
+      flag[pos] = false;
+      btn.disabled = true;
+      btn.style.backgroundColor = "grey";
+      btn.style.cursor = "not-allowed";
+    },
+    able = (pos) => {
+      tips[pos].style.color = "grey";
+      flag[pos] = true;
+      btn.disabled = false;
+      btn.style.backgroundColor = "#6499c7";
+      btn.style.cursor = "pointer";
+    };
+
   uid.value = password.value = "";
 
   /*
    * 合法的输入 */
 
-  uid.addEventListener("blur", (e) => {
-    const tar = e.target;
-    if (tar.value === "" || tar.value.length !== 10 || isNaN(tar.value)) {
-      tips[0].style.color = "red";
-    } else {
-      tips[0].style.color = "grey";
-    }
-  });
-  uid.addEventListener("focus", () => {
-    tips[0].style.color = "grey";
+  ["input", "blur"].forEach((even) => {
+    password.addEventListener(even, (e) => {
+      len(e.target.value) ? able(1) : err(1);
+    });
   });
 
-  password.addEventListener("blur", (e) => {
-    const tar = e.target;
-    if (tar.value === "" || tar.value.length < 8 || tar.value.length > 16) {
-      tips[1].style.color = "red";
-    } else {
-      tips[1].style.color = "grey";
-    }
-  });
   password.addEventListener("focus", () => {
-    tips[1].style.color = "grey";
+    able(1);
+  });
+  uid.addEventListener("focus", () => {
+    able(0);
   });
 
   /*
    * 真的有这个人？ */
 
-  let ajax = new Ajax(),
-    flag = true;
-
+  let ajax = new Ajax();
   ajax.main({
     url: "database/stu.json",
-    method: "POST",
     success: (res) => {
       const stuid = JSON.parse(res).uid;
       uid.addEventListener("blur", (e) => {
         if (stuid.indexOf(e.target.value) === -1) {
-          tips[0].style.color = "red";
-          flag = false;
+          err(0);
         } else {
-          flag = true;
+          able(0);
         }
       });
     },
@@ -81,12 +87,8 @@ let Login_check = () => {
 
   check.addEventListener("click", () => {
     const box = document.getElementById("check");
-    if (!box.checked) box.checked = true;
-    else box.checked = false;
+    box.checked = !box.checked;
   });
-  check.onmousedown = () => {
-    return false;
-  };
 
   /*
    * 提交检测并拦截 */
@@ -98,7 +100,7 @@ let Login_check = () => {
     if (password.value === "") {
       tips[1].style.color = "red";
     }
-    if (uid.value && password.value && flag) {
+    if (flag[0] && flag[1]) {
       form.method = "POST";
       form.action = "login.php";
       form.submit();
@@ -110,15 +112,6 @@ let Login_check = () => {
 /*
  * 复制 */
 
-let Copy = (copyString, copy) => {
-  let textArea = document.createElement("textarea");
-  textArea.value = copyString;
-  copy.appendChild(textArea);
-  textArea.focus(), textArea.select();
-  document.execCommand("copy");
-  textArea.style.visibility = "hidden";
-  copy.removeChild(textArea);
-};
 let Copy_qq = () => {
   let qq = document.querySelector(".qqmail");
   qq.addEventListener("click", () => {
@@ -134,9 +127,6 @@ window.onload = () => {
 
   // 一些杂项
   (() => {
-    document.querySelector(".forget").onmousedown = () => {
-      return false;
-    };
     window.history.replaceState(null, null, window.location.href); //表单缓存..刷新
   })();
 };

@@ -73,10 +73,8 @@ GROUP BY sex;
 
 SELECT stu_name, credit
 FROM stuinfo
-WHERE credit >= (
-    SELECT AVG(credit)
-    FROM stuinfo
-)
+WHERE credit >= (SELECT AVG(credit)
+                 FROM stuinfo)
 ORDER BY credit DESC;
 
 SELECT pro_name           '专业名',
@@ -117,7 +115,7 @@ ORDER BY degree;
 
 SELECT workname '部门名称',
        COUNT(*) '人数'
-FROM work
+FROM departments
          JOIN employees USING (workid)
 GROUP BY workid
 HAVING COUNT(*) >= 3;
@@ -265,7 +263,7 @@ where pro_name = '通信工程';
 create view ds_view
 as
 select *
-from work;
+from departments;
 
 create or replace view emp_view
 as
@@ -277,7 +275,7 @@ create view emp_all
 as
 select id, name, workname, income
 from employees
-         join work using (workid)
+         join departments using (workid)
          join salary using (id);
 
 select workname
@@ -315,7 +313,7 @@ Set @y = Format(@x, 2);
 Select @y;
 
 Select Now(), sysdate(), time_to_sec(curtime());
-SELECT BINARY ('miemie');
+SELECT BINARY ('mime');
 
 Set @s1 = 'mie.com', @s2 = 'fish';
 Set @ans = Insert(@s1, 1, Locate('.', @s1) - 1, @s2);
@@ -444,10 +442,9 @@ call mie(20);
 
 Select Current_timestamp() '系统时间';
 
-Set @num = (
-    Select id
-    From employees
-    where name = '陈林琳');
+Set @num = (Select id
+            From employees
+            where name = '陈林琳');
 select @num;
 
 set @user1 = 010008;
@@ -496,11 +493,10 @@ describe stuinfo;
 
 select id, income
 from salary
-where income in (
-    select income
-    from salary
-    group by income
-    having count(*) > 1);
+where income in (select income
+                 from salary
+                 group by income
+                 having count(*) > 1);
 
 
 select salary.id, salary.income
@@ -529,6 +525,8 @@ select sqrt(645), sqrt(4), sqrt(1);
 select pow(4, 4), pow(10, -3), pow(8, 0);
 select conv(55, 10, 2), conv(55, 10, 8), conv(55, 10, 16);
 
+# noinspection NonAsciiCharacters
+
 select count(*) 人数
 from salary
 where income > 2000;
@@ -545,7 +543,7 @@ select lpad('我的', 5, '*'),
 
 select TIMESTAMPDIFF(YEAR, born, CURDATE())
 from employees
-         join work using (workid)
+         join departments using (workid)
 where workname = '研发部';
 
 select database(), version();
@@ -553,7 +551,7 @@ select database(), version();
 select left(name, 1)                                        姓,
        if(length(name) = 6, right(name, 1), right(name, 2)) 名
 from employees
-         join work using (workid)
+         join departments using (workid)
 where workname = '研发部'
    or workname = '财务部';
 
@@ -601,7 +599,7 @@ drop procedure if exists emp;
 create procedure emp(in names char(10))
 begin
     select workname 部门名称
-    from work
+    from departments
              join employees using (workid)
     where name = names;
 end //
@@ -646,14 +644,16 @@ delimiter //
 drop procedure if exists emp;
 create procedure emp(in names char(20), out ans char(20))
 begin
-    set @max_income = (select max(income) from salary
-                            join employees using (id)
-                            join work using (workid)
-                     where workname = names);
+    set @max_income = (select max(income)
+                       from salary
+                                join employees using (id)
+                                join departments using (workid)
+                       where workname = names);
 
-    set ans = (select name from employees
-        join salary using (id)
-    where income = @max_income);
+    set ans = (select name
+               from employees
+                        join salary using (id)
+               where income = @max_income);
 end //
 call emp('财务部', @ans);
 select @ans;
@@ -680,3 +680,114 @@ begin
 end //
 call emp(@ans);
 select @ans;
+
+-- --------
+-- 实验十一
+-- -------
+use fish;
+delimiter //
+create function adding(a int, b int)
+    returns int
+    deterministic
+begin
+    return (a + b);
+end //
+
+select adding(1, 2);
+
+
+delimiter //
+drop function if exists allIncome;
+create function allIncome(inId char(6))
+    returns int
+    deterministic
+begin
+    declare ans int;
+    select income
+    into ans
+    from salary
+    where id = inId;
+    return ans;
+end //
+
+select allIncome('000001') '000001',
+       allIncome('010008') '010008';
+
+delimiter //
+drop function if exists emp;
+create function emp(inName varchar(255))
+    returns varchar(255)
+    deterministic
+begin
+    declare ans varchar(255);
+    select degree
+    into ans
+    from employees
+             join departments using (workid)
+    where workname = '研发部'
+      and name = inName;
+
+    if (ans IS NULL) then
+        set ans = '不是研发部员工';
+    end if;
+
+    return ans;
+end //
+
+select emp('王林');
+select emp('叶凡');
+
+delimiter //
+drop function if exists addIncome;
+create function addIncome()
+    returns integer
+    deterministic
+begin
+    update salary
+        join employees using (id)
+    set income = income + 400
+    where worktime >= 4;
+    return 0;
+end //
+
+select addIncome();
+select *
+from salary;
+
+delimiter //
+drop trigger if exists aft_emp_del;
+create trigger aft_emp_del
+    after delete
+    on employees
+    for each row
+begin
+    delete
+    from salary
+    where id = old.id;
+end //
+
+delete
+from employees
+where id = '010008';
+select *
+from salary;
+
+delimiter //
+drop trigger if exists update_emp;
+create trigger update_emp
+    after update
+    on departments
+    for each row
+begin
+    update employees
+    set workid = new.workid
+    where workid = old.workid;
+end //
+
+update departments
+set workid = 10
+where workname = '研发部';
+
+select workid from employees
+    join departments using (workid)
+where workname = '研发部';

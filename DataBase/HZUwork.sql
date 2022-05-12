@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for departments
 -- ----------------------------
-DROP TABLE IF EXISTS work;
+DROP TABLE IF EXISTS departments;
 CREATE TABLE `departments`
 (
     `workid`   char(3) CHARACTER SET utf8 COLLATE utf8_general_ci  NOT NULL,
@@ -36,15 +36,15 @@ CREATE TABLE `departments`
 -- ----------------------------
 -- Records of departments
 -- ----------------------------
-INSERT INTO work
+INSERT INTO departments
 VALUES ('1', '财务部', 'null');
-INSERT INTO work
+INSERT INTO departments
 VALUES ('2', '人力资源部', 'null');
-INSERT INTO work
+INSERT INTO departments
 VALUES ('3', '经理办公室', 'null');
-INSERT INTO work
+INSERT INTO departments
 VALUES ('4', '研发部', 'null');
-INSERT INTO work
+INSERT INTO departments
 VALUES ('5', '生产部', 'null');
 
 -- ----------------------------

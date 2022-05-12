@@ -25,9 +25,4 @@ class SQL
         if (!empty($this->arr))
             $this->head = array_keys($this->arr[0]);
     }
-
-    public function Query($q): void
-    {
-
-    }
 }

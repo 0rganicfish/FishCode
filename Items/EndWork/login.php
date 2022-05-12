@@ -1,7 +1,8 @@
 <?php
 session_start();
 include("database/database.php");
-//print_r($_POST);
+$password = $checked = $uid = "";
+
 if (isset($_POST["uid"])) {
     $uid = trim($_POST["uid"]);
     $password = trim($_POST["password"]);
@@ -12,21 +13,24 @@ if (isset($_POST["uid"])) {
     $sql_str = "select `Username`, `Passwords`, `Power` from `users`
                 where `Username`='$uid' and `Passwords`='$password';";
     $sql->Run($sql_str);
-    $user = $sql->arr;
+    $user = $sql->arr[0];
+    $power = $user["Power"];
 
-    if (!empty($user) || $password === $uid)
-        header("location:index.html");
-    else
-        echo '<script>
-                (() => {
-                  const form = document.querySelector("form"),
-                    tips = document.querySelectorAll(".tips");
-                  form.addEventListener("submit", () => {
-                    tips[1].style.color = "red";
-                    return false;
-                  });
-                })();
-            </script>';
+    if (!empty($user) || $password === $uid) {
+        $_SESSION = [
+            "uid" => $uid,
+            "logged" => true,
+            "power" => $power
+        ];
+        if ($checked === "on") {
+            setcookie("uid", $uid, time() + 3600 * 24 * 365);
+        } else {
+            setcookie("uid", $uid);
+        }
+        header("location:../EndWork/");
+    } else {
+        echo "<script>alert('密码错误')</script>";
+    }
 }
 ?>
 
@@ -77,24 +81,20 @@ if (isset($_POST["uid"])) {
 
             <div class="form">
                 <form>
-                    <label>
-                        <div class="userid">
-                            <input type="text" name="uid" placeholder="学号或教工号" id="uid"/>
-                            <div class="tips">*请输入正确的10位学号或教工号</div>
-                        </div>
-                    </label>
-                    <label>
-                        <div class="password">
-                            <input type="password" name="password" placeholder="密码" id="password"/>
-                            <div class="tips">*请输入长度为8~16位的密码</div>
-                        </div>
-                    </label>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="checked" id="check"/>
-                            <span class="remember">记住我<span class="tips">*不是自己的电脑不要勾选此项</span></span>
-                        </label>
+                    <div class="userid">
+                        <label><input type="text" name="uid" placeholder="学号或教工号"/> </label>
+                        <div class="tips">*请输入正确的10位学号或教工号</div>
                     </div>
+                    <div class="password">
+                        <label><input type="password" name="password" placeholder="密码"/> </label>
+                        <div class="tips">*请输入长度为8~16位的密码</div>
+                    </div>
+                    <label>
+                        <div class="checkbox">
+                            <input type="checkbox" name="checked"/>
+                            <span class="remember">记住我<span class="tips">*不是自己的电脑不要勾选此项</span></span>
+                        </div>
+                    </label>
                     <div class="submit">
                         <input type="submit" value="登录"/>
                     </div>
@@ -108,5 +108,4 @@ if (isset($_POST["uid"])) {
     </div>
 </div>
 </body>
-
 </html>

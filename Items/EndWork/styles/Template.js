@@ -71,3 +71,16 @@ class getXHR {
     return xhr;
   }
 }
+
+/*
+ * 复制 */
+
+let Copy = (copyString, node) => {
+  let textArea = document.createElement("textarea");
+  textArea.value = copyString;
+  node.appendChild(textArea);
+  textArea.focus(), textArea.select();
+  document.execCommand("copy");
+  textArea.style.visibility = "hidden";
+  node.removeChild(textArea);
+};

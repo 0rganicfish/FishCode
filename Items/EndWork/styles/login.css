@@ -1,14 +1,7 @@
 /** 全局 **/
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: SimHei, sans-serif;
-}
-
 .link {
   cursor: pointer;
+  font-weight: bold;
 }
 .link:hover {
   color: var(--deep_purple);
@@ -73,7 +66,7 @@ body {
 .QRCode {
   width: 60%;
   height: 46%;
-  margin-bottom: 10px;
+  margin-bottom: 1vw;
   border-radius: 15px;
   background: url(../img/qrcode.png) no-repeat;
   background-size: 100%;
@@ -82,16 +75,16 @@ body {
 
 .other-login {
   text-align: center;
-  margin: 15px 0;
+  margin: 1vw 0;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 .other-login span {
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-  margin: 15px;
+  margin: 1vw;
 }
 .other-login .weChat {
   background: url(../img/wechat.png);
@@ -109,7 +102,7 @@ body {
   margin-bottom: 8px;
 }
 .footer {
-  margin-bottom: 30px;
+  margin-bottom: 2vw;
   text-align: center;
 }
 
@@ -140,21 +133,22 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 20px auto 25px auto;
+  margin: 0.6rem auto 0.7rem auto;
 }
 form {
-  width: 75%;
+  width: 70%;
 }
 .userid,
 .password {
-  margin-top: 15px;
+  margin-top: 0.4rem;
 }
 
 .checkbox {
   height: 1em;
   line-height: 1em;
-  margin-top: 30px;
+  margin-top: 1.6rem;
   cursor: pointer;
+  user-select: none;
 }
 
 .remember {
@@ -166,6 +160,7 @@ div .tips {
   margin: 0 5px;
   font-size: 0.85em;
   color: gray;
+  user-select: none;
 }
 
 input[type="text"],
@@ -173,9 +168,9 @@ input[type="password"] {
   background: #f8f8f8b3;
   font-weight: 500;
   width: 100%;
-  height: 3.5em;
+  height: 2.7rem;
   padding: 0 15px;
-  margin: 8px 0;
+  margin: 0.8rem 0;
   border: 2px solid var(--purple);
   outline: none;
   border-radius: 5px;
@@ -205,6 +200,7 @@ input[type="submit"]:hover {
 .forget {
   text-align: center;
   position: relative;
+  user-select: none;
 }
 
 /** 浮窗 **/
@@ -232,18 +228,36 @@ input[type="submit"]:hover {
 
 /** 媒体查询 **/
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .main {
+    width: 90%;
+    height: 80%;
     flex-direction: column;
   }
-
+  .footer {
+    height: 100%;
+  }
+  .head .h1 {
+    font-size: 1.5rem;
+  }
   .left {
     width: 100%;
-    height: 20%;
+    height: 16%;
     border-radius: 40px 40px 0 0;
   }
-
   .other-login {
     display: none;
+  }
+  .right {
+    width: 100%;
+    height: 80%;
+  }
+  form {
+    width: 90%;
+  }
+  .fore {
+    position: absolute;
+    top: -3.5em;
+    left: 2em;
   }
 }

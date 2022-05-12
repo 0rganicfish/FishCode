@@ -1,5 +1,6 @@
 <?php
 session_start();
+print_r($_SESSION);
 if (isset($_COOKIE['name'])) {
     $_SESSION['name'] = $_COOKIE['name'];
     $_SESSION['is_login'] = 1;

@@ -5,7 +5,11 @@
 }
 
 body {
-  padding: 50px;
+  width: 100vw;
+  height: 100vh;
+  background: url(img/3.jpg) no-repeat fixed;
+  background-size: 100%;
+  background-position: 0% 50%;
 }
 
 /*

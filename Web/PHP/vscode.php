@@ -63,3 +63,5 @@ echo '<br><br>', count($ar);
 
 print_r($ar);
 
+echo md5("fishfish"), "\n";
+echo md5("2114100328");

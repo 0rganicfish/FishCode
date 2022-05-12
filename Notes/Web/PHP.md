@@ -130,6 +130,16 @@
 
 <br>
 
+### 服务器环境信息
+
+```php {.line-numbers}
+print_r($_SERVER);
+```
+
+[文档](https://www.php.net/manual/zh/reserved.variables.server.php)
+
+<br>
+
 ## 表单
 
 ### 创建表单
