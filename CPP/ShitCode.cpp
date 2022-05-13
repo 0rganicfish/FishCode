@@ -8,6 +8,50 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+//* 05-13
+namespace Fri_13{
+
+    class Time
+    {
+    private:
+        int hours, minutes, seconds;
+
+    public:
+        Time(int h = 0, int m = 0, int s = 0);
+        Time operator+(Time &);
+        void DispTime();
+    };
+
+    /* 请在这里填写答案 */
+
+    Time::Time(int h, int m, int s)
+    {
+        hours = h, minutes = m, seconds = s;
+    }
+    Time Time::operator+(Time &t)
+    {
+        Time tt;
+        tt.seconds = t.seconds + seconds;
+        tt.minutes += t.minutes + minutes + (tt.seconds / 60);
+        tt.hours += t.hours + hours + (tt.minutes / 60);
+        tt.hours %= 24, tt.seconds %= 60, tt.minutes %= 60;
+        return tt;
+    }
+    void Time::DispTime()
+    {
+        cout << hours << "h:" << minutes << "m:" << seconds << "s\n";
+    }
+
+    int main()
+    {
+        Time tm1(8, 75, 50), tm2(0, 6, 16), tm3;
+        tm3 = tm1 + tm2;
+        tm3.DispTime();
+        return 0;
+    }
+}
+
+
 //* 04-29
 namespace Apr_29
 {

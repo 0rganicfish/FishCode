@@ -1,0 +1,8 @@
+.button {
+  height: 15%;
+  margin: 0.5rem auto;
+}
+.button span {
+  line-height: 5.5vh;
+  font-size: 14px;
+}

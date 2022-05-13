@@ -9,7 +9,7 @@
 */
 :root {
   --purple: #ac9bb5;
-  --deep_purple: #36447b;
+  --purple_deep: #36447b;
   --blue: #648ab9;
   --grey: #d2dbf4;
   --blue_green: #6499c7;
@@ -23,6 +23,7 @@ table {
   font-size: 0.8rem;
   margin: 10px;
   border-collapse: collapse;
+  text-align: center;
 }
 caption {
   font-weight: bold;
@@ -42,8 +43,8 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #fff;
 }
-tr:hover{
-  background-color: #f3f0f0d1;
+tr:hover {
+  background-color: #dfdfdf7b;
 }
 
 /*
