@@ -788,6 +788,16 @@ update departments
 set workid = 10
 where workname = '研发部';
 
-select workid from employees
-    join departments using (workid)
+select workid
+from employees
+         join departments using (workid)
 where workname = '研发部';
+
+select  stu_name, sex, score
+from stuinfo
+         join stuscore using (stu_id)
+where sex = 1
+  and score > (select avg(score)
+               from stuscore
+                        join stuinfo using (stu_id)
+               where sex = 0);

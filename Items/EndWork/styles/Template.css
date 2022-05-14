@@ -39,13 +39,13 @@ thead th {
   background-color: #eff3f5;
 }
 tr:nth-child(even) {
-  background-color: #f7f7f7;
+  background-color: #f9f9f9;
 }
 tr:nth-child(odd) {
   background-color: #fff;
 }
 tr:hover {
-  background-color: #dfdfdf7b;
+  background-color: #f0f1f2;
 }
 /*
 * 链接
@@ -94,7 +94,7 @@ li {
 .back {
   width: 100%;
   height: 100%;
-  background: URL(../img/back.png), no-repeat;
+  background: url(../img/back.png) no-repeat;
   background-size: contain;
   filter: blur(5px);
   z-index: -1;
@@ -107,9 +107,8 @@ li {
 .main {
   background: #fff;
   border-radius: 30px;
-  box-shadow: 8.2px 10.2px 6.4px rgba(0, 0, 0, 0.028),
-    14px 17.5px 14.9px rgba(0, 0, 0, 0.04),
-    21.8px 27.2px 29.1px rgba(0, 0, 0, 0.052),
+  box-shadow: 8px 10px 6px rgba(0, 0, 0, 0.028),
+    14px 18px 15px rgba(0, 0, 0, 0.04), 22px 27px 29px rgba(0, 0, 0, 0.052),
     44px 55px 69px rgba(0, 0, 0, 0.08);
 
   display: flex;

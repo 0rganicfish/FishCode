@@ -12,17 +12,19 @@
   --purple_deep: #36447b;
   --blue: #648ab9;
   --grey: #d2dbf4;
-  --blue_green: #6499c7;
+  --blue_green: #79abd7;
+  --blue_green_deep: #4f7293;
 }
 
 /*
 *表格*
 */
 table {
-  border: 2px solid #ddd;
+  border: 1px solid #ddd;
   font-size: 0.8rem;
   margin: 10px;
   border-collapse: collapse;
+  text-align: center;
 }
 caption {
   font-weight: bold;
@@ -42,7 +44,9 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #fff;
 }
-
+tr:hover {
+  background-color: #dfdfdf7b;
+}
 /*
 * 链接
 */
@@ -53,7 +57,7 @@ a {
 }
 a:link,
 a:visited {
-  color: var(--blue);
+  color: var(--purple_deep);
 }
 a:active,
 a:focus,

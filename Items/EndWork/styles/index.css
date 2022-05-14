@@ -9,7 +9,7 @@
   width: 24.6%;
   height: 100%;
   background: #a5aed78c;
-  border-radius: 30px 0 0;
+  border-radius: 30px 0 0 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,6 +23,7 @@
 .right {
   width: 75%;
   height: 100%;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -42,6 +43,7 @@
   color: var(--purple_deep);
   font-weight: bolder;
   font-size: 1.7em;
+  user-select: none;
 }
 
 .buttons {
@@ -98,11 +100,12 @@ input[type="radio"] {
 
 .titles {
   text-align: center;
-  margin: 1rem auto 0.5rem;
+  margin: 0 auto 0.5rem;
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: 0.6rem;
   cursor: pointer;
+  user-select: none;
 }
 .hr {
   width: 80%;
@@ -122,7 +125,7 @@ input[type="radio"] {
 .overflow {
   overflow: auto;
   height: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   scrollbar-width: thin; /*火狐*/
   position: relative;
 }
@@ -139,7 +142,7 @@ input[type="radio"] {
   border-radius: 2px;
   background-color: #cdcdcd;
 }
-.overflow::-webkit-scrollbar-corner{
+.overflow::-webkit-scrollbar-corner {
   display: none;
 }
 
@@ -150,23 +153,89 @@ input[type="radio"] {
 }
 
 .table-box {
-  height: 75%;
   padding-top: 1rem;
 }
 table {
   height: 100%;
   margin: 0 auto;
 }
+thead {
+  position: sticky;
+  top: -2px;
+}
+th {
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+  padding: 1em 1.9em;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
 td {
   font-size: 0.7rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.7rem 1.5rem;
 }
-thead {
+
+th:hover {
+  background-color: #dfdfdf;
+}
+.sort_ico {
+  display: block;
+  background: url(../img/sort.png) center no-repeat;
+  background-size: 100%;
+  opacity: 60%;
+  width: 15px;
+  height: 13px;
+  position: absolute;
+  top: 18.5px;
+  right: 9px;
+}
+
+/* 第几页 */
+.divPage {
+  height: 1.5rem;
+  margin: 0.1rem auto 0;
+  text-align: center;
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
+  user-select: none;
+}
+#perPage {
+  margin-right: 2rem;
+}
+.pageNums {
   font-size: 0.8rem;
-  cursor: pointer;
-  position: sticky;
-  top: 0;
+  margin-right: 2rem;
 }
-thead th:hover {
-  background-color: #dfdfdf7b;
+.printPage span {
+  margin: 0 0.2rem;
+}
+.notBtn {
+  padding: 0.2rem;
+  cursor: pointer;
+  background: #f4f4f5;
+  border: 0;
+  border-radius: 5px;
+  margin: 0 0.3rem;
+}
+.notBtn:disabled {
+  color: #c0c4cc;
+  cursor: not-allowed;
+}
+
+.tpPage {
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+}
+input[name="tpPage"] {
+  width: 2rem;
+  margin: 0 2px;
+  font-size: 0.7rem;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+input[name="tpPage"]:focus {
+  outline-style: none;
 }

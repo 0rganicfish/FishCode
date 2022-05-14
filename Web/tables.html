@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"
+    />
+    <script src=""></script>
+    <link rel="stylesheet" href="Template.css" />
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .tables,
+      .totalPage {
+        margin: 1rem;
+      }
+
+      .totalPage {
+        user-select: none;
+      }
+
+      span {
+        margin: 0.3rem;
+      }
+
+      .notBtn {
+        padding: 0.2rem;
+        cursor: pointer;
+        background: #b4b2b2;
+        border: 0;
+      }
+
+      .notBtn:disabled {
+        background-color: rgba(159, 159, 159, 0.502);
+        cursor: not-allowed;
+      }
+    </style>
+    <link rel="icon" href="img/cat.gif" />
+    <title>分页表格</title>
+  </head>
+
+  <body>
+    <div class="tables">
+      <table>
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>课程</th>
+            <th>学分</th>
+            <th>类别</th>
+            <th>成绩</th>
+            <th>取得学分</th>
+            <th>绩点</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>[101] 面向对象程序设计</td>
+            <td>4.0</td>
+            <td>必修课</td>
+            <td>90.0</td>
+            <td>4.0</td>
+            <td>4.3</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="divPage">
+      <span class="printPage">共 <span id="total"></span>页 </span>
+
+      <label>
+        <select id="perPage">
+          <option value="5" selected="selected">5 行 / 页</option>
+          <option value="10">10 行 / 页</option>
+        </select>
+      </label>
+
+      <span class="pageNums">
+        <button class="notBtn prePage">&lt;</button>
+        <span id="pageNums">第<span id="pageNum">1</span>页</span>
+        <button class="notBtn nextPage">&gt;</button>
+      </span>
+
+      <span class="tpPage">
+        <span>前往</span>
+        <label>
+          <input type="text" name="tpPage" min="1" />
+        </label>
+        <span>页</span>
+      </span>
+    </div>
+
+    <script>
+      const table = document.querySelector("tbody"),
+        perPages = document.getElementById("perPage"),
+        prePage = document.querySelector(".prePage"),
+        nextPage = document.querySelector(".nextPage"),
+        // pageNUms = document.getElementById("pageNums"),
+        pageNum = document.getElementById("pageNum"),
+        tpPage = document.querySelector('input[name="tpPage"]');
+
+      let totalRow = table.rows.length,
+        perPage = 5,
+        begin = 0,
+        end = perPage,
+        totalPage = Math.ceil(totalRow / perPage),
+        curPage = 1;
+
+      const display = () => {
+          for (let row of table.rows) {
+            row.style.display = "none";
+          }
+          for (let i = begin; i < end; ++i) {
+            table.rows[i].style.display = "";
+          }
+          pageNum.innerText = curPage;
+        },
+        check = () => {
+          prePage.disabled = curPage === 1;
+          nextPage.disabled = curPage >= totalPage;
+        },
+        printPage = () => {
+          document.getElementById("total").innerText = totalPage; //总页数
+        };
+
+      (() => {
+        check();
+        display();
+        printPage();
+
+        // 前后页
+        prePage.addEventListener("click", () => {
+          --curPage;
+          check();
+          end = begin;
+          begin = prePage.disabled ? 0 : begin - perPage;
+          display();
+        });
+        nextPage.addEventListener("click", () => {
+          ++curPage;
+          check();
+          begin = end;
+          end = nextPage.disabled ? totalRow : Number(perPage) + Number(end);
+          display();
+        });
+
+        //一页要展示的行数
+        perPages.addEventListener("change", (e) => {
+          begin = 0;
+          curPage = 1;
+          end = perPage = e.target.value;
+          totalPage = Math.ceil(totalRow / perPage);
+          check();
+          display();
+          printPage();
+        });
+
+        //跳页
+        tpPage.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            let val = Number(e.target.value);
+            if (val >= 1 && val <= totalPage) {
+              curPage = val;
+              check();
+              begin = (val - 1) * perPage;
+              end = nextPage.disabled ? totalRow : val * perPage;
+            } else if (val > totalPage) {
+              curPage = totalPage;
+              begin = (totalPage - 1) * perPage;
+              end = totalRow;
+            } else {
+              curPage = 1;
+              begin = 0;
+              end = perPage;
+            }
+            check();
+            display();
+          }
+        });
+
+        //EndOf
+      })();
+    </script>
+  </body>
+</html>

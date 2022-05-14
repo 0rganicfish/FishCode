@@ -54,7 +54,7 @@ class Ajax {
 
 class getXHR {
   constructor() {
-    var xhr = null;
+    let xhr = null;
     if (window.XMLHttpRequest) {
       xhr = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
@@ -79,7 +79,7 @@ let Copy = (copyString, node) => {
   let textArea = document.createElement("textarea");
   textArea.value = copyString;
   node.appendChild(textArea);
-  textArea.focus(), textArea.select();
+  textArea.focus(); textArea.select();
   document.execCommand("copy");
   textArea.style.visibility = "hidden";
   node.removeChild(textArea);

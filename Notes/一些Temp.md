@@ -29,27 +29,6 @@ void welcome()
 
 ## JavaScript
 
-### 隐藏表单的参数
-
-```html {.line-numbers}
-<div>
-  <form id="fish">
-    <label>
-      Name: <input type="text" name="name" /><br />
-      E-Mail: <input id="email" type="email" name="email" /><br />
-    </label>
-    <input type="submit" /><br />
-  </form>
-  <script>
-    (() => {
-      let form = document.getElementById("fish");
-      form.action = "fish.php";
-      form.method = "post";
-    })();
-  </script>
-</div>
-```
-
 ### UP 的新动态
 
 ```JavaScript {.line-numbers}
@@ -116,6 +95,38 @@ class getVersion {
 
 const version = new getVersion();
 version.browserVersion();
+```
+
+### 表格排序
+
+```JavaScript {.line-numbers}
+const sort_table = () => {
+  const thead = document.querySelector("thead"),
+    tbody = document.querySelector("tbody"),
+    rows_array = Array.from(tbody.rows);
+
+  const cmp = (col) => {
+    return (rowA, rowB) => {
+      let a = rowA.cells[col].innerHTML,
+        b = rowB.cells[col].innerHTML,
+        A = Number(rowA.cells[0].innerHTML), //相同则按第一列排序
+        B = Number(rowB.cells[0].innerHTML);
+
+      if (!isNaN(a)) {
+        a = Number(a);
+        b = Number(b);
+        return a === b ? A - B : a - b; //数字
+      } else return a === b ? A - B : a > b; //字符串
+    };
+  };
+
+  thead.addEventListener("click", (e) => {
+    if (e.target.tagName === "TH") {
+      rows_array.sort(cmp(e.target.cellIndex));
+      tbody.append(...rows_array);
+    }
+  });
+};
 ```
 
 <br>
