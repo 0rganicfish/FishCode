@@ -1,4 +1,5 @@
-let divPage = () => {
+// 分页
+const divPage = () => {
   const table = document.querySelector("tbody"),
     perPages = document.getElementById("perPage"), // Rows per Page
     prePage = document.querySelector(".prePage"), // 上一页
@@ -9,7 +10,7 @@ let divPage = () => {
   let totalRow = table.rows.length,
     perPage = 5, //一页的行数
     begin = 0,
-    end = perPage,
+    end = Math.min(perPage, totalRow),
     totalPage = Math.ceil(totalRow / perPage),
     curPage = 1; //目前在第几页
 
@@ -95,7 +96,8 @@ let divPage = () => {
   })();
 };
 
-const sort_table = () => {
+// 点击排序
+const sortTable = () => {
   const thead = document.querySelector("thead"),
     tbody = document.querySelector("tbody"),
     sortIco = document.querySelectorAll(".sort_ico");
@@ -127,7 +129,6 @@ const sort_table = () => {
   thead.addEventListener("click", (e) => {
     if (e.target.tagName === "TH") {
       let index = e.target.cellIndex;
-
       if (sortDire[index]) {
         rows_array.sort(cmp(index));
       } else {
@@ -147,7 +148,7 @@ const sort_table = () => {
         item.style.backgroundSize = "100%";
         item.style.top = "22px";
       }
-      if (preIndex != index) {
+      if (preIndex !== index) {
         let item = sortIco[preIndex];
         item.style.background = "url(img/sort.png) center no-repeat";
         item.style.backgroundSize = "100%";
@@ -160,7 +161,70 @@ const sort_table = () => {
   });
 };
 
+// 切换表格
+const changeTable = () => {
+  let btn = document.querySelectorAll('input[name="options"]'),
+    tables = document.querySelector(".tables");
+
+  const sendData = (d) => {
+    new Ajax().main({
+      url: "database/dataStu.php",
+      data: { type: d },
+      success: (res) => {
+        tables.innerHTML = res; //插入表格
+      },
+    });
+  };
+  sendData("score");
+
+  btn.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      let tar = e.target.closest("input"),
+        active = tar.parentElement.classList;
+
+      btn.forEach((i) => i.parentElement.classList.remove("active"));
+      active.add("active"); // 切换按钮样式
+
+      sendData(tar.value);
+      setTimeout(() => sortTable(), 300);
+    });
+  });
+};
+
+const copyQQ = () => {
+  const qq = document.querySelector(".qqmail");
+  qq.addEventListener("click", () => {
+    Copy("notfound405@qq.com", qq);
+    alert("复制成功");
+  });
+};
+
+// 学生信息写入
+const stuInfo = () => {
+  let stuClass = document.getElementById("class"),
+    gpa = document.getElementById("gpa"),
+    stuId = document.getElementById("id"),
+    stuName = document.getElementById("name");
+
+  new Ajax().main({
+    url: "database/stu.json",
+    success: (res) => {
+      let ans = JSON.parse(res).data.stuInfo;
+      stuClass.innerText = ans.class;
+      gpa.innerText = ans.gpa;
+      stuId.innerText = ans.id;
+      stuName.innerText = ans.name;
+    },
+  });
+};
+
 window.onload = () => {
-  sort_table();
-  divPage();
+  changeTable();
+  copyQQ();
+
+  setTimeout(() => {
+    sortTable();
+    divPage();
+    stuInfo();
+  }, 150); //等表格出来再说
 };

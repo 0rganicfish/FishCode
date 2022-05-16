@@ -1,3 +1,23 @@
+class getXHR {
+  constructor() {
+    let xhr = null;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+      try {
+        xhr = new ActiveXObject("Msxml2.XMLHTTP");
+      } catch (e) {
+        try {
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (e) {
+          alert("您的浏览器暂不支持Ajax!");
+        }
+      }
+    }
+    return xhr;
+  }
+}
+
 class Ajax {
   main = ({
     url,
@@ -52,34 +72,15 @@ class Ajax {
   };
 }
 
-class getXHR {
-  constructor() {
-    let xhr = null;
-    if (window.XMLHttpRequest) {
-      xhr = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-      try {
-        xhr = new ActiveXObject("Msxml2.XMLHTTP");
-      } catch (e) {
-        try {
-          xhr = new ActiveXObject("Microsoft.XMLHTTP");
-        } catch (e) {
-          alert("您的浏览器暂不支持Ajax!");
-        }
-      }
-    }
-    return xhr;
-  }
-}
-
 /*
  * 复制 */
 
-let Copy = (copyString, node) => {
+const Copy = (copyString, node) => {
   let textArea = document.createElement("textarea");
   textArea.value = copyString;
   node.appendChild(textArea);
-  textArea.focus(); textArea.select();
+  textArea.focus();
+  textArea.select();
   document.execCommand("copy");
   textArea.style.visibility = "hidden";
   node.removeChild(textArea);

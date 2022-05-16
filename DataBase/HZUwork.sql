@@ -170,7 +170,7 @@ VALUES ('302', '软件工程', '7', '51', '3');
 -- ----------------------------
 -- Table structure for xs
 -- ----------------------------
-DROP TABLE IF EXISTS `stuinfo`;
+DROP TABLE IF EXISTS stu_info;
 CREATE TABLE `stuinfo`
 (
     `stu_id`   char(6) CHARACTER SET utf8 COLLATE utf8_general_ci    NOT NULL,
@@ -178,7 +178,7 @@ CREATE TABLE `stuinfo`
     `pro_name` varchar(6) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
     `sex`      varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
     `born`     date                                                  NOT NULL,
-    `credit`   int(0)                                                NOT NULL,
+    `credits`   int(0)                                                NOT NULL,
     `备注`       char(255) CHARACTER SET utf8 COLLATE utf8_general_ci  NULL DEFAULT NULL,
     PRIMARY KEY (`stu_id`) USING BTREE
 ) ENGINE = MyISAM
@@ -190,45 +190,45 @@ CREATE TABLE `stuinfo`
 -- ----------------------------
 -- Records of stuinfo
 -- ----------------------------
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081101', '王林', '计算机', '1', '1994-02-10', 50, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081102', '程明', '计算机', '1', '1995-02-01', 50, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081103', '王燕', '计算机', '0', '1993-10-06', 50, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081104', '韦严平', '计算机', '1', '1994-08-26', 50, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081106', '李方方', '计算机', '1', '1994-11-20', 50, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081107', '李明', '计算机', '1', '1994-05-01', 54, '提前修完“数据结构”，并获学分');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081108', '林一帆', '计算机', '1', '1993-08-05', 52, '已提前修完一门课');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081109', '张强民', '计算机', '1', '1993-08-11', 50, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081110', '张蔚', '计算机', '0', '1995-07-22', 50, '三好生');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081111', '赵琳', '计算机', '0', '1994-03-18', 50, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081113', '严红', '计算机', '0', '1993-08-11', 48, '有一门课不及格，待补考');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081201', '王敏', '通信工程', '1', '1993-06-10', 42, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081202', '王水', '通信工程', '1', '1993-01-29', 40, '有一门课不及格，待补考');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081204', '马琳琳', '通信工程', '0', '1993-02-10', 42, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081206', '李计', '通信工程', '1', '1993-09-20', 42, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081210', '李红庆', '通信工程', '1', '1993-05-01', 44, '已提前修完一门课，并获得学分');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081216', '孙祥欣', '通信工程', '1', '1993-03-09', 42, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081218', '孙研', '通信工程', '1', '1994-10-09', 42, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081220', '吴薇华', '通信工程', '0', '1994-03-18', 42, '');
-INSERT INTO `stuinfo`
+INSERT INTO stu_info
 VALUES ('081241', '罗林琳', '通信工程', '0', '1994-01-30', 50, '转专业学习');
 
 -- ----------------------------

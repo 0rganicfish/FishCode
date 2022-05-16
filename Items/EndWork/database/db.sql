@@ -45,11 +45,12 @@ create table if not exists course
 drop table if exists score;
 create table if not exists score
 (
-    StuId     char(10) not null,
-    CourseID  char(3)  not null,
-    Score     float,
-    CreditGot float,
-    Comments  varchar(255)
+    StuId      char(10) not null,
+    CourseID   char(3)  not null,
+    Score      float,
+    CreditGot  float,
+    GradePoint float,
+    Comments   varchar(255)
 );
 
 -- 初始数据 --
@@ -78,32 +79,45 @@ values ('2114100328', '有机鱼', 1, '计算机类', null, null, null),
 
 -- 成绩数据
 insert into score
-values ('2114100328', '101', 80, 3, null),
-       ('2114100328', '102', 81, 3.1, null),
-       ('2114100328', '103', 82, 3.2, null),
-       ('2114100328', '105', 83, 3.3, null),
-       ('2114100306', '101', 84, 3.4, null),
-       ('2114100306', '102', 85, 3.5, null),
-       ('2114100306', '103', 86, 3.6, null),
-       ('2114100306', '105', 87, 3.7, null),
-       ('2114100314', '101', 88, 3.8, null),
-       ('2114100314', '102', 89, 3.9, null),
-       ('2114100314', '103', 90, 4, null),
-       ('2114100314', '105', 91, 4.1, null),
-       ('2114100128', '101', 80, 3, null),
-       ('2114100128', '106', 81, 3.1, null),
-       ('2114100128', '104', 82, 3.2, null),
-       ('2114100128', '105', 83, 3.3, null),
-       ('2114100106', '101', 84, 3.4, null),
-       ('2114100106', '106', 85, 3.5, null),
-       ('2114100106', '104', 86, 3.6, null),
-       ('2114100106', '105', 87, 3.7, null),
-       ('2114100114', '101', 88, 3.8, null),
-       ('2114100114', '106', 89, 3.9, null),
-       ('2114100114', '104', 90, 4, null),
-       ('2114100114', '105', 91, 4.1, null);
+values ('2114100328', '101', 80, 4, 3, null),
+       ('2114100328', '102', 81, 4, 3.1, null),
+       ('2114100328', '103', 82, 2, 3.2, null),
+       ('2114100328', '105', 83, 2, 3.3, null),
+       ('2114100306', '101', 84, 4, 3.4, null),
+       ('2114100306', '102', 85, 4, 3.5, null),
+       ('2114100306', '103', 86, 2, 3.6, null),
+       ('2114100306', '105', 87, 2, 3.7, null),
+       ('2114100314', '101', 88, 4, 3.8, null),
+       ('2114100314', '102', 89, 4, 3.9, null),
+       ('2114100314', '103', 90, 2, 4, null),
+       ('2114100314', '105', 91, 2, 4.1, null),
+       ('2114100128', '101', 80, 4, 3, null),
+       ('2114100128', '106', 81, 4, 3.1, null),
+       ('2114100128', '104', 82, 3, 3.2, null),
+       ('2114100128', '105', 83, 3, 3.3, null),
+       ('2114100106', '101', 84, 4, 3.4, null),
+       ('2114100106', '106', 85, 4, 3.5, null),
+       ('2114100106', '104', 86, 2, 3.6, null),
+       ('2114100106', '105', 87, 2, 3.7, null),
+       ('2114100114', '101', 88, 4, 3.8, null),
+       ('2114100114', '106', 89, 4, 3.9, null),
+       ('2114100114', '104', 90, 2, 4, null),
+       ('2114100114', '105', 91, 2, 4.1, null);
 
 -- 用户信息
 insert into users
-values (0, 'fishroot', 'fishroot', 1),
-       (0, '2114100328', 'Fishfish', 0);
+values (0, 'fishroot', 'fishroot', 1),   -- 管理员
+       (0, '2114100328', 'Fishfish', 0), -- 学生
+       (0, 'teacheroot', 'root', 1);
+
+# select CourseName, Credit, Type, Score, Credit, CreditGot, score.Comments
+# from score join stuinfo using (StuId) join course using (CourseID)
+# where Stuid = '2114100328';
+
+# select CourseID, CourseName, LearnTime, Credit, Type
+# from course join score using (CourseId)
+# where StuId = '2114100328';
+
+# select StuId, StuName, format(avg(GradePoint), 1)
+# from stuinfo join score using (Stuid)
+# where Stuid = '2114100328';

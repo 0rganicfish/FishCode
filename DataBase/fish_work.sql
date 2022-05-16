@@ -2,29 +2,29 @@
 -- 实验五 ↓
 -- --------
 
-SELECT stuinfo.stu_id,
-       stuinfo.stu_name,
+SELECT stu_info.stu_id,
+       stu_info.stu_name,
        source.sour_name,
        stuscore.score
-FROM stuinfo
-         JOIN stuscore ON stuinfo.stu_id = stuscore.stu_id
+FROM stu_info
+         JOIN stuscore ON stu_info.stu_id = stuscore.stu_id
          JOIN source ON source.sour_id = stuscore.sour_id
 WHERE stuscore.score > 50
   and source.sour_name = '离散数学';
 --
 --
-SELECT stuinfo.stu_name,
+SELECT stu_info.stu_name,
        source.sour_name,
        stuscore.score
 FROM stuscore
-         JOIN stuinfo ON stuinfo.stu_id = stuscore.stu_id
+         JOIN stu_info ON stu_info.stu_id = stuscore.stu_id
          JOIN source ON stuscore.sour_id = source.sour_id;
 --
 --
-SELECT stuinfo.*,
+SELECT stu_info.*,
        stuscore.sour_id
-FROM stuinfo
-         JOIN stuscore ON stuscore.stu_id = stuinfo.stu_id;
+FROM stu_info
+         JOIN stuscore ON stuscore.stu_id = stu_info.stu_id;
 --
 --
 SELECT DISTINCT source.sour_name
@@ -33,8 +33,8 @@ FROM source
 --
 --
 SELECT *
-FROM stuinfo
-WHERE stuinfo.stu_id = '081206';
+FROM stu_info
+WHERE stu_info.stu_id = '081206';
 --
 --
 SElECT employees.*,
@@ -64,41 +64,41 @@ WHERE salary.income < 2500;
 
 SELECT COUNT(IF(sex = '男', 1, NULL)) AS '男生数量',
        COUNT(IF(sex = '女', 1, NULL)) AS '女生数量'
-FROM stuinfo;
+FROM stu_info;
 
 SELECT sex,
        COUNT(*) AS '数量'
-FROM stuinfo
+FROM stu_info
 GROUP BY sex;
 
 SELECT stu_name, credit
-FROM stuinfo
+FROM stu_info
 WHERE credit >= (SELECT AVG(credit)
-                 FROM stuinfo)
+                 FROM stu_info)
 ORDER BY credit DESC;
 
 SELECT pro_name           '专业名',
        FLOOR(AVG(credit)) '平均学分',
        COUNT(pro_name)    '人数'
-FROM stuinfo
+FROM stu_info
 GROUP BY pro_name;
 
 SELECT pro_name                      '专业名',
        COUNT(IF(sex = '男', 1, NULL)) '男生数量',
        COUNT(IF(sex = '女', 1, NULL)) '女生数量',
        COUNT(*)                      '专业人数'
-FROM stuinfo
+FROM stu_info
 GROUP BY pro_name;
 
 SELECT stu_id, score
 FROM stuscore
-         JOIN stuinfo USING (stu_id)
+         JOIN stu_info USING (stu_id)
 WHERE pro_name = '计算机'
   AND score >= 75;
 
 SELECT stu_name, pro_name, sour_name, score
 FROM stuscore
-         JOIN stuinfo USING (stu_id)
+         JOIN stu_info USING (stu_id)
          JOIN source USING (sour_id)
 WHERE pro_name = '计算机'
   AND sour_name = '离散数学'
@@ -156,7 +156,7 @@ SELECT stu_id,
                WHEN credit >= 42 AND credit <= 46 THEN '合格'
                WHEN credit >= 47 THEN '优秀'
                END) '等级'
-FROM stuinfo;
+FROM stu_info;
 
 
 -- -----
@@ -208,7 +208,7 @@ create table fishes
 create or replace view csinfo
 as
 select stu_id, stu_name, pro_name, sour_id, score
-from stuinfo
+from stu_info
          join stuscore using (stu_id)
 where pro_name = '通信工程';
 select *
@@ -236,7 +236,7 @@ where avg_score >= 85;
 create or replace view cs1994
 as
 select *
-from stuinfo
+from stu_info
 where born like '1994%';
 insert into cs1994
     value ('081256', '张三', '通信工程', 1, '1994-10-21', 50, NULL);
@@ -257,7 +257,7 @@ where stu_id = '081256';
 create or replace view csinfo
 as
 select stu_id, stu_name, credit
-from stuinfo
+from stu_info
 where pro_name = '通信工程';
 
 create view ds_view
@@ -353,7 +353,7 @@ select CONNECTION_ID();
 select user();
 
 select *
-from stuinfo
+from stu_info
 into outfile 'd:/mie.csv';
 
 -- ----
@@ -364,7 +364,7 @@ delimiter //
 create procedure fishpro()
 begin
     select stu_id, stu_name, born
-    from stuinfo;
+    from stu_info;
 end //
 delimiter ;
 call fishpro();
@@ -383,7 +383,7 @@ delimiter //
 create procedure fishstu(in in_sex int)
 begin
     select stu_id, stu_name, sex
-    from stuinfo
+    from stu_info
     where sex = in_sex;
 end //
 delimiter ;
@@ -396,7 +396,7 @@ create procedure fishsex(in in_sex int,
 begin
     select count(sex)
     into sex_total
-    from stuinfo
+    from stu_info
     where sex = in_sex;
 end //
 call fishsex(1, @sex1);
@@ -487,9 +487,9 @@ select convert_tz(utc_time, '+0:00', '+8:00');
 --
 -- ----
 
-show columns from stuinfo;
+show columns from stu_info;
 show tables;
-describe stuinfo;
+describe stu_info;
 
 select id, income
 from salary
@@ -794,10 +794,10 @@ from employees
 where workname = '研发部';
 
 select  stu_name, sex, score
-from stuinfo
+from stu_info
          join stuscore using (stu_id)
 where sex = 1
   and score > (select avg(score)
                from stuscore
-                        join stuinfo using (stu_id)
+                        join stu_info using (stu_id)
                where sex = 0);

@@ -1,6 +1,6 @@
 /*
  * 二维码 */
-let QRcode = () => {
+const QRCode = () => {
   const icon = document.querySelectorAll(".other-login span"),
     qr = document.querySelector(".QRCode");
 
@@ -19,7 +19,7 @@ let QRcode = () => {
 /*
  * 登录检查 */
 
-let Login_check = () => {
+const loginCheck = () => {
   const uid = document.querySelector('input[name="uid"]'),
     password = document.querySelector('input[name="password"]'),
     tips = document.querySelectorAll(".tips"),
@@ -67,8 +67,7 @@ let Login_check = () => {
   /*
    * 真的有这个人？ */
 
-  let ajax = new Ajax();
-  ajax.main({
+  new Ajax().main({
     url: "database/stu.json",
     success: (res) => {
       const stuid = JSON.parse(res).uid;
@@ -112,8 +111,8 @@ let Login_check = () => {
 /*
  * 复制 */
 
-let Copy_qq = () => {
-  let qq = document.querySelector(".qqmail");
+const copyQQ = () => {
+  const qq = document.querySelector(".qqmail");
   qq.addEventListener("click", () => {
     Copy("notfound405@qq.com", qq);
     alert("复制成功");
@@ -121,9 +120,9 @@ let Copy_qq = () => {
 };
 
 window.onload = () => {
-  QRcode();
-  Login_check();
-  Copy_qq();
+  QRCode();
+  copyQQ();
+  loginCheck();
 
   // 一些杂项
   (() => {
