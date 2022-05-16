@@ -1,8 +1,75 @@
 .button {
-  height: 15%;
-  margin: 0.5rem auto;
+  height: 20%;
+  margin: 0.7rem auto;
 }
 .button span {
-  line-height: 5.5vh;
-  font-size: 14px;
+  line-height: 7.5vh;
+  font-size: 15px;
+}
+
+.titles {
+  letter-spacing: 0.5rem;
+}
+
+/* 操作按钮 */
+input[type="button"] {
+  background: none;
+  border: none;
+}
+
+.editInfo {
+  height: 10%;
+  margin: 0.5rem 0;
+  padding-left: 4rem;
+}
+.editInfo .editBtn {
+  height: 1.8rem;
+  width: 4.5rem;
+  margin: 10px;
+  border-radius: 6px;
+  text-align: center;
+  display: inline-block;
+}
+.editBtn.button span {
+  line-height: 1.5rem;
+  font-size: 12px;
+}
+
+/* 搜索 */
+.search {
+  margin-left: 19rem;
+  position: relative;
+}
+.search span {
+  font-size: 0.9rem;
+  margin-right: 5px;
+}
+input[name="search"] {
+  width: 11rem;
+  height: 1.8rem;
+  padding: 0 1.5rem 0 3px;
+}
+input[name="search"]:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(86, 84, 104, 0.3);
+}
+.search svg {
+  position: absolute;
+  top: 3.5px;
+  right: 20px;
+  opacity: 60%;
+}
+
+/* 表格的操作按钮 */
+td input[type="button"] {
+  margin-right: 8px;
+  font-size: 0.7rem;
+  visibility: hidden;
+}
+td input:hover {
+  color: var(--purple_deep);
+  cursor: pointer;
+}
+tbody tr:hover input {
+  visibility: visible;
 }

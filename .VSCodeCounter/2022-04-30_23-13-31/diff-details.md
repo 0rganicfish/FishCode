@@ -100,8 +100,8 @@ Total : 102 files,  3024 codes, 190 comments, 570 blanks, all 3784 lines
 | [Web/PHP/fish.php](/Web/PHP/fish.php) | PHP | 15 | 1 | 1 | 17 |
 | [Web/PHP/ide.php](/Web/PHP/ide.php) | PHP | 27 | 0 | 8 | 35 |
 | [Web/PHP/vscode.php](/Web/PHP/vscode.php) | PHP | 39 | 12 | 15 | 66 |
-| [Web/fish.js](/Web/fish.js) | JavaScript | 19 | 0 | 3 | 22 |
-| [Web/fish.xml](/Web/fish.xml) | XML | 4 | 0 | 0 | 4 |
+| [Web/fish.js](/Web/styles/fish.js) | JavaScript | 19 | 0 | 3 | 22 |
+| [Web/fish.xml](/Web/datas/fish.xml) | XML | 4 | 0 | 0 | 4 |
 | [Web/fish_login/ajax.php](/Web/fish_login/ajax.php) | PHP | 28 | 1 | 5 | 34 |
 | [Web/fish_login/database.php](/Web/fish_login/database.php) | PHP | 57 | 1 | 9 | 67 |
 | [Web/fish_login/fish.css](/Web/fish_login/fish.css) | CSS | 46 | 3 | 6 | 55 |
@@ -109,8 +109,8 @@ Total : 102 files,  3024 codes, 190 comments, 570 blanks, all 3784 lines
 | [Web/fish_login/fish.sql](/Web/fish_login/fish.sql) | SQL | 7 | 0 | 2 | 9 |
 | [Web/fish_login/index.php](/Web/fish_login/index.php) | PHP | 67 | 0 | 4 | 71 |
 | [Web/fish_login/login.php](/Web/fish_login/login.php) | PHP | 60 | 1 | 9 | 70 |
-| [Web/mie.js](/Web/mie.js) | JavaScript | 16 | 6 | 2 | 24 |
-| [Web/sample.css](/Web/sample.css) | CSS | 196 | 16 | 16 | 228 |
+| [Web/mie.js](/Web/styles/mie.js) | JavaScript | 16 | 6 | 2 | 24 |
+| [Web/sample.css](/Web/styles/sample.css) | CSS | 196 | 16 | 16 | 228 |
 | [Web/sample.html](/Web/sample.html) | HTML | 268 | 2 | 27 | 297 |
 | [Web/test.css](/Web/test.css) | CSS | 48 | 0 | 8 | 56 |
 

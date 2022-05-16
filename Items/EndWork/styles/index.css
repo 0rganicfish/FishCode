@@ -66,7 +66,7 @@
   background-color: #fff;
   cursor: pointer;
   display: block;
-  transition: ease 0.2s;
+  transition: ease-in 0.2s;
 }
 .button span {
   letter-spacing: 0.2rem;
@@ -107,7 +107,7 @@ input[type="radio"] {
   user-select: none;
 }
 .hr {
-  width: 80%;
+  width: 90%;
   height: 3px;
   margin: 5px auto;
   border-radius: 5px;
@@ -168,7 +168,7 @@ input[type="radio"] {
 }
 
 /* 表格 */
-.table-box {
+.tables {
   padding-top: 1rem;
 }
 table {
@@ -191,12 +191,12 @@ td {
   font-size: 0.7rem;
   padding: 0.7rem 1.3rem;
 }
-
 th:hover {
   background-color: #dfdfdf;
 }
+
 .sort_ico {
-  display: block;
+  display: none;
   background: url(../img/sort.png) center no-repeat;
   background-size: 100%;
   opacity: 60%;
@@ -205,6 +205,9 @@ th:hover {
   position: absolute;
   top: 18.5px;
   right: 9px;
+}
+th:hover .sort_ico {
+  display: block;
 }
 
 /* 第几页 */
@@ -246,7 +249,7 @@ th:hover {
 }
 input[name="tpPage"] {
   width: 2rem;
-  margin: 0 2px;
+  margin: 0 5px 0 1px;
   font-size: 0.7rem;
   text-align: center;
   border: none;

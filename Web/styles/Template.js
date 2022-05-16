@@ -11,7 +11,7 @@ class Ajax {
   main = ({
     url,
     data = {},
-    method = "get", // 默认为'get'请求
+    method = "get", // 默认为 get 请求
     header,
     async = true, // 默认为异步请求
     timeout = 60 * 1000, //默认60s
@@ -60,6 +60,7 @@ class Ajax {
     return url;
   };
 }
+
 class getXHR {
   constructor() {
     let xhr = null;
@@ -233,7 +234,7 @@ const sortTable = () => {
       tbody.append(...rows_array);
 
       // 排序的图标
-      if (sortIco !== undefined) {
+      if (!sortIco === undefined) {
         if (sortDire[index]) {
           let item = sortIco[index];
           item.style =

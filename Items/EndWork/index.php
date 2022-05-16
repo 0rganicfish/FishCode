@@ -118,9 +118,8 @@ if ($_SESSION["logged"]) {
                             </div>
                         </div>
 
-                        <div class="table-box">
-                            <div class="tables"></div>
-                        </div>
+                        <div class="tables"></div>
+
                     </div>
 
                     <div class="divPage">
