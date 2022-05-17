@@ -26,7 +26,6 @@ create table if not exists stuinfo
     Sex         boolean      not null,
     Major       varchar(255) not null,
     TotalCredit float,
-    Ranking     int,
     Comments    varchar(255)
 );
 
@@ -38,7 +37,7 @@ create table if not exists course
     CourseName varchar(255) not null,
     LearnTime  int          not null,
     Credit     float        not null,
-    Type       varchar(255) not null
+    Types       varchar(255) not null
 );
 
 -- 成绩信息
@@ -66,14 +65,14 @@ values ('101', '数据库应用技术', 30, 4, '必修课'),
 
 -- 学生数据
 insert into stuinfo
-values ('2114100328', '有机鱼', 1, '计算机类', null, null, null),
-       ('2114100306', '杨咩咩', 1, '计算机类', null, null, null),
-       ('2114100314', '蓝习之', 1, '计算机类', null, null, null),
+values ('2114100328', '有机鱼', 1, '计算机类', null,  null),
+       ('2114100306', '杨咩咩', 1, '计算机类', null,  null),
+       ('2114100314', '蓝习之', 1, '计算机类', null,  null),
 --       ('2114100350', '张三', 0, '计算机类', null, null, null, null),
 --        ('2114100351', '陈思思', 0, '计算机类', null, null, null, null),
-       ('2114100128', '何唐码朗', 1, '网络工程', null, null, null),
-       ('2114100106', '蒋素', 0, '网络工程', null, null, null),
-       ('2114100114', '程平平', 1, '网络工程', null, null, null);
+       ('2114100128', '何唐码朗', 1, '网络工程', null, null),
+       ('2114100106', '蒋素', 0, '网络工程', null,  null),
+       ('2114100114', '程平平', 1, '网络工程', null, null);
 --       ('2114100151', '陈圆圆', 0, '网络工程', null, null, null, null),
 --      ('2114100152', '潘洋', 1, '网络工程', null, null, null, null);
 

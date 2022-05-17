@@ -1,7 +1,7 @@
 <p style="font-size: 40px; color: #fff"><b>DOM</b></p>
 
 - [README](../README.md)
-- [JavaScript](JavaScript.md)
+- [JS](JS.md)
 
 [TOC]
 
@@ -12,7 +12,7 @@
 ### 概述
 
 &emsp;&emsp; HTML 文档的主干是标签（tag）。根据文档对象模型（DOM），每个 HTML 标签都是一个对象。嵌套的标签是闭合标签的“子标签（children）”。标签内的文本也是一个对象。
-&emsp;&emsp; 所有这些对象都可以通过 JavaScript 来访问，我们可以使用它们来修改页面。例如，`document.body` 是表示 `<body>` 标签的对象。
+&emsp;&emsp; 所有这些对象都可以通过 JS 来访问，我们可以使用它们来修改页面。例如，`document.body` 是表示 `<body>` 标签的对象。
 
 - **节点：**
 
@@ -21,7 +21,7 @@
     &emsp;&emsp; 元素内的文本形成 文本节点，被标记为 `＃text`。一个文本节点只包含一个字符串。它没有子项，并且总是树的叶子。
 
 - 请注意文本节点中的**特殊字符：**
-  - 换行符：`↵`（在 JavaScript 中为 `\n`）
+  - 换行符：`↵`（在 JS 中为 `\n`）
   - 空格：`␣`
 
 &emsp;&emsp; 空格和换行符都是完全有效的字符，就像字母和数字。它们形成**文本节点**并成为 DOM 的一部分
@@ -43,7 +43,7 @@
     `parentElement`，`children`，`firstElementChild`，`lastElementChild`，`previousElementSibling`，`nextElementSibling`。
 
 &emsp;&emsp; 某些类型的 DOM 元素，例如 table，提供了用于访问其内容的其他属性和集合。
-&emsp;&emsp; 且由于空格与换行也算作节点，因此用 `*Nodes` 访问是包括了这些文本节点的
+&emsp;&emsp; 且由于空格与换行也算作节点，因此用 `*Nodes` 访问是包括了这些**文本节点**的
 
 ### 主要的 DOM 节点属性
 
@@ -64,6 +64,14 @@
 
 &emsp;&emsp; DOM 节点还具有其他属性，具体有哪些属性则取决于它们的类。例如，`<input>` 元素 支持 value，type，而 `<a>` 元素 则支持 href 等。大多数标准 HTML 特性（attribute）都具有相应的 DOM 属性。
 
+### NodeList 与 HTMLCollection
+
+`HTMLCollection` 是一个实时更新的节点对象，由 `getElementsByTagName()` | `node.children` 获得
+
+`NodeList` 是一个 DOM 节点快照的集合，仅检测 `innerHTML` 的更新，由 `querySelectorAll()` | `node.childNodes` 获得
+
+- 但只有 `NodeList` 才能被 `forEach()` 和 `for(.. of ..)` 遍历。但可以转为数组：`const arr = [...HTMLCol]`
+
 <br><br>
 
 # API
@@ -77,7 +85,5 @@
 `Element` 是一个通用性非常强的基类，所有 `Document` 对象下的对象都继承自它。这个接口描述了所有相同种类的元素所普遍具有的方法和属性。一些接口继承自 `Element` 并且增加了一些额外功能的接口描述了具体的行为。
 
 **令见：** [DOM Element](DOM_Element.md)
-
-## NodeList
 
 ## 其他 API

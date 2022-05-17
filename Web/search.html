@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模糊查询</title>
+    <link rel="stylesheet" href="styles/Template.css" />
+    <style>
+        * {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        ul {
+            padding-top: 20px;
+            width: 30%;
+            margin: 0 50% 0 35%;
+        }
+
+        li {
+            padding: 3px;
+            border: 1px solid silver;
+            box-shadow: 1px 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="txt">
+        <button type="button" id="btn">search</button>
+        <ul id="list">
+
+        </ul>
+    </div>
+    <script>
+
+        var oTxt = document.getElementById('txt');
+        var oBtn = document.getElementById('btn');
+        var oList = document.getElementById('list');
+
+        // var newJson = ["桃子", "苹果", "梨子", "香蕉", "香瓜", "葡萄", "柠檬", "橘子", "草莓"];
+
+
+        var newJson = ["桃子", "苹果", "梨子", "香蕉", "香瓜", "葡萄", "柠檬", "橘子", "草莓"];
+        //点击事件
+        oTxt.addEventListener('keyup', function () {
+            checkCharacter();
+            var keyWord = oTxt.value;
+            // var fruitList = searchByIndexOf(keyWord,newJson);
+            // console.log(fruitList);
+            var fruitList = searchByRegExp(keyWord, newJson);
+            renderFruits(fruitList);
+            showClickDiv();
+        }, false);
+        //回车查询
+        oTxt.addEventListener('keydown', function (e) {
+            if (e.keyCode == 13) {
+                var keyWord = oTxt.value;
+                // var fruitList = searchByIndexOf(keyWord,newJson);
+                var fruitList = searchByRegExp(keyWord, newJson);
+                renderFruits(fruitList);
+            }
+        }, false);
+
+
+        function showClickDiv() {
+            var liList = oList.getElementsByTagName("li");
+            console.log(liList);
+            for (var i = 0; i < liList.length; i++) {
+                liList[i].onclick = function () {
+                    console.log(this.innerHTML);
+                    showClickTextFunction(this.innerHTML);
+                }
+            }
+        }
+
+        function checkCharacter() {
+            var etest = oTxt.value;
+            if (etest == '' || etest == 'null' || etest == undefined) {
+                oList.style.display = "none";
+                return false;
+            } else {
+                oList.style.display = "block";
+            }
+        }
+
+        function renderFruits(list) {
+            if (!(list instanceof Array)) {
+                return;
+            }
+            oList.innerHTML = '';
+            var len = list.length;
+            var item = null;
+            for (var i = 0; i < len; i++) {
+                item = document.createElement('li');
+                item.innerHTML = list[i];
+                oList.appendChild(item);
+            }
+        }
+
+        //模糊查询1:利用字符串的indexOf方法
+        function searchByIndexOf(keyWord, list) {
+            if (!(list instanceof Array)) {
+                return;
+            }
+            var len = list.length;
+            var arr = [];
+            for (var i = 0; i < len; i++) {
+                //如果字符串中不包含目标字符会返回-1
+                if (list[i].indexOf(keyWord) >= 0) {
+                    arr.push(list[i]);
+                }
+            }
+            return arr;
+        }
+        //正则匹配
+        //keyword是输入的值,list是存储数据的数组
+        function searchByRegExp(keyWord, list) {
+            if (!(list instanceof Array)) {
+                return;
+            }
+            var len = list.length;
+            var arr = [];
+            var reg = new RegExp(keyWord);
+            for (var i = 0; i < len; i++) {
+                //如果字符串中不包含目标字符会返回-1
+                if (list[i].match(reg)) {
+                    arr.push(list[i]);
+                }
+            }
+            return arr;
+        }
+        // renderFruits(newJson);
+
+        //选中后处理数据  
+        var showClickTextFunction = function (a) {
+
+            //alert(this.innerText + "---" + this.getAttribute("code"));  
+            oTxt.value = a;
+            // $('#ruleOrgCode').val(this.getAttribute("code"));
+            oList.style.display = "none";
+            console.log(oTxt.value);
+        };
+    </script>
+</body>
+
+</html>

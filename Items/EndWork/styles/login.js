@@ -70,7 +70,7 @@ const loginCheck = () => {
   new Ajax().main({
     url: "database/stu.json",
     success: (res) => {
-      const stuid = JSON.parse(res).uid;
+      const stuid = JSON.parse(res).totalData.stuInfo.id;
       uid.addEventListener("blur", (e) => {
         if (stuid.indexOf(e.target.value) === -1) {
           err(0);

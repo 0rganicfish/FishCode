@@ -103,6 +103,7 @@ input[type="radio"] {
   margin: 0 auto 0.5rem;
   font-size: 1.4rem;
   font-weight: 500;
+  letter-spacing: 0.2rem;
   cursor: pointer;
   user-select: none;
 }

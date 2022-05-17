@@ -1,7 +1,8 @@
 // 切换表格
 const changeTable = () => {
   let btn = document.querySelectorAll('input[name="options"]'),
-    tables = document.querySelector(".tables");
+    tables = document.querySelector(".tables"),
+    titles = document.querySelector(".titles");
 
   const sendData = (d) => {
     new Ajax().main({
@@ -17,6 +18,12 @@ const changeTable = () => {
   changeBtn(btn, (tar) => {
     sendData(tar.value);
     setTimeout(() => sortTable(), 300);
+
+    if (tar.value === "score") {
+      titles.innerHTML = "惠州学院学生成绩明细（有效）";
+    } else if (tar.value === "source") {
+      titles.innerHTML = "我的课程信息";
+    }
   });
 };
 
