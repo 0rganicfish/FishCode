@@ -11,45 +11,45 @@ use fishwork;
 drop table if exists users;
 create table if not exists users
 (
-    Id        int auto_increment primary key,
-    Username  varchar(10) not null,
-    Passwords varchar(20) not null,
-    Power     boolean     not null
+    id        int auto_increment primary key,
+    userName  varchar(10) not null,
+    passWords varchar(20) not null,
+    power     boolean     not null
 );
 
 -- 学生信息
 drop table if exists stuinfo;
 create table if not exists stuinfo
 (
-    Stuid       char(10) primary key,
-    StuName     varchar(255) not null,
-    Sex         boolean      not null,
-    Major       varchar(255) not null,
-    TotalCredit float,
-    Comments    varchar(255)
+    stuId       char(10) primary key,
+    stuName     varchar(255) not null,
+    sex         boolean      not null,
+    major       varchar(255) not null,
+    totalCredit float,
+    comments    varchar(255)
 );
 
 -- 课程信息
 drop table if exists course;
 create table if not exists course
 (
-    CourseId   char(3) primary key,
-    CourseName varchar(255) not null,
-    LearnTime  int          not null,
-    Credit     float        not null,
-    Types       varchar(255) not null
+    courseId   char(3) primary key,
+    courseName varchar(255) not null,
+    learnTime  int          not null,
+    credit     float        not null,
+    type       varchar(255) not null
 );
 
 -- 成绩信息
 drop table if exists score;
 create table if not exists score
 (
-    StuId      char(10) not null,
-    CourseID   char(3)  not null,
-    Score      float,
-    CreditGot  float,
-    GradePoint float,
-    Comments   varchar(255)
+    stuId      char(10) not null,
+    courseId   char(3)  not null,
+    score      float,
+    creditGot  float,
+    gradePoint float,
+    comments   varchar(255)
 );
 
 -- 初始数据 --
@@ -65,13 +65,13 @@ values ('101', '数据库应用技术', 30, 4, '必修课'),
 
 -- 学生数据
 insert into stuinfo
-values ('2114100328', '有机鱼', 1, '计算机类', null,  null),
-       ('2114100306', '杨咩咩', 1, '计算机类', null,  null),
-       ('2114100314', '蓝习之', 1, '计算机类', null,  null),
+values ('2114100328', '有机鱼', 1, '计算机类', null, null),
+       ('2114100306', '杨咩咩', 1, '计算机类', null, null),
+       ('2114100314', '蓝习之', 1, '计算机类', null, null),
 --       ('2114100350', '张三', 0, '计算机类', null, null, null, null),
 --        ('2114100351', '陈思思', 0, '计算机类', null, null, null, null),
        ('2114100128', '何唐码朗', 1, '网络工程', null, null),
-       ('2114100106', '蒋素', 0, '网络工程', null,  null),
+       ('2114100106', '蒋素', 0, '网络工程', null, null),
        ('2114100114', '程平平', 1, '网络工程', null, null);
 --       ('2114100151', '陈圆圆', 0, '网络工程', null, null, null, null),
 --      ('2114100152', '潘洋', 1, '网络工程', null, null, null, null);
@@ -105,9 +105,8 @@ values ('2114100328', '101', 80, 4, 3, null),
 
 -- 用户信息
 insert into users
-values (0, 'fishroot', 'fishroot', 1),   -- 管理员
-       (0, '2114100328', 'Fishfish', 0), -- 学生
-       (0, 'teacheroot', 'root', 1);
+values (0, '2114100328', 'Fishfish', 0),
+       (0, 'fishroot', 'fishroot', 1);
 
 # select CourseName, Credit, Type, Score, Credit, CreditGot, score.Comments
 # from score join stuinfo using (StuId) join course using (CourseID)

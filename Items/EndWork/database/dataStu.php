@@ -28,9 +28,9 @@ function printScore(): void
 {
     global $uid;
     global $sql;
-    $str = "select `CourseName`, `Credit`, `Type`, `Score`,  `CreditGot`, `GradePoint` , `score`.`Comments`
-            from `score` join `stuinfo` using (`StuId`) join `course` using (`CourseID`)
-            where `Stuid` = $uid;";
+    $str = "select `courseName`, `credit`, `type`, `scoreGot`,  `creditGot`, `gradePoint` , `score`.`comments`
+            from `score` join `stuinfo` using (`stuId`) join `course` using (`courseID`)
+            where `stuid` = $uid;";
     $sql->Run($str);
 
     echo '<table><thead><tr><th>序号<span class="sort_ico"></span></th><th>课程<span class="sort_ico"></span></th><th>学分<span class="sort_ico"></span></th><th>类别<span class="sort_ico"></span></th><th>成绩<span class="sort_ico"></span></th><th>取得学分<span class="sort_ico"></span></th><th>绩点<span class="sort_ico"></span></th><th>备注<span class="sort_ico"></span></th></tr></thead><tbody>';
@@ -42,9 +42,9 @@ function printCourse(): void
 {
     global $sql;
     global $uid;
-    $str = "select `CourseID`, `CourseName`, `LearnTime`, `Credit`, `Type`
-            from `course` join `score` using (`CourseId`)
-            where `StuId` = $uid;";
+    $str = "select `courseID`, `courseName`, `learnTime`, `credit`, `type`
+            from `course` join `score` using (`courseId`)
+            where `stuId` = $uid;";
     $sql->Run($str);
 
     echo '<table><thead><tr><th>序号<span class="sort_ico"></span></th><th>课程号<span class="sort_ico"></span></th><th>课程名<span class="sort_ico"></span></th><th>学时<span class="sort_ico"></span></th><th>学分<span class="sort_ico"></span></th><th>课程类别<span class="sort_ico"></span></th></tr></thead><tbody>';

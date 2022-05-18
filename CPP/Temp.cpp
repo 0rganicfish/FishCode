@@ -66,14 +66,15 @@ public: //重载区
     {
         return score < a.score;
     }
-    Stu operator++() // 前缀自增：++mie;
+    Stu &operator++() // 前缀自增：++mie;
     {
         score++;
         return *this;
     }
-    Stu operator++(int) // 后缀自增：mie++:
+    Stu &operator++(int) // 后缀自增：mie++:
     {
-        return ++*this;
+        ++*this;
+        return *this;
     }
     Stu operator+(const Stu a) const // 对象之间相加 --> this + a
     {
@@ -115,12 +116,13 @@ int main()
 {
     Stu mie("081001", "mie", 12),
         fish("081002", "fish", 14);
-    fish++, ++mie;
-    mie += 3;
+    fish++;
+    // mie += mie;
+    cout << mie++;
 
-    cout << "The min is :\n"
-         << Stu::min(mie, fish);
+    // cout << "The min is :\n"
+    //      << Stu::min(mie, fish);
 
-    Teacher sea("022001", "sea", 2022);
-    cout << sea;
+    // Teacher sea("022001", "sea", 2022);
+    // cout << sea;
 }
