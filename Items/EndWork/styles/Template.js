@@ -5,6 +5,7 @@
  * 3，divPage(); //表格分页  *要等数据传出来再调用
  * 4，sortTable(); //表格排序
  * 5，changeBtn(btn, fun(param)); //切换按钮样式
+ * 6，stuInfo; //写入学生信息
  */
 
 class Ajax {
@@ -94,7 +95,9 @@ const Copy = (copyString, node) => {
   node.removeChild(textArea);
 };
 
-// 分页
+/*
+ * 分页 */
+
 const divPage = () => {
   const table = document.querySelector("tbody"),
     perPages = document.getElementById("perPage"), // Rows per Page
@@ -118,6 +121,7 @@ const divPage = () => {
         table.rows[i].style.display = "";
       }
       pageNum.innerText = curPage;
+      check();
     },
     // 开头末尾的禁用按钮
     check = () => {
@@ -130,7 +134,6 @@ const divPage = () => {
     };
 
   (() => {
-    check();
     display();
     printPage();
 
@@ -152,15 +155,17 @@ const divPage = () => {
 
     //一页要展示的行数
     perPages.addEventListener("change", (e) => {
-      if (e.target.value === "all") {
+      const val = e.target.value;
+      if (val === "all") {
+        end = perPage = totalRow;
+      } else if (val > totalRow) {
         end = perPage = totalRow;
       } else {
-        end = perPage = Number(e.target.value);
+        end = perPage = Number(val);
       }
       begin = 0;
       curPage = 1;
       totalPage = Math.ceil(totalRow / perPage);
-      check();
       display();
       printPage();
     });
@@ -183,7 +188,6 @@ const divPage = () => {
           begin = 0;
           end = perPage;
         }
-        check();
         display();
       }
     });
@@ -192,7 +196,9 @@ const divPage = () => {
   })();
 };
 
-// 点击排序
+/*
+ * 点击排序 */
+
 const sortTable = () => {
   const thead = document.querySelector("thead"),
     tbody = document.querySelector("tbody"),
@@ -256,8 +262,10 @@ const sortTable = () => {
   });
 };
 
-// 切换按钮样式
+/*
+ * 切换按钮样式 */
 // fun(@param): 参数为 event.target
+
 const changeBtn = (btn, fun) => {
   btn.forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -266,5 +274,26 @@ const changeBtn = (btn, fun) => {
       active.add("active");
       fun(e.target);
     });
+  });
+};
+
+/*
+ * 学生信息写入 */
+
+const stuInfo = () => {
+  let stuClass = document.getElementById("class"),
+    gpa = document.getElementById("gpa"),
+    stuId = document.getElementById("stuId"),
+    stuName = document.getElementById("stuName");
+
+  new Ajax().main({
+    url: "database/stu.json",
+    success: (res) => {
+      let ans = JSON.parse(res).data.stuInfo;
+      stuClass.innerText = ans.class;
+      gpa.innerText = ans.gpa;
+      stuId.innerText = ans.id;
+      stuName.innerText = ans.name;
+    },
   });
 };

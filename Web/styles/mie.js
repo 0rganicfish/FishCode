@@ -50,4 +50,9 @@ for (const ele of Object.values(obj)) {
   }
 }
 
+// console.log(ans);
+
+var anss = {};
+anss.app
+
 console.log(ans);

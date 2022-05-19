@@ -35,25 +35,6 @@ const copyQQ = () => {
   });
 };
 
-// 学生信息写入
-const stuInfo = () => {
-  let stuClass = document.getElementById("class"),
-    gpa = document.getElementById("gpa"),
-    stuId = document.getElementById("id"),
-    stuName = document.getElementById("name");
-
-  new Ajax().main({
-    url: "database/stu.json",
-    success: (res) => {
-      let ans = JSON.parse(res).data.stuInfo;
-      stuClass.innerText = ans.class;
-      gpa.innerText = ans.gpa;
-      stuId.innerText = ans.id;
-      stuName.innerText = ans.name;
-    },
-  });
-};
-
 window.onload = () => {
   changeTable();
   copyQQ();

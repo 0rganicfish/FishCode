@@ -110,11 +110,11 @@ if ($_SESSION["logged"]) {
                             </div>
                             <div>
                                 <span class="key">学号</span>：
-                                <span id="id"></span>
+                                <span id="stuId"></span>
                             </div>
                             <div>
                                 <span class="key">姓名</span>：
-                                <span id="name"></span>
+                                <span id="stuName"></span>
                             </div>
                         </div>
 

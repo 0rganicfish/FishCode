@@ -2,14 +2,15 @@
 session_start();
 include("database.php");
 
-$uid = $_SESSION["uid"];
+$uid = $_SESSION["uid"] = $_GET["uid"];
 $sql = new SQL('localhost', 'root', 'fish', 'fishwork');
 
 getInfo($uid);
-if ($_GET["type"] === "score")
-    printScore();
-else
-    printCourse();
+if (!isset($_GET["uid"]))
+    if ($_GET["type"] === "score")
+        printScore();
+    else
+        printCourse();
 
 function printTbody($head, $arr): void
 {

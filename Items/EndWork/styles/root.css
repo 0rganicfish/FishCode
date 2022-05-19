@@ -1,3 +1,7 @@
+.app {
+  position: relative;
+}
+
 .button {
   height: 20%;
   margin: 0.7rem auto;
@@ -61,15 +65,100 @@ input[name="search"]:focus {
 }
 
 /* 表格的操作按钮 */
-td input[type="button"] {
+.right td input[type="button"] {
   margin-right: 8px;
   font-size: 0.7rem;
   visibility: hidden;
 }
-td input:hover {
+.right td input:hover {
   color: var(--purple_deep);
   cursor: pointer;
 }
-tbody tr:hover input {
+.right tbody tr:hover input {
   visibility: visible;
+}
+
+/* 弹窗 */
+
+.mes {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.mask {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  position: relative;
+}
+.win {
+  position: absolute;
+  top: 3.95rem;
+  right: 7.6rem;
+  width: 80%;
+  height: 80%;
+  border-radius: 30px;
+  box-shadow: 8px 10px 6px rgba(0, 0, 0, 0.028),
+    14px 18px 15px rgba(0, 0, 0, 0.04), 22px 27px 29px rgba(0, 0, 0, 0.052),
+    44px 55px 69px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.close img {
+  position: absolute;
+  top: 20px;
+  right: 26px;
+  width: 20px;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+.close img:hover {
+  transform: rotate(180deg);
+}
+
+.win .titles {
+  margin: 1rem auto;
+}
+
+.edit .button {
+  display: inline-block;
+  width: 4rem;
+  height: 1.6rem;
+  margin: 1.3rem 1.7rem;
+  text-align: center;
+}
+.edit span {
+  font-size: 0.7rem;
+  line-height: 1rem;
+}
+
+.win .tables {
+  margin : 1rem ;
+}
+.win thead {
+  position: sticky;
+  top: -19px;
+}
+.win td {
+  padding: 0.5rem;
+  height: 3rem;
+}
+.win th {
+  width: 7rem;
+}
+
+.editable {
+  width: 6rem;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: none;
+}
+.editable:focus {
+  outline-style: none;
 }
