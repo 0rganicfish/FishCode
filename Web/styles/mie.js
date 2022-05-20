@@ -52,7 +52,16 @@ for (const ele of Object.values(obj)) {
 
 // console.log(ans);
 
-var anss = {};
-anss.app
+const addUrl = (url, obj) => {
+  let result = "";
+  for (let item in obj)
+    if (obj[item] && String(obj[item])) {
+      result += `&${item}=${obj[item]}`;
+    }
 
-console.log(ans);
+  if (result) {
+    result = "?" + result.slice(1);
+  }
+  return url + result;
+};
+ 

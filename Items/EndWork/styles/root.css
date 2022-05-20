@@ -127,7 +127,7 @@ input[name="search"]:focus {
   display: inline-block;
   width: 4rem;
   height: 1.6rem;
-  margin: 1.3rem 1.7rem;
+  margin: 0 1.7rem 1rem;
   text-align: center;
 }
 .edit span {
@@ -136,17 +136,18 @@ input[name="search"]:focus {
 }
 
 .win .tables {
-  margin : 1rem ;
+  margin : 1rem auto 1.8rem;
 }
 .win thead {
   position: sticky;
   top: -19px;
 }
 .win td {
-  padding: 0.5rem;
+  padding: 0.4rem;
   height: 3rem;
 }
 .win th {
+  height: 1.1rem;
   width: 7rem;
 }
 

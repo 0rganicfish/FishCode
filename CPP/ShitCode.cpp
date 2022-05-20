@@ -8,6 +8,58 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+//* 05-20
+
+namespace May_20
+{
+    /* 请在这里填写答案 */
+
+    class MyTime
+    {
+    private:
+        int h, m, s;
+
+    public:
+        MyTime(int hh, int mm, int ss) : h(hh), m(mm), s(ss) {}
+        MyTime() { h = 0, m = 0, s = 0; };
+
+        friend istream &operator>>(istream &in, MyTime &a)
+        {
+            return in >> a.h >> a.m >> a.s;
+        }
+        friend ostream &operator<<(ostream &out, const MyTime &a)
+        {
+            return out << a.h << ":" << a.m << ":" << a.s << endl;
+        }
+
+        MyTime operator++()
+        {
+            s++;
+            if (s == 60)
+                m++, s = 0;
+            if (m == 60)
+                h++, m = 0;
+            if (h == 24)
+                h = 0;
+            return *this;
+        }
+    };
+
+    int main()
+    {
+        MyTime t1, t2(23, 59, 59), t3;
+        cin >> t3;
+        ++t1;
+        cout << t1 << endl;
+        ++t2;
+        cout << t2 << endl;
+        ++t3;
+        cout << t3 << endl;
+        return 0;
+    }
+
+};
+
 //* 05-13
 namespace Fri_13
 {

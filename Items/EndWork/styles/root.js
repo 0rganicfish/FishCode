@@ -1,15 +1,29 @@
 //切换表格
 const changeTable = () => {
   let btn = document.querySelectorAll('input[name="options"]'),
-    tables = document.querySelector(".tables");
+    tables = document.querySelector(".right .tables");
 
-  changeBtn(btn, (tar) => {});
+  const sendData = (d) => {
+    new Ajax().main({
+      url: "database/dataRoot.php",
+      data: { type: d },
+      success: (res) => {
+        tables.innerHTML = res; //插入表格
+      },
+    });
+  };
+
+  sendData("students");
+  changeBtn(btn, (tar) => {
+    sendData(tar.value);
+    setTimeout(() => sortTable(".right "), 300);
+  });
 };
 
 // 选择框
 const select = () => {
-  const selBox = document.querySelectorAll("tbody .checkbox input"),
-    allBox = document.querySelector("thead .checkbox input");
+  const selBox = document.querySelectorAll(".right tbody .checkbox input"),
+    allBox = document.querySelector(".right thead .checkbox input");
 
   allBox.addEventListener("click", () => {
     selBox.forEach((ele) => {
@@ -28,8 +42,8 @@ const showWin = () => {
   const btn1 = document.querySelectorAll('td input[name="info"]'),
     btn2 = document.querySelectorAll('td input[name="edit"]'),
     mes = document.querySelector(".mesMain"),
-    editBtn = document.querySelector('.mes input[name="editSave"]'),
-    btnText = document.querySelector(".mes label span");
+    saveBtn = document.querySelector('.mes input[name="save"]'),
+    tables = document.querySelector(".win .tables");
 
   [btn1, btn2].forEach((eles) => {
     eles.forEach((ele) => {
@@ -39,36 +53,30 @@ const showWin = () => {
         // 发送当前点击学生的学号
         new Ajax().main({
           url: "database/dataStu.php",
-          data: { uid: stuid },
-          success: () => {
-            stuInfo();
+          data: { uid: stuid, type: "score" },
+          success: (res) => {
+            tables.innerHTML = res; //表格成绩信息
+            stuInfo(); //学生信息
           },
         });
 
-        if (e.target.name === "info") {
-          btnText.innerHTML = "修改";
-        } else {
-          editBtn.parentElement.style.display = "";
-          btnText.innerHTML = "保存";
-          setTimeout(() => {
-            editInfo(e.target.parentElement);
-          }, 200);
-        }
         mes.style.display = "";
+        if (e.target.name === "info") {
+          saveBtn.parentElement.style.display = "none";
+        } else {
+          saveBtn.parentElement.style.display = "";
+          setTimeout(() => editInfo(), 300);
+        }
+
+        setTimeout(() => {
+          closeWin();
+          sortTable(".win ", false);
+        }, 200);
+        //
       });
     });
   });
-
-  editBtn.addEventListener("click", () => {
-    if (btnText.innerHTML === "修改") {
-      btnText.innerHTML = "保存";
-      setTimeout(() => {
-        editInfo();
-      }, 300);
-    }
-  });
-
-  closeWin();
+  //
 };
 
 // 弹窗......关闭！
@@ -89,73 +97,82 @@ const closeWin = () => {
  * 编辑信息...... */
 const editInfo = () => {
   let info = [],
-    changeInfo = [],
-    tableTd = document.querySelectorAll(".mes td"),
-    editBtn = document.querySelector('.mes input[name="editSave"]'),
-    btnText = document.querySelector(".mes label span");
+    changeInfo = new Set(),
+    tableTd = document.querySelectorAll(".mes tbody td"),
+    saveBtn = document.querySelector('.mes input[name="save"]'),
+    stuId = document.querySelector(".win #stuId").innerText;
 
   document.querySelectorAll(".info span").forEach((ele) => {
     if (ele.attributes["id"]) info.push(ele);
   });
+
+  const adding = (ele, callback) => {
+    console.log(ele);
+    changeInfo.add(ele);
+    callback();
+  };
 
   [info, tableTd].forEach((item) => {
     item.forEach((ele) => {
       ele.addEventListener("click", (e) => {
         const tar = e.target;
-        if (tar.tagName === "SPAN") {
-          let input = document.createElement("input");
 
-          input.setAttribute("type", "text");
-          input.setAttribute("class", "editable");
-          input.value = tar.innerHTML;
-          // input.setAttribute("name", tar)
-
-          tar.innerHTML = "";
-          tar.append(input);
-          changeInfo.push(tar);
-
-          // console.log(changeInfo);
-          console.log(tar.innerHTML);
+        if (tar.childNodes[0].nodeName === "#text") {
+          adding(tar, () => {
+            let input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.setAttribute("class", "editable");
+            input.value = tar.innerHTML;
+            tar.removeChild(tar.childNodes[0]);
+            tar.append(input);
+          });
         }
       });
     });
   });
 
-  editBtn.addEventListener("click", (e) => {
-    if (btnText.innerHTML === "保存") {
-      saveInfo(changeInfo);
-    }
+  saveBtn.addEventListener("click", () => {
+    saveInfo(changeInfo, stuId);
   });
-  // returns(changeInfo);
 };
 
 /*
  * 保存......信息 */
-const saveInfo = (changeInfo) => {
-  const saveBtn = document.querySelector('.mes input[name="editSave"]');
+const saveInfo = (changeInfo, stuId) => {
+  const saveBtn = document.querySelector('.mes input[name="save"]');
+  let editData = { info: [], table: [] };
 
-  // new Ajax().main({
-  //   url: "database/dataRoot.php",
-  //   method: "POST",
-  //   data: { uid: stuid },
-  //   success: () => {},
-  // });
+  changeInfo.forEach((item) => {
+    if (item.tagName === "TD") {
+      editData.table.push({
+        id: item.id,
+        course: item.parentElement.children[1].innerText,
+        value: item.innerText,
+      });
+    } else {
+      console.log(item);
+      editData.info.push({
+        id: item.id,
+        value: item.innerText,
+      });
+    }
+  });
+  console.log(editData, stuId);
 
-  // console.log(changeInfo);
-  returns(changeInfo);
-  saveBtn.parentElement.style.display = "none";
+  new Ajax().main({
+    url: "database/dataRoot.php",
+    method: "POST",
+    data: editData,
+    success: () => {
+      saveBtn.parentElement.style.display = "none";
+      returns(changeInfo);
+    },
+  });
 };
 
 /*
- * 还原~ */
+ * 还原~ */ //毕竟....display:none 挖的坑
 const returns = (changeInfo) => {
-  let info = [];
-  document.querySelectorAll(".info span").forEach((ele) => {
-    if (ele.attributes["id"]) info.push(ele);
-  });
-  let tableTd = document.querySelectorAll(".mes td");
-
-  // console.log(changeInfo);
   //修改了才用
   if (changeInfo) {
     changeInfo.forEach((ele) => {
@@ -168,11 +185,11 @@ const returns = (changeInfo) => {
 
 window.onload = () => {
   changeTable();
-  showWin();
 
   setTimeout(() => {
-    divPage();
-    sortTable();
-    select();
+    divPage(".right ");
+    sortTable(".right ");
+    select(); //选择框
+    showWin(); //弹窗
   }, 200);
 };

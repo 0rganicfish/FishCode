@@ -17,7 +17,7 @@ const changeTable = () => {
 
   changeBtn(btn, (tar) => {
     sendData(tar.value);
-    setTimeout(() => sortTable(), 300);
+    setTimeout(() => sortTable(".right "), 300);
 
     if (tar.value === "score") {
       titles.innerHTML = "惠州学院学生成绩明细（有效）";
@@ -41,8 +41,8 @@ window.onload = () => {
   // console.log(navigator.userAgent);
 
   setTimeout(() => {
-    sortTable();
-    divPage();
+    sortTable(".right ");
+    divPage(".right ");
     stuInfo();
   }, 300); //等表格出来再说
 };

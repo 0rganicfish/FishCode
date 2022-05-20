@@ -2,15 +2,16 @@
 session_start();
 include("database.php");
 
-$uid = $_SESSION["uid"] = $_GET["uid"];
+$uid = "";
+$uid = $_GET["uid"] ?? $_SESSION["uid"];
+
 $sql = new SQL('localhost', 'root', 'fish', 'fishwork');
 
 getInfo($uid);
-if (!isset($_GET["uid"]))
-    if ($_GET["type"] === "score")
-        printScore();
-    else
-        printCourse();
+if ($_GET["type"] === "score")
+    printScore();
+else
+    printCourse();
 
 function printTbody($head, $arr): void
 {
@@ -19,7 +20,7 @@ function printTbody($head, $arr): void
         echo '<tr>';
         echo '<td>', $i++, '</td>';
         foreach ($head as $col)
-            echo '<td>', $row[$col], '</td>';
+            echo '<td id="', $col, '">', $row[$col], '</td>';
         echo '</tr>';
     }
     echo '</tbody></table>';
@@ -30,7 +31,7 @@ function printScore(): void
     global $uid;
     global $sql;
     $str = "select `courseName`, `credit`, `type`, `scoreGot`,  `creditGot`, `gradePoint` , `score`.`comments`
-            from `score` join `stuinfo` using (`stuId`) join `course` using (`courseID`)
+            from `score` join `stuinfo` using (`stuId`) join `course` using (`courseId`)
             where `stuid` = $uid;";
     $sql->Run($str);
 
@@ -56,21 +57,21 @@ function printCourse(): void
 function getInfo($uid): void
 {
     global $sql;
-    $str = "select `Major`, `StuId`, `StuName`, format(avg(`GradePoint`), 1) gpa
-            from `stuinfo` join `score` using (`Stuid`)
-            where `Stuid` = $uid;";
+    $str = "select `major`, `stuId`, `stuName`, format(avg(`gradePoint`), 1) gpa
+            from `stuinfo` join `score` using (`stuId`)
+            where `stuId` = $uid;";
     $sql->Run($str);
     $ans = $sql->arr[0];
-    $class = substr($ans["StuId"], 0, 2) .
-        $ans["Major"] .
-        substr($ans["StuId"], 7, 1) . "班";
+    $class = substr($ans["stuId"], 0, 2) .
+        $ans["major"] .
+        substr($ans["stuId"], 7, 1) . "班";
 
     $json = json_decode(file_get_contents("stu.json"), true);
     $ansData = [
         "class" => $class,
         "gpa" => $ans["gpa"],
-        "id" => $ans["StuId"],
-        "name" => $ans["StuName"]
+        "id" => $ans["stuId"],
+        "name" => $ans["stuName"]
     ];
     $json["data"]["stuInfo"] = $ansData;
     $str = json_encode($json, JSON_UNESCAPED_UNICODE);

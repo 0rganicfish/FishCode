@@ -2,8 +2,8 @@
  * 函数一览：
  * 1，new Ajax().main({}); //Ajax的封装
  * 2，Copy(string, node); //点击复制
- * 3，divPage(); //表格分页  *要等数据传出来再调用
- * 4，sortTable(); //表格排序
+ * 3，divPage(tablePos); //表格分页  *要等数据传出来再调用
+ * 4，sortTable(tablePos); //表格排序  *都要指定表格的位置(选择器)
  * 5，changeBtn(btn, fun(param)); //切换按钮样式
  * 6，stuInfo; //写入学生信息
  */
@@ -19,7 +19,7 @@ class Ajax {
     success,
     fail,
   }) => {
-    const requestURL = method === "get" ? this.addURL(url, data) : url;
+    const requestURL = method === "get" ? this.addUrl(url, data) : url;
     const sendData = method === "get" ? null : data;
     const xhr = new getXHR();
 
@@ -51,14 +51,17 @@ class Ajax {
     xhr.send(sendData);
   };
 
-  addURL = (url, param) => {
-    if (param && Object.keys(param).length) {
-      url += url.indexOf("?") === -1 ? "?" : "&";
-      Object.keys(param).map((key) => {
-        url += encodeURIComponent(key) + "=" + encodeURIComponent(param[key]);
-      });
+  addUrl = (url, obj) => {
+    let result = "";
+    for (let item in obj)
+      if (obj[item] && String(obj[item])) {
+        result += `&${item}=${obj[item]}`;
+      }
+
+    if (result) {
+      result = "?" + result.slice(1);
     }
-    return url;
+    return url + result;
   };
 }
 class getXHR {
@@ -98,16 +101,16 @@ const Copy = (copyString, node) => {
 /*
  * 分页 */
 
-const divPage = () => {
-  const table = document.querySelector("tbody"),
-    perPages = document.getElementById("perPage"), // Rows per Page
-    prePage = document.querySelector(".prePage"), // 上一页
-    nextPage = document.querySelector(".nextPage"), // 下一页
-    pageNum = document.getElementById("pageNum"), //页码
-    tpPage = document.querySelector('input[name="tpPage"]'); // 跳页
+const divPage = (tablePos) => {
+  const table = document.querySelector(tablePos + "tbody"),
+    perPages = document.querySelector(tablePos + "#perPage"), // Rows per Page
+    prePage = document.querySelector(tablePos + ".prePage"), // 上一页
+    nextPage = document.querySelector(tablePos + ".nextPage"), // 下一页
+    pageNum = document.querySelector(tablePos + "#pageNum"), //页码
+    tpPage = document.querySelector(tablePos + 'input[name="tpPage"]'); // 跳页
 
   let totalRow = table.rows.length,
-    perPage = 5, //一页的行数
+    perPage = isNaN(perPages.value) ? totalRow : perPages.value, //一页的行数
     begin = 0,
     end = Math.min(perPage, totalRow),
     totalPage = Math.ceil(totalRow / perPage),
@@ -199,10 +202,11 @@ const divPage = () => {
 /*
  * 点击排序 */
 
-const sortTable = () => {
-  const thead = document.querySelector("thead"),
-    tbody = document.querySelector("tbody"),
-    sortIco = document.querySelectorAll(".sort_ico");
+const sortTable = (tablePos, paging = true) => {
+  const thead = document.querySelector(tablePos + "thead"),
+    tbody = document.querySelector(tablePos + "tbody"),
+    sortIco = document.querySelectorAll(tablePos + ".sort_ico");
+
   let rows_array = Array.from(tbody.rows),
     sortDire = [],
     preIndex = 0;
@@ -258,6 +262,7 @@ const sortTable = () => {
 
       preIndex = index;
       sortDire[index] = !sortDire[index]; //升降序
+      if (paging) divPage(tablePos); //默认排序后也要分页
     }
   });
 };
