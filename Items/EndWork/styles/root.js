@@ -1,6 +1,6 @@
 //切换表格
-const changeTable = () => {
-  let btn = document.querySelectorAll('input[name="options"]'),
+function changeTable() {
+  const btn = document.querySelectorAll('input[name="options"]'),
     tables = document.querySelector(".right .tables");
 
   const sendData = (d) => {
@@ -18,7 +18,7 @@ const changeTable = () => {
     sendData(tar.value);
     setTimeout(() => sortTable(".right "), 300);
   });
-};
+}
 
 // 选择框
 const select = () => {
@@ -38,13 +38,39 @@ const select = () => {
 };
 
 // 弹窗......打开！
-const showWin = () => {
+function showWin() {
   const btn1 = document.querySelectorAll('td input[name="info"]'),
     btn2 = document.querySelectorAll('td input[name="edit"]'),
-    mes = document.querySelector(".mesMain"),
-    saveBtn = document.querySelector('.mes input[name="save"]'),
+    win = document.querySelector(".mes"),
+    saveBtn = document.querySelector(".mes .edit"),
     tables = document.querySelector(".win .tables");
 
+  // 弹窗......关闭！
+  function closeWin() {
+    const back = document.querySelector(".mask"),
+      close = document.querySelector(".close"),
+      win = document.querySelector(".mes");
+
+    [back, close].forEach((ele) => {
+      ele.addEventListener("click", () => {
+        win.style.display = "none";
+      });
+    });
+  }
+
+  function show(tar) {
+    win.style.display = "";
+    if (tar.name === "info") {
+      saveBtn.style.display = "none";
+    } else {
+      saveBtn.style.display = "";
+      editInfo(); //点击编辑
+    }
+    closeWin();
+    sortTable(".win ", false);
+  }
+
+  //
   [btn1, btn2].forEach((eles) => {
     eles.forEach((ele) => {
       ele.addEventListener("click", (e) => {
@@ -57,132 +83,95 @@ const showWin = () => {
           success: (res) => {
             tables.innerHTML = res; //表格成绩信息
             stuInfo(); //学生信息
+            setTimeout(() => show(e.target), 300);
           },
         });
-
-        mes.style.display = "";
-        if (e.target.name === "info") {
-          saveBtn.parentElement.style.display = "none";
-        } else {
-          saveBtn.parentElement.style.display = "";
-          setTimeout(() => editInfo(), 300);
-        }
-
-        setTimeout(() => {
-          closeWin();
-          sortTable(".win ", false);
-        }, 200);
         //
       });
     });
   });
-  //
-};
-
-// 弹窗......关闭！
-const closeWin = () => {
-  const back = document.querySelector(".mask"),
-    close = document.querySelector(".close"),
-    mes = document.querySelector(".mesMain");
-
-  [back, close].forEach((ele) => {
-    ele.addEventListener("click", () => {
-      mes.style.display = "none";
-      returns();
-    });
-  });
-};
+}
 
 /*
  * 编辑信息...... */
-const editInfo = () => {
-  let info = [],
-    changeInfo = new Set(),
-    tableTd = document.querySelectorAll(".mes tbody td"),
+function editInfo() {
+  let tableTd = document.querySelectorAll(".mes tbody td"),
     saveBtn = document.querySelector('.mes input[name="save"]'),
-    stuId = document.querySelector(".win #stuId").innerText;
+    stuId = document.querySelector(".win #stuId").innerText,
+    info = [...document.querySelectorAll(".win .info span")].filter((ele) => {
+      return ele.attributes["id"];
+    });
 
-  document.querySelectorAll(".info span").forEach((ele) => {
-    if (ele.attributes["id"]) info.push(ele);
-  });
-
-  const adding = (ele, callback) => {
-    console.log(ele);
-    changeInfo.add(ele);
-    callback();
-  };
+  function pushInput(node) {
+    let input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("class", "editable");
+    input.value = node.innerHTML;
+    node.innerHTML = "";
+    node.appendChild(input);
+  }
 
   [info, tableTd].forEach((item) => {
     item.forEach((ele) => {
-      ele.addEventListener("click", (e) => {
-        const tar = e.target;
-
-        if (tar.childNodes[0].nodeName === "#text") {
-          adding(tar, () => {
-            let input = document.createElement("input");
-            input.setAttribute("type", "text");
-            input.setAttribute("class", "editable");
-            input.value = tar.innerHTML;
-            tar.removeChild(tar.childNodes[0]);
-            tar.append(input);
-          });
-        }
+      ele.addEventListener("click", () => {
+        if (ele.innerHTML[0] !== "<") pushInput(ele);
       });
     });
   });
 
-  saveBtn.addEventListener("click", () => {
-    saveInfo(changeInfo, stuId);
-  });
-};
+  saveBtn.addEventListener("click", () => saveInfo(stuId));
+}
+
+/*
+ * 验证输入 */
+function checkIn(input) {
+  return true;
+}
 
 /*
  * 保存......信息 */
-const saveInfo = (changeInfo, stuId) => {
-  const saveBtn = document.querySelector('.mes input[name="save"]');
-  let editData = { info: [], table: [] };
+function saveInfo(stuId) {
+  const saveBtn = document.querySelector('.mes input[name="save"]'),
+    input = document.querySelectorAll(".win input.editable");
+  let editData = { stuId: stuId, info: [], table: [] };
 
-  changeInfo.forEach((item) => {
-    if (item.tagName === "TD") {
-      editData.table.push({
-        id: item.id,
-        course: item.parentElement.children[1].innerText,
-        value: item.innerText,
+  if (!checkIn(input)) return false;
+
+  //
+  input.forEach((ele) => {
+    const par = ele.parentElement;
+    if (par.nodeName === "SPAN") {
+      editData.info.push({
+        key: par.id,
+        value: encodeURIComponent(ele.value),
       });
     } else {
-      console.log(item);
-      editData.info.push({
-        id: item.id,
-        value: item.innerText,
+      editData.table.push({
+        key: par.id,
+        value: encodeURIComponent(ele.value),
+        course: encodeURIComponent(par.parentElement.children[1].innerHTML),
       });
     }
   });
-  console.log(editData, stuId);
 
+  // 恢复
+  input.forEach((ele) => {
+    ele.parentElement.innerHTML = ele.value;
+  });
+
+  //
   new Ajax().main({
     url: "database/dataRoot.php",
     method: "POST",
-    data: editData,
-    success: () => {
+    data: "data=" + JSON.stringify(editData),
+    success: (res) => {
+      console.log(res);
       saveBtn.parentElement.style.display = "none";
-      returns(changeInfo);
     },
   });
-};
+}
 
-/*
- * 还原~ */ //毕竟....display:none 挖的坑
-const returns = (changeInfo) => {
-  //修改了才用
-  if (changeInfo) {
-    changeInfo.forEach((ele) => {
-      let t = ele.childNodes[0].value;
-      ele.removeChild(ele.childNodes[0]);
-      ele.innerHTML = t;
-    });
-  }
-};
-
+//
 window.onload = () => {
   changeTable();
 
@@ -191,5 +180,5 @@ window.onload = () => {
     sortTable(".right ");
     select(); //选择框
     showWin(); //弹窗
-  }, 200);
+  }, 300);
 };

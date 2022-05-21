@@ -2,9 +2,14 @@
 include("database.php");
 $sql = new SQL('localhost', 'root', 'fish', 'fishwork');
 
-$type = $_GET["type"];
-if ($type === "students") {
-    stuTable();
+if (isset($_GET["type"]))
+    if ($_GET["type"] === "students") {
+        stuTable();
+    }
+//
+
+if (isset($_POST["data"])) {
+    edit(json_decode($_POST["data"], true));
 }
 
 queryJson();
@@ -76,4 +81,15 @@ function stuTable(): void
         echo '<td><input type="button" name="info" value="详情"><input type="button" name="edit" value="修改"><input type="button" name="delete" value="删除"></td></tr>';
     }
     echo '</tbody></table>';
+}
+
+function edit($data): void
+{
+    $uid = $data['stuId'];
+    $info = $data['info'];
+    $scoreInfo = $data['table'];
+
+    echo $uid;
+    print_r($info);
+    print_r($scoreInfo);
 }

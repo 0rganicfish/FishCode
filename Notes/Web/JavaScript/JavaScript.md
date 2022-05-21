@@ -27,7 +27,7 @@
 
   ```JavaScript {.line-numbers}
   let a = ["12", 34, "avb"];
-  for (var i in a)
+  for (let i in a)
     console.log(a[i])
   ```
 
@@ -35,7 +35,7 @@
 
   ```JavaScript {.line-numbers}
   let a = ["12", 34, "avb"];
-  for (var i of a)
+  for (let i of a)
     console.log(i);
   ```
 
@@ -112,14 +112,14 @@
 - **如**：
 
   ```JavaScript {.line-numbers}
-  var a = ["233", "54f", "23"];
+  let a = ["233", "54f", "23"];
 
   // 一般写法：
-  var l = a.map(function(element) {
+  let l = a.map(function(element) {
     return element.length
   })
   // 箭头函数：
-  var l = a.map((len) => len.length);
+  let l = a.map((len) => len.length);
 
   console.log(l); //输出 [3, 3, 2]
   ```
@@ -129,18 +129,20 @@
   ```JavaScript {.line-numbers}
   let max = (a, b) => a > b ? a : b;
   //调用：
-  var maxx = max(12, 33);//当然也有 Math.max();
+  let maxx = max(12, 33);//当然也有 Math.max();
   ```
 
 - **递归：**
 
   ```JavaScript {.line-numbers}
-  var fact = (x) => (x ? x * fact(x - 1) : 1);
+  let fact = (x) => (x ? x * fact(x - 1) : 1);
   ```
 
 - **而且**：箭头函数没有局部 `this` 的绑定
 
-  和一般的函数不同，箭头函数不会绑定 this。 或者说箭头函数不会改变 this 本来的绑定。
+  和一般的函数不同，箭头函数不会绑定 this。 或者说箭头函数不会改变 this 本来的绑定，而是指向了 `window`。
+
+> ! 箭头函数只适合干简单事啦，尽量不用来定义函数
 
 <br>
 
@@ -167,7 +169,7 @@
 - **如：**
 
   ```JavaScript {.line-numbers}
-  for (var k = 0; k < ele.length; k++) {
+  for (let k = 0; k < ele.length; k++) {
     (function (k) {
       ele[k].addEventListener("click", function (e) {
         alert("index is: " + k + ", and this ele is: " + ele[k].innerHTML);
@@ -206,12 +208,12 @@
 - **使用对象初始化器** :
 
   ```JavaScript {.line-numbers}
-  var obj = {
+  let obj = {
     name: "haha",
     age: 14,
     color: "pink",
   }; // 创建对象,或：
-  var oo = new Object();
+  let oo = new Object();
 
   obj.like = "Java"; //也能创建后通过赋值来添加或改变值
 
@@ -236,7 +238,7 @@
     this.sex = sex;
   }
 
-  var rand = new Person("Rand McKinnon", 33, "M"),
+  let rand = new Person("Rand McKinnon", 33, "M"),
     car1 = new Car("Eagle", "Talon TSi", 1993, rand);
 
   console.log(car1.owner.name); // Rand McKinnon
@@ -247,14 +249,14 @@
   &emsp;&emsp; 对象也可以用 `Object.create()` 方法创建。该方法非常有用，因为它允许你为创建的对象选择一个原型对象，而不用定义构造函数。
 
   ```JavaScript {.line-numbers}
-  var Animal = {
+  let Animal = {
     type: "Invertebrates", // 属性默认值
     displayType: function () {
       console.log(this.type); // 用于显示type属性的方法
     }, // 对象中套函数
   };
   // 创建一种新的动物——Fishes
-  var fish = Object.create(Animal);
+  let fish = Object.create(Animal);
   fish.type = "Fishes";
   fish.displayType(); // Output:Fishes
   ```
@@ -262,7 +264,7 @@
 - **对象长度：**
 
   ```JavaScript {.line-numbers}
-  var len = Object.keys(oo).length;
+  let len = Object.keys(oo).length;
   ```
 
 <br>
@@ -272,7 +274,7 @@
 - 纯对象是不能用 `for of` 遍历的(`myObj is not iterable`)，需要制定遍历的对象（值或键）
 
   ```JavaScript {.line-numbers}
-  for (var i of Object.values(myObj)) // Object.keys(myObj)
+  for (let i of Object.values(myObj)) // Object.keys(myObj)
     console.log(i);
   ```
 
@@ -290,11 +292,11 @@
 - **如：**
 
   ```JavaScript {.line-numbers}
-  var f = function () {
+  let f = function () {
     console.log(this.x);
   };
-  var x = 1;
-  var obj = {
+  let x = 1;
+  let obj = {
     ff: f,
     x: 2,
   };
@@ -312,48 +314,96 @@
 
 **函数方法：**
 
+- `arr.splice(pos, len, ...[array])`：增删元素，无返回值
+  &emsp;&emsp;在 `pos` 处删除 `len` 长的元素，并插入新元素(可选)
+- `arr.slice(start, end)`：数组切片，返回 从 [`start`, `end`) 之间的元素的数组，无参数则复制整个数组
 - `array.concat(array | value)` : 合并拼接数组
-
   ```JavaScript {.line-numbers}
-  var num1 = [1, 2, 3],
+  let num1 = [1, 2, 3],
     num2 = [4, 5, 6],
-  var num = num1.concat(num2); // [1, 2, 3, 4 ,5 ,6]
+  let num = num1.concat(num2); // [1, 2, 3, 4 ,5 ,6]
   ```
-
-- `array.forEach(fun)` : 遍历数组
-
-  ```JavaScript {.line-numbers}
-  var a = [1, 2, 3];
-  a.forEach((i) => {
-    console.log(i);
-  });
-  // fun 多用箭头或匿名函数
-  ```
-
 - `array.join(value)` : 将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。
-
   ```JavaScript {.line-numbers}
-  var numbers = [4, 2, 5, 1, 3];
+  let numbers = [4, 2, 5, 1, 3];
   console.log(numbers.join("--"));
   //4--2--5--1--3
   ```
-
-- `array.includes(value | index)` : 从`index`开始判断一个数组是否包含一个指定的值，如果包含则返回 true，否则返回 false。
-- `array.pop()`, `array.push()` : 队尾增删
-
-- `array.sort(fun)` : 排序
+- **搜索：**
+  - `arr.indexOf(value, pos)`：从 pos 开始搜索 value，找到则返回下标
+  - `arr.includes(value | pos)` : 从`pos`开始判断一个数组是否包含一个指定的值，如果包含则返回 `true`，否则返回 `false`。
+  - `arr.find(function(item, index, arr))`：
+    找到时返回 `item`，否则返回 `undefined`
+    ```JavaScript {.line-numbers}
+    let users = [
+      {id: 1, name: "John"},
+      {id: 2, name: "Pete"},
+      {id: 3, name: "Mary"}
+    ];
+    let user = users.find(item => item.id == 1);
+    user.name // -> John
+    ```
+  - `arr.filter(function(item, index, arr))`：
+    过滤器，返回符合条件的数组
+    ```JavaScript {.line-numbers}
+    let arr = [1, 2, 3, 4];
+    let ans = arr.filter((item)=>{
+        return item % 2;
+    });
+    ans //->[1 3]
+    ```
+- `array.pop()`、 `array.push()`：队尾增删
+- `arr.shift()`、`arr.unshift()`：队首增删
+- `array.sort(fun)` : 默认地按 **字符串** 的方式来排序
 
   ```JavaScript {.line-numbers}
-  var numbers = [4, 2, 5, 1, 3];
-  numbers.sort((a, b) => a - b);
-  console.log(numbers);
+  let numbers = [4, 2, 5, 1, 3];
+  numbers.sort((a, b) => a - b);//所以排数字时要定义排序的函数
+  numbers //-> [1 2 3 4 5]
+
   //也能是排序数组中的对象
   items.sort(function (a, b) {
     return (a.value - b.value)
   });
   ```
 
-  > 参考：[MDN Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E6%8F%8F%E8%BF%B0)
+- **遍历数组：** 方法的**参数**都一样： `arr.fun(function(item, index, arr))` ：当前值、值的下标、数组本身
+
+  - `forEach` :
+    无返回值，通常只用于 只调用数组数据的情况
+    ```JavaScript {.line-numbers}
+    let a = [1, 2, 3];
+    a.forEach((i) => {
+      console.log(i);
+    });
+    // 1 2 3
+    ```
+  - `map`：
+    处理器，返回处理后的新数组
+    ```JavaScript {.line-numbers}
+    let arr = [1, 2, 3, 4];
+    let ans = arr.map((item)=>{
+        return item * 2;
+    });
+    ans //-> [2 4 6 8]
+    ```
+  - `reduce`：
+    归并器，多带一个参数：`arr.reduce(function(prev, curr, index, arr))`
+
+>
+
+- **等概率的随机洗牌：**
+  ```JavaScript {.line-numbers}
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  ```
+
+
+> 参考：[MDN Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E6%8F%8F%E8%BF%B0) 、 [数组方法](https://zh.javascript.info/array-methods)
 
 <br>
 
@@ -362,7 +412,7 @@
 - **属性**
 
   ```JavaScript {.line-numbers}
-  var date = new Date(year | monthIndex | day | hours | minutes | seconds);
+  let date = new Date(year | monthIndex | day | hours | minutes | seconds);
   // 参数可选，否则返回当前的本地时间
   date.method();
   ```
@@ -428,7 +478,7 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 - **属性**
 
   ```JavaScript {.line-numbers}
-  var mpa = new Map();
+  let mpa = new Map();
   mpa.set("key", "value");
   mpa.set("name", "haha");
   mpa.set("age", 14);
@@ -504,9 +554,9 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 
   ```JavaScript {.line-numbers}
   function add() {
-    var sum = 0,
+    let sum = 0,
       len = arguments.length;
-    for (var i = 0; i < len; i++) {
+    for (let i = 0; i < len; i++) {
       sum += arguments[i];
     }
     return sum;

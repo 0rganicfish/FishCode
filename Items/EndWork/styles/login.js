@@ -1,6 +1,6 @@
 /*
  * 二维码 */
-const QRCode = () => {
+function QRCode() {
   const icon = document.querySelectorAll(".other-login span"),
     qr = document.querySelector(".QRCode");
 
@@ -14,12 +14,12 @@ const QRCode = () => {
       qr.style.visibility = "hidden";
     });
   });
-};
+}
 
 /*
  * 登录检查 */
 
-const loginCheck = () => {
+function loginCheck() {
   const uid = document.querySelector('input[name="uid"]'),
     password = document.querySelector('input[name="password"]'),
     tips = document.querySelectorAll(".tips"),
@@ -106,18 +106,18 @@ const loginCheck = () => {
     }
     return false;
   };
-};
+}
 
 /*
  * 复制 */
 
-const copyQQ = () => {
+function copyQQ() {
   const qq = document.querySelector(".qqmail");
   qq.addEventListener("click", () => {
     Copy("notfound405@qq.com", qq);
     alert("复制成功");
   });
-};
+}
 
 window.onload = () => {
   QRCode();

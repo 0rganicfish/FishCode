@@ -1,10 +1,10 @@
 // 切换表格
-const changeTable = () => {
+function changeTable() {
   let btn = document.querySelectorAll('input[name="options"]'),
     tables = document.querySelector(".tables"),
     titles = document.querySelector(".titles");
 
-  const sendData = (d) => {
+  function sendData(d) {
     new Ajax().main({
       url: "database/dataStu.php",
       data: { type: d },
@@ -12,7 +12,7 @@ const changeTable = () => {
         tables.innerHTML = res; //插入表格
       },
     });
-  };
+  }
   sendData("score");
 
   changeBtn(btn, (tar) => {
@@ -25,15 +25,15 @@ const changeTable = () => {
       titles.innerHTML = "我的课程信息";
     }
   });
-};
+}
 
-const copyQQ = () => {
+function copyQQ() {
   const qq = document.querySelector(".qqmail");
   qq.addEventListener("click", () => {
     Copy("notfound405@qq.com", qq);
     alert("复制成功");
   });
-};
+}
 
 window.onload = () => {
   changeTable();

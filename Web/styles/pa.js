@@ -1,4 +1,4 @@
-const userInfo = (uid, files) => {
+function userInfo(uid, files) {
   const https = require("https"),
     fs = require("fs"),
     Url = "https://api.bilibili.com/x/space/acc/info?mid=" + uid;
@@ -21,11 +21,11 @@ const userInfo = (uid, files) => {
       });
     })
     .on("error", () => console.log("获取数据出错!"));
-};
+}
 
 // userInfo("259486090", "Web/user.json");
 
-const weiboHot = () => {
+function weiboHot() {
   const url = "https://weibo.com/ajax/side/hotSearch",
     fs = require("fs"),
     https = require("https");
@@ -47,7 +47,6 @@ const weiboHot = () => {
       });
     })
     .on("error", (e) => console.log(e));
-};
+}
 
 weiboHot();
-

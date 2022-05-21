@@ -19,9 +19,9 @@ class Ajax {
     success,
     fail,
   }) => {
-    const requestURL = method === "get" ? this.addUrl(url, data) : url;
-    const sendData = method === "get" ? null : data;
-    const xhr = new getXHR();
+    const requestURL = method === "get" ? this.addUrl(url, data) : url,
+      sendData = method === "get" ? null : data,
+      xhr = new getXHR();
 
     if (header && Object.keys(header).length) {
       Object.keys(header).map((key) => {
@@ -48,10 +48,13 @@ class Ajax {
     xhr.ontimeout = () => {
       console.log("timeout");
     };
+    if (method !== "get") {
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    }
     xhr.send(sendData);
   };
 
-  addUrl = (url, obj) => {
+  addUrl(url, obj) {
     let result = "";
     for (let item in obj)
       if (obj[item] && String(obj[item])) {
@@ -62,8 +65,9 @@ class Ajax {
       result = "?" + result.slice(1);
     }
     return url + result;
-  };
+  }
 }
+//
 class getXHR {
   constructor() {
     let xhr = null;
@@ -87,7 +91,7 @@ class getXHR {
 /*
  * 复制 */
 
-const Copy = (copyString, node) => {
+function Copy(copyString, node) {
   let textArea = document.createElement("textarea");
   textArea.value = copyString;
   node.appendChild(textArea);
@@ -96,12 +100,12 @@ const Copy = (copyString, node) => {
   document.execCommand("copy");
   textArea.style.visibility = "hidden";
   node.removeChild(textArea);
-};
+}
 
 /*
  * 分页 */
 
-const divPage = (tablePos) => {
+function divPage(tablePos) {
   const table = document.querySelector(tablePos + "tbody"),
     perPages = document.querySelector(tablePos + "#perPage"), // Rows per Page
     prePage = document.querySelector(tablePos + ".prePage"), // 上一页
@@ -116,18 +120,18 @@ const divPage = (tablePos) => {
     totalPage = Math.ceil(totalRow / perPage),
     curPage = 1; //目前在第几页
 
-  const display = () => {
-      for (let row of table.rows) {
-        row.style.display = "none";
-      }
-      for (let i = begin; i < end; ++i) {
-        table.rows[i].style.display = "";
-      }
-      pageNum.innerText = curPage;
-      check();
-    },
-    // 开头末尾的禁用按钮
-    check = () => {
+  function display() {
+    for (let row of table.rows) {
+      row.style.display = "none";
+    }
+    for (let i = begin; i < end; ++i) {
+      table.rows[i].style.display = "";
+    }
+    pageNum.innerText = curPage;
+    check();
+  }
+  // 开头末尾的禁用按钮
+  const check = () => {
       prePage.disabled = curPage === 1;
       nextPage.disabled = curPage >= totalPage;
     },
@@ -197,12 +201,12 @@ const divPage = (tablePos) => {
 
     //EndOf
   })();
-};
+}
 
 /*
  * 点击排序 */
 
-const sortTable = (tablePos, paging = true) => {
+function sortTable(tablePos, paging = true) {
   const thead = document.querySelector(tablePos + "thead"),
     tbody = document.querySelector(tablePos + "tbody"),
     sortIco = document.querySelectorAll(tablePos + ".sort_ico");
@@ -215,7 +219,7 @@ const sortTable = (tablePos, paging = true) => {
     sortDire[i] = true; //默认第一次为升序
   }
 
-  const cmp = (col) => {
+  function cmp(col) {
     return (rowA, rowB) => {
       let a = rowA.cells[col].innerHTML,
         b = rowB.cells[col].innerHTML,
@@ -230,7 +234,7 @@ const sortTable = (tablePos, paging = true) => {
         return a === b ? A - B : a > b; //字符串
       }
     };
-  };
+  }
 
   thead.addEventListener("click", (e) => {
     if (e.target.tagName === "TH") {
@@ -265,13 +269,13 @@ const sortTable = (tablePos, paging = true) => {
       if (paging) divPage(tablePos); //默认排序后也要分页
     }
   });
-};
+}
 
 /*
  * 切换按钮样式 */
 // fun(@param): 参数为 event.target
 
-const changeBtn = (btn, fun) => {
+function changeBtn(btn, fun) {
   btn.forEach((item) => {
     item.addEventListener("click", (e) => {
       btn.forEach((i) => i.parentElement.classList.remove("active"));
@@ -280,12 +284,12 @@ const changeBtn = (btn, fun) => {
       fun(e.target);
     });
   });
-};
+}
 
 /*
  * 学生信息写入 */
 
-const stuInfo = () => {
+function stuInfo() {
   let stuClass = document.getElementById("class"),
     gpa = document.getElementById("gpa"),
     stuId = document.getElementById("stuId"),
@@ -301,4 +305,4 @@ const stuInfo = () => {
       stuName.innerText = ans.name;
     },
   });
-};
+}

@@ -3,7 +3,7 @@
 // const hostname = "127.0.0.1";
 // const port = 3000;
 
-// const server = http.createServer((req, res) => {
+// function server http.createServer((req, res)  {
 //   res.statusCode = 200;
 //   res.setHeader("Content-Type", "text/plain");
 //   res.end("Hello World\n");
@@ -13,14 +13,14 @@
 //   console.log(`Server running at http://${hostname}:${port}/`);
 // });
 
-const fuzzyFind = (str, list) => {
+function fuzzyFind(str, list) {
   const reg = new RegExp("(.*)(" + str.split("").join(")(.*)(") + ")(.*)");
   let ans = [];
   list.forEach((ele) => {
     if (reg.test(ele)) ans.push(ele);
   });
   return ans;
-};
+}
 
 const obj = {
   course: { id: ["21123"], name: [], type: [] },
@@ -52,7 +52,7 @@ for (const ele of Object.values(obj)) {
 
 // console.log(ans);
 
-const addUrl = (url, obj) => {
+function addUrl(url, obj) {
   let result = "";
   for (let item in obj)
     if (obj[item] && String(obj[item])) {
@@ -63,5 +63,14 @@ const addUrl = (url, obj) => {
     result = "?" + result.slice(1);
   }
   return url + result;
-};
- 
+}
+
+function getData(data) {
+  const { id, name, fun } = data;
+  // console.log({ id, name });
+}
+
+getData({
+  id: 123,
+  name: "mie",
+});
