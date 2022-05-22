@@ -784,6 +784,7 @@ begin
     where workid = old.workid;
 end //
 
+
 update departments
 set workid = 10
 where workname = '研发部';

@@ -8,9 +8,10 @@ if (isset($_GET["type"]))
     }
 //
 
-if (isset($_POST["data"])) {
-    edit(json_decode($_POST["data"], true));
-}
+if (isset($_POST["data"]))
+    if ($_POST["type"] === "update") {
+        edit(json_decode($_POST["data"], true));
+    }
 
 queryJson();
 
@@ -88,8 +89,11 @@ function edit($data): void
     $uid = $data['stuId'];
     $info = $data['info'];
     $scoreInfo = $data['table'];
+    global $sql;
+    $str = '';
 
-    echo $uid;
+
+    echo '<br>', $uid, '<br>';
     print_r($info);
     print_r($scoreInfo);
 }

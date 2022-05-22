@@ -20,7 +20,7 @@ class Ajax {
     fail,
   }) => {
     const requestURL = method === "get" ? this.addUrl(url, data) : url,
-      sendData = method === "get" ? null : data,
+      sendData = method === "get" ? null : "data=" + data, // xhr.send(string)
       xhr = new getXHR();
 
     if (header && Object.keys(header).length) {
@@ -289,7 +289,7 @@ function changeBtn(btn, fun) {
 /*
  * 学生信息写入 */
 
-function stuInfo() {
+function stuInfo(notNull = 1) {
   let stuClass = document.getElementById("class"),
     gpa = document.getElementById("gpa"),
     stuId = document.getElementById("stuId"),
@@ -298,11 +298,15 @@ function stuInfo() {
   new Ajax().main({
     url: "database/stu.json",
     success: (res) => {
-      let ans = JSON.parse(res).data.stuInfo;
-      stuClass.innerText = ans.class;
-      gpa.innerText = ans.gpa;
-      stuId.innerText = ans.id;
-      stuName.innerText = ans.name;
+      const ans = JSON.parse(res).data.stuInfo;
+      if (notNull) {
+        stuClass.innerText = ans.class;
+        gpa.innerText = ans.gpa;
+        stuId.innerText = ans.id;
+        stuName.innerText = ans.name;
+      } else {
+        stuClass.innerHTML = gpa.innerHTML = stuId.innerHTML = stuName = "";
+      }
     },
   });
 }

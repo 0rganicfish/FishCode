@@ -42,21 +42,10 @@ function showWin() {
   const btn1 = document.querySelectorAll('td input[name="info"]'),
     btn2 = document.querySelectorAll('td input[name="edit"]'),
     win = document.querySelector(".mes"),
+    back = document.querySelector(".mask"),
+    close = document.querySelector(".close"),
     saveBtn = document.querySelector(".mes .edit"),
     tables = document.querySelector(".win .tables");
-
-  // 弹窗......关闭！
-  function closeWin() {
-    const back = document.querySelector(".mask"),
-      close = document.querySelector(".close"),
-      win = document.querySelector(".mes");
-
-    [back, close].forEach((ele) => {
-      ele.addEventListener("click", () => {
-        win.style.display = "none";
-      });
-    });
-  }
 
   function show(tar) {
     win.style.display = "";
@@ -66,7 +55,12 @@ function showWin() {
       saveBtn.style.display = "";
       editInfo(); //点击编辑
     }
-    closeWin();
+
+    // 弹窗......关闭！
+    [back, close].forEach((ele) => {
+      ele.onclick = () => (win.style.display = "none");
+    });
+
     sortTable(".win ", false);
   }
 
@@ -106,6 +100,7 @@ function editInfo() {
     let input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("class", "editable");
+    input.setAttribute("id", node.innerHTML);
     input.value = node.innerHTML;
     node.innerHTML = "";
     node.appendChild(input);
@@ -119,21 +114,28 @@ function editInfo() {
     });
   });
 
-  saveBtn.addEventListener("click", () => saveInfo(stuId));
+  saveBtn.onclick = () => {
+    saveInfo(stuId);
+  };
 }
 
 /*
  * 验证输入 */
 function checkIn(input) {
+  // console.log(input);
+  if (!input.length) return false;
+  
+  
+
   return true;
 }
 
 /*
  * 保存......信息 */
 function saveInfo(stuId) {
-  const saveBtn = document.querySelector('.mes input[name="save"]'),
-    input = document.querySelectorAll(".win input.editable");
-  let editData = { stuId: stuId, info: [], table: [] };
+  const saveBtn = document.querySelector(".mes .edit"),
+    input = document.querySelectorAll(".win input.editable"),
+    editData = { stuId: stuId, info: [], table: [] };
 
   if (!checkIn(input)) return false;
 
@@ -149,7 +151,7 @@ function saveInfo(stuId) {
       editData.table.push({
         key: par.id,
         value: encodeURIComponent(ele.value),
-        course: encodeURIComponent(par.parentElement.children[1].innerHTML),
+        course: encodeURIComponent(par.parentElement.id),
       });
     }
   });
@@ -163,10 +165,10 @@ function saveInfo(stuId) {
   new Ajax().main({
     url: "database/dataRoot.php",
     method: "POST",
-    data: "data=" + JSON.stringify(editData),
+    data: JSON.stringify(editData) + "&type=update",
     success: (res) => {
       console.log(res);
-      saveBtn.parentElement.style.display = "none";
+      saveBtn.style.display = "none";
     },
   });
 }

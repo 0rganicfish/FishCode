@@ -26,6 +26,7 @@ create table if not exists stuinfo
     sex         boolean      not null,
     major       varchar(255) not null,
     totalCredit float,
+    GPA         float,
     comments    varchar(255)
 );
 
@@ -65,14 +66,14 @@ values ('101', '数据库应用技术', 30, 4, '必修课'),
 
 -- 学生数据
 insert into stuinfo
-values ('2114100328', '有机鱼', 1, '计算机类', 14, null),
-       ('2114100306', '杨咩咩', 1, '计算机类', 14, null),
-       ('2114100314', '蓝习之', 1, '计算机类', 14, null),
+values ('2114100328', '有机鱼', 1, '计算机类', 14, 3.2, null),
+       ('2114100306', '杨咩咩', 1, '计算机类', 14, 3.5, null),
+       ('2114100314', '蓝习之', 1, '计算机类', 14, 3.9, null),
 --       ('2114100350', '张三', 0, '计算机类', null, null, null, null),
 --        ('2114100351', '陈思思', 0, '计算机类', null, null, null, null),
-       ('2114110128', '何唐码朗', 1, '网络工程', 14, null),
-       ('2114110106', '蒋素', 0, '网络工程', 14, null),
-       ('2114110114', '程平平', 1, '网络工程', 14, null);
+       ('2114110128', '何唐码朗', 1, '网络工程', 14, 3.1, null),
+       ('2114110106', '蒋素', 0, '网络工程', 14, 3.6, null),
+       ('2114110114', '程平平', 1, '网络工程', 14, 3.9, null);
 --       ('2114100151', '陈圆圆', 0, '网络工程', null, null, null, null),
 --      ('2114100152', '潘洋', 1, '网络工程', null, null, null, null);
 
@@ -144,4 +145,48 @@ values (0, '2114100328', 'Fishfish', 0),
 #                    from score
 #                    where score.stuId in (select * from idd))
 # where stuId in (select * from idd);
+
+create or replace view gpaT(gpa, id) as
+select format(avg(`gradePoint`), 1), stuId
+from stuinfo
+         join score using (stuId)
+group by stuId;
+
+delimiter //
+drop trigger if exists updateGPA;
+create trigger updateGPA
+    after update
+    on score
+    for each row
+begin
+    update stuinfo, gpaT
+    set stuinfo.GPA = gpaT.gpa
+    where stuId = id;
+end //
+
+update score
+set gradePoint = 5.0
+where stuId = '2114100328' and courseId = '104';
+
+
+delimiter ||
+drop function if exists GPCalc;
+create function GPCalc(id char(10))
+    returns float
+    deterministic
+begin
+    set @sc = (select scoreGot from score where stuId = '2114100328');
+    if (@sc < 60) then
+        set @sc = 0;
+    else
+        set @sc = (@sc - 50) * 0.1;
+    end if
+    ||
+
+    update score
+    set gradePoint = @sc
+    where stuId = id;
+end ||
+
+select GPCalc('2114100328');
 
