@@ -25,9 +25,8 @@ function printScore(): void
 
     echo '<table><thead><tr><th>序号<span class="sort_ico"></span></th><th>课程<span class="sort_ico"></span></th><th>学分<span class="sort_ico"></span></th><th>类别<span class="sort_ico"></span></th><th>成绩<span class="sort_ico"></span></th><th>取得学分<span class="sort_ico"></span></th><th>绩点<span class="sort_ico"></span></th><th>备注<span class="sort_ico"></span></th></tr></thead><tbody>';
 
-
-    for ($i = 1; $i < count($sql->arr); ++$i) {
-        echo '<tr id="' . $sql->arr[$i-1]["courseId"] . '">' . '<td>', $i, '</td>';
+    for ($i = 0; $i < count($sql->arr); ++$i) {
+        echo '<tr id="' . $sql->arr[$i]["courseId"] . '">' . '<td>', $i + 1, '</td>';
         for ($j = 1; $j < count($sql->head); ++$j)
             echo '<td id="', $sql->head[$j], '">', $sql->arr[$i][$sql->head[$j]], '</td>';
         echo '</tr>';
@@ -60,7 +59,7 @@ function printCourse(): void
 function getInfo($uid): void
 {
     global $sql;
-    $str = "select `major`, `stuId`, `stuName`, format(avg(`gradePoint`), 1) gpa
+    $str = "select `major`, `stuId`, `stuName`, format(avg(`gradePoint`), 1) as gpa
             from `stuinfo` join `score` using (`stuId`)
             where `stuId` = $uid;";
     $sql->Run($str);

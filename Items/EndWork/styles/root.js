@@ -1,3 +1,18 @@
+/*
+ * 请求学生成绩信息 */
+function getInfo(stuid, fun) {
+  const tables = document.querySelector(".win .tables");
+  new Ajax().main({
+    url: "database/dataStu.php",
+    data: { uid: stuid, type: "score" },
+    success: (res) => {
+      fun();
+      tables.innerHTML = res; //表格成绩信息
+      stuInfo(); //学生信息
+    },
+  });
+}
+
 //切换表格
 function changeTable() {
   const btn = document.querySelectorAll('input[name="options"]'),
@@ -55,12 +70,6 @@ function showWin() {
       saveBtn.style.display = "";
       editInfo(); //点击编辑
     }
-
-    // 弹窗......关闭！
-    [back, close].forEach((ele) => {
-      ele.onclick = () => (win.style.display = "none");
-    });
-
     sortTable(".win ", false);
   }
 
@@ -71,31 +80,38 @@ function showWin() {
         const stuid =
           e.target.parentElement.parentElement.children[3].innerHTML;
         // 发送当前点击学生的学号
-        new Ajax().main({
-          url: "database/dataStu.php",
-          data: { uid: stuid, type: "score" },
-          success: (res) => {
-            tables.innerHTML = res; //表格成绩信息
-            stuInfo(); //学生信息
-            setTimeout(() => show(e.target), 300);
-          },
+        getInfo(stuid, () => {
+          setTimeout(() => show(e.target), 300);
         });
-        //
       });
     });
+  });
+
+  // 弹窗......关闭！
+  [back, close].forEach((ele) => {
+    ele.onclick = () => {
+      win.style.display = "none";
+      tables.innerHTML = "";
+    };
   });
 }
 
 /*
  * 编辑信息...... */
 function editInfo() {
-  let tableTd = document.querySelectorAll(".mes tbody td"),
-    saveBtn = document.querySelector('.mes input[name="save"]'),
+  const saveBtn = document.querySelector('.mes input[name="save"]'),
     stuId = document.querySelector(".win #stuId").innerText,
-    info = [...document.querySelectorAll(".win .info span")].filter((ele) => {
-      return ele.attributes["id"];
+    info = [...document.querySelectorAll(".win .info span")].filter(
+      (ele, index) => {
+        return [3, 9, 11].includes(index);
+      }
+    ),
+    tableTd = [...document.querySelectorAll(".mes tbody td")].filter((ele) => {
+      const ids = ele.attributes;
+      return ids.length && ids.id.value !== "gradePoint";
     });
 
+  //
   function pushInput(node) {
     let input = document.createElement("input");
     input.setAttribute("type", "text");
@@ -124,8 +140,6 @@ function editInfo() {
 function checkIn(input) {
   // console.log(input);
   if (!input.length) return false;
-  
-  
 
   return true;
 }
@@ -156,11 +170,6 @@ function saveInfo(stuId) {
     }
   });
 
-  // 恢复
-  input.forEach((ele) => {
-    ele.parentElement.innerHTML = ele.value;
-  });
-
   //
   new Ajax().main({
     url: "database/dataRoot.php",
@@ -169,6 +178,11 @@ function saveInfo(stuId) {
     success: (res) => {
       console.log(res);
       saveBtn.style.display = "none";
+
+      // 恢复
+      getInfo(stuId, () => {
+        document.querySelector(".win .tables").innerHTML = "";
+      });
     },
   });
 }
@@ -182,5 +196,5 @@ window.onload = () => {
     sortTable(".right ");
     select(); //选择框
     showWin(); //弹窗
-  }, 300);
+  }, 900);
 };

@@ -52,10 +52,13 @@ function loginCheck() {
    * 合法的输入 */
 
   ["input", "blur"].forEach((even) => {
-    password.addEventListener(even, (e) => {
-      len(e.target.value) ? able(1) : err(1);
-    });
+    password.addEventListener(even, () =>
+      len(password.value) ? able(1) : err(1)
+    );
   });
+  uid.addEventListener("blur", () =>
+    uid.value.length === 10 ? able(0) : err(0)
+  );
 
   password.addEventListener("focus", () => {
     able(1);
@@ -64,22 +67,22 @@ function loginCheck() {
     able(0);
   });
 
-  /*
-   * 真的有这个人？ */
-
-  new Ajax().main({
-    url: "database/stu.json",
-    success: (res) => {
-      const stuid = JSON.parse(res).totalData.stuId;
-      uid.addEventListener("blur", (e) => {
-        if (stuid.indexOf(e.target.value) === -1) {
-          err(0);
-        } else {
-          able(0);
-        }
-      });
-    },
-  });
+  // /*
+  //  * 真的有这个人？ */
+  // 明文不可取
+  // new Ajax().main({
+  //   url: "database/stu.json",
+  //   success: (res) => {
+  //     const stuid = JSON.parse(res).totalData.stuId;
+  //     uid.addEventListener("blur", (e) => {
+  //       if (stuid.indexOf(e.target.value) === -1) {
+  //         err(0);
+  //       } else {
+  //         able(0);
+  //       }
+  //     });
+  //   },
+  // });
 
   /*
    * 记住吗？*/

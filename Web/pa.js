@@ -1,7 +1,8 @@
+const https = require("https"),
+  fs = require("fs");
+
 function userInfo(uid, files) {
-  const https = require("https"),
-    fs = require("fs"),
-    Url = "https://api.bilibili.com/x/space/acc/info?mid=" + uid;
+  const Url = "https://api.bilibili.com/x/space/acc/info?mid=" + uid;
 
   https
     .get(Url, (res) => {
@@ -26,9 +27,7 @@ function userInfo(uid, files) {
 // userInfo("259486090", "Web/user.json");
 
 function weiboHot() {
-  const url = "https://weibo.com/ajax/side/hotSearch",
-    fs = require("fs"),
-    https = require("https");
+  const url = "https://weibo.com/ajax/side/hotSearch";
 
   https
     .get(url, (res) => {

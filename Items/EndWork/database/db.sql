@@ -83,7 +83,7 @@ VALUES ('2114100328', '101', 80, 4, 3, null),
        ('2114100328', '102', 81, 4, 3.1, null),
        ('2114100328', '103', 82, 2, 3.2, null),
        ('2114100328', '104', 83, 2, 3.3, null),
-       ('2114100328', '105', 88, 2, 3.3, null),
+       ('2114100328', '105', 88, 2, 3.8, null),
        ('2114100306', '101', 84, 4, 3.4, null),
        ('2114100306', '102', 85, 4, 3.5, null),
        ('2114100306', '103', 86, 2, 3.6, null),
@@ -114,13 +114,13 @@ VALUES ('2114100328', '101', 80, 4, 3, null),
 -- 用户信息
 insert into users
 values (0, '2114100328', 'Fishfish', 0),
-       (0, 'fishroot', 'fishroot', 1);
+       (0, 'teacheroot', 'fishroot', 1);
 
-# select CourseName, Credit, Type, scoreGot, Credit, CreditGot, score.Comments
-# from score
-#          join stuinfo using (StuId)
-#          join course using (CourseID)
-# where Stuid = '2114100328';
+select CourseName, Credit, Type, scoreGot, Credit, CreditGot, score.Comments
+from score
+         join stuinfo using (StuId)
+         join course using (CourseID)
+where Stuid = '2114100328';
 
 # select CourseID, CourseName, LearnTime, Credit, Type
 # from course join score using (CourseId)
@@ -135,58 +135,42 @@ values (0, '2114100328', 'Fishfish', 0),
 # from `stuinfo` join `score` using (`stuId`) group by `stuId`;
 
 
-# create temporary table idd
-# select stuId
-# from stuinfo;
-# ;
-#
-# update stuinfo
-# set totalCredit = (select sum(creditGot)
-#                    from score
-#                    where score.stuId in (select * from idd))
-# where stuId in (select * from idd);
-
-create or replace view gpaT(gpa, id) as
-select format(avg(`gradePoint`), 1), stuId
-from stuinfo
-         join score using (stuId)
-group by stuId;
+-- 修改成绩的同时更新绩点、GPA
+-- 使用：call GPACalc($score, $stuId, $courseId);
 
 delimiter //
-drop trigger if exists updateGPA;
-create trigger updateGPA
-    after update
-    on score
-    for each row
+drop procedure if exists GPACalc;
+create procedure GPACalc(in x float, in sid char(10), in cid char(3))
 begin
-    update stuinfo, gpaT
-    set stuinfo.GPA = gpaT.gpa
-    where stuId = id;
-end //
-
-update score
-set gradePoint = 5.0
-where stuId = '2114100328' and courseId = '104';
-
-
-delimiter ||
-drop function if exists GPCalc;
-create function GPCalc(id char(10))
-    returns float
-    deterministic
-begin
-    set @sc = (select scoreGot from score where stuId = '2114100328');
-    if (@sc < 60) then
-        set @sc = 0;
+    set @gp = 0;
+    if (x < 60) then
+        set @gp = 0;
     else
-        set @sc = (@sc - 50) * 0.1;
+        set @gp = (x - 50) / 10;
     end if
-    ||
+    //
 
     update score
-    set gradePoint = @sc
-    where stuId = id;
-end ||
+    set scoreGot   = x,
+        gradePoint = @gp
+    where stuId = sid
+      and courseId = cid;
 
-select GPCalc('2114100328');
+    update stuinfo
+    set GPA = (select format(avg(`gradePoint`), 1)
+               from score
+               where stuId = sid
+               group by stuId)
+    where stuId = sid;
+end //
 
+call GPACalc(70, '2114100328', '103');
+
+-- 修改学生基本信息
+
+
+update stuinfo
+    join score using (stuId)
+set stuinfo.stuId = '2114100388',
+    score.stuId   = '2114100388'
+where score.stuId = '2114100328';

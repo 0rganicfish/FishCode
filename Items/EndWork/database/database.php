@@ -2,15 +2,14 @@
 
 class SQL
 {
-    public PDO $db;
-    public array $head, $arr;
-    protected array $sqlarr;
+    private PDO $db;
+    public array $head = [], $arr = [];
     private string $sql = "";
 
     public function __construct($host, $user, $pw, $dbname)
     {
         try {
-            $dns = "mysql:host=" . $host . ";dbname=" . $dbname;
+            $dns = "mysql:host={$host};dbname={$dbname}";
             $this->db = new PDO($dns, $user, $pw);
         } catch (PDOException $err) {
             die('链接失败! ' . $err->getMessage());
