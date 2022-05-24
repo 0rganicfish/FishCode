@@ -263,12 +263,6 @@
 
 ## SQL 函数
 
-- **固定格式：**
-  ```sql {.line-numbers}
-  Select column1 From table1
-  Where function();
-  ```
-
 ### 数字函数
 
 - `Avg()`：求得平均数，`Sum()`：求和

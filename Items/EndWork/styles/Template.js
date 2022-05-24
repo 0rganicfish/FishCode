@@ -296,9 +296,9 @@ function stuInfo(notNull = 1) {
     stuName = document.getElementById("stuName");
 
   new Ajax().main({
-    url: "database/stu.json",
+    url: "database/dataStu.php",
     success: (res) => {
-      const ans = JSON.parse(res).data.stuInfo;
+      const ans = JSON.parse(res);
       if (notNull) {
         stuClass.innerText = ans.class;
         gpa.innerText = ans.gpa;

@@ -72,17 +72,15 @@ a:active {
 .dropdown {
   display: inline-block;
   position: relative;
-  transform: 300ms;
 }
 .dropdown-box {
   display: none;
   position: absolute;
-  left: -20px;
   background-color: #f9f9f9;
-  min-width: 80px;
+  min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 16px;
-  transform: 1s;
+  transition: all ease-in 0.3s;
 }
 .dropdown:hover .dropdown-box {
   display: block;

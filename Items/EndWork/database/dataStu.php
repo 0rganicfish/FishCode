@@ -1,17 +1,15 @@
 <?php
 session_start();
 include("database.php");
-
-$uid = "";
+$sql = new SQL('localhost', 'root', 'fish', 'fishwork');
 $uid = $_GET["uid"] ?? $_SESSION["uid"];
 
-$sql = new SQL('localhost', 'root', 'fish', 'fishwork');
-
 getInfo($uid);
-if ($_GET["type"] === "score")
-    printScore();
-else
-    printCourse();
+if (isset($_GET["type"]))
+    if ($_GET["type"] === "score")
+        printScore();
+    else
+        printCourse();
 
 
 function printScore(): void
@@ -59,23 +57,25 @@ function printCourse(): void
 function getInfo($uid): void
 {
     global $sql;
-    $str = "select `major`, `stuId`, `stuName`, format(avg(`gradePoint`), 1) as gpa
-            from `stuinfo` join `score` using (`stuId`)
+    $str = "select `major`, `stuId`, `stuName`, `GPA`
+            from `stuinfo`
             where `stuId` = $uid;";
     $sql->Run($str);
     $ans = $sql->arr[0];
+
     $class = substr($ans["stuId"], 0, 2) .
         $ans["major"] .
         substr($ans["stuId"], 7, 1) . "班";
-
-    $json = json_decode(file_get_contents("stu.json"), true);
     $ansData = [
         "class" => $class,
-        "gpa" => $ans["gpa"],
+        "gpa" => $ans["GPA"],
         "id" => $ans["stuId"],
         "name" => $ans["stuName"]
     ];
-    $json["data"]["stuInfo"] = $ansData;
-    $str = json_encode($json, JSON_UNESCAPED_UNICODE);
-    file_put_contents("stu.json", $str);
+    print_r(json_encode($ansData));
+
+//    $json["data"]["stuInfo"] = $ansData;
+//    $json = json_decode(file_get_contents("stu.json"), true);
+//    $str = json_encode($json, JSON_UNESCAPED_UNICODE);
+//    file_put_contents("stu.json", $str);
 }

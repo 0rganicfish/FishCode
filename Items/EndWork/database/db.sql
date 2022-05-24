@@ -116,11 +116,11 @@ insert into users
 values (0, '2114100328', 'Fishfish', 0),
        (0, 'teacheroot', 'fishroot', 1);
 
-select CourseName, Credit, Type, scoreGot, Credit, CreditGot, score.Comments
-from score
-         join stuinfo using (StuId)
-         join course using (CourseID)
-where Stuid = '2114100328';
+# select CourseName, Credit, Type, scoreGot, Credit, CreditGot, score.Comments
+# from score
+#          join stuinfo using (StuId)
+#          join course using (CourseID)
+# where Stuid = '2114100328';
 
 # select CourseID, CourseName, LearnTime, Credit, Type
 # from course join score using (CourseId)
@@ -136,19 +136,16 @@ where Stuid = '2114100328';
 
 
 -- 修改成绩的同时更新绩点、GPA
--- 使用：call GPACalc($score, $stuId, $courseId);
-
 delimiter //
 drop procedure if exists GPACalc;
-create procedure GPACalc(in x float, in sid char(10), in cid char(3))
+create procedure GPACalc(in sid char(10), in cid char(3), in x float)
 begin
     set @gp = 0;
     if (x < 60) then
         set @gp = 0;
     else
         set @gp = (x - 50) / 10;
-    end if
-    //
+    end if;
 
     update score
     set scoreGot   = x,
@@ -164,13 +161,34 @@ begin
     where stuId = sid;
 end //
 
-call GPACalc(70, '2114100328', '103');
+# call GPACalc(70, '2114100328', '103');
 
 -- 修改学生基本信息
+delimiter //
+drop procedure if exists updateStuinfo;
+create procedure updateStuinfo(in sid char(10), in type varchar(255), in val varchar(255))
+begin
+    if (type = 'stuId') then
+        update stuinfo
+            join score using (stuId)
+        set stuinfo.stuId = val,
+            score.stuId   = val
+        where stuinfo.stuId = sid;
+    elseif (type = 'stuName') then
+        update stuinfo
+        set stuName = val
+        where stuId = sid;
+    end if;
+
+    set @str = concat('select stuId, stuName from stuinfo where ', type, ' = \'', val, '\';');
+    prepare pre from @str;
+    execute pre;
+    deallocate prepare pre;
+end //
+
+# call updateStuinfo('2114110113', 'stuName', '姜苏2');
 
 
-update stuinfo
-    join score using (stuId)
-set stuinfo.stuId = '2114100388',
-    score.stuId   = '2114100388'
-where score.stuId = '2114100328';
+select stuId, stuName, courseId, courseName, scoreGot, gradePoint, creditGot
+from score join stuinfo using (stuId) join course using (courseId)
+where courseId = '101';

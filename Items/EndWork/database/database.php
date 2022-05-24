@@ -4,7 +4,6 @@ class SQL
 {
     private PDO $db;
     public array $head = [], $arr = [];
-    private string $sql = "";
 
     public function __construct($host, $user, $pw, $dbname)
     {
@@ -18,10 +17,20 @@ class SQL
 
     public function Run($str): void
     {
-        $run = $this->db->prepare($str);
-        $run->execute();
-        $this->arr = $run->fetchAll(PDO::FETCH_ASSOC);
-        if (!empty($this->arr))
-            $this->head = array_keys($this->arr[0]);
+        try {
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//            $this->db->beginTransaction();
+            $run = $this->db->query($str);
+//            $run = $this->db->prepare($str);
+//            $run->execute();
+//            $this->db->commit();
+
+            $this->arr = $run->fetchAll(PDO::FETCH_ASSOC);
+            if (!empty($this->arr))
+                $this->head = array_keys($this->arr[0]);
+        } catch (PDOException $e) {
+            $this->db->rollback();
+            echo $str, "   ", $e->getMessage(), '<br>';
+        }
     }
 }

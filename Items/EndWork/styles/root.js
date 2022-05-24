@@ -1,14 +1,34 @@
+const autoFun = () => {
+  setTimeout(() => {
+    divPage(".right ");
+    sortTable(".right ");
+    select(); //选择框
+    showWin(); //弹窗
+  }, 200);
+};
+
 /*
  * 请求学生成绩信息 */
-function getInfo(stuid, fun) {
-  const tables = document.querySelector(".win .tables");
+function getInfo(stuid) {
+  const tables = document.querySelector(".win .tables"),
+    stuClass = document.getElementById("class"),
+    gpa = document.getElementById("gpa"),
+    stuId = document.getElementById("stuId"),
+    stuName = document.getElementById("stuName");
+
   new Ajax().main({
     url: "database/dataStu.php",
     data: { uid: stuid, type: "score" },
     success: (res) => {
-      fun();
-      tables.innerHTML = res; //表格成绩信息
-      stuInfo(); //学生信息
+      const regex = /{.+}/gm,
+        stu = JSON.parse(res.match(regex)),
+        ans = res.replace(regex, "");
+
+      tables.innerHTML = ans; //插入表格
+      stuClass.innerText = stu.class;
+      gpa.innerText = stu.gpa;
+      stuId.innerText = stu.id;
+      stuName.innerText = stu.name;
     },
   });
 }
@@ -31,11 +51,13 @@ function changeTable() {
   sendData("students");
   changeBtn(btn, (tar) => {
     sendData(tar.value);
-    setTimeout(() => sortTable(".right "), 300);
+
+    autoFun();
   });
 }
 
-// 选择框
+/*
+ * 选择框 */
 const select = () => {
   const selBox = document.querySelectorAll(".right tbody .checkbox input"),
     allBox = document.querySelector(".right thead .checkbox input");
@@ -45,14 +67,13 @@ const select = () => {
       if (!ele.checked && allBox.checked) {
         ele.checked = true;
       }
-      if (!allBox.checked) {
-        ele.checked = false;
-      }
+      if (!allBox.checked) ele.checked = false;
     });
   });
 };
 
-// 弹窗......打开！
+/*
+ * 弹窗......打开！ */
 function showWin() {
   const btn1 = document.querySelectorAll('td input[name="info"]'),
     btn2 = document.querySelectorAll('td input[name="edit"]'),
@@ -62,13 +83,13 @@ function showWin() {
     saveBtn = document.querySelector(".mes .edit"),
     tables = document.querySelector(".win .tables");
 
-  function show(tar) {
+  function show(tar, uid) {
     win.style.display = "";
     if (tar.name === "info") {
       saveBtn.style.display = "none";
     } else {
       saveBtn.style.display = "";
-      editInfo(); //点击编辑
+      editInfo(uid); //点击编辑
     }
     sortTable(".win ", false);
   }
@@ -80,9 +101,8 @@ function showWin() {
         const stuid =
           e.target.parentElement.parentElement.children[3].innerHTML;
         // 发送当前点击学生的学号
-        getInfo(stuid, () => {
-          setTimeout(() => show(e.target), 300);
-        });
+        getInfo(stuid);
+        setTimeout(() => show(e.target, stuid), 150);
       });
     });
   });
@@ -98,14 +118,10 @@ function showWin() {
 
 /*
  * 编辑信息...... */
-function editInfo() {
+function editInfo(uid) {
   const saveBtn = document.querySelector('.mes input[name="save"]'),
-    stuId = document.querySelector(".win #stuId").innerText,
-    info = [...document.querySelectorAll(".win .info span")].filter(
-      (ele, index) => {
-        return [3, 9, 11].includes(index);
-      }
-    ),
+    stuId = document.querySelector(".win #stuId"), //只能改学号和姓名
+    stuName = document.querySelector(".win  #stuName"),
     tableTd = [...document.querySelectorAll(".mes tbody td")].filter((ele) => {
       const ids = ele.attributes;
       return ids.length && ids.id.value !== "gradePoint";
@@ -122,7 +138,7 @@ function editInfo() {
     node.appendChild(input);
   }
 
-  [info, tableTd].forEach((item) => {
+  [[stuId, stuName], tableTd].forEach((item) => {
     item.forEach((ele) => {
       ele.addEventListener("click", () => {
         if (ele.innerHTML[0] !== "<") pushInput(ele);
@@ -131,7 +147,7 @@ function editInfo() {
   });
 
   saveBtn.onclick = () => {
-    saveInfo(stuId);
+    saveInfo(uid);
   };
 }
 
@@ -176,25 +192,20 @@ function saveInfo(stuId) {
     method: "POST",
     data: JSON.stringify(editData) + "&type=update",
     success: (res) => {
-      console.log(res);
-      saveBtn.style.display = "none";
+      // console.log(res);
 
       // 恢复
-      getInfo(stuId, () => {
-        document.querySelector(".win .tables").innerHTML = "";
-      });
+      saveBtn.style.display = "none";
+      let id = editData.info.find((ele) => ele.key === "stuId");
+      id = id ? id.value : stuId;
+      getInfo(id);
     },
   });
+  //5-24 几乎的一星期......
 }
 
 //
 window.onload = () => {
   changeTable();
-
-  setTimeout(() => {
-    divPage(".right ");
-    sortTable(".right ");
-    select(); //选择框
-    showWin(); //弹窗
-  }, 900);
+  autoFun();
 };

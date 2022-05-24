@@ -9,7 +9,10 @@ function changeTable() {
       url: "database/dataStu.php",
       data: { type: d },
       success: (res) => {
-        tables.innerHTML = res; //插入表格
+        const regex = /{.+}/gm,
+          ans = res.replace(regex, "");
+
+        tables.innerHTML = ans; //插入表格
       },
     });
   }
@@ -44,5 +47,5 @@ window.onload = () => {
     sortTable(".right ");
     divPage(".right ");
     stuInfo();
-  }, 300); //等表格出来再说
+  }, 700); //等表格出来再说
 };
