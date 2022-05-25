@@ -87,8 +87,12 @@ if (!$_SESSION["power"]) {
                     <span>添加</span>
                 </label>
                 <label class="button editBtn">
-                    <input type="button" name="deleteBat">
+                    <input type="button" name="deleteAll">
                     <span>批量删除</span>
+                </label>
+                <label class="button saveBtn" style="display: none;">
+                    <input type="button" name="save">
+                    <span>保存</span>
                 </label>
                 <span class="search">
                             <input type="text" name="search" placeholder="搜索" autocomplete="off">
@@ -171,7 +175,7 @@ if (!$_SESSION["power"]) {
         </div>
 
     </div>
-    
+
 </div>
 
 </body>

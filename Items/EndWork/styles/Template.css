@@ -33,7 +33,9 @@ caption {
 td,
 th {
   border: 1px solid #ddd;
-  padding: 1em 1.5em;
+  width: auto;
+  height: 2.5rem;
+  padding: 0 0.5rem;
 }
 thead th {
   background-color: #eff3f5;

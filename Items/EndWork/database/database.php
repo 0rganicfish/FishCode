@@ -3,12 +3,17 @@
 class SQL
 {
     private PDO $db;
-    public array $head = [], $arr = [];
+    public array $head = [], $arr = []; //表头及表内容
 
-    public function __construct($host, $user, $pw, $dbname)
+    public function __construct()
     {
+        $host = "localhost";
+        $user = "root";
+        $pw = "fish";
+        $dbname = "fishwork";
+
         try {
-            $dns = "mysql:host={$host};dbname={$dbname}";
+            $dns = "mysql:host=$host;dbname=$dbname";
             $this->db = new PDO($dns, $user, $pw);
         } catch (PDOException $err) {
             die('链接失败! ' . $err->getMessage());

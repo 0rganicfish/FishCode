@@ -5,12 +5,12 @@ function QRCode() {
     qr = document.querySelector(".QRCode");
 
   icon.forEach((ele) => {
-    ele.addEventListener("mouseover", () => {
+    ele.addEventListener("mouseenter", () => {
       setTimeout(() => {
         qr.style.visibility = "visible";
       }, 300);
     });
-    ele.addEventListener("mouseout", () => {
+    ele.addEventListener("mouseleave", () => {
       qr.style.visibility = "hidden";
     });
   });

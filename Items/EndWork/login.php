@@ -9,33 +9,34 @@ if (isset($_POST["uid"])) {
     if (isset($_POST["checked"]))
         $checked = trim($_POST["checked"]);
 
-    $sql = new SQL('localhost', 'root', 'fish', 'fishwork');
-    $sql_str = "select `Username`, `Passwords`, `Power` from `users`
-                where `Username`='$uid' and `Passwords`='$password';";
-    $sql->Run($sql_str);
-    $user = $sql->arr;
+    $sql = new SQL();
+    $str = "select `username`, `passWords`, `power` from `users`
+                where `username`='$uid'";
+    $sql->Run($str);
+    if (!empty($sql->arr)) {
+        $user = $sql->arr[0];
 
-    if (!empty($user) || $password === $uid) {
-        $_SESSION = [
-            "uid" => $uid,
-            "logged" => true,
-            "power" => $user[0]["Power"]
-        ];
+        if ($user["passWords"] === $password || $password === $uid) {//demo式的只要......
+            $_SESSION = [
+                "uid" => $uid,
+                "logged" => true,
+                "power" => $user["power"]
+            ];
 
-        if ($checked === "on") {
-            setcookie("uid", $uid, time() + 3600 * 24 * 365);
-        } else {
-            setcookie("uid", $uid);
+            if ($checked === "on")
+                setcookie("uid", $uid, time() + 3600 * 24 * 365);
+            else
+                setcookie("uid", $uid);
+
+            if ($_SESSION["power"])
+                header("location:root.php");
+            else
+                header("location:index.php");
         }
-
-        if ($_SESSION["power"])
-            header("location:root.php");
-        else
-            header("location:../EndWork/");
-
-    } else {
-        echo "<script>alert('密码错误')</script>";
     }
+
+    echo "<script>alert('密码或账号错误')</script>";
+    header("Refresh:0");
 }
 ?>
 

@@ -26,7 +26,8 @@ input[type="button"] {
   margin: 0.5rem 0;
   padding-left: 4rem;
 }
-.editInfo .editBtn {
+.editInfo .editBtn,
+.editInfo .saveBtn {
   height: 1.8rem;
   width: 4.5rem;
   margin: 10px;
@@ -34,14 +35,14 @@ input[type="button"] {
   text-align: center;
   display: inline-block;
 }
-.editBtn.button span {
+.editInfo .button span {
   line-height: 1.5rem;
   font-size: 12px;
 }
 
 /* 搜索 */
 .search {
-  margin-left: 19rem;
+  margin-left: 5rem;
   position: relative;
 }
 .search span {
@@ -136,24 +137,16 @@ input[name="search"]:focus {
 }
 
 .win .tables {
-  margin : 1rem auto 1.8rem;
+  margin: 1rem auto 1.8rem;
 }
 .win thead {
   position: sticky;
   top: -19px;
 }
-.win td {
-  padding: 0.4rem;
-  height: 3rem;
-}
-.win th {
-  height: 1.1rem;
-  width: 7rem;
-}
 
 .editable {
   width: 6rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   line-height: 1.5rem;
   text-align: center;
   border: none;
@@ -162,4 +155,9 @@ input[name="search"]:focus {
 }
 .editable:focus {
   outline-style: none;
+}
+
+.right .editable:hover {
+  color: #000;
+  cursor: text;
 }

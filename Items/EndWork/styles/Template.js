@@ -1,5 +1,5 @@
 /*
- * 函数一览：
+ * API函数一览：
  * 1，new Ajax().main({}); //Ajax的封装
  * 2，Copy(string, node); //点击复制
  * 3，divPage(tablePos); //表格分页  *要等数据传出来再调用

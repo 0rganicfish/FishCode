@@ -41,13 +41,13 @@
   margin: 1vw;
 }
 .other-login .weChat {
-  background: url(../img/wechat.png);
+  background: url(../img/wechat.png) no-repeat;
 }
 .other-login .qq {
-  background: url(../img/qq.png);
+  background: url(../img/qq.png) no-repeat;
 }
 .other-login .todaySchool {
-  background: url(../img/today.png);
+  background: url(../img/today.png) no-repeat;
   width: 46px;
   height: 46px;
 }

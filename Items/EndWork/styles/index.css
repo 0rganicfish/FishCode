@@ -161,6 +161,7 @@ input[type="radio"] {
 .info div {
   width: 33.333%;
 }
+
 .info .key {
   display: inline-block;
   width: 65px;
@@ -183,14 +184,17 @@ thead {
 th {
   font-size: 0.8rem;
   letter-spacing: 0.2rem;
-  padding: 1em 1.8em;
+  width: auto;
+  padding: 0 2rem;
   cursor: pointer;
   position: relative;
   user-select: none;
 }
 td {
   font-size: 0.7rem;
-  padding: 0.7rem 1.3rem;
+}
+th.dig {
+  padding: 0 1rem;
 }
 th:hover {
   background-color: #dfdfdf;
@@ -205,7 +209,7 @@ th:hover {
   height: 13px;
   position: absolute;
   top: 18.5px;
-  right: 9px;
+  right: 3px;
 }
 th:hover .sort_ico {
   display: block;

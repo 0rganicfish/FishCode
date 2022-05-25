@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("database.php");
-$sql = new SQL('localhost', 'root', 'fish', 'fishwork');
+$sql = new SQL();
 $uid = $_GET["uid"] ?? $_SESSION["uid"];
 
 getInfo($uid);
@@ -21,7 +21,7 @@ function printScore(): void
             where `stuid` = $uid;";
     $sql->Run($str);
 
-    echo '<table><thead><tr><th>序号<span class="sort_ico"></span></th><th>课程<span class="sort_ico"></span></th><th>学分<span class="sort_ico"></span></th><th>类别<span class="sort_ico"></span></th><th>成绩<span class="sort_ico"></span></th><th>取得学分<span class="sort_ico"></span></th><th>绩点<span class="sort_ico"></span></th><th>备注<span class="sort_ico"></span></th></tr></thead><tbody>';
+    echo '<table><thead><tr><th class="dig">序号<span class="sort_ico"></span></th><th>课程<span class="sort_ico"></span></th><th class="dig">学分<span class="sort_ico"></span></th><th>类别<span class="sort_ico"></span></th><th class="dig">成绩<span class="sort_ico"></span></th><th class="dig">取得学分<span class="sort_ico"></span></th><th class="dig">绩点<span class="sort_ico"></span></th><th>备注<span class="sort_ico"></span></th></tr></thead><tbody>';
 
     for ($i = 0; $i < count($sql->arr); ++$i) {
         echo '<tr id="' . $sql->arr[$i]["courseId"] . '">' . '<td>', $i + 1, '</td>';
@@ -41,7 +41,7 @@ function printCourse(): void
             where `stuId` = $uid;";
     $sql->Run($str);
 
-    echo '<table><thead><tr><th>序号<span class="sort_ico"></span></th><th>课程号<span class="sort_ico"></span></th><th>课程名<span class="sort_ico"></span></th><th>学时<span class="sort_ico"></span></th><th>学分<span class="sort_ico"></span></th><th>课程类别<span class="sort_ico"></span></th></tr></thead><tbody>';
+    echo '<table><thead><tr><th class="dig">序号<span class="sort_ico"></span></th><th class="dig">课程号<span class="sort_ico"></span></th><th>课程名<span class="sort_ico"></span></th><th class="dig">学时<span class="sort_ico"></span></th><th class="dig">学分<span class="sort_ico"></span></th><th>课程类别<span class="sort_ico"></span></th></tr></thead><tbody>';
 
     $i = 1;
     foreach ($sql->arr as $row) {

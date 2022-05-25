@@ -114,25 +114,30 @@ VALUES ('2114100328', '101', 80, 4, 3, null),
 -- 用户信息
 insert into users
 values (0, '2114100328', 'Fishfish', 0),
+       (0, '2114100306', 'Fishfish', 0),
+       (0, '2114100314', 'Fishfish', 0),
+       (0, '2114110128', 'Fishfish', 0),
+       (0, '2114110106', 'Fishfish', 0),
+       (0, '2114110114', 'Fishfish', 0),
        (0, 'teacheroot', 'fishroot', 1);
 
-# select CourseName, Credit, Type, scoreGot, Credit, CreditGot, score.Comments
-# from score
-#          join stuinfo using (StuId)
-#          join course using (CourseID)
-# where Stuid = '2114100328';
+--  select CourseName, Credit, Type, scoreGot, Credit, CreditGot, score.Comments
+--  from score
+--           join stuinfo using (StuId)
+--           join course using (CourseID)
+--  where Stuid = '2114100328';
 
-# select CourseID, CourseName, LearnTime, Credit, Type
-# from course join score using (CourseId)
-# where StuId = '2114100328';
+--  select CourseID, CourseName, LearnTime, Credit, Type
+--  from course join score using (CourseId)
+--  where StuId = '2114100328';
 
-# select StuId, StuName, format(avg(GradePoint), 1)
-# from stuinfo join score using (Stuid)
-# where Stuid = '2114100328';
+--  select StuId, StuName, format(avg(GradePoint), 1)
+--  from stuinfo join score using (Stuid)
+--  where Stuid = '2114100328';
 
 
-# select `stuName`, `stuId`, `major`, format(avg(`gradePoint`), 1) GPA, `stuinfo`.`comments`
-# from `stuinfo` join `score` using (`stuId`) group by `stuId`;
+--  select `stuName`, `stuId`, `major`, format(avg(`gradePoint`), 1) GPA, `stuinfo`.`comments`
+--  from `stuinfo` join `score` using (`stuId`) group by `stuId`;
 
 
 -- 修改成绩的同时更新绩点、GPA
@@ -161,7 +166,7 @@ begin
     where stuId = sid;
 end //
 
-# call GPACalc(70, '2114100328', '103');
+--  call GPACalc(70, '2114100328', '103');
 
 -- 修改学生基本信息
 delimiter //
@@ -171,8 +176,10 @@ begin
     if (type = 'stuId') then
         update stuinfo
             join score using (stuId)
+            join users on userName = stuId
         set stuinfo.stuId = val,
-            score.stuId   = val
+            score.stuId   = val,
+            userName      = val
         where stuinfo.stuId = sid;
     elseif (type = 'stuName') then
         update stuinfo
@@ -186,9 +193,53 @@ begin
     deallocate prepare pre;
 end //
 
-# call updateStuinfo('2114110113', 'stuName', '姜苏2');
+--  call updateStuinfo('2114110113', 'stuName', '姜苏2');
 
 
-select stuId, stuName, courseId, courseName, scoreGot, gradePoint, creditGot
-from score join stuinfo using (stuId) join course using (courseId)
-where courseId = '101';
+--  修改课程信息，同时地触发器
+delimiter //
+drop procedure if exists updateCourse;
+create procedure updateCourse(in id char(3), in type varchar(255), in val varchar(255))
+begin
+    set @str = concat('update course set ', type, ' = \'', val,
+                      '\' where courseId = \'', id, '\';');
+    prepare pre from @str;
+    execute pre;
+    deallocate prepare pre;
+end //
+
+delimiter //
+drop trigger if exists updateId;
+create trigger updateId
+    after update
+    on course
+    for each row
+begin
+    update score
+    set score.courseId = new.courseId
+    where score.courseId = old.courseId;
+end //
+
+--  call updateCourse('101', 'courseName', '咩！');
+
+--  删除信息
+delimiter //
+drop procedure if exists deleteInfo;
+create procedure deleteInfo(in type varchar(255), in val varchar(255))
+begin
+    if (type = 'students') then
+        delete score, users, stuinfo
+        from stuinfo
+                 join score using (stuId)
+                 join users on userName = stuId
+        where stuinfo.stuId = val;
+    elseif (type = 'course') then
+        delete score, course
+        from course
+                 join score using (courseId)
+        where course.courseId = val;
+    end if;
+end //
+
+--  call deleteInfo('students', '2114100328');
+
