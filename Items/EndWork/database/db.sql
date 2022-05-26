@@ -21,24 +21,23 @@ create table if not exists users
 drop table if exists stuinfo;
 create table if not exists stuinfo
 (
-    stuId       char(10) primary key,
-    stuName     varchar(255) not null,
-    sex         boolean      not null,
-    major       varchar(255) not null,
-    totalCredit float,
-    GPA         float,
-    comments    varchar(255)
+    stuId       char(10) not null,
+    stuName     varchar(255) default null,
+    major       varchar(255) default null,
+    totalCredit float        default 0,
+    GPA         float        default 0,
+    comments    varchar(255) default null
 );
 
 -- 课程信息
 drop table if exists course;
 create table if not exists course
 (
-    courseId   char(3) primary key,
-    courseName varchar(255) not null,
-    learnTime  int          not null,
-    credit     float        not null,
-    type       varchar(255) not null
+    courseId   char(3) not null,
+    courseName varchar(255) default null,
+    learnTime  int          default null,
+    credit     float        default null,
+    type       varchar(255) default null
 );
 
 -- 成绩信息
@@ -46,11 +45,11 @@ drop table if exists score;
 create table if not exists score
 (
     stuId      char(10) not null,
-    courseId   char(3)  not null,
-    scoreGot   float,
-    creditGot  float,
-    gradePoint float,
-    comments   varchar(255)
+    courseId   char(3)      default null,
+    scoreGot   float        default 0,
+    creditGot  float        default 0,
+    gradePoint float        default 0,
+    comments   varchar(255) default null
 );
 
 -- 初始数据 --
@@ -66,14 +65,14 @@ values ('101', '数据库应用技术', 30, 4, '必修课'),
 
 -- 学生数据
 insert into stuinfo
-values ('2114100328', '有机鱼', 1, '计算机类', 14, 3.2, null),
-       ('2114100306', '杨咩咩', 1, '计算机类', 14, 3.5, null),
-       ('2114100314', '蓝习之', 1, '计算机类', 14, 3.9, null),
+values ('2114100328', '有机鱼', '计算机类', 14, 3.2, null),
+       ('2114100306', '杨咩咩', '计算机类', 14, 3.5, null),
+       ('2114100314', '蓝习之', '计算机类', 14, 3.9, null),
 --       ('2114100350', '张三', 0, '计算机类', null, null, null, null),
 --        ('2114100351', '陈思思', 0, '计算机类', null, null, null, null),
-       ('2114110128', '何唐码朗', 1, '网络工程', 14, 3.1, null),
-       ('2114110106', '蒋素', 0, '网络工程', 14, 3.6, null),
-       ('2114110114', '程平平', 1, '网络工程', 14, 3.9, null);
+       ('2114110128', '何唐码朗', '网络工程', 14, 3.1, null),
+       ('2114110106', '蒋素', '网络工程', 14, 3.6, null),
+       ('2114110114', '程平平', '网络工程', 14, 3.9, null);
 --       ('2114100151', '陈圆圆', 0, '网络工程', null, null, null, null),
 --      ('2114100152', '潘洋', 1, '网络工程', null, null, null, null);
 
@@ -121,24 +120,6 @@ values (0, '2114100328', 'Fishfish', 0),
        (0, '2114110114', 'Fishfish', 0),
        (0, 'teacheroot', 'fishroot', 1);
 
---  select CourseName, Credit, Type, scoreGot, Credit, CreditGot, score.Comments
---  from score
---           join stuinfo using (StuId)
---           join course using (CourseID)
---  where Stuid = '2114100328';
-
---  select CourseID, CourseName, LearnTime, Credit, Type
---  from course join score using (CourseId)
---  where StuId = '2114100328';
-
---  select StuId, StuName, format(avg(GradePoint), 1)
---  from stuinfo join score using (Stuid)
---  where Stuid = '2114100328';
-
-
---  select `stuName`, `stuId`, `major`, format(avg(`gradePoint`), 1) GPA, `stuinfo`.`comments`
---  from `stuinfo` join `score` using (`stuId`) group by `stuId`;
-
 
 -- 修改成绩的同时更新绩点、GPA
 delimiter //
@@ -175,8 +156,8 @@ create procedure updateStuinfo(in sid char(10), in type varchar(255), in val var
 begin
     if (type = 'stuId') then
         update stuinfo
-            join score using (stuId)
-            join users on userName = stuId
+            left join score using (stuId)
+            left join users on userName = stuId
         set stuinfo.stuId = val,
             score.stuId   = val,
             userName      = val
@@ -227,19 +208,18 @@ delimiter //
 drop procedure if exists deleteInfo;
 create procedure deleteInfo(in type varchar(255), in val varchar(255))
 begin
-    if (type = 'students') then
+    if (type = 'stuinfo') then
         delete score, users, stuinfo
         from stuinfo
-                 join score using (stuId)
-                 join users on userName = stuId
+                 left join score using (stuId)
+                 left join users on userName = stuId
         where stuinfo.stuId = val;
     elseif (type = 'course') then
         delete score, course
         from course
-                 join score using (courseId)
+                 left join score using (courseId)
         where course.courseId = val;
     end if;
 end //
 
---  call deleteInfo('students', '2114100328');
-
+--  call deleteInfo('stuinfo', '2114100328');

@@ -1,25 +1,32 @@
 <?php
+
+if ((empty($_POST) && empty($_GET)) || empty($_COOKIE))
+    header('HTTP/1.1 404 Not Found');
+
 include("database.php");
 $sql = new SQL();
 
 //表格切换
 if (isset($_GET["type"]))
-    if ($_GET["type"] === "students") {
+    if ($_GET["type"] === "stuinfo") {
         stuTable();
     } elseif ($_GET["type"] === "course") {
         courseTable();
     } elseif ($_GET["type"] === "score")
         scoreAll();
 
-if (isset($_POST["data"]))
+if (isset($_POST["data"])) {
+    $data = json_decode($_POST["data"], true);
     if ($_POST["type"] === "update") {
-        editStu(json_decode($_POST["data"], true));
+        editStu($data);
     } elseif ($_POST["type"] === "course") {
-        editCourse(json_decode($_POST["data"], true));
+        editCourse($data);
     } elseif ($_POST["type"] === "delete") {
-        deleteInfo(json_decode($_POST["data"], true));
+        deleteInfo($data);
+    } elseif ($_POST["type"] === "add") {
+        addInfo($data);
     }
-
+}
 
 // 打印模板
 function printTbody($arr, $head, $edit): void
@@ -40,8 +47,7 @@ function printTbody($arr, $head, $edit): void
 function stuTable(): void
 {
     global $sql;
-    $str = "select `stuId`, `stuName`, `major`, `GPA`, `stuinfo`.`comments`
-            from `stuinfo` join `score` using (`stuId`) group by `stuId`;";
+    $str = "select `stuId`, `stuName`, `major`, `GPA`, `stuinfo`.`comments` from `stuinfo`";
     $sql->Run($str);
     $ans = $sql->arr;
 
@@ -110,7 +116,7 @@ function scoreAll(): void
 {
     global $sql;
     $str = "select stuId, stuName, courseId, courseName, scoreGot, gradePoint, creditGot
-            from score join stuinfo using (stuId) join course using (courseId)";
+            from score join stuinfo using (stuId) join course using (courseId) order by stuId";
     $sql->Run($str);
 
     echo '<table><thead><tr><th class="dig"><span class="sort_ico"></span><input type="checkbox" name="check"></th><th class="dig">序号<span class="sort_ico"></span></th><th>学号<span class="sort_ico"></span></th><th>姓名<span class="sort_ico"></span></th><th class="dig">课程号<span class="sort_ico"></span></th><th>课程名<span class="sort_ico"></span></th><th class="dig">成绩<span class="sort_ico"></span></th><th class="dig">绩点<span class="sort_ico"></span></th><th class="dig">学分<span class="sort_ico"></span></th></tr></thead><tbody>';
@@ -121,6 +127,7 @@ function scoreAll(): void
 //删除信息
 function deleteInfo($data): void
 {
+//    print_r($data);
     global $sql;
     foreach ($data['data'] as $item) {
         if ($data['type'] === "score") //飞线
@@ -131,3 +138,27 @@ function deleteInfo($data): void
     }
 }
 
+//添加信息
+function addInfo($data): void
+{
+    global $sql;
+    $str = "insert into {$data['type']} (";
+    foreach ($data['data'] as $item) {
+        $str .= $item['key'] . ',';
+    }
+    $str = trim($str, ',') . ') values (';
+    foreach ($data['data'] as $item) {
+        $str .= ($item['value'] ? '\'' . $item['value'] . '\'' : 'null') . ',';
+    }
+    $str = trim($str, ',') . ');';
+    $sql->Run($str);
+
+    // 再飞线地更新GPA
+    if ($data['type'] === "score") {
+        $uid = $data['data'][0]['value'];
+        $cid = $data['data'][1]['value'];
+        $score = $data['data'][2]['value'];
+        $str = "call GPACalc('$uid', '$cid', '$score');";
+        $sql->Run($str);
+    }
+}

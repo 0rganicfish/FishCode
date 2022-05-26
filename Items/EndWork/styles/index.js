@@ -1,30 +1,46 @@
+/*
+ * 发送信息 */
+
+function sendData(d) {
+  const tables = document.querySelector(".tables"),
+    stuClass = document.getElementById("class"),
+    gpa = document.getElementById("gpa"),
+    stuId = document.getElementById("stuId"),
+    stuName = document.getElementById("stuName");
+
+  new Ajax().main({
+    url: "database/dataStu.php",
+    data: { type: d },
+    success: (res) => {
+      if (d === "info") {
+        const ans = JSON.parse(res);
+        stuClass.innerText = ans.class;
+        gpa.innerText = ans.gpa;
+        stuId.innerText = ans.id;
+        stuName.innerText = ans.name;
+      } else {
+        const regex = /{.+}/gm;
+        tables.innerHTML = ans = res.replace(regex, ""); //插入表格
+        sortTable(".right ");
+      }
+    },
+  });
+}
+
 // 切换表格
 function changeTable() {
-  let btn = document.querySelectorAll('input[name="options"]'),
-    tables = document.querySelector(".tables"),
+  const btn = document.querySelectorAll('input[name="options"]'),
     titles = document.querySelector(".titles");
 
-  function sendData(d) {
-    new Ajax().main({
-      url: "database/dataStu.php",
-      data: { type: d },
-      success: (res) => {
-        const regex = /{.+}/gm,
-          ans = res.replace(regex, "");
-
-        tables.innerHTML = ans; //插入表格
-      },
-    });
-  }
+  sendData("info");
   sendData("score");
-
   changeBtn(btn, (tar) => {
     sendData(tar.value);
     setTimeout(() => sortTable(".right "), 300);
 
     if (tar.value === "score") {
-      titles.innerHTML = "惠州学院学生成绩明细（有效）";
-    } else if (tar.value === "source") {
+      titles.innerHTML = "有机鱼大学 学生成绩明细（有效）";
+    } else if (tar.value === "course") {
       titles.innerHTML = "我的课程信息";
     }
   });
@@ -42,10 +58,4 @@ window.onload = () => {
   changeTable();
   copyQQ();
   // console.log(navigator.userAgent);
-
-  setTimeout(() => {
-    sortTable(".right ");
-    divPage(".right ");
-    stuInfo();
-  }, 700); //等表格出来再说
 };

@@ -48,7 +48,7 @@ if ($_SESSION["logged"]) {
                     <span>我的成绩</span>
                 </label>
                 <label class="button">
-                    <input type="radio" name="options" value="source"/>
+                    <input type="radio" name="options" value="course"/>
                     <span>课程信息</span>
                 </label>
             </div>
@@ -73,7 +73,7 @@ if ($_SESSION["logged"]) {
 
         <div class="mid"></div>
         <div class="right">
-            <div class="titles">惠州学院学生成绩明细（有效）</div>
+            <div class="titles">有机鱼大学 学生成绩明细（有效）</div>
             <div class="hr"></div>
             <div class="select">
                 <label>
@@ -125,9 +125,9 @@ if ($_SESSION["logged"]) {
             <div class="divPage">
                 <label>
                     <select id="perPage" autocomplete="off">
-                        <option value="5" selected="selected">5 行 / 页</option>
+                        <option value="5">5 行 / 页</option>
                         <option value="10">10 行 / 页</option>
-                        <option value="all">显示全部</option>
+                        <option value="all" selected="selected">显示全部</option>
                     </select>
                 </label>
 

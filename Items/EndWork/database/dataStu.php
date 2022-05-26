@@ -1,15 +1,20 @@
 <?php
 session_start();
+
+if ((empty($_POST) && empty($_GET)) || empty($_COOKIE))
+    header('HTTP/1.1 404 Not Found');
+
 include("database.php");
 $sql = new SQL();
 $uid = $_GET["uid"] ?? $_SESSION["uid"];
 
-getInfo($uid);
 if (isset($_GET["type"]))
     if ($_GET["type"] === "score")
         printScore();
-    else
+    else if ($_GET['type'] === "course")
         printCourse();
+    else if ($_GET['type'] === "info")
+        getInfo($uid);
 
 
 function printScore(): void
@@ -30,6 +35,7 @@ function printScore(): void
         echo '</tr>';
     }
     echo '</tbody></table>';
+    getInfo($uid);
 }
 
 function printCourse(): void

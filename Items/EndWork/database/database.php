@@ -1,5 +1,8 @@
 <?php
 
+if ((empty($_POST) && empty($_GET) )|| empty($_COOKIE))
+    header('HTTP/1.1 404 Not Found');
+
 class SQL
 {
     private PDO $db;
@@ -9,7 +12,7 @@ class SQL
     {
         $host = "localhost";
         $user = "root";
-        $pw = "fish";
+        $pw = "fish"; //只需要修改为自己的密码即可
         $dbname = "fishwork";
 
         try {
@@ -29,7 +32,6 @@ class SQL
 //            $run = $this->db->prepare($str);
 //            $run->execute();
 //            $this->db->commit();
-
             $this->arr = $run->fetchAll(PDO::FETCH_ASSOC);
             if (!empty($this->arr))
                 $this->head = array_keys($this->arr[0]);

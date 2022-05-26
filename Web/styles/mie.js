@@ -59,3 +59,14 @@ getData({
   id: 123,
   name: "mie",
 });
+
+const regex = /[\u4e00-\u9fa5]+/,
+  str = "21电气工程3班";
+
+console.log(str.match(regex)[0]);
+
+let len = 5,
+  arr = [];
+arr[len - 1] = 0;
+arr.fill(true);
+console.log(arr);

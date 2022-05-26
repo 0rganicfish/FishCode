@@ -5,7 +5,6 @@
  * 3，divPage(tablePos); //表格分页  *要等数据传出来再调用
  * 4，sortTable(tablePos); //表格排序  *都要指定表格的位置(选择器)
  * 5，changeBtn(btn, fun(param)); //切换按钮样式
- * 6，stuInfo; //写入学生信息
  */
 
 class Ajax {
@@ -120,18 +119,18 @@ function divPage(tablePos) {
     totalPage = Math.ceil(totalRow / perPage),
     curPage = 1; //目前在第几页
 
-  function display() {
-    for (let row of table.rows) {
-      row.style.display = "none";
-    }
-    for (let i = begin; i < end; ++i) {
-      table.rows[i].style.display = "";
-    }
-    pageNum.innerText = curPage;
-    check();
-  }
-  // 开头末尾的禁用按钮
-  const check = () => {
+  const display = () => {
+      for (let row of table.rows) {
+        row.style.display = "none";
+      }
+      for (let i = begin; i < end; ++i) {
+        table.rows[i].style.display = "";
+      }
+      pageNum.innerText = curPage;
+      check();
+    },
+    // 开头末尾的禁用按钮
+    check = () => {
       prePage.disabled = curPage === 1;
       nextPage.disabled = curPage >= totalPage;
     },
@@ -140,67 +139,64 @@ function divPage(tablePos) {
       document.getElementById("total").innerText = totalPage;
     };
 
-  (() => {
+  // 前后页
+  prePage.addEventListener("click", () => {
+    --curPage;
+    check();
+    end = begin;
+    begin = prePage.disabled ? 0 : begin - perPage;
+    display();
+  });
+  nextPage.addEventListener("click", () => {
+    ++curPage;
+    check();
+    begin = end;
+    end = nextPage.disabled ? totalRow : Number(perPage) + Number(end);
+    display();
+  });
+
+  //一页要展示的行数
+  perPages.addEventListener("change", (e) => {
+    const val = e.target.value;
+    if (val === "all") {
+      end = perPage = totalRow;
+    } else if (val > totalRow) {
+      end = perPage = totalRow;
+    } else {
+      end = perPage = Number(val);
+    }
+    begin = 0;
+    curPage = 1;
+    totalPage = Math.ceil(totalRow / perPage);
     display();
     printPage();
+  });
 
-    // 前后页
-    prePage.addEventListener("click", () => {
-      --curPage;
-      check();
-      end = begin;
-      begin = prePage.disabled ? 0 : begin - perPage;
-      display();
-    });
-    nextPage.addEventListener("click", () => {
-      ++curPage;
-      check();
-      begin = end;
-      end = nextPage.disabled ? totalRow : Number(perPage) + Number(end);
-      display();
-    });
-
-    //一页要展示的行数
-    perPages.addEventListener("change", (e) => {
-      const val = e.target.value;
-      if (val === "all") {
-        end = perPage = totalRow;
-      } else if (val > totalRow) {
-        end = perPage = totalRow;
+  //跳页
+  tpPage.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      let val = Number(e.target.value);
+      if (val >= 1 && val <= totalPage) {
+        curPage = val;
+        check();
+        begin = (val - 1) * perPage;
+        end = nextPage.disabled ? totalRow : val * perPage;
+      } else if (val > totalPage) {
+        curPage = totalPage;
+        begin = (totalPage - 1) * perPage;
+        end = totalRow;
       } else {
-        end = perPage = Number(val);
+        curPage = 1;
+        begin = 0;
+        end = perPage;
       }
-      begin = 0;
-      curPage = 1;
-      totalPage = Math.ceil(totalRow / perPage);
       display();
-      printPage();
-    });
+    }
+  });
 
-    //跳页
-    tpPage.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        let val = Number(e.target.value);
-        if (val >= 1 && val <= totalPage) {
-          curPage = val;
-          check();
-          begin = (val - 1) * perPage;
-          end = nextPage.disabled ? totalRow : val * perPage;
-        } else if (val > totalPage) {
-          curPage = totalPage;
-          begin = (totalPage - 1) * perPage;
-          end = totalRow;
-        } else {
-          curPage = 1;
-          begin = 0;
-          end = perPage;
-        }
-        display();
-      }
-    });
-
-    //EndOf
-  })();
+  //EndOf
+  display();
+  printPage();
 }
 
 /*
@@ -213,11 +209,11 @@ function sortTable(tablePos, paging = true) {
 
   let rows_array = Array.from(tbody.rows),
     sortDire = [],
-    preIndex = 0;
+    preIndex = 0,
+    len = rows_array[0].children.length - 1;
 
-  for (let i = 0; i < rows_array[0].children.length; ++i) {
-    sortDire[i] = true; //默认第一次为升序
-  }
+  sortDire[len] = 0;
+  sortDire.fill(true);
 
   function cmp(col) {
     return (rowA, rowB) => {
@@ -266,9 +262,11 @@ function sortTable(tablePos, paging = true) {
 
       preIndex = index;
       sortDire[index] = !sortDire[index]; //升降序
-      if (paging) divPage(tablePos); //默认排序后也要分页
     }
   });
+
+  //默认排序后也要分页
+  if (paging) divPage(tablePos);
 }
 
 /*
@@ -285,28 +283,4 @@ function changeBtn(btn, fun) {
     });
   });
 }
-
-/*
- * 学生信息写入 */
-
-function stuInfo(notNull = 1) {
-  let stuClass = document.getElementById("class"),
-    gpa = document.getElementById("gpa"),
-    stuId = document.getElementById("stuId"),
-    stuName = document.getElementById("stuName");
-
-  new Ajax().main({
-    url: "database/dataStu.php",
-    success: (res) => {
-      const ans = JSON.parse(res);
-      if (notNull) {
-        stuClass.innerText = ans.class;
-        gpa.innerText = ans.gpa;
-        stuId.innerText = ans.id;
-        stuName.innerText = ans.name;
-      } else {
-        stuClass.innerHTML = gpa.innerHTML = stuId.innerHTML = stuName = "";
-      }
-    },
-  });
-}
+  

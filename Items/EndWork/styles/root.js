@@ -1,6 +1,5 @@
-function autoFun(type = "students") {
+function autoFun(type = "stuinfo") {
   setTimeout(() => {
-    divPage(".right ");
     sortTable(".right ");
     select(); //选择框
 
@@ -15,11 +14,8 @@ function autoFun(type = "students") {
       Copy("notfound405@qq.com", qq);
       alert("复制成功");
     });
-  }, 200);
+  }, 300);
 }
-
-/*
- * 切换表格 */
 
 function sendData(d) {
   const tables = document.querySelector(".right .tables");
@@ -27,21 +23,27 @@ function sendData(d) {
     url: "database/dataRoot.php",
     data: { type: d },
     success: (res) => {
-      //  console.log(res);
+      // console.log(res);
       tables.innerHTML = res;
       autoFun(d);
-      if (d === "students") {
+      if (d === "stuinfo") {
         setTimeout(() => showWin(), 200);
       }
     },
   });
 }
 
+/*
+ * 切换表格 */
+
 function changeTable() {
-  const btn = document.querySelectorAll('input[name="options"]');
-  sendData("students");
+  const btn = document.querySelectorAll('input[name="options"]'),
+    titles = document.querySelector(".titles");
+  sendData("stuinfo");
 
   changeBtn(btn, (tar) => {
+    titles.innerHTML = tar.nextElementSibling.innerHTML;
+
     if (tar.value === "course") {
       setTimeout(() => editCourse(), 200);
     }
@@ -94,11 +96,13 @@ function getInfo(stuid) {
     url: "database/dataStu.php",
     data: { uid: stuid, type: "score" },
     success: (res) => {
+      // console.log(res);
       const regex = /{.+}/gm,
         stu = JSON.parse(res.match(regex)),
         ans = res.replace(regex, "");
 
       tables.innerHTML = ans; //插入表格
+
       stuClass.innerText = stu.class;
       gpa.innerText = stu.gpa;
       stuId.innerText = stu.id;
@@ -302,9 +306,7 @@ function deleteInfo(type) {
             url: "database/dataRoot.php",
             method: "POST",
             data: JSON.stringify(deleteData) + "&type=delete",
-            success: () => {
-              sendData(type);
-            },
+            success: () => setTimeout(() => sendData(type), 300),
           });
         }
       };
@@ -316,8 +318,11 @@ function deleteInfo(type) {
     checkbox = document.querySelectorAll('td input[name="check"]');
 
   deleteAll.onclick = () => {
+    let flag = false;
+
     checkbox.forEach((ele) => {
       if (ele.checked) {
+        flag = true;
         const par = ele.parentElement.parentElement.children;
         if (type === "score") {
           deleteData.data.push({
@@ -328,13 +333,16 @@ function deleteInfo(type) {
       }
     });
 
+    if (!flag) return false;
+
     if (confirm("确认删除？ 删除后不可恢复"))
       new Ajax().main({
         url: "database/dataRoot.php",
         method: "POST",
         data: JSON.stringify(deleteData) + "&type=delete",
-        success: () => {
-          sendData(type);
+        success: (res) => {
+          // console.log(res);
+          setTimeout(() => sendData(type), 300);
         },
       });
   };
@@ -342,7 +350,72 @@ function deleteInfo(type) {
 
 /*
  * 添加信息 */
-function addInfo() {}
+function addInfo(type) {
+  const addBtn = document.querySelector('.right input[name="add"]'),
+    saveBtn = document.querySelector('.right input[name="save"]'),
+    tbody = document.querySelector(".right tbody");
+  let addData = { type: type, data: [] },
+    tr;
+
+  const cloneTr = () => {
+    const tr = document.querySelector(".right tbody tr").cloneNode(true);
+    tr.childNodes[1].innerHTML = 0;
+    tr.childNodes.forEach((ele, index) => {
+      if (![0, 1].includes(index))
+        ele.innerHTML = '<input type="text" class="editable">';
+
+      if (type === "score" && [3, 5].includes(index)) {
+        //飞线~
+        ele.innerHTML = "";
+      }
+    });
+    if (type !== "score") tr.lastChild.innerHTML = "";
+    return tr;
+  };
+
+  saveBtn.parentElement.style.display = "none";
+
+  addBtn.onclick = () => {
+    saveBtn.parentElement.style.display = "";
+    tr = cloneTr();
+    tbody.appendChild(tr);
+  };
+
+  saveBtn.onclick = () => {
+    const trNodes = tr.childNodes;
+    let len = trNodes.length - 1;
+    if (type === "score") len = 0;
+    // console.log(trNodes);
+
+    trNodes.forEach((ele, index) => {
+      if (![0, 1, len].includes(index) && ele.childNodes.length) {
+        let val = ele.children[0].value;
+
+        //正则匹配班级中的专业名
+        if (type === "stuinfo" && ele.id === "major") {
+          const regex = /[\u4e00-\u9fa5]+/g;
+          val = val.match(regex)[0];
+        }
+
+        addData.data.push({
+          key: ele.id,
+          value: val,
+        });
+      }
+    });
+
+    new Ajax().main({
+      url: "database/dataRoot.php",
+      method: "POST",
+      data: JSON.stringify(addData) + "&type=add",
+      success: (res) => {
+        // console.log(res);
+        setTimeout(() => sendData(type), 300);
+      },
+    });
+    //
+  };
+}
 
 //
 window.onload = () => {
