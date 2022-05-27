@@ -8,36 +8,57 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+struct node
+{
+    //链表的节点
+    int data;          //数据
+    int num;           //节点编号
+    struct node *next; //指向下一个节点
+};
+
 int main()
 {
-    // // Generate data
-    // const unsigned arraySize = 32768;
-    // int data[arraySize];
+    struct node *head /*头节点*/, *p, *q;
+    head = NULL, p = NULL;
+    q = new node;
+    q->next = NULL, q->num = 1;
 
-    // for (unsigned c = 0; c < arraySize; ++c)
-    //     data[c] = std::rand() % 256;
+    int a = -1;
+    cout << "请输入第1个数字:";
+    cin >> a;
+    q->data = a;
+    head = q;
+    while (a)
+    {
+        p = q;
+        q = new node;
+        q->next = NULL;
+        p->next = q;
+        q->num = p->num + 1;
+        cout << "请输入第" << q->num << "个数字:";
+        cin >> a;
+        q->data = a;
+    }
 
-    // // !!! With this, the next loop runs faster.
-    // // std::sort(data, data + arraySize);
+    //前面都是输入,这以下都是输出
 
-    // // Test
-    // clock_t start = clock();
-    // long long sum = 0;
-    // for (unsigned i = 0; i < 100000; ++i)
-    // {
-    //     for (unsigned c = 0; c < arraySize; ++c)
-    //     { // Primary loop
-    //         int t = (data[c] - 128) >> 31;
-    //         sum += ~t & data[c];
-    //     }
-    // }
+    q = head;
+    p = NULL;
+    while (q->data != 0)
+    {
+        printf("%d %d\n", q->num, q->data);
+        q = q->next;
+    }
 
-    // double elapsedTime = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
+    //释放内存
 
-    // std::cout << elapsedTime << '\n';
-    // std::cout << "sum = " << sum << '\n';
-
-    int m = 121;
-    int t = (m - 128) >> 31;
-    cout << (~t & m);
+    q = head;
+    p = q;
+    while (q->next != NULL)
+    {
+        p = q->next;
+        delete[] q;
+        q = p;
+    }
+    return 0;
 }

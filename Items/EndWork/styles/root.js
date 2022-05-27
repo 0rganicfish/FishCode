@@ -171,13 +171,10 @@ function editStu(uid) {
     item.forEach((ele) => {
       ele.addEventListener("click", () => {
         if (ele.innerHTML[0] !== "<") pushInput(ele);
+        saveBtn.onclick = () => saveStu(uid);
       });
     });
   });
-
-  saveBtn.onclick = () => {
-    saveStu(uid);
-  };
 }
 
 /*
@@ -254,10 +251,10 @@ function editCourse() {
           pushInput(ele);
         }
       });
+
+      saveBtn.onclick = () => saveCourse(courseId);
     };
   });
-
-  saveBtn.onclick = () => saveCourse(courseId);
 }
 
 /*
@@ -379,41 +376,41 @@ function addInfo(type) {
     saveBtn.parentElement.style.display = "";
     tr = cloneTr();
     tbody.appendChild(tr);
-  };
 
-  saveBtn.onclick = () => {
-    const trNodes = tr.childNodes;
-    let len = trNodes.length - 1;
-    if (type === "score") len = 0;
-    // console.log(trNodes);
+    saveBtn.onclick = () => {
+      const trNodes = tr.childNodes;
+      let len = trNodes.length - 1;
+      if (type === "score") len = 0;
+      // console.log(trNodes);
 
-    trNodes.forEach((ele, index) => {
-      if (![0, 1, len].includes(index) && ele.childNodes.length) {
-        let val = ele.children[0].value;
+      trNodes.forEach((ele, index) => {
+        if (![0, 1, len].includes(index) && ele.childNodes.length) {
+          let val = ele.children[0].value;
 
-        //正则匹配班级中的专业名
-        if (type === "stuinfo" && ele.id === "major") {
-          const regex = /[\u4e00-\u9fa5]+/g;
-          val = val.match(regex)[0];
+          //正则匹配班级中的专业名
+          if (type === "stuinfo" && ele.id === "major") {
+            const regex = /[\u4e00-\u9fa5]+/g;
+            val = val.match(regex)[0];
+          }
+
+          addData.data.push({
+            key: ele.id,
+            value: val,
+          });
         }
+      });
 
-        addData.data.push({
-          key: ele.id,
-          value: val,
-        });
-      }
-    });
-
-    new Ajax().main({
-      url: "database/dataRoot.php",
-      method: "POST",
-      data: JSON.stringify(addData) + "&type=add",
-      success: (res) => {
-        // console.log(res);
-        setTimeout(() => sendData(type), 300);
-      },
-    });
-    //
+      new Ajax().main({
+        url: "database/dataRoot.php",
+        method: "POST",
+        data: JSON.stringify(addData) + "&type=add",
+        success: (res) => {
+          // console.log(res);
+          setTimeout(() => sendData(type), 300);
+        },
+      });
+      //
+    };
   };
 }
 

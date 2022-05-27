@@ -70,3 +70,8 @@ let len = 5,
 arr[len - 1] = 0;
 arr.fill(true);
 console.log(arr);
+
+let gf = new female();
+gf.tietie();
+
+console.log("在米诶么");

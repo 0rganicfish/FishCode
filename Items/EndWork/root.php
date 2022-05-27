@@ -13,7 +13,7 @@ if (isset($_GET["logout"])) {
 }
 
 if (!$_SESSION["power"]) {
-    header("location:../EndWork/");
+    header("location:index.php");
 }
 
 ?>
