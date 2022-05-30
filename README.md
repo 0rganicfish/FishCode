@@ -12,7 +12,6 @@
 - CSS [CSS | Less](Notes/Web/CSS.md)
 - JS [JavaScript.md](Notes/Web/JavaScript/JavaScript.md)
 - Ajax [Ajax.md](Notes/Web/Ajax.md)
-
 - [HTML | CSS | JS](Items/WebSite/Learn2Try/Readme.md)
 
 ### Android
@@ -37,7 +36,7 @@
 
 ## 其他一些......
 
-- [Github](https://github.com/0rganicfish/FishCode) or <a href="D:\文档\GitHub\FishCode\README.md">本地</a>
+- [Github](https://github.com/0rganicfish/FishCode)
 - 试了试...... **[Github Pages](../0rganicfish.github.io/README.md)** | 在线：[Fish.github.io](https://0rganicfish.github.io/) | [Github](https://github.com/0rganicfish/0rganicfish.github.io)
 - 算 法 [Algorithm](Notes/Algorithm/Main.md)
 - 突然蹦出来的码 [没地方放的 Temp 码](Notes/一些Temp.md)

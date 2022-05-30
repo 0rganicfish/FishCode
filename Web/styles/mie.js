@@ -65,13 +65,9 @@ const regex = /[\u4e00-\u9fa5]+/,
 
 console.log(str.match(regex)[0]);
 
-let len = 5,
-  arr = [];
-arr[len - 1] = 0;
-arr.fill(true);
-console.log(arr);
-
-let gf = new female();
-gf.tietie();
-
-console.log("在米诶么");
+function getIPV4() {
+  const os = require("os"),
+    ips = os.networkInterfaces().WLAN;
+  return ips[3].address || "localhost";
+}
+console.log(getIPV4());

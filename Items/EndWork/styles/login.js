@@ -128,7 +128,7 @@ window.onload = () => {
   loginCheck();
 
   // 一些杂项
-  (() => {
+  {
     window.history.replaceState(null, null, window.location.href); //表单缓存..刷新
-  })();
+  }
 };

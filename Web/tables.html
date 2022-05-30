@@ -6,7 +6,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
     <script src=''></script>
-    <link rel='stylesheet' href=''>
+    <link rel='stylesheet' href='styles/Template.css'>
     <link rel='icon' href=''>
     <title> </title>
 </head>
@@ -58,7 +58,7 @@
                 context = null,
                 time = 0;
 
-              const makeNoise = function () {
+            const makeNoise = function () {
                 let imgd = context.createImageData(canvas.width, canvas.height),
                     pix = imgd.data;
 
@@ -79,6 +79,23 @@
 
             setup();
             intervalId = setInterval(makeNoise, 50);
+        </script>
+    </div>
+
+    <div id="mie">
+        <script>
+            const data = [
+                { id: "01", value: 123 },
+                { id: "02", value: 234 },
+            ];
+            const tmp = (data) =>
+                `<table><tr><th>id</th><th>value</th></tr>
+                    ${data
+                    .map(addr => `<tr><td>${addr.id}</td><td>${addr.value}</td></tr>`)
+                    .join("")}
+                </table>`;
+
+            mie.innerHTML = tmp(data);
         </script>
     </div>
 

@@ -1,9 +1,10 @@
-<p style="font-size: 40px; color: #fff"><b>JavaScript</b></p>
+<p style="font-size: 40px; color: #fff; text-align:center"><b>JavaScript</b></p>
 
 - **外链**
   - [README.md](../README.md)
   - [现代 JavaScript 教程](https://zh.javascript.info/)
   - [MDN 官方文档](https://developer.mozilla.org/zh-CN/)
+  - [阮一峰 - ES6](https://es6.ruanyifeng.com)
   - [HTML.md](../HTML.md)
 
 [TOC]
@@ -11,15 +12,6 @@
 <br><hr>
 
 # 基本语法
-
-## 输出
-
-- 使用` window.alert()` 弹出警告框。
-- 使用 `document.write()` 方法将内容写到 HTML 文档中。
-- 使用 `innerHTML` 写入到 HTML 元素。
-- 使用 `console.log()` 写入到浏览器的控制台。
-
-<br>
 
 ## 循环迭代
 
@@ -72,8 +64,6 @@
 
 ## 表达式与运算符
 
-### 对象运算符
-
 <br>
 
 ## 类型转换
@@ -105,7 +95,7 @@
 
 ### 箭头函数
 
-&emsp;&emsp; 箭头函数表达式的语法比函数表达式**更简洁**，并且没有自己的 `this`，`arguments`，`super` 或 `new.target`。箭头函数表达式更适用于那些本来需要匿名函数的地方，并且它不能用作构造函数。
+&emsp;&emsp; 箭头函数表达式的语法比函数表达式**更简洁**，并且没有自己的 `this`，`arguments`，`super` 或 `new.target`，而是指向了 **父作用域**。箭头函数表达式更适用于那些本来需要匿名函数的地方，并且它不能用作构造函数(new)。
 
 **构造：**
 
@@ -125,22 +115,15 @@
   ```
 
 - 也能用上**三目运算符**：
-
   ```JavaScript {.line-numbers}
   let max = (a, b) => a > b ? a : b;
   //调用：
   let maxx = max(12, 33);//当然也有 Math.max();
   ```
-
 - **递归：**
-
   ```JavaScript {.line-numbers}
   let fact = (x) => (x ? x * fact(x - 1) : 1);
   ```
-
-- **而且**：箭头函数没有局部 `this` 的绑定
-
-  和一般的函数不同，箭头函数不会绑定 this。 或者说箭头函数不会改变 this 本来的绑定，而是指向了 `window`。
 
 > ! 箭头函数只适合干简单事啦，尽量不用来定义函数
 
@@ -194,6 +177,32 @@
 - 如果一个变量没有使用 **`var`** 声明，window 便拥有了该属性，因此这个变量的作用域不属于某一个函数体,而是 window 对象(全局)。
 
   > 即：没有 var 的变量可在函数外调用
+
+<Br>
+
+### call, apply, bind
+
+本质上是 **借用函数**。例：
+
+```JavaScript {.line-numbers}
+const mie = {
+    name: "mie",
+    money: 12,
+    getMoney(num) {
+      this.money += num;
+    },
+  },
+  fish = {
+    name: "fish",
+    money: 10,
+  };
+
+console.log(fish.money);
+mie.getMoney.call(fish, 100);
+console.log(fish.money);
+```
+
+**即：** `fun.[call | bind | apply](obj, [args])`。区别在于， bind 的参数必须是数组类型，bind 是返回函数但不立即执行
 
 <br><hr>
 
@@ -402,7 +411,6 @@
   }
   ```
 
-
 > 参考：[MDN Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E6%8F%8F%E8%BF%B0) 、 [数组方法](https://zh.javascript.info/array-methods)
 
 <br>
@@ -567,6 +575,37 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
   ```
 
   > 其实就是将函数传入的参数列到 `arguments` 数组中，但又不同于 `Array`
+
+<br>
+
+# ES6
+
+## 变量的解构赋值
+
+- **数组：**
+  只要位置、嵌套方式匹配即可，没有值则是 undefined
+
+  ```JavaScript {.line-numbers}
+  // 从
+  const a = 1, b = 2, c = 3;
+  // 变成
+  const [a, b, c] = [1, 2, 3];
+
+  const [a, ...arr] = [1, 2, 3, 4]
+  // a -> 1; arr -> [2, 3, 4]
+  ```
+
+- **对象：**
+  必须要同名才行
+
+```JavaScript {.line-numbers}
+const mie = {id: 233, name:"mie"},
+   {id, name} = mie,
+   {id: uid, name: uname} = mie, //别名
+   {sin} = Math;
+```
+
+所以交换就成了：`[a b] = [b, a];`
 
 <br><hr>
 

@@ -9,15 +9,15 @@
 
 class Ajax {
   main = ({
-    url,
+    url = "",
     data = {},
     method = "get", // 默认为'get'请求
-    header,
+    header = "",
     async = true, // 默认为异步请求
     timeout = 60 * 1000, //默认60s
-    success,
-    fail,
-  }) => {
+    success = function () {},
+    fail = function () {},
+  } = {}) => {
     const requestURL = method === "get" ? this.addUrl(url, data) : url,
       sendData = method === "get" ? null : "data=" + data, // xhr.send(string)
       xhr = new getXHR();
