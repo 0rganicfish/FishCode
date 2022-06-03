@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; " align="center"><b>JQuery</b></p><br>
+ <h1 align="center"><b>JQuery</b></h1><br>
 
 - [README](README.md)
 - [JavaScript](JavaScript/JavaScript.md)

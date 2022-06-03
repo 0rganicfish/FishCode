@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; " align="center"><b>CSS | Less</b></p><br>
+  <h1 align="center"><b>CSS | Less<</b></h1><br>
 
 - [README](../README.md)
 - [HTML](HTML.md)

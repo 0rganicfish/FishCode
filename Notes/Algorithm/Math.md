@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; " align="center"><b>数学</b></p>
+  <h1 align="center"><b>数学<</b></h1>
 
 [首页](Main.md)
 [TOC]

@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; " align="center"><b>C / C++</b></p>
+  <h1 align="center"><b>C / C++<</b></h1>
 
 - **[README.md](../README.md)**
 - **[算 法](Algorithm/Main.md)**

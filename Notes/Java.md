@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff; " align="center"><b>Java</b></p><br>
+ <h1 align="center"><b>Java<</b></h1><br>
 
 - [README.md](../README.md)
 

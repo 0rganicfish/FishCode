@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff; " align="center"><b>正则表达式</b></p><br>
+ <h1 align="center"><b>正则表达式<</b></h1><br>
 
 - [README.md](../README.md)
 

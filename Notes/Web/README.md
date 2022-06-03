@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; " align="center"><b>Web 技术</b></p><br>
+  <h1 align="center"><b>Web 技术<</b></h1><br>
 
 - [README](../../README.md)
 - [HTML](HTML.md)

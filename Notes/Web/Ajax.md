@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; " align="center"><b>Ajax</b></p><br>
+  <h1 align="center"><b>Ajax<</b></h1><br>
 
 - [README](README.md)
 
