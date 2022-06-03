@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; text-align:center"><b>算 法</b></p><br>
+ <p style="font-size: 40px; color: #fff; " align="center"><b>算 法</b></p><br>
 
 - [cpp.md](../Cpp.md)
 - [README](../../README.md)

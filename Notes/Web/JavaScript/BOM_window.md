@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; text-align:center"><b>BOM_window对象</b></p>
+ <p style="font-size: 40px; color: #fff; " align="center"><b>BOM_window对象</b></p>
 
 - [JavaScript.note](JavaScript.md)
   [TOC]

@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff; text-align:center"><b>DOM | Events</b></p><br>
+<p style="font-size: 40px; color: #fff; " align="center"><b>DOM | Events</b></p><br>
 
 - [JavaScript.md](JavaScript.md)
 - [DOM.md](DOM.md)

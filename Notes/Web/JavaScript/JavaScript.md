@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff; text-align:center"><b>JavaScript</b></p>
+<p style="font-size: 40px; color: #fff; " align="center"><b>JavaScript</b></p>
 
 - **外链**
   - [README.md](../README.md)

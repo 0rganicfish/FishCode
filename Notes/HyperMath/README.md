@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; text-align:center"><b>Math</b></p><br>
+ <p style="font-size: 40px; color: #fff; " align="center"><b>Math</b></p><br>
 
 ---
 

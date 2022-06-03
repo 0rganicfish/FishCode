@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff; text-align:center"><b>LaTeX</b></p><br>
+<p style="font-size: 40px; color: #fff; " align="center"><b>LaTeX</b></p><br>
 
 - [README.md](../README.md)
 

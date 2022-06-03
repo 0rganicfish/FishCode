@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; text-align:center"><b>导航</b></p><br>
+ <p style="font-size: 40px; color: #fff; " align="center"><b>导航</b></p><br>
 
 **当然，杂而水**
 
@@ -11,6 +11,7 @@
 - HTML [HTML.md](Notes/Web/HTML.md)
 - CSS [CSS | Less](Notes/Web/CSS.md)
 - JS [JavaScript.md](Notes/Web/JavaScript/JavaScript.md)
+- jQuery [JQuery.md](Notes/Web/JQuery.md)
 - Ajax [Ajax.md](Notes/Web/Ajax.md)
 - [HTML | CSS | JS](Items/WebSite/Learn2Try/Readme.md)
 

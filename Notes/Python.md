@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; text-align:center"><b>Python.note</b></p>
+ <p style="font-size: 40px; color: #fff; " align="center"><b>Python.note</b></p>
 
 - [README.md](../README.md)
   [TOC]

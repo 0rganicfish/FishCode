@@ -1,4 +1,4 @@
- <p style="font-size: 40px; color: #fff; text-align:center"><b>DOM</b></p>
+ <p style="font-size: 40px; color: #fff; " align="center"><b>DOM</b></p>
 
 - [README](../README.md)
 - [JS](JS.md)
