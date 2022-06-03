@@ -1,4 +1,4 @@
-  <h1 align="center"><b>数学<</b></h1>
+  <h1 align="center"><b>数学</b></h1>
 
 [首页](Main.md)
 [TOC]

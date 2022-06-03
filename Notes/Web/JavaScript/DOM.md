@@ -1,4 +1,4 @@
-  <h1 align="center"><b>DOM<</b></h1>
+  <h1 align="center"><b>DOM</b></h1>
 
 - [README](../README.md)
 - [JS](JS.md)

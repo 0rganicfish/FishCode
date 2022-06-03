@@ -1,4 +1,4 @@
-  <h1 align="center"><b>BOM_window对象<</b></h1>
+  <h1 align="center"><b>BOM_window对象</b></h1>
 
 - [JavaScript.note](JavaScript.md)
   [TOC]

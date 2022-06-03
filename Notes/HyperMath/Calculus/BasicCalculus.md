@@ -1,4 +1,4 @@
-  <h1 align="center"><b>微积分基础<</b></h1><br>
+  <h1 align="center"><b>微积分基础</b></h1><br>
 
 - [README](README.md)
 

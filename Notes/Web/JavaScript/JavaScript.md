@@ -1,4 +1,4 @@
- <h1 align="center"><b>JavaScript<</b></h1>
+ <h1 align="center"><b>JavaScript</b></h1>
 
 - **外链**
   - [README.md](../README.md)

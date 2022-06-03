@@ -1,4 +1,4 @@
-  <h1 align="center"><b>CSS | Less<</b></h1><br>
+  <h1 align="center"><b>CSS | Less</b></h1><br>
 
 - [README](../README.md)
 - [HTML](HTML.md)

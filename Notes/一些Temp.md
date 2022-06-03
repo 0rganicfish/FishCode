@@ -1,4 +1,4 @@
- <h1 align="center"><b>只是一些没地方放的 Temp 码<</b></h1><br>
+ <h1 align="center"><b>只是一些没地方放的 Temp 码</b></h1><br>
 
 - [README](../README.md)
 

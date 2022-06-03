@@ -1,4 +1,4 @@
-  <h1 align="center"><b>初等微积分<</b></h1><br>
+  <h1 align="center"><b>初等微积分</b></h1><br>
 
 ---
 

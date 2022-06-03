@@ -1,4 +1,4 @@
- <h1 align="center"><b>HTTP<</b></h1><br>
+ <h1 align="center"><b>HTTP</b></h1><br>
 
 - [README](../../README.md)
 

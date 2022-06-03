@@ -1,4 +1,4 @@
-  <h1 align="center"><b>Python.note<</b></h1>
+  <h1 align="center"><b>Python.note</b></h1>
 
 - [README.md](../README.md)
   [TOC]
