@@ -28,3 +28,5 @@ const tmp = (data) =>
 </table>`;
 
 console.log(tmp(data));
+
+ 

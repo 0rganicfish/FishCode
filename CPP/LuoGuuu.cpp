@@ -7,4 +7,12 @@
 #define all(s) s.begin(), s.end()
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
- 
+template <class T>
+T maxx(T x, T y)
+{
+    return (x > y) ? x : y;
+}
+
+int main()
+{
+}

@@ -65,8 +65,3 @@ a:hover {
   color: var(--blue_green);
   text-decoration: underline;
 }
-
-ul,
-li {
-  box-sizing: content-box;
-}

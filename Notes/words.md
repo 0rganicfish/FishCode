@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff"><b>Words</b></p>
+ <p style="font-size: 40px; color: #fff; text-align:center"><b>Words</b></p>
 
 - [README](../README.md)
 

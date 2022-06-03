@@ -1,6 +1,8 @@
+<p style="font-size: 40px; color: #fff; text-align:center"><b>DOM | Events</b></p><br>
+
 - [JavaScript.md](JavaScript.md)
-- [HTML](../HTML.md)
-- [README](../../../README.md)
+- [DOM.md](DOM.md)
+- [README](../README.md)
 
 [TOC]
 

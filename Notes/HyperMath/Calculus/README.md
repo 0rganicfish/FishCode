@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff"><b>初等微积分</b></p><br>
+ <p style="font-size: 40px; color: #fff; text-align:center"><b>初等微积分</b></p><br>
 
 ---
 

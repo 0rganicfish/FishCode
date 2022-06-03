@@ -1,4 +1,4 @@
-<p style="font-size: 40px; color: #fff"><b>HTML</b></p>
+ <p style="font-size: 40px; color: #fff; text-align:center"><b>HTML</b></p>
 
 - [README](README.md)
 - [CSS | Less](CSS.md)

@@ -38,7 +38,7 @@
                 ajax_btn.addEventListener('click', () => {
                     let ajax = new Ajax();
                     ajax.main({
-                        url: 'fish.txt',
+                        url: 'datas/fish.txt',
                         success: res => { set_ans(res) },
                         fail: err => {
                             throw err;
@@ -58,7 +58,7 @@
                         ans1.innerHTML = "name: " + jsons.data.name +
                             ", age: " + jsons.data.age;
                     },
-                    URL: "fish.json",
+                    URL: "datas/fish.json",
                     handleEvent: function () {
                         let ajax = new Ajax();
                         ajax.main({
@@ -196,9 +196,6 @@
                             .replace('s', secs);
                         document.getElementById("mie").innerHTML = output
                     }
-                    stop() {
-                        clearInterval(this.timer);
-                    }
                     start() {
                         this.render();
                         setInterval(() => this.render(), 1000);
@@ -277,6 +274,97 @@
                 })
             </script>
         </div>
+        <div>
+            <p class="time jstime" data-time="2070-01-01 00:00:00">剩余 00:00:00</p>
+            <script>
+                const countdown = {
+                    domList: document.querySelectorAll(".jstime"),
+                    formatNumber(n) {
+                        n = n.toString();
+                        return n[1] ? n : "0" + n;
+                    },
+                    setTime(dom) {
+                        const leftTime =
+                            new Date(dom.getAttribute("data-time").replace(/\-/g, "/")) - new Date();
+                        if (leftTime >= 0) {
+                            const d = Math.floor(leftTime / 1000 / 60 / 60 / 24),
+                                h = Math.floor((leftTime / 1000 / 60 / 60) % 24),
+                                m = Math.floor((leftTime / 1000 / 60) % 60),
+                                s = Math.floor((leftTime / 1000) % 60);
+                            let e_h = h < 10 ? "0" + h : h,
+                                e_m = m < 10 ? "0" + m : m,
+                                e_s = s < 10 ? "0" + s : s;
+
+                            document.title = dom.innerHTML =
+                                "拼单剩余 " + e_h + "时" + e_m + "分" + e_s + "秒";
+                        } else {
+                            clearInterval(dom.$timer);
+                            document.title = dom.innerHTML = "拼单已结束";
+                        }
+                    },
+                    start() {
+                        this.domList.forEach((dom) => {
+                            this.setTime(dom);
+                            dom.$timer = setInterval(() => {
+                                this.setTime(dom);
+                            }, 1e3);
+                        });
+                    },
+                };
+                countdown.start();
+            </script>
+
+            <div>
+
+                <canvas id=myCanvas0 width=800 height=400></canvas>
+                <script>
+                    let canvas = null,
+                        context = null,
+                        time = 0;
+
+                    const makeNoise = function () {
+                        let imgd = context.createImageData(canvas.width, canvas.height),
+                            pix = imgd.data;
+
+                        for (let i = 0, n = pix.length; i < n; i += 4) {
+                            let c = 7 + Math.sin(i / 50000 + time / 7); // A sine wave of the form sin(ax + bt)
+                            pix[i] = pix[i + 1] = pix[i + 2] = 40 * Math.random() * c; // Set a random gray
+                            pix[i + 3] = 255; // 100% opaque
+                        }
+
+                        context.putImageData(imgd, 0, 0);
+                        time = (time + 1) % canvas.height;
+                    };
+
+                    const setup = function () {
+                        canvas = document.getElementById("myCanvas0");
+                        context = canvas.getContext("2d");
+                    };
+
+                    setup();
+                    intervalId = setInterval(makeNoise, 50);
+                </script>
+            </div>
+
+            <div id="mies">
+                <script>
+                    const data = [
+                        { id: "01", value: 123 },
+                        { id: "02", value: 234 },
+                    ];
+                    const tmp = (data) =>
+                        `<table><tr><th>id</th><th>value</th></tr>
+                        ${data
+                            .map(addr => `<tr><td>${addr.id}</td><td>${addr.value}</td></tr>`)
+                            .join("")}
+                    </table>`;
+
+                    mies.innerHTML = tmp(data);
+
+                </script>
+            </div>
+        </div>
+
 
     </div>
 

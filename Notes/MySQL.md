@@ -1,4 +1,4 @@
-# SQL
+<p style="font-size: 40px; color: #fff; text-align:center"><b>MySQL</b></p><br>
 
 - [README](../README.md)
 
