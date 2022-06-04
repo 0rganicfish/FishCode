@@ -17,7 +17,7 @@
 - `text-transform` 控制元素中的字母
 - `text-align: left | right | center | justify (文字向两侧对齐)` , 文字对齐方式
 - `write-mode: horizontal-tb | vertical-rl | vertical-lr ` 文字书写方向
-  - <img src="img/write-mode.png" width=30%>
+  - <img src="img/CSS_write_mode.png" width=30%>
 - `white-space` 设置元素中空白的处理方式
 - `word-spacing` 设置单词间距
 - `letter-spacing` 设置字母间距
@@ -100,7 +100,7 @@
 - `padding` , 内边距
 - `height`、`width` , 宽高
 - 但是，如图 完整的框是指 长：`width + 2\*(margin + padding + border)`
-  <img src="img/border.png" width=40%>
+  <img src="img/CSS_border.png" width=40%>
 - 而用了 **`box-sizing: border-box;`** 后，边距不影响宽度了（放全局）
 
 <br>

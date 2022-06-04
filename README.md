@@ -13,7 +13,7 @@
 - JS [JavaScript.md](Notes/Web/JavaScript/JavaScript.md)
 - jQuery [JQuery.md](Notes/Web/JQuery.md)
 - Ajax [Ajax.md](Notes/Web/Ajax.md)
-- [HTML | CSS | JS](Items/WebSite/Learn2Try/Readme.md)
+- [HTML | CSS | JS](Projects/WebSite/Learn2Try/Readme.md)
 
 ### Android
 
