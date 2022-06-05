@@ -285,6 +285,14 @@ console.log(fish.money);
   ```JavaScript {.line-numbers}
   for (let i of Object.values(myObj)) // Object.keys(myObj)
     console.log(i);
+  //
+  for (let [key, val] of Object.entries(fish)) {
+    console.log(val);
+  }
+  //
+  Object.entries(fish).forEach(([key, val]) => {
+    console.log(val);
+  });
   ```
 
 ### this

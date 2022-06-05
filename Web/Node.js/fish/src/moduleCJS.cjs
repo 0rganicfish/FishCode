@@ -1,14 +1,14 @@
 function f() {
-  console.log("CJS");
+  console.log('CJS');
 }
 
 function ff() {
-  console.log("ff()");
+  console.log('ff()');
 }
 
 const data = {
-  name: "fish",
-  id: "2114",
+  name: 'fish',
+  id: '2114',
 };
 
 module.exports = {

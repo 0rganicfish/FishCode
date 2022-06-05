@@ -1,7 +1,7 @@
 export function mie() {
-  console.log("mie");
+  console.log('mie');
 }
 export const data = {
-  id: "111",
-  name: "fish",
+  id: '111',
+  name: 'fish',
 };
