@@ -1,11 +1,16 @@
 {
+  "type": "module",
   "name": "fish_node",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "mie!",
   "main": "index.js",
   "scripts": {
-    "test": "echo miemie"
+    "test": "echo miemie",
+    "dev": "node src/index"
   },
   "author": "OrganicFish",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "md5": "^2.3.0"
+  }
 }
