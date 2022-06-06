@@ -10,10 +10,11 @@
     <link rel='stylesheet' href='styles/Template.css'>
     <link rel='icon' href='img/bili.ico'>
     <style>
-        body {
+        html {
             position: relative;
             height: 300vh;
             padding: 50px;
+            scrollbar-width: thin;
         }
 
         body>div {
@@ -60,6 +61,7 @@
                 border-radius: 5px;
                 position: relative;
 
+                white-space: pre-wrap;
                 font-size: 0.8em;
                 text-align: justify;
                 word-break: break-all;
@@ -88,7 +90,7 @@
 
         <script>
             $('#btn').click(function () {
-                const $content = $('#txt').val().replace(/</gm, '&lt;').replace(/\n/gm, '<br>');
+                const $content = $('#txt').val().replace(/</gm, '&lt;')
                 if (!$content.trim().length) return;
                 $('#txt').val('')
 
@@ -324,17 +326,9 @@
         </script>
     </div>
 
-    <div>
-        <button class="vue">Count is: 0</button>
-        <script>
-            let cnt = 0;
-            $('.vue').click(function () {
-                this.innerHTML = `Count is: ${++cnt}`;
-            })
-        </script>
-    </div>
+    <div class="search">
 
-    <div>
+        jq模糊搜索：
         <input type="text" id="filter">
         <ul class="person">
             <li data-models="'王明', 25, '网络工程', '篮球'">王明</li>
@@ -354,6 +348,32 @@
         </script>
     </div>
 
+
+    <div class="Vue_js">
+        <div>原生js实现一些 Vue：</div>
+        <div>计数按钮：
+            <button class="cntBtn">Count is: 0</button>
+            <script>
+                let cnt = 0;
+                $('.cntBtn').click(function () {
+                    this.innerHTML = `Count is: ${++cnt}`;
+                })
+            </script>
+        </div>
+
+        <div>动态URL：
+            <input type="url" autocomplete="off">
+            <a href="#">#</a>
+            <script>
+                $('input[type="url"]')[0].oninput = (function () {
+                    const a = $(this).next()[0],
+                        val = $(this).val();
+
+                    a.href = a.innerHTML = val;
+                })
+            </script>
+        </div>
+    </div>
 </body>
 
 </html>

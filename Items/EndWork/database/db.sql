@@ -147,7 +147,9 @@ begin
     where stuId = sid;
 end //
 
---  call GPACalc(70, '2114100328', '103');
+-- 作用：修改成绩
+--  call GPACalc('2114100328', '103', 80);
+
 
 -- 修改学生基本信息
 delimiter //

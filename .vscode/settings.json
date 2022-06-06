@@ -106,6 +106,7 @@
     "stuinfo",
     "touchmove",
     "touchstart",
+    "urler",
     "XMLHTTP"
   ]
 }

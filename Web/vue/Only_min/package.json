@@ -9,5 +9,8 @@
     "dev": "node src/index"
   },
   "author": "OrganicFish",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.2.36"
+  }
 }
