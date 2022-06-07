@@ -115,9 +115,6 @@
 &emsp;&emsp;
 
 - 子节点修改 **\*Old School**
-
-  > 由于历史原因，还存在“老式”的 DOM 操作方法。这些方法来自真正的远古时代。如今，没有理由再使用它们了
-
   - `parent.appendChild(child);` 将指定的节点添加到调用该方法的节点的子元素的末尾。
     child 节点将会作为 parent 节点的最后一个子节点。
   - ` parentNode.insertBefore(newNode, refNode)` 用来添加一个节点到一个参照节点之前
@@ -129,6 +126,8 @@
   - `parent.replaceChild(newChild, oldChild)` 用于使用一个节点替换另一个节点
     - `newChild` 是替换的节点，可以是新的节点，也可以是页面上的节点，如果是页面上的节点，则其将被转移到新的位置
     - `oldChild` 是被替换的节点
+
+> 由于历史原因，还存在“老式”的 DOM 操作方法。这些方法来自真正的远古时代。如今，没有理由再使用它们了
 
 #### 节点创造型
 

@@ -4,33 +4,9 @@
 
 <br>
 
-## 起步
-
-#### 带脚手架项目文件
-
-- 先安装 `vue-cli` 脚手架
-  ```batch {.line-numbers}
-  npm install -g @vue/cli
-  ```
-- 再创建项目
-  ```batch {.line-numbers}
-  vue create [options] app-name
-   rem 运行
-  cd app-name
-  npm run server
-  ```
-- 或用 GUI 来创建
-  ```batch {.line-numbers}
-  vue ui
-  ```
-- 项目文件结构
-- <img src="img/Vue_proj.png" width="70%">
-
-#### 仅 Vue.min.js
+## 基本语法
 
 直接引用文件或是 cdn：`https://unpkg.com/vue@next`
-
-## 基本语法
 
 可以理解为 客户端的 HTML 元素是要先经过服务端渲染(编译) `Vue.js` 后才呈现的，所以客户端并不会显示 Vue 的内容
 
@@ -85,8 +61,8 @@
       <script>
         return {
           obj: {
-            id: 'mie',
-            class: 'haha btns',
+            id: "mie",
+            class: "haha btns",
           },
         };
       </script>
@@ -189,7 +165,7 @@
 </select>
 ```
 
-### 生命周期钩子
+### 生命周期
 
 - `setup()` : 开始创建组件之前，在 `beforeCreate` 和 `created` 之前执行，创建的是 `data` 和 `method`
 - `onBeforeMount()` : 组件挂载到节点上之前执行的函数；
@@ -203,7 +179,104 @@
 - `onErrorCaptured()`: 当捕获一个来自子孙组件的异常时激活钩子函数。
 
 > PS： 使用`<keep-alive>` 组件会将数据保留在内存中，比如我们不想每次看到一个页面都重新加载数据，就可以使用`<keep-alive>` 组件解决。
+> 在 Vue3 里， 每个生命周期函数都要先导入才可以使用，并且所有生命周期函数统一放在 `setup` 里运行。
 
 <br>
 
 ## 单组件文件.vue
+
+### 构建项目
+
+- 如果没安装，先安装 `vue-cli` 脚手架
+  ```batch {.line-numbers}
+  npm install -g @vue/cli
+  ```
+- 再创建项目
+
+  ```batch {.line-numbers}
+  vue create [options] app-name
+
+  cd app-name
+  npm run server
+  ```
+
+- 或用 GUI 来创建
+  ```batch {.line-numbers}
+  vue ui
+  ```
+- 项目文件结构
+- <img src="img/Vue_proj.png" width="70%">
+
+<br>
+
+### 运行
+
+**入口：**
+
+使用 Vue 3 的生命周期的情况下，整个组件相关的业务代码，都可以丢到 `setup` 里编写。因为在 setup 之后，其他的生命周期才会被启用
+
+**基本语法：**
+
+```ts {.line-numbers}
+import { defineComponent } from "vue";
+// defineComponent 可以用于 TypeScript 的类型推导，简化掉很多编写过程中的类型定义
+export default defineComponent({
+  setup(props, context) {
+    // 业务代码写这里...
+    return {
+      // 需要给 template 用的数据、函数放这里 return 出去...
+    };
+  },
+});
+```
+
+- 使用 `setup` 的情况下，请牢记一点：不能再用 `this` 来获取 Vue 实例，也就是无法通过 `this.xxx` 、 `this.fn()` 这样来获取实例上的数据，或者执行实例上的方法。
+- 在 Vue 3 的 `defineComponent` 写法里，只要你的数据要在 `<template>` 中使用，就必须在 `setup` 里 `return` 出去。
+
+> 当然，只在函数中调用到，而不需要渲染到模板里的，则无需 return
+
+<br>
+
+### 响应式数据
+
+从返回的数据实时更新
+
+- **ref：** 但是在使用 `ref` 时，不能这样子声明，会报错，正确的声明方式应该是使用 `<>` 来包裹类型定义，紧跟在 `ref API` 之后：
+  ```ts {.line-numbers}
+  // 单类型
+  const msg = ref<string>("Hello World!");
+  // 多类型
+  const phoneNumber = ref<number | string>(13800138000);
+  // 数字数组
+  const uids = ref<number[]>([1, 2, 3]);
+  ```
+  **但是：**
+  - 定义**挂载节点**后，也是必须通过 `xxx.value` 才能正确操作到挂载的 `DOM` 元素或组件（详见下方的变量的读取与赋值）
+  - 请保证视图渲染完毕后，再执行 DOM 或组件的相关操作，需要放到生命周期的 `onMounted` 或者 `nextTick` 函数里
+  - 该变量必须 `return` 出去才可以给到 `template` 使用（这一点是 3.x 生命周期的硬性要求，子组件的数据和方法如果要给父组件操作，也要 return 出来才可以）。
+  - 当变量是 DOM 时，类型应该是 [HTML 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model#html_%E5%85%83%E7%B4%A0%E6%8E%A5%E5%8F%A3)
+  - 读取任何 ref 对象的值都**必须**通过 `xxx.value` 才可以正确获取到。
+
+<br>
+
+- **reactive:** `reactive` 是继 `ref` 之后最常用的一个响应式 API 了，相对于 `ref`，它的局限性在于只适合对象、数组。
+  定义和使用与 ref 差不多，**但：**
+  - 在 2.x 的时候，在操作数组时，完全可以和普通数组那样随意的处理数据的变化，依然能够保持响应性。
+  - 但在 3.x ，如果使用 `reactive` 定义数组，则不能这么搞了，必须只使用那些不会改变引用地址的操作。
+
+<br>
+
+- **所以：** 为了使用方便的同时又能响应式修改数据，就有了：
+
+  - `toRef` 创建一个新的 `ref` 变量，转换 `reactive` 对象的某个字段为 `ref` 变量
+
+    - 在 `toRef` 的过程中，如果使用了原对象上面不存在的 `key` ，那么定义出来的变量的 `value` 将会是 `undefined` 。
+      如果你对这个不存在的 `key` 的 `ref` 变量，进行了 `value` 赋值，那么原来的对象也会同步增加这个 `key`，其值也会同步更新。
+
+  - `toRefs` 创建一个新的对象，它的每个字段都是 `reactive` 对象各个字段的 `ref` 变量。本身是个普通对象，但是它的每个字段，都是与原来关联的 `ref` 变量
+
+> 一般是，先用 `ref` 定义一个响应式数据，再转为 `reactive` 进行使用
+
+<br>
+
+### 函数的编写

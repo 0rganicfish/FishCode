@@ -7,8 +7,8 @@ const http = require("http"),
  */
 function getIPV4() {
   const os = require("os"),
-    ips = os.networkInterfaces().WLAN;
-  return ips[3].address || "localhost";
+    ips = Object.values(os.networkInterfaces())[0];
+  return ips.find((ele) => ele.family === "IPv4").address;
 }
 const ivp4 = getIPV4();
 
@@ -25,3 +25,5 @@ function run() {
   // 使用默认浏览器打开
   c.exec("start http://" + ivp4 + "/mie");
 }
+
+run();

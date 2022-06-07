@@ -80,7 +80,7 @@
 
 - **`operator` 运算符：**
 
-    <table class="reference"><tbody><tr><th width="20%">运算符</th><th width="80%">描述</th></tr><tr><td>=</td><td>等于</td></tr><tr><td>&lt;&gt;</td><td>不等于</td></tr><tr><td>&gt;</td><td>大于</td></tr><tr><td>&lt;</td><td>小于</td></tr><tr><td>&gt;=</td><td>大于等于</td></tr><tr><td>&lt;=</td><td>小于等于</td></tr><tr><td>BETWEEN</td><td>在某个范围内</td></tr><tr><td>Like</td><td>搜索某种模式 | 模糊判断</td></tr><tr><td>in</td><td>指定针对某个列的多个可能值</td></tr></tbody></table></br>
+    <table class="reference"><tbody><tr><th width="20%">运算符</th><th width="80%">描述</th></tr><tr><td>=</td><td>等于</td></tr><tr><td>&lt;&gt;</td><td>不等于</td></tr><tr><td>&gt;</td><td>大于</td></tr><tr><td>&lt;</td><td>小于</td></tr><tr><td>&gt;=</td><td>大于等于</td></tr><tr><td>&lt;=</td><td>小于等于</td></tr><tr><td>BETWEEN</td><td>在某个范围内</td></tr><tr><td>Like</td><td>搜索某种模式 | 模糊判断</td></tr><tr><td>in</td><td>指定针对某个列的多个可能值</td></tr></tbody></table><br>
 
 - **逻辑运算符：** `()` 、`and` 、`not` 、`or`
 
@@ -288,7 +288,7 @@
 - `Locate(s1, s2)`：返回 s1 在 s2 的位置
 - `Repeat(s, n)`：返回将 s 重复 n 次
 - `Reverse(s)`：返回将 s 翻转
-- `Strcmp(s1, s2)`：s1 == s2 返回 0， s1 < s2 返回-1， s1 > s2 返回 1
+- `Strcmp(s1, s2)`：s1 == s2 返回 0， s1 &lt; s2 返回-1， s1 > s2 返回 1
 
 ### 日期函数
 

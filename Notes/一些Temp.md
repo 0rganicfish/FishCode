@@ -129,6 +129,29 @@ const sort_table = () => {
 };
 ```
 
+### 模糊查询
+
+```JavaScript {.line-numbers}
+function fuzzyFind(str, list) {
+  const reg = new RegExp("(.*)(" + str.split("").join(")(.*)(") + ")(.*)");
+  let ans = [];
+  list.forEach((ele) => {
+    if (reg.test(ele)) ans.push(ele);
+  });
+  return ans;
+}
+```
+
+### 获取系统 IPV4
+
+```JavaScript {.line-numbers}
+function getIPV4() {
+  const os = require("os"),
+    ips = Object.values(os.networkInterfaces())[0];
+  return ips.find((ele) => ele.family === "IPv4").address;
+}
+```
+
 <br>
 
 ## Python

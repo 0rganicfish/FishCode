@@ -178,7 +178,7 @@
 
   > 即：没有 var 的变量可在函数外调用
 
-<Br>
+<br>
 
 ### call, apply, bind
 

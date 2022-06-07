@@ -29,6 +29,8 @@ const tmp = (data) =>
 
 console.log(tmp(data));
 
+const os = require("os"),
+  ips = Object.values(os.networkInterfaces())[0];
+let ans = ips.find((ele) => ele.family === "IPv4").address;
 
-
- 
+console.log(ans);

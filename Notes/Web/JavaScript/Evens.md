@@ -14,11 +14,6 @@
 
 ## 分配事件处理程序的方式
 
-```JavaScript {.line-numbers}
-elem.on`<even> = function_name; // = ()=>`{ };
-elem.addEventListener("even", function);
-```
-
 - **而：** 使用 `on<even>=function1` 就相当于是
   ```JavaScript {.line-numbers}
   function(even){
@@ -32,6 +27,7 @@ elem.addEventListener("even", function);
 ### Event
 
 **构造函数：** `Event(typeArg[, eventInit])`
+
 **参数说明：**
 
 - `typeArg` ：代表事件类型字符串，例如 keypress，click
@@ -150,8 +146,6 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
 |  `mouseout`   | 鼠标从某元素移开。                 |
 |   `mouseup`   | 鼠标按键被松开。                   |
 
-> &emsp;&emsp;
-
 - **顺序：**
   当点击左键时，遵循 mousedown → mouseup → click 的顺序调用处理程序
 - **按键状态：**
@@ -204,7 +198,7 @@ EventTarget 是一个 DOM 接口，由可以接收事件、并且可以创建侦
 |  `input`   | 元素获取输入时触发                                                              |
 |  `reset`   | 表单重置时触发                                                                  |
 |  `search`  | 向搜索域输入文本时触发 ( `<input="search">`)                                    |
-|  `select`  | 选取文本时触发 ( `<input>` 和` <textarea>`)                                     |
+|  `select`  | 选取文本时触发 ( `<input>` 和`textarea>`)                                       |
 |  `submit`  | 表单提交时触发                                                                  |
 
 **访问：**
