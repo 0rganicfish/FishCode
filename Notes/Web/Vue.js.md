@@ -4,17 +4,13 @@
 
 <br>
 
-## 基本语法
+## 创建
 
-直接引用文件或是 cdn：`https://unpkg.com/vue@next`
+### 引用 vue.js 文件
 
-可以理解为 客户端的 HTML 元素是要先经过服务端渲染(编译) `Vue.js` 后才呈现的，所以客户端并不会显示 Vue 的内容
+- 直接引用文件或是 cdn：`https://unpkg.com/vue@next`
 
-### 应用
-
-#### 创建
-
-- ```JavaScript {.line-numbers}
+  ```JavaScript {.line-numbers}
   <div id="app">
     {{}}
   </div>
@@ -37,73 +33,162 @@
   const vm = app.mount('#app');
   ```
 
-  - `data` 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。它应该**返回一个对象**，然后 Vue 会通过响应性系统将其包裹起来，并以 `$data` 的形式存储在组件实例中。
-  - `mount()` 挂载应用：应用实例必须在调用了 `.mount()` 方法后才会渲染出来。该方法接收一个“容器”参数，可以是一个实际的 DOM 元素或是一个 CSS 选择器字符串
+- `data` 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。它应该**返回一个对象**，然后 Vue 会通过响应性系统将其包裹起来，并以 `$data` 的形式存储在组件实例中。
+- `mount()` 挂载应用：应用实例必须在调用了 `.mount()` 方法后才会渲染出来。该方法接收一个“容器”参数，可以是一个实际的 DOM 元素或是一个 CSS 选择器字符串
 
-#### 模板语法
+### 单组件文件.vue
 
-- **文本插值**：`{{...}}` 标签的内容将会被替代为对应组件实例中 `message` 属性的值，如果 `message` 属性的值发生了改变，`{{...}}` 标签内容也会更新。
-- **指令：** 以 `v-*`为格式的 attribute 被称为一个 Vue 指令，用来操作 DOM
+#### 构建项目
 
-  - `v-html=""`： 转译输出 HTML 标签
+- 如果没安装，先安装 `vue-cli` 脚手架
+  ```batch {.line-numbers}
+  npm install -g @vue/cli
+  ```
+- 再创建项目
+
+  ```batch {.line-numbers}
+  vue create [options] app-name
+
+  cd app-name
+  npm run server
+  ```
+
+- 或用 GUI 来创建
+  ```batch {.line-numbers}
+  vue ui
+  ```
+- 项目文件结构
+- <img src="img/Vue_proj.png" width="70%">
+
+<br>
+
+#### 运行
+
+**入口：**
+
+使用 Vue 3 的生命周期的情况下，整个组件相关的业务代码，都可以丢到 `setup` 里编写。因为在 setup 之后，其他的生命周期才会被启用
+
+**基本语法：**
+
+```ts {.line-numbers}
+import { defineComponent } from "vue";
+// defineComponent 可以用于 TypeScript 的类型推导，简化掉很多编写过程中的类型定义
+export default defineComponent({
+  setup(props, context) {
+    // 业务代码写这里...
+    return {
+      // 需要给 template 用的数据、函数放这里 return 出去...
+    };
+  },
+});
+```
+
+- 使用 `setup` 的情况下，请牢记一点：不能再用 `this` 来获取 Vue 实例，也就是无法通过 `this.xxx` 、 `this.fn()` 这样来获取实例上的数据，或者执行实例上的方法。
+- 在 Vue 3 的 `defineComponent` 写法里，只要你的数据要在 `<template>` 中使用，就必须在 `setup` 里 `return` 出去。
+
+> 当然，只在函数中调用到，而不需要渲染到模板里的，则无需 return
+
+- **而在新 Vue3.2：** 中的语法糖，直接在 `script` 标签中插入 `stup`，就不用 `return` 回去了，同时，脚本的变量什么的都可以被 `<template>` 获取
+
+  ```html {.line-numbers}
+  <script setup>
+    const msg = "Hello!";
+    function log() {
+      console.log(msg);
+    }
+  </script>
+
+  <template>
+    <div @click="log">{{ msg }}</div>
+  </template>
+  ```
+
+<br>
+
+## 基本语法
+
+可以理解为 客户端的 HTML 元素是要先经过服务端渲染(编译) `Vue.js` 后才呈现的，所以客户端并不会显示 Vue 的内容
+
+### 模板语法 | 指令
+
+**文本插值**：`{{...}}` 标签的内容将会被替代为对应组件实例中 `message` 属性的值，如果 `message` 属性的值发生了改变，`{{...}}` 标签内容也会更新。
+
+**指令：** 以 `v-*`为格式的 attribute 被称为一个 Vue 指令，用来操作 DOM
+
+- `v-html=""`： 转译输出 HTML 标签
+  ```html {.line-numbers}
+  <span v-html="rawHtml"></span>
+  <script>
+    return {
+      rawHtml: '<span style="color:red">mie</span>',
+    };
+  </script>
+  ```
+- `v-bind:属性名=""`，如 `:id="dynId"` | `:href="url"`，实现动态的属性值
+  - 绑定**多类型**时用对象：
     ```html {.line-numbers}
-    <span v-html="rawHtml"></span>
+    <div v-bind="obj"></div>
     <script>
       return {
-        rawHtml: '<span style="color:red">mie</span>',
+        obj: {
+          id: "mie",
+          class: "haha btns",
+        },
       };
     </script>
     ```
-  - `v-bind:属性名=""`，如 `:id="dynId"` | `:href="url"`，实现动态的属性值
-    - 绑定**多类型**时用对象：
-      ```html {.line-numbers}
-      <div v-bind="obj"></div>
-      <script>
-        return {
-          obj: {
-            id: "mie",
-            class: "haha btns",
-          },
-        };
-      </script>
-      ```
-    - 还能使用 js 表达式 (而不是语句)：
-      ```html {.line-numbers}
-      <div :id="`list-${ids}`"></div>
-      <!-- return {ids: xxx} -->
-      ```
-    - 当绑定 class 为对象时，根据 value 的**布尔值**决定是否带有该 key
-      ```html {.line-numbers}
-      <div :class="classObj"></div>
-      <script>
-        return {
-          classObj: {
-            active: true,
-            err: false,
-          },
-        };
-      </script>
-      <!-- 最终的结果是 <div class="active"></div> -->
-      ```
-  - `v-if=""`：根据返回的布尔值来决定该元素是否展示 —— false 时直接就变成了注释 `<!-- -->`
-    - 也有 `v-if-else=""` 和 `v-else=""`
-  - `v-show=""`：同上，但 false 时是 `display:none`
-  - `v-on=""`：监听 DOM 事件，简写：`<p @click="fun"></p>`
-  - `v-for="(ele, index) in items"`：循环渲染，相当于是 `forEach`
-    - 也能改为 `of`
-    - 但为了避免重复渲染，要加属性：`:key="index"`
-    - 循环对象时：
-      ```html {.line-numbers}
-      <li v-for="(value, key, index) in items">
-        {{key}}: {{value}}, index: {{index}}
-      </li>
-      ```
-    - 循环范围：
-      ```html {.line-numbers}
-      <li v-for="n in x">{{n}}</li>
-      ```
+  - 还能使用 js 表达式 (而不是语句)：
+    ```html {.line-numbers}
+    <div :id="`list-${ids}`"></div>
+    <!-- return {ids: xxx} -->
+    ```
+  - 当绑定 class 为对象时，根据 value 的**布尔值**决定是否带有该 key
+    ```html {.line-numbers}
+    <div :class="classObj"></div>
+    <script>
+      return {
+        classObj: {
+          active: true,
+          err: false,
+        },
+      };
+    </script>
+    <!-- 最终的结果是 <div class="active"></div> -->
+    ```
+- `v-if=""`：根据返回的布尔值来决定该元素是否展示 —— false 时直接就变成了注释 `<!-- -->`
+  - 也有 `v-if-else=""` 和 `v-else=""`
+- `v-show=""`：同上，但 false 时是 `display:none`
+- `v-on=""`：监听 DOM 事件，简写：`<p @click="fun"></p>`
+- `v-for="(ele, index) in items"`：循环渲染，相当于是 `forEach`
+  - 也能改为 `of`
+  - 但为了避免重复渲染，要加属性：`:key="index"`
+  - 循环对象时：
+    ```html {.line-numbers}
+    <li v-for="(value, key, index) in items">
+      {{key}}: {{value}}, index: {{index}}
+    </li>
+    ```
+  - 循环范围：
+    ```html {.line-numbers}
+    <li v-for="n in x">{{n}}</li>
+    ```
+- `:style`：传对象插入样式，多个时传对象数组
+  ```html {.line-numbers}
+  <p
+    :style="{
+      fontSize: '13px', //直接用的话要用小驼峰命名
+      'line-height': 2, //不然就单引号括起来
+      color: '#ff0000',
+      textAlign: 'center'
+    }"
+  >
+    Hello World!
+  </p>
+  ```
 
-#### 事件绑定
+<br>
+
+### 事件绑定
 
 通过由点 `.` 表示的指令后缀来调用修饰符:
 
@@ -116,7 +201,7 @@
 - `.right` - 右键事件
 - `.middle` - 中间滚轮事件
 
-#### 表单输入绑定
+### 表单输入绑定
 
 `<input v-model="text">`
 
@@ -183,60 +268,6 @@
 
 <br>
 
-## 单组件文件.vue
-
-### 构建项目
-
-- 如果没安装，先安装 `vue-cli` 脚手架
-  ```batch {.line-numbers}
-  npm install -g @vue/cli
-  ```
-- 再创建项目
-
-  ```batch {.line-numbers}
-  vue create [options] app-name
-
-  cd app-name
-  npm run server
-  ```
-
-- 或用 GUI 来创建
-  ```batch {.line-numbers}
-  vue ui
-  ```
-- 项目文件结构
-- <img src="img/Vue_proj.png" width="70%">
-
-<br>
-
-### 运行
-
-**入口：**
-
-使用 Vue 3 的生命周期的情况下，整个组件相关的业务代码，都可以丢到 `setup` 里编写。因为在 setup 之后，其他的生命周期才会被启用
-
-**基本语法：**
-
-```ts {.line-numbers}
-import { defineComponent } from "vue";
-// defineComponent 可以用于 TypeScript 的类型推导，简化掉很多编写过程中的类型定义
-export default defineComponent({
-  setup(props, context) {
-    // 业务代码写这里...
-    return {
-      // 需要给 template 用的数据、函数放这里 return 出去...
-    };
-  },
-});
-```
-
-- 使用 `setup` 的情况下，请牢记一点：不能再用 `this` 来获取 Vue 实例，也就是无法通过 `this.xxx` 、 `this.fn()` 这样来获取实例上的数据，或者执行实例上的方法。
-- 在 Vue 3 的 `defineComponent` 写法里，只要你的数据要在 `<template>` 中使用，就必须在 `setup` 里 `return` 出去。
-
-> 当然，只在函数中调用到，而不需要渲染到模板里的，则无需 return
-
-<br>
-
 ### 响应式数据
 
 从返回的数据实时更新
@@ -279,4 +310,118 @@ export default defineComponent({
 
 <br>
 
-### 函数的编写
+### 监听数据
+
+监听数据变化也是组件里的一项重要工作，比如监听路由变化、监听参数变化等等。
+
+- **语法：**
+  ```ts {.line-numbers}
+  import { watch } from "vue";
+  watch(
+    source, // 必传，要监听的数据源
+    callback // 必传，监听到变化后要执行的回调函数
+    // options // 可选，一些监听选项
+  );
+  ```
+- **监听的数据源源：**
+  要想定义的 `watch` 能够做出预期的行为，数据源必须具备**响应性**或者是一个 **`getter`** ，如果只是通过 `let` 定义一个普通变量，然后去改变这个变量的值，这样是无法监听的。
+  - `getter`函数：
+    ```ts {.line-numbers}
+    () => userInfo.name     // 只监听 name 的变化
+    () => ({ ...userInfo }) // 监听整个对象的变化
+    ```
+- **监听的回调函数：**
+  ```ts {.line-numbers}
+  // 参数：
+  (newValue, oldValue) => {
+    console.log("打印变化前后的值", { oldValue, newValue });
+  };
+  ```
+- **批量监听：**
+  ```ts {.line-numbers}
+  watch(
+    // 数据源改成了数组
+    [message, index],
+    // 回调的入参也变成了数组，每个数组里面的顺序和数据源数组排序一致
+    ([newMessage, newIndex], [oldMessage, oldIndex]) => {
+      console.log("message 的变化", { newMessage, oldMessage });
+      console.log("index 的变化", { newIndex, oldIndex });
+    }
+  );
+  ```
+- **监听的选项：** 传入一个对象
+
+  <table><thead><tr><th >选项</th><th >类型</th><th >默认值</th><th >可选值</th><th style="text-align:left;">作用</th></tr></thead><tbody><tr><td >deep</td><td >boolean</td><td >false</td><td >true | false</td><td style="text-align:left;">是否进行深度监听</td></tr><tr><td >immediate</td><td >boolean</td><td >false</td><td >true | false</td><td style="text-align:left;">是否立即执行监听回调</td></tr><tr><td >flush</td><td >string</td><td >'pre'</td><td >'pre' | 'post' | 'sync'</td><td style="text-align:left;">控制监听回调的调用时机</td></tr><tr><td >onTrack</td><td >(e) =&gt; void</td><td ></td><td ></td><td style="text-align:left;">在数据源被追踪时调用</td></tr><tr><td >onTrigger</td><td >(e) =&gt; void</td><td ></td><td ></td><td style="text-align:left;">在监听回调被触发时调用</td></tr></tbody></table>
+
+  - `deep`： `deep` 选项接受一个布尔值，可以设置为 `true` 开启深度监听，或者是 `false` 关闭深度监听，默认情况下这个选项是 `false` 关闭深度监听的，但也存在特例 (`reactive`)。
+    设置为 `false` 的情况下，如果直接监听一个响应式的 **引用类型** 数据（e.g. `Object` 、 `Array` … ），虽然它的属性的值有变化，但对其本身来说是不变的，所以不会触发 `watch` 的 `callback` 。这时候要手动启用 `deep`
+
+- **watchEffect：** 传入一个回调函数
+  - 和 `watch` 的区别 —— 虽然理论上 `watchEffect` 是 `watch` 的一个简化操作，可以用来代替 **批量监听** ，但它们也有一定的区别：
+    - `watch` 可以访问侦听状态变化前后的值，而 `watchEffect` 没有。
+    - `watch` 是在属性改变的时候才执行，而 `watchEffect` 则默认会执行一次，然后在属性改变的时候也会执行。
+      也就是：(被监听的数据)初定义执行，变化时执行
+    - 而且不支持 `deep` 和 `immediate`
+  - 同时，操作 `reactive` 的引用类型的数据时，要转换下：`{ ...userInfo }`
+
+<br>
+
+### 数据的计算
+
+只要原始数据没有发生改变，多次访问 `computed` ，都是会立即返回之前的计算结果，而不是再次执行函数；而普通的 function 调用多少次就执行多少次，每调用一次就计算一次。
+
+- **用法：**
+  ```ts {.line-numbers}
+  const fullName = computed(() => `${name1.value} ${name2.value}`);
+  ```
+- **取值：**
+  - 定义出来的 `computed` 变量，和 `ref` 变量的用法一样，也是需要通过 `.value` 才能拿到它的值
+  - 但是区别在于， `computed` 的 `value` 是只读的
+- **但：** 只会更新响应式数据的计算
+  假设要获取当前的时间信息，因为*不是*响应式数据，所以这种情况下就需要用普通的*函数*去获取返回值，才能拿到最新的时间。
+- 而要**改变**时：使用 `setter` 函数
+  ```ts {.line-numbers}
+  const fullName = computed({
+    // getter我们还是返回一个拼接起来的全名
+    get() {
+      return `${firstName.value} ${lastName.value}`;
+    },
+    // setter这里我们改成只更新firstName，注意参数也定义TS类型
+    set(newFirstName: string) {
+      firstName.value = newFirstName;
+    },
+  });
+  ```
+  **而且：** `computed` 只支持 `get()` 和 `set()` 函数
+
+<br>
+
+## 路由
+
+像 Vue 工程，可以通过配置一个生态组件，来实现只用一个 html ，却能够完成多个站内页面渲染、跳转的功能。这个生态组件，就是**路由**。
+
+### 引入路由 | 配置
+
+```ts {.line-numbers}
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+
+// 路由树的配置
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    name: "home", // 访问的路径就是 domain/home
+    component: () => import(/* webpackChunkName: "home" */ "@views/home.vue"),
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+});
+
+export default router;
+```
+
+<br>
+
+## 多组件

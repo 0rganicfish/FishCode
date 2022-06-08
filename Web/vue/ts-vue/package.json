@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.15"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",
@@ -40,7 +41,18 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names": [
+        "error",
+        {
+          "ignores": [
+            "home",
+            "index",
+            "404"
+          ]
+        }
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
