@@ -4,12 +4,14 @@ if (isset($_COOKIE["uid"])) {
     $_SESSION["uid"] = $_COOKIE["uid"];
     $_SESSION["logged"] = true;
 }
+// 检测登录
 if ($_SESSION["logged"]) {
     if (isset($_SESSION["power"]))
         if ($_SESSION["power"]) {
             header("location:root.php");
         }
 
+    // 注销
     if (isset($_GET["logout"])) {
         setcookie("uid", "", time() - 1);
         $_SESSION["logged"] = false;
@@ -132,17 +134,16 @@ if ($_SESSION["logged"]) {
                 </label>
 
                 <span class="pageNums">
-                            <button class="notBtn prePage">&lt;</button>
-                            <span id="pageNums">第 <span id="pageNum">1</span> 页 / </span>
-                            <span class="printPage">共<span id="total"></span>页</span>
-                            <button class="notBtn nextPage">&gt;</button>
-                        </span>
+                    <button class="notBtn prePage">&lt;</button>
+                    <span id="pageNums">第 <span id="pageNum">1</span> 页 / </span>
+                    <span class="printPage">共<span id="total"></span>页</span>
+                    <button class="notBtn nextPage">&gt;</button>
+                </span>
 
                 <span class="tpPage">前往第
-                            <label><input type="text" name="tpPage" autocomplete="off"/></label>页
-                        </span>
+                    <label><input type="text" name="tpPage" autocomplete="off"/></label>页
+                </span>
             </div>
-
         </div>
     </div>
 </div>

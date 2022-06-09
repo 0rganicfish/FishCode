@@ -147,9 +147,7 @@ begin
     where stuId = sid;
 end //
 
--- 作用：修改成绩
---  call GPACalc('2114100328', '103', 80);
-
+--  call GPACalc(70, '2114100328', '103');
 
 -- 修改学生基本信息
 delimiter //
@@ -178,6 +176,19 @@ end //
 
 --  call updateStuinfo('2114110113', 'stuName', '姜苏2');
 
+-- 修改成绩信息
+delimiter  //
+drop procedure if exists updateScore;
+create procedure updateScore(in sid char(10), in cid char(3), in type varchar(255), in val varchar(255))
+begin
+    set @str = concat('update score set ', type, ' = \'', val, '\' where stuId = \'', sid, '\' and courseId = \'', cid,
+                      '\';');
+    prepare pre from @str;
+    execute pre;
+    deallocate prepare pre;
+end //
+
+call updateScore('2114100306', '101', 'creditGot', '2');
 
 --  修改课程信息，同时地触发器
 delimiter //

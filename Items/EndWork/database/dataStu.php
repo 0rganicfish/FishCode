@@ -8,6 +8,7 @@ include("database.php");
 $sql = new SQL();
 $uid = $_GET["uid"] ?? $_SESSION["uid"];
 
+// 切换表格
 if (isset($_GET["type"]))
     if ($_GET["type"] === "score")
         printScore();
@@ -78,7 +79,7 @@ function getInfo($uid): void
         "id" => $ans["stuId"],
         "name" => $ans["stuName"]
     ];
-    print_r(json_encode($ansData));
+    print_r(json_encode($ansData)); //再由Ajax端收内容
 
 //    $json["data"]["stuInfo"] = $ansData;
 //    $json = json_decode(file_get_contents("stu.json"), true);

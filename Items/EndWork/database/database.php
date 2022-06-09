@@ -1,6 +1,6 @@
 <?php
 
-if ((empty($_POST) && empty($_GET) )|| empty($_COOKIE))
+if ((empty($_POST) && empty($_GET)) || empty($_COOKIE))
     header('HTTP/1.1 404 Not Found');
 
 class SQL
@@ -27,16 +27,12 @@ class SQL
     {
         try {
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//            $this->db->beginTransaction();
             $run = $this->db->query($str);
-//            $run = $this->db->prepare($str);
-//            $run->execute();
-//            $this->db->commit();
+
             $this->arr = $run->fetchAll(PDO::FETCH_ASSOC);
             if (!empty($this->arr))
                 $this->head = array_keys($this->arr[0]);
         } catch (PDOException $e) {
-            $this->db->rollback();
             echo $str, "   ", $e->getMessage(), '<br>';
         }
     }

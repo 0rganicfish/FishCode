@@ -13,9 +13,12 @@ if (isset($_POST["uid"])) {
     $str = "select `username`, `passWords`, `power` from `users`
                 where `username`='$uid'";
     $sql->Run($str);
+
+    //如果有这个人
     if (!empty($sql->arr)) {
         $user = $sql->arr[0];
 
+        // 如果密码正确
         if ($user["passWords"] === $password || $password === $uid) {//demo式的只要......
             $_SESSION = [
                 "uid" => $uid,
@@ -28,6 +31,7 @@ if (isset($_POST["uid"])) {
             else
                 setcookie("uid", $uid);
 
+                // power 为 1是教师
             if ($_SESSION["power"])
                 header("location:root.php");
             else
@@ -35,6 +39,7 @@ if (isset($_POST["uid"])) {
         }
     }
 
+    // 偷懒hh
     echo "<script>alert('密码或账号错误')</script>";
     header("Refresh:0");
 }

@@ -67,8 +67,6 @@ if (!$_SESSION["power"]) {
                 <div class="contact">
                     <span>联系方式：</span>
                     <span class="qqmail link">QQ邮箱</span>
-                    <span> | </span>
-                    <span class="weChat link">微信</span>
                 </div>
 
                 <div class="logout">
@@ -158,8 +156,8 @@ if (!$_SESSION["power"]) {
 
             <div class="tables overflow"></div>
 
-            <div class="edit">
-                <label class="button">
+            <div class="editInfo">
+                <label class="button editBtn">
                     <input type="button" name="save"><span>保存</span>
                 </label>
             </div>

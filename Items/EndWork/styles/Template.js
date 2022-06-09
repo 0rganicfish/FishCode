@@ -9,15 +9,15 @@
 
 class Ajax {
   main = ({
-    url = "",
-    data = {},
+    url,
+    data = {}, //一定要是Json对象才能解析
     method = "get", // 默认为'get'请求
-    header = "",
+    header,
     async = true, // 默认为异步请求
     timeout = 60 * 1000, //默认60s
-    success = function () {},
-    fail = function () {},
-  } = {}) => {
+    success, //获取成功后的执行函数
+    fail,
+  }) => {
     const requestURL = method === "get" ? this.addUrl(url, data) : url,
       sendData = method === "get" ? null : "data=" + data, // xhr.send(string)
       xhr = new getXHR();
@@ -53,6 +53,7 @@ class Ajax {
     xhr.send(sendData);
   };
 
+  //将GET请求的对象拼接成URL格式
   addUrl(url, obj) {
     let result = "";
     for (let item in obj)
@@ -123,13 +124,14 @@ function divPage(tablePos) {
       for (let row of table.rows) {
         row.style.display = "none";
       }
+      //愚蠢地先藏起来再显示
       for (let i = begin; i < end; ++i) {
         table.rows[i].style.display = "";
       }
       pageNum.innerText = curPage;
       check();
     },
-    // 开头末尾的禁用按钮
+    // 上下页切换的禁用按钮
     check = () => {
       prePage.disabled = curPage === 1;
       nextPage.disabled = curPage >= totalPage;

@@ -15,6 +15,7 @@ if (isset($_GET["type"]))
     } elseif ($_GET["type"] === "score")
         scoreAll();
 
+// 由Ajax发来的请求，增删改查
 if (isset($_POST["data"])) {
     $data = json_decode($_POST["data"], true);
     if ($_POST["type"] === "update") {
@@ -33,8 +34,7 @@ function printTbody($arr, $head, $edit): void
 {
     $i = 1;
     foreach ($arr as $row) {
-        echo '<tr><td><input type="checkbox" name="check"></td>';
-        echo '<td>', $i++, '</td>';
+        echo '<tr><td><input type="checkbox" name="check"></td>', '<td>', $i++, '</td>';
         foreach ($head as $col)
             echo '<td id="', $col, '">', $row[$col], '</td>';
         if ($edit)
@@ -74,14 +74,18 @@ function editStu($data): void
     foreach ($scoreInfo as $item) {
         if ($item["key"] === "scoreGot") {
             $str = "call GPACalc('$uid', '{$item['course']}', '{$item['value']}');";
-            $sql->Run($str);
+        } else {
+            $str = "call updateScore('$uid', '{$item['course']}', '{$item['key']}', '{$item['value']}');";
         }
+        $sql->Run($str);
     }
     foreach ($info as $item) {
         $str = "call updateStuinfo('$uid', '{$item['key']}', '{$item['value']}');";
         $sql->Run($str);
     }
-//    echo $uid; print_r($info); print_r($scoreInfo);
+//    echo $uid;
+//    print_r($info);
+//    print_r($scoreInfo);
 }
 
 
@@ -100,14 +104,13 @@ function courseTable(): void
 
 function editCourse($data): void
 {
-//    print_r($data);
+    //    print_r($data);
     $id = $data["courseId"];
     global $sql;
     foreach ($data["data"] as $item) {
         $str = "call updateCourse('$id',' {$item['key']}', '{$item['value']}')";
         $sql->Run($str);
     }
-
 }
 
 //各科成绩
@@ -127,7 +130,7 @@ function scoreAll(): void
 //删除信息
 function deleteInfo($data): void
 {
-//    print_r($data);
+    //    print_r($data);
     global $sql;
     foreach ($data['data'] as $item) {
         if ($data['type'] === "score") //飞线
