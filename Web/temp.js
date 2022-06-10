@@ -1,36 +1,28 @@
-const mie = {
-    name: "mie",
-    money: 12,
-    getMoney(num = 0) {
-      this.money += num;
-    },
-  },
-  fish = {
-    name: "fish",
-    money: 10,
-  };
-
-mie.getMoney.call(fish, 100);
-console.log(fish.money);
-
-const data = [
-  { id: "01", value: 123 },
-  { id: "02", value: 234 },
-];
-
-const tmp = (data) =>
-  `<table>${data
-    .map(
-      (addr) => `
-  <tr><td>${addr.id}</td><td>${addr.value}</td></tr>`
-    )
-    .join("")}
-</table>`;
-
-console.log(tmp(data));
-
 const os = require("os"),
   ips = Object.values(os.networkInterfaces())[0];
 let ans = ips.find((ele) => ele.family === "IPv4").address;
+// console.log(ans);
 
-console.log(ans);
+{
+  const http = require("https"),
+    fs = require("fs"),
+    url = "https://innei.ren/feed",
+    files = "Web/rss.xml";
+
+  http
+    .get(url, (res) => {
+      let data = "";
+
+      res.on("data", (chunk) => {
+        data += chunk;
+      });
+
+      res.on("end", () => {
+        fs.writeFile(files, data, (err) => {
+          if (err) throw err;
+          console.log("RSS data is saved.");
+        });
+      });
+    })
+    .on("error", (e) => console.log(e));
+}

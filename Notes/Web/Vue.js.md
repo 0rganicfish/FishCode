@@ -402,6 +402,8 @@ export default defineComponent({
 
 ### 引入路由 | 配置
 
+&emsp;&emsp;
+
 ```ts {.line-numbers}
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
@@ -420,6 +422,22 @@ const router = createRouter({
 });
 
 export default router;
+```
+
+### 路由的跳转
+
+&emsp;&emsp;
+
+```html {.line-numbers}
+<!-- 解析成 <a href="/home"></a> -->
+<router-link to="/home">首页</router-link>
+<router-link :to="{ path: '/home' }">Home</router-link>
+<router-link :to="{ name: 'home' }">User</router-link>
+
+<!-- 带查询参数，下面的结果为 `/register?plan=private` -->
+<router-link :to="{ path: '/register', query: { plan: 'private' }}">
+  Register
+</router-link>
 ```
 
 <br>

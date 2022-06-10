@@ -48,7 +48,8 @@
           "ignores": [
             "home",
             "index",
-            "404"
+            "404",
+            "fish"
           ]
         }
       ]

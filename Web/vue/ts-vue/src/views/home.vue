@@ -1,6 +1,4 @@
 <template>
-  <div>{{ mes }}</div>
+  <h1>Home</h1>
 </template>
-<script setup lang="ts">
-const mes = "mie";
-</script>
+<script setup lang="ts"></script>
