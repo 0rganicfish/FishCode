@@ -5,7 +5,7 @@
 - [HTTP](HTTP.md)
 - [CSS | Less](CSS.md)
 - [JavaScript](JavaScript/JavaScript.md)
-- [Vue.js](Vue.js.md)
+- [Vue.js](Vue.js/Vue.js.md)
 - [Node.js](JavaScript/Node.js.md)
 - [DOM](JavaScript/DOM.md)
 - [Ajax](Ajax.md)

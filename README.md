@@ -13,7 +13,7 @@
 - JS [JavaScript.md](Notes/Web/JavaScript/JavaScript.md)
 - jQuery [JQuery.md](Notes/Web/JQuery.md)
 - Node.js [Node.md](Notes/Web/JavaScript/Node.js.md)
-- Vue.js [Vue.md](Notes/Web/Vue.js.md)
+- Vue.js [Vue.md](Notes/Web/Vue.js/Vue.js.md)
 - Ajax [Ajax.md](Notes/Web/Ajax.md)
 - [HTML | CSS | JS](Items/WebSite/Learn2Try/Readme.md)
 
@@ -48,5 +48,5 @@
 - 数学 [HyperMath.md](Notes/HyperMath/README.md)
 - 词？ [Wordle.md](Notes/words.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
-- 本地 [markdown(MPE).style.less](C:\Users\Organic_Fish\.mume\style.less)
+- 本地 [markdown(MPE).style.less](C:\Users\Organic_Fish.mume\style.less)
 - **(\* ﾟ ∇ ﾟ)**
