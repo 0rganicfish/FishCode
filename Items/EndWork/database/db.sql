@@ -167,11 +167,6 @@ begin
         set stuName = val
         where stuId = sid;
     end if;
-
-    set @str = concat('select stuId, stuName from stuinfo where ', type, ' = \'', val, '\';');
-    prepare pre from @str;
-    execute pre;
-    deallocate prepare pre;
 end //
 
 --  call updateStuinfo('2114110113', 'stuName', '姜苏2');

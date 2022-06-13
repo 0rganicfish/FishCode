@@ -4,6 +4,7 @@ node_modules
 *.log
 *.class
 *.exe
+*.yaml
 
 rss.*
 jquery-3.6.0.js

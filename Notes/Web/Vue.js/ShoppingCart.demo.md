@@ -18,7 +18,7 @@
 
 - Vue 3.2
 - Vue-router 4.0
-- Vuex 4.0
+- Vuex 4.0  //看了眼，觉得还是学 pinia好点.？
 - Vite 2.9
 - Typescript 4.5
 
@@ -35,7 +35,7 @@
 这里使用 `pnpm` 会比较的方便，它不会重复下载之前下载过的包
 
 ```batch {.line-numbers}
-pnpm init @vitejs/app [appName] --template vue-ts
+pnpm create @vitejs/app [appName] --template vue-ts
 cd [appName]
 pnpm install
 ```

@@ -1,16 +1,16 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Fish's Vue.js App" />
+  <h1>App</h1>
+  <child-bar :key="1" :uid="data.id" :username="data.name" />
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue';
+<script setup lang="ts">
+import ChildBar from "cp/ChildBar/index.vue";
+// import { ref } from "vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-  },
+const data = {
+  id: undefined,
+  name: "fish",
 };
 </script>
 

@@ -7,9 +7,9 @@
 
 <br>
 
-## 创建
+# 创建
 
-### 引用 vue.js 文件
+## 引用 vue.js 文件
 
 - 直接引用文件或是 cdn：`https://unpkg.com/vue@next`
 
@@ -39,9 +39,9 @@
 - `data` 选项是一个函数。Vue 在创建新组件实例的过程中调用此函数。它应该**返回一个对象**，然后 Vue 会通过响应性系统将其包裹起来，并以 `$data` 的形式存储在组件实例中。
 - `mount()` 挂载应用：应用实例必须在调用了 `.mount()` 方法后才会渲染出来。该方法接收一个“容器”参数，可以是一个实际的 DOM 元素或是一个 CSS 选择器字符串
 
-### VUe 项目
+## VUe 项目
 
-#### 构建项目 | vue-cli
+### 构建项目 | vue-cli
 
 - 如果没安装，先安装 `vue-cli` 脚手架
   ```batch {.line-numbers}
@@ -65,7 +65,7 @@
 
 <br>
 
-#### 运行
+### 运行
 
 **入口：**
 
@@ -108,11 +108,11 @@ export default defineComponent({
 
 <br>
 
-## 基本语法
+# 基本语法
 
 可以理解为 客户端的 HTML 元素是要先经过服务端渲染(编译) `Vue.js` 后才呈现的，所以客户端并不会显示 Vue 的内容
 
-### 模板语法 | 指令
+## 模板语法 | 指令
 
 **文本插值**：`{{...}}` 标签的内容将会被替代为对应组件实例中 `message` 属性的值，如果 `message` 属性的值发生了改变，`{{...}}` 标签内容也会更新。
 
@@ -191,7 +191,7 @@ export default defineComponent({
 
 <br>
 
-### 事件绑定
+## 事件绑定
 
 通过由点 `.` 表示的指令后缀来调用修饰符:
 
@@ -204,7 +204,7 @@ export default defineComponent({
 - `.right` - 右键事件
 - `.middle` - 中间滚轮事件
 
-### 表单输入绑定
+## 表单输入绑定
 
 `<input v-model="text">`
 
@@ -253,7 +253,7 @@ export default defineComponent({
 </select>
 ```
 
-### 生命周期
+## 生命周期
 
 - `setup()` : 开始创建组件之前，在 `beforeCreate` 和 `created` 之前执行，创建的是 `data` 和 `method`
 - `onBeforeMount()` : 组件挂载到节点上之前执行的函数；
@@ -271,7 +271,7 @@ export default defineComponent({
 
 <br>
 
-### 响应式数据
+## 响应式数据
 
 从返回的数据实时更新
 
@@ -313,7 +313,7 @@ export default defineComponent({
 
 <br>
 
-### 监听数据
+## 监听数据
 
 监听数据变化也是组件里的一项重要工作，比如监听路由变化、监听参数变化等等。
 
@@ -354,7 +354,7 @@ export default defineComponent({
   ```
 - **监听的选项：** 传入一个对象
 
-  <table><thead><tr><th >选项</th><th >类型</th><th >默认值</th><th >可选值</th><th style="text-align:left;">作用</th></tr></thead><tbody><tr><td >deep</td><td >boolean</td><td >false</td><td >true | false</td><td style="text-align:left;">是否进行深度监听</td></tr><tr><td >immediate</td><td >boolean</td><td >false</td><td >true | false</td><td style="text-align:left;">是否立即执行监听回调</td></tr><tr><td >flush</td><td >string</td><td >'pre'</td><td >'pre' | 'post' | 'sync'</td><td style="text-align:left;">控制监听回调的调用时机</td></tr><tr><td >onTrack</td><td >(e) =&gt; void</td><td ></td><td ></td><td style="text-align:left;">在数据源被追踪时调用</td></tr><tr><td >onTrigger</td><td >(e) =&gt; void</td><td ></td><td ></td><td style="text-align:left;">在监听回调被触发时调用</td></tr></tbody></table>
+  <table><thead><tr><th >选项</th><th >类型</th><th >默认值</th><th >可选值</th><th >作用</th></tr></thead><tbody><tr><td >deep</td><td >boolean</td><td >false</td><td >true | false</td><td >是否进行深度监听</td></tr><tr><td >immediate</td><td >boolean</td><td >false</td><td >true | false</td><td >是否立即执行监听回调</td></tr><tr><td >flush</td><td >string</td><td >'pre'</td><td >'pre' | 'post' | 'sync'</td><td >控制监听回调的调用时机</td></tr><tr><td >onTrack</td><td >(e) =&gt; void</td><td ></td><td ></td><td >在数据源被追踪时调用</td></tr><tr><td >onTrigger</td><td >(e) =&gt; void</td><td ></td><td ></td><td >在监听回调被触发时调用</td></tr></tbody></table>
 
   - `deep`： `deep` 选项接受一个布尔值，可以设置为 `true` 开启深度监听，或者是 `false` 关闭深度监听，默认情况下这个选项是 `false` 关闭深度监听的，但也存在特例 (`reactive`)。
     设置为 `false` 的情况下，如果直接监听一个响应式的 **引用类型** 数据（e.g. `Object` 、 `Array` … ），虽然它的属性的值有变化，但对其本身来说是不变的，所以不会触发 `watch` 的 `callback` 。这时候要手动启用 `deep`
@@ -369,7 +369,7 @@ export default defineComponent({
 
 <br>
 
-### 数据的计算
+## 数据的计算
 
 只要原始数据没有发生改变，多次访问 `computed` ，都是会立即返回之前的计算结果，而不是再次执行函数；而普通的 function 调用多少次就执行多少次，每调用一次就计算一次。
 
@@ -399,11 +399,11 @@ export default defineComponent({
 
 <br>
 
-## 路由
+# 路由
 
 像 Vue 工程，可以通过配置一个生态组件，来实现只用一个 html ，却能够完成多个站内页面渲染、跳转的功能。这个生态组件，就是**路由**。
 
-### 引入路由 | 配置
+## 引入路由 | 配置
 
 &emsp;&emsp;
 
@@ -427,7 +427,7 @@ const router = createRouter({
 export default router;
 ```
 
-### 路由的跳转
+## 路由的跳转
 
 &emsp;&emsp;
 
@@ -445,4 +445,42 @@ export default router;
 
 <br>
 
-## 多组件
+# 多组件
+
+思想上是将页面（或要复用的区域）划分为多个组件，每个区域就是一个组件单元
+
+## 引入
+
+```html {.line-numbers}
+<!-- app.vue -->
+<template>
+  <fish-bar></fish-bar>
+</template>
+
+<script setup>
+  import FishBar from "cp/FishBar/index.vue";
+</script>
+
+<!-- FishBar/index.vue -->
+<template>
+  <h1>This is fish-bar</h1>
+</template>
+```
+
+## 组件之间的通信
+
+&emsp;&emsp;
+通信是指组之间的数据联系
+
+### 父子组件之间
+
+- 通常的方法有：
+  <table><thead><tr><th >方案</th><th >父组件向子组件</th><th >子组件向父组件</th></tr></thead><tbody><tr><td >props / emits</td><td >props</td><td >emits</td></tr><tr><td >v-model / emits</td><td >v-model</td><td >emits</td></tr><tr><td >ref / emits</td><td >ref</td><td >emits</td></tr><tr><td >provide / inject</td><td >provide</td><td >inject</td></tr><tr><td >EventBus</td><td >emit / on</td><td >emit / on</td></tr><tr><td >Vuex</td><td >-</td><td >-</td></tr></tbody></table>
+
+- `props` / `emits`：这是 Vue 跨组件通信最常用，也是基础的一个方案，它的通信过程是：
+  - `Father.vue` 通过 `prop` 向 `Child.vue` 传值（可包含父级定义好的函数）
+  - `Child.vue` 通过 `emit` 向 `Father.vue` 触发父组件的事件执行
+
+<br>
+
+# Store
