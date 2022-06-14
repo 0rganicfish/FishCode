@@ -8,8 +8,9 @@ export default defineConfig({
   resolve: {
     alias: {
       src: resolve(__dirname, "src"),
-      styles: resolve(__dirname, "src/styles"),
+      style: resolve(__dirname, "src/style"),
       router: resolve(__dirname, "src/router"),
+      store: resolve(__dirname, "src/store"),
       views: resolve(__dirname, "src/views"),
       pages: resolve(__dirname, "src/pages"),
       cp: resolve(__dirname, "src/components"),
@@ -26,4 +27,3 @@ export default defineConfig({
     cors: true, // 允许跨域
   },
 });
-

@@ -312,4 +312,11 @@ window.onload = () => {
       });
     });
   }
+  {
+    {
+      const css = document.createElement("style");
+      // css.innerHTML = "* {background-color: black;}";
+      document.head.append(css);
+    }
+  }
 };

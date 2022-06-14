@@ -48,5 +48,5 @@
 - 数学 [HyperMath.md](Notes/HyperMath/README.md)
 - 词？ [Wordle.md](Notes/words.md)
 - 别的 [SomeNote](../others/SomeNotes.md)
-- 本地 [markdown(MPE).style.less](C:\Users\Organic_Fish.mume\style.less)
+- <a href="C:\Users\Organic_Fish\.mume\style.less">本地 `markdown(MPE).style.less` </a>
 - **(\* ﾟ ∇ ﾟ)**
