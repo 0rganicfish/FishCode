@@ -26,6 +26,8 @@ if (isset($_POST["data"])) {
         deleteInfo($data);
     } elseif ($_POST["type"] === "add") {
         addInfo($data);
+    } elseif ($_POST["type"] === "search") {
+        searchStu($data);
     }
 }
 
@@ -59,7 +61,7 @@ function stuTable(): void
             substr($item["stuId"], 7, 1) . "班";
     }
 
-    echo '<table><thead><tr><th class="dig"><span class="sort_ico"></span><input type="checkbox" name="check"></th><th class="dig">序号<span class="sort_ico"></span></th><th>学号<span class="sort_ico"></span></th><th>姓名<span class="sort_ico"></span></th><th>班级<span class="sort_ico"></span></th><th class="dig">GPA<span class="sort_ico"></span></th><th>备注<span class="sort_ico"></span></th><th>操作<span class="sort_ico"></span></th></tr></thead><tbody>';
+    echo '<table id="stuInfos"><thead><tr><th class="dig"><span class="sort_ico"></span><input type="checkbox" name="check"></th><th class="dig">序号<span class="sort_ico"></span></th><th>学号<span class="sort_ico"></span></th><th>姓名<span class="sort_ico"></span></th><th>班级<span class="sort_ico"></span></th><th class="dig">GPA<span class="sort_ico"></span></th><th>备注<span class="sort_ico"></span></th><th>操作<span class="sort_ico"></span></th></tr></thead><tbody>';
 
     printTbody($ans, $sql->head, true);
 }
@@ -122,7 +124,7 @@ function scoreAll(): void
             from score join stuinfo using (stuId) join course using (courseId) order by stuId";
     $sql->Run($str);
 
-    echo '<table><thead><tr><th class="dig"><span class="sort_ico"></span><input type="checkbox" name="check"></th><th class="dig">序号<span class="sort_ico"></span></th><th>学号<span class="sort_ico"></span></th><th>姓名<span class="sort_ico"></span></th><th class="dig">课程号<span class="sort_ico"></span></th><th>课程名<span class="sort_ico"></span></th><th class="dig">成绩<span class="sort_ico"></span></th><th class="dig">绩点<span class="sort_ico"></span></th><th class="dig">学分<span class="sort_ico"></span></th></tr></thead><tbody>';
+    echo '<table id="scoreInfos"><thead><tr><th class="dig"><span class="sort_ico"></span><input type="checkbox" name="check"></th><th class="dig">序号<span class="sort_ico"></span></th><th>学号<span class="sort_ico"></span></th><th>姓名<span class="sort_ico"></span></th><th class="dig">课程号<span class="sort_ico"></span></th><th>课程名<span class="sort_ico"></span></th><th class="dig">成绩<span class="sort_ico"></span></th><th class="dig">绩点<span class="sort_ico"></span></th><th class="dig">学分<span class="sort_ico"></span></th></tr></thead><tbody>';
 
     printTbody($sql->arr, $sql->head, false);
 }
@@ -163,5 +165,27 @@ function addInfo($data): void
         $score = $data['data'][2]['value'];
         $str = "call GPACalc('$uid', '$cid', '$score');";
         $sql->Run($str);
+    } elseif ($data['type'] === "stuinfo") {
+        $id = $data['data'][0]['value'];
+        $str = "insert into users values(null, '{$id}', '{$id}', 0)";
+        $sql->Run($str);
+    }
+}
+
+// 搜索
+function searchStu($data): void
+{
+    global $sql;
+    $name = $data["name"];
+
+    if ($data["tableID"] === "stuInfos") {
+        $str = "select `stuId`, `stuName`, `major`, `GPA`, `stuinfo`.`comments` from `stuinfo` where stuName like '%{$name}%';";
+        $sql->Run($str);
+        printTbody($sql->arr, $sql->head, true);
+    } elseif ($data["tableID"] === "scoreInfos") {
+        $str = "select stuId, stuName, courseId, courseName, scoreGot, gradePoint, creditGot
+            from score join stuinfo using (stuId) join course using (courseId)  where stuName like '%{$name}%'";
+        $sql->Run($str);
+        printTbody($sql->arr, $sql->head, false);
     }
 }

@@ -12,7 +12,7 @@ class SQL
     {
         $host = "localhost";
         $user = "root";
-        $pw = "fish"; //只需要修改为自己的密码即可
+        $pw = "fish";
         $dbname = "fishwork";
 
         try {

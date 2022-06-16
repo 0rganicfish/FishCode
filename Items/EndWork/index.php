@@ -57,14 +57,16 @@ if ($_SESSION["logged"]) {
 
             <div class="footer">
                 <div class="introduce">
-                    By：
-                    <span class="link">有机鱼</span>
+                    <div>By：
+                        <span class="link">21级计算机3班 有机鱼</span>
+                    </div>
+                    <div>学号：
+                         <span class="link">2114100328</span>
+                     </div>
                 </div>
                 <div class="contact">
                     <span>联系方式：</span>
-                    <span class="qqmail link">QQ邮箱</span>
-                    <span> | </span>
-                    <span class="weChat link">微信</span>
+                    <span class="qqmail link" title="点击复制">QQ邮箱</span>
                 </div>
 
                 <div class="logout">

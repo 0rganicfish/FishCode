@@ -31,7 +31,7 @@ if (isset($_POST["uid"])) {
             else
                 setcookie("uid", $uid);
 
-                // power 为 1是教师
+            // power 为 1是教师
             if ($_SESSION["power"])
                 header("location:root.php");
             else
@@ -74,13 +74,16 @@ if (isset($_POST["uid"])) {
 
             <div class="footer">
                 <div class="introduce">
-                    <span>By：<span class="link">有机鱼</span></span>
+                    <div>By：
+                        <span class="link">21级计算机3班 有机鱼</span>
+                    </div>
+                    <div>学号：
+                        <span class="link">2114100328</span>
+                    </div>
                 </div>
                 <div class="contact">
                     <span>联系方式：</span>
-                    <span class="qqmail link">QQ邮箱</span>
-                    <span> | </span>
-                    <span class="weChat link">微信</span>
+                    <span class="qqmail link" title="点击复制">QQ邮箱</span>
                 </div>
             </div>
         </div>

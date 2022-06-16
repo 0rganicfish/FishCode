@@ -183,7 +183,7 @@ begin
     deallocate prepare pre;
 end //
 
-call updateScore('2114100306', '101', 'creditGot', '2');
+# call updateScore('2114100306', '101', 'creditGot', '2');
 
 --  修改课程信息，同时地触发器
 delimiter //

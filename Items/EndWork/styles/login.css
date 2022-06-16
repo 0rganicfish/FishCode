@@ -35,8 +35,8 @@
   cursor: pointer;
 }
 .other-login span {
-  width: 3rem;
-  height: 3rem;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   margin: 1vw;
 }
@@ -48,8 +48,7 @@
 }
 .other-login .todaySchool {
   background: url(../img/today.png) no-repeat;
-  width: 46px;
-  height: 46px;
+
 }
 
 /** 右边的 **/

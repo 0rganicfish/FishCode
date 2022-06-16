@@ -67,23 +67,6 @@ function loginCheck() {
     able(0);
   });
 
-  // /*
-  //  * 真的有这个人？ */
-  // 明文不可取
-  // new Ajax().main({
-  //   url: "database/stu.json",
-  //   success: (res) => {
-  //     const stuid = JSON.parse(res).totalData.stuId;
-  //     uid.addEventListener("blur", (e) => {
-  //       if (stuid.indexOf(e.target.value) === -1) {
-  //         err(0);
-  //       } else {
-  //         able(0);
-  //       }
-  //     });
-  //   },
-  // });
-
   /*
    * 记住吗？*/
 
