@@ -66,6 +66,7 @@ body > div {
   font-size: 0.8em;
   text-align: justify;
   word-break: break-all;
+  text-overflow: ellipsis;
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -120,3 +121,13 @@ body > div {
   top: 2em;
   right: 3em;
 }
+
+.search input {
+  width: 10rem;
+}
+
+.search input:placeholder-shown {
+  /* background-color: red; */
+}
+
+

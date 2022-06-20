@@ -23,7 +23,7 @@ const activeRouter = computed((): string => {
 });
 </script>
 
-<style>
+<style >
 @import "src/style/Template.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

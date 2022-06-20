@@ -1,11 +1,13 @@
 <template>
-  <h1>App</h1>
-  {{ mes }}
+  <div id="app">
+    <h1>App</h1>
+    {{ mes }}
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useStore } from "./store";
-import { computed } from "vue";
+import {useStore} from "./store";
+import {computed} from "vue";
 
 const store = useStore();
 
@@ -22,7 +24,7 @@ const mes = computed({
 
 setTimeout(() => {
   mes.value = "haha";
-  
+
 }, 1000);
 </script>
 

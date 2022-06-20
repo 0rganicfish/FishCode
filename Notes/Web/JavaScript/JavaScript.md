@@ -584,7 +584,7 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 
   > 其实就是将函数传入的参数列到 `arguments` 数组中，但又不同于 `Array`
 
-<br>
+<br><hr></hr>
 
 # ES6
 
@@ -605,15 +605,71 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 
 - **对象：**
   必须要同名才行
+  ```JavaScript {.line-numbers}
+  const mie = {id: 233, name:"mie"},
+    {id, name} = mie,
+    {id: uid, name: uname} = mie, //别名
+    {sin} = Math;
+  ```
+  所以交换就成了：`[a b] = [b, a];`
 
-```JavaScript {.line-numbers}
-const mie = {id: 233, name:"mie"},
-   {id, name} = mie,
-   {id: uid, name: uname} = mie, //别名
-   {sin} = Math;
-```
+## 异步
 
-所以交换就成了：`[a b] = [b, a];`
+
+主要是指 `promise`
+
+- 先假设个异步获取 API 的函数
+
+  ```js {.line-numbers}
+  function getApi(success, delay = 1000) {
+    //返回的api结果
+    const mes = {
+      suc: "success",
+      fail: "fail",
+    };
+
+    return new Promise((resolve, rejects) => {
+      console.log("getting api");
+      setTimeout(() => {
+        success ? resolve(mes.suc) : rejects(mes.fail);
+      }, delay);
+    });
+  }
+  ```
+
+- **使用 `then...catch`：**
+  ```js {.line-numbers}
+  getApi(true)
+    .then((mes) => {
+      console.log("then got!", mes);
+    })
+    .catch((mes) => {
+      console.log("catch ??", mes);
+    });
+  ```
+- **使用 `async`：**
+  ```js {.line-numbers}
+  async function action() {
+    try {
+      const mes = await getApi(true);
+      console.log("async got!", mes);
+    } catch (e) {
+      console.log("async ??", e);
+    }
+  }
+  ```
+- 而 `async` 的 **异步性：**
+
+  ```js {.line-numbers}
+  (async () => {
+    const a = await getApi(1, 2000); //运行后2秒得到a
+    const b = await getApi(22, 5000); //在得到a的5秒后才得到b
+
+    setTimeout(() => {
+      console.log(a + b); //得到b的1秒后才有a+b
+    }, 1000);
+  })();
+  ```
 
 <br><hr>
 

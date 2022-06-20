@@ -1,6 +1,6 @@
-  <h1 align="center"><b>CSS | Less</b></h1><br>
+  <h1 align="center"><b>CSS</b></h1><br>
 
-- [README](../README.md)
+- [README](README.md)
 - [HTML](HTML.md)
 
 [TOC]
@@ -28,7 +28,6 @@
 ## 单位
 
 - **绝对长度:**
-
   - 绝对长度单位是固定的，用任何一个绝对长度表示的长度都将恰好显示为这个尺寸。
   - 不建议在屏幕上使用绝对长度单位，因为屏幕尺寸变化很大。但是，如果已知输出介质，则可以使用它们，例如用于打印布局（print layout）
     | 单位 | 描述 |
@@ -38,11 +37,8 @@
     | `in` | 英寸 (1in = 96px = 2.54cm) |
     | `px` | 像素 (1px = 1/96th of 1in) |
     | `pt` | 点 (1pt = 1/72 of 1in) |
-
   - **像素（px）** 是相对于观看设备的。对于低 dpi 的设备，1px 是显示器的一个设备像素（点）。对于打印机和高分辨率屏幕，1px 表示多个设备像素。
-
 - **相对长度:**
-
   - 相对长度单位规定相对于另一个长度属性的长度。相对长度单位在不同渲染介质之间缩放表现得更好。
     | 单位 | 描述 |
     | :----- | :--- |
@@ -55,7 +51,6 @@
     | `vmin` | 相对于视口\*较小尺寸的 1％ |
     | `vmax` | 相对于视口\*较大尺寸的 1％ |
     | `%` | 相对于父元素 |
-
   - 视口（Viewport）= 浏览器窗口的尺寸。如果视口宽 50 里面，则 1vw = 0.5cm。
 
 <br>
@@ -120,8 +115,11 @@
 
 <br>
 
-## 组合选择与继承
+## 选择器
 
+### 组合选择与继承
+
+- `.class1.class2` ，同时包含这两个 class 的元素
 - `div p {xxx}` ，是指以`div`父项的所有**子孙项**`p`的样式都受 xxx 影响
 - `div>p {}` ，只有`div`的直接**子项**`p`才算，而孙项的`p`不受影响：`in html： <div><span><p>`
 - `div+p{}` ，拥有**共同父项**的`div`和`p`（兄弟项），且`p`位于`div`下的**第一项**，`p`的样式才受影响；这时`div`的**子项**`p`不受影响
@@ -129,26 +127,61 @@
 - 但还有 **属性选择器**：
   - `input[type="text"] {}` ：类型为 `input` 且是`text`的样式受影响
   - 自定义属性：如 `<div data-123="texts"></div>` `->` `div[data-123] {}`
+  - 指定
+    <table><tbody><tr><th >选择器</th><th>例子</th><th>例子描述</th></tr><tr><td><code>[<i>attribute</i>]</code></td><td>[target]</td><td>选择带有target属性的所有元素。</td></tr><tr><td><code>[<i>attribute</i>=<i>value</i>]</code></td><td>[target=_blank]</td><td>选择带有target="_blank"属性的所有元素。</td></tr><tr><td><code>[<i>attribute</i>~=<i>value</i>]</code></td><td>[title~=flower]</td><td>选择title属性包含单词"flower"的所有元素。</td></tr><tr><td><code>[<i>attribute</i>|=<i>value</i>]</code></td><td>[lang|=en]</td><td>选择lang属性值以"en"开头的所有元素。</td></tr><tr><td><code>[<i>attribute</i>^=<i>value</i>]</code></td><td>a[href^="https"]</td><td>选择其src属性值以"https"开头的每个&lt;a&gt;元素。</td></tr><tr><td><code>[<i>attribute</i>$=<i>value</i>]</code></td><td>a[href$=".pdf"]</td><td>选择其src属性以".pdf"结尾的所有&lt;a&gt;元素。</td></tr><tr><td><code >[<i>attribute</i>*=<i>value</i>]</code></td><td>a[href*="abc"]</td><td>选择其href属性值中包含"abc"子串的每个&lt;a&gt;元素。</td></tr></tbody></table>
 
-<br>
+### 伪类与伪元素
 
-## 伪类与伪元素
+#### 伪类
 
-- **伪类**
+- **状态：**
+  - `:link` 超链接点击之前
+  - `:visited` 链接被访问过之后
+    但 `a`标签涵盖了`link`、`visited`的状态
+  - `:hover` “悬停”：鼠标放到标签上的时候
+  - `:active` “激活”： 鼠标点击标签，但是不松手时。
+  - `:focus` 是某个标签获得焦点时的样式（比如某个输入框获得焦点）
+- **指定元素：**
+  - `:not` 一个否定伪类，用于匹配不符合参数选择器的元素
+  - `:first-child` 匹配元素的第一个子元素
+  - `:last-child` 匹配元素的最后一个子元素
+  - `:first-of-type` 表示一组兄弟元素中其类型的第一个元素
+  - `:last-of-type` 表示一组兄弟元素中其类型的最后一个元素
+  - `:nth-child` 根据元素的位置匹配一个或者多个元素，它接受一个 an+b 形式的参数
+  - `:nth-last-child` 与`:nth-child` 相似，不同之处在于它从最后一个子元素开始计数
+  - `:nth-of-type` 与 `nth-child` 相似，不同之处在于它是只匹配特定类型的元素
+  - `:nth-last-type` 与 `nth-of-type` 相似，不同之处在于它是从最后一个子元素开始计数的。
+  - `:only-child` 当元素是其父元素中唯一的子元素时，`:only-child` 匹配该元素
+  - `:only-of-type` 当元素是其父元素中唯一特定类型的子元素时，`:only-child` 匹配该元素
+  - `:target` 当 url 带有瞄名称，指向文档内某个具体的元素时`:target` 匹配该元素
+- **表单：**
+  - `:checked` 匹配被选中的 `input` 元素，这个 `input` 元素包裹 `radio` 和 `checkbox`.
+  - `:default` 匹配默认选中的元素
+  - `:disabled` 匹配禁用的表单元素
+  - `:empty` 匹配没有子元素的元素，如果元素中含有文本节点，html 元素或者一个空格，则`:empty` 不能匹配这个元素
+  - `:enabled` 匹配没有设置 disabled 属性的表单元素
+  - `:in-range` 匹配在指定区域内元素，
+  - `:out-of-range` 匹配不在指定区域内的元素
+  - `:indetermimate` 当某组中的单选框或复选框还没有选取状态时，匹配该组中所有的单选框或复选框
+  - `:valid` 匹配条件验证正确的表单元素
+  - `:invalid` 匹配提交验证错误的表单元素
+  - `:optional` `:required` 匹配设置有无设置 `required` 属性的表单元素
+  - `:read-only` 匹配设置了只读属性的元素
+  - `:read-write` 匹配处于编辑状态的元素
+  - `:placeholder-shown` 当 `input` 设置了 `placeholder` 后，在用户输入前生效
+- **其他：**
+  - `:fullscreen` 全屏时触发
 
-  - `：link` 超链接点击之前
-  - `：visited` 链接被访问过之后
-    - 但 `a`标签涵盖了`link`、`visited`的状态
-  - `：hover` “悬停”：鼠标放到标签上的时候
-  - `：active` “激活”： 鼠标点击标签，但是不松手时。
-  - `：focus` 是某个标签获得焦点时的样式（比如某个输入框获得焦点）
+#### 伪元素
 
-- **伪元素**
-  - `：first-letter` 选择每个元素的第一个字母
-  - `：first-line` 选择每个元素的第一行
-  - `：first-child` 选择器匹配属于任意元素的第一个**子元素**
-  - `：before` 在每个元素之前插入内容
-  - `：after` 在每个元素之后插入内容 (通常配合`:hover`)
+- `::first-letter` 选择每个元素的第一个字母
+- `::first-line` 选择每个元素的第一行
+- `::first-child` 选择器匹配属于任意元素的第一个**子元素**
+- `::before` 在每个元素之前插入内容
+- `::after` 在每个元素之后插入内容
+- `::selection` 用户选中的部分
+
+> Ref: [伪类与伪元素](http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/)
 
 <br>
 
@@ -157,9 +190,7 @@
 ### flex 弹性
 
 - **定义:**
-
   - 基于一维的布局。只要给`flex`元素的父元素声明 `display： flex` ，默认地所有子元素就会排成一行，且自动分配小大以充分展示元素的内容。所以是，**在父元素定义 `flex`，然后再在子元素再定义下列属性**
-
 - **子元素的分布：**
   - `flex-direction`：默认为`row` 水平排列，`column`为竖直排列。`flex-wrap`：溢出时自动换行换行。
     - 可以将两个属性 `flex-direction` 和 `flex-wrap` 组合为简写属性 `flex-flow`。第一个指定的值为 `flex-direction` ，第二个指定的值为 `flex-wrap`.
@@ -167,9 +198,6 @@
   - `flex-shrink`：元素缩小比例。值为 1 或 0；
   - `flex-basic`：设置子元素初始化大小，给上面两个属性分配多余空间之前，计算项目是否有多余空间，默认值为 auto,即项目本身的大小
   - （可简写：`flex: grow shrink basic`）
-
-<br>
-
 - **子元素对齐方式：**
   - 要先定义父元素的长宽，子元素才会对齐
   - **`align-items`**： 属性可以使元素在**交叉轴**方向对齐。这个属性的初始值为`stretch`。
@@ -178,6 +206,19 @@
     - 可分 为：`center`、`flex-start`、`flex-end`、`stretch`、`space-around`(元素之间的距离相等)、`space-between`(元素左右的空间相等、贴边)
   - **`align-content`**：当 `flex-wrap：wrap*` 时(即 子元素 换行排列)，控制 子元素 在 cross axis(**交叉轴**)上的对齐方式。
   - **`align-self`**：单独的对齐方式
+- **另一种居中对齐：** 必须定义宽高才能 auto
+  ```css {.line-numbers}
+  .par {
+    width: xx;
+    height: xx;
+    display: flex;
+  }
+  .child {
+    width: xx;
+    width: xx;
+    margin: auto;
+  }
+  ```
 
 <br>
 

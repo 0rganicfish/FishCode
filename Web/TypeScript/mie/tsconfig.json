@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false, //含有any时报错
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+  },
+  "compileOnSave": true
+}

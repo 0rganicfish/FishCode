@@ -315,7 +315,7 @@ window.onload = () => {
   {
     {
       const css = document.createElement("style");
-      // css.innerHTML = "* {background-color: black;}";
+      css.innerHTML = `body {position: relative;}tr.T { position: sticky;top: 0;right: 0;}`;
       document.head.append(css);
     }
   }

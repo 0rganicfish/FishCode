@@ -77,7 +77,6 @@
     "valarray": "c",
     "vector": "cpp"
   },
-  "liveServer.settings.port": 2335,
   "cSpell.words": [
     "addxx",
     "beforeunload",
@@ -87,6 +86,7 @@
     "focusout",
     "fsinfo",
     "hashchange",
+    "indetermimate",
     "keydown",
     "keypress",
     "keyup",
@@ -107,6 +107,7 @@
     "touchmove",
     "touchstart",
     "urler",
+    "vmax",
     "XMLHTTP"
   ]
 }

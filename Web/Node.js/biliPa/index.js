@@ -21,7 +21,7 @@ export function userInfo(uid, files) {
   }).on("error", () => console.log("获取数据出错!"));
 }
 
-userInfo("259486090", "Web/user.json");
+// userInfo("259486090", "Web/user.json");
 
 export function weiboHot() {
   const url = "https://weibo.com/ajax/side/hotSearch";
@@ -43,4 +43,4 @@ export function weiboHot() {
   }).on("error", (e) => console.log(e));
 }
 
-// weiboHot();
+weiboHot();
