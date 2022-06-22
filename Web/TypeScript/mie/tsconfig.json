@@ -1,15 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es6",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "strict": true,
-    "skipLibCheck": true,
-    "noImplicitAny": false, //含有any时报错
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "watch": true,
+    "baseUrl": "./",
+    "outDir": "build",
+    "types": [
+      "node"
+    ]
   },
-  "compileOnSave": true
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "static"
+  ]
 }

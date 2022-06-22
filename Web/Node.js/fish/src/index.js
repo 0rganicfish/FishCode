@@ -1,7 +1,7 @@
 // const { data: cjs } = require('./moduleCJS.cjs');
 // console.log(cjs);
 
-import { data, mie as mieF } from "./moduleESM.mjs";
+import { data, mie as mieF } from "./moduleESM";
 
 console.log(data);
 mieF();

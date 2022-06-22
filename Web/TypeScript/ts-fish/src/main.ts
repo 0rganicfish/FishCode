@@ -1,5 +1,16 @@
-import app from "./app";
+import { getQRKey } from "./api/pa";
 
-app.listen(1023, () => {
-  console.log("服务器已经启动");
-});
+const getQRCodeKey = async () => {
+  const param = {
+    timestamp: new Date().getTime(),
+  };
+  return getQRKey(param).then(async (res: any) => {
+    if (res.data.code === 200) {
+      return res.data.data.unikey;
+    }
+  });
+};
+
+const key = await getQRCodeKey();
+
+console.log(key);

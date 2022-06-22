@@ -1,7 +1,7 @@
   <h1 align="center"><b>DOM</b></h1>
 
 - [README](../README.md)
-- [JS](JS.md)
+- [JavaScript](JavaScript.md)
 
 [TOC]
 

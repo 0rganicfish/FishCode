@@ -7,7 +7,7 @@
 - **JavaScript**
   - [JavaScript](JavaScript/JavaScript.md)
   - [Vue.js](Vue.js/Vue.js.md)
-  - [Node.js](JavaScript/Node.js.md)
+  - [Node.js](Node.js/Node.js.md)
   - [DOM](JavaScript/DOM.md)
   - [Evens](JavaScript/Evens.md)
 - [Ajax](Ajax.md)
