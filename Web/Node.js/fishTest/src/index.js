@@ -6,6 +6,8 @@ const ajax = axios.create({
   timeout: 2333,
 });
 
+ // const Url = "https://api.bilibili.com/x/space/acc/info?mid=" + uid;
+
 ajax
   .get("getUser")
   .then((res) => {
@@ -31,6 +33,7 @@ ajax
   });
 */
 
+/*
 const express = require("express");
 const user = require("./static/fishData.json");
 
@@ -44,3 +47,8 @@ app.get("/api/user", (req, res) => {
 app.listen(port, () => {
   console.log(`http://localhost:${port}/fish)`);
 });
+*/
+
+const hh = require("./api/mie");
+
+console.log(hh.hh);

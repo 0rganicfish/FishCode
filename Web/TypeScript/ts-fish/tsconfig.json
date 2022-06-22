@@ -1,28 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es6",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
     "strict": true,
-    "skipLibCheck": true,
-    "noImplicitAny": false, //含有any时报错
-    "rootDir": "./src",
-    "outDir": "./build", // 编译后的输出目录
-    "watch": true, // 监听文件更改
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "watch": true,
+    "baseUrl": "./",
+    "outDir": "build",
     "types": [
-      "node" // 导入内置模块
-    ],
-    "typeRoots": [
-      "./node_modules/@types"
+      "node"
     ]
   },
   "include": [
-    "./src/**/*" // 要编译的目录
-  ],
+    "src/**/*"
+, "static/api"  ],
   "exclude": [
-    "static",
     "node_modules",
-  ],
-  "compileOnSave": true
+    "static"
+  ]
 }
