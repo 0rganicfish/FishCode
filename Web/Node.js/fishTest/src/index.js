@@ -48,7 +48,10 @@ app.listen(port, () => {
   console.log(`http://localhost:${port}/fish)`);
 });
 */
+const axios = require("axios");
 
-const hh = require("./api/mie");
-
-console.log(hh.hh);
+const ajax = axios.create({
+  baseURL: "http://localhost:1023/api/",
+  timeout: 2333,
+});
+ajax.post("/users", { id: 233 });

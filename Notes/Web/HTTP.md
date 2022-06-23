@@ -50,8 +50,6 @@
 - 另外一种常见的媒体格式是上传文件之时使用的：
   - `multipart/form-data `： 需要在表单中进行文件上传时，就需要使用该格式
 
-> Ref: [菜鸟 content-type](https://www.runoob.com/http/http-content-type.html)
-
 ## 请求体
 
 这里是提交给服务器的数据
@@ -104,3 +102,7 @@
 ## 响应主体
 
 即服务端返回给客户端的内容
+
+# 参考
+
+> Ref: [菜鸟 content-type](https://www.runoob.com/http/http-content-type.html) &emsp; | [阮一峰 cors](https://www.ruanyifeng.com/blog/2016/04/cors.html)

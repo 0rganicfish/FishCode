@@ -39,7 +39,7 @@
 ### 06-22
 
 - **dashboard:**
-  - <img src="img/" width="70%">
+  - VsCode：7h40m | FireFox：5h
 - **文章 | 文档**
   [Node 项目如何使用 ES 模块](https://blog.csdn.net/sayUonly/article/details/122885171) &emsp; | [tsconfig.json 的配置](https://blog.csdn.net/muguli2008/article/details/122246623) &emsp; | [GitHub Node 前后端项目](https://github.com/shi-jin/myhoutai) &emsp; | [Cors 跨源资源共享](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 - **社交平台**
@@ -50,3 +50,13 @@
     - 前端先是 `html` 加上 `sass` 和 `css` 框架、ts 代替 js
     - 项目先是一个后台管理系统，差不多时再接上网易云的 API，和网易云的静态界面
     - 最后才上 `Vue` 框架补齐
+
+### 06-23
+
+- **dashboard:**
+  - VsCode：6h17m | Firefox：2h48m
+- **文章 | 文档**
+  [Express 入门项目](https://juejin.cn/post/7022539322670710798)
+- **社交平台**
+- **其他**
+  主要还是用着 `Express + ts` 写了个 `api` 服务器，对本地 `json` 文件增删改查似乎都可以用，`PostMan` 还挺好诶

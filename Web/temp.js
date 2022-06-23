@@ -88,5 +88,8 @@ const { rejects } = require("assert");
 /*
  *  */
 {
-  console.log(__dirname, __filename);
+  const path = require("path");
+  const dbPath = path.join(__dirname, "../db.json");
+
+  console.log(dbPath);
 }
