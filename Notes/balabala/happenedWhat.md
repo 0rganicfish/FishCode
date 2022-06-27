@@ -14,7 +14,7 @@
 ### 06-20
 
 - **dashboard：**
-  - <img src="img/22-06-20.png" width="70%">
+  - VsCode：`11h20m` | Firefox：`5h52m`
 - **文章 | 文档：**
   [Axios 文档](https://www.axios-http.cn/) &emsp; | [使用 Typescript 开发 Node.js 项目](https://segmentfault.com/a/1190000007574276)&emsp; | [Express 框架 文档](http://expressjs.com/zh-cn/) &emsp;| [用 Node 写一个 APi 接口](https://www.jianshu.com/p/44149ac15b40) &emsp;| [还算可以的 Node 文章](https://brucecai55520.gitee.io/bruceblog/notes/nodejs/Node.html) &emsp;| [输入 URL 到显示过程发生了什么](https://segmentfault.com/a/1190000013662126) &emsp;
 - **社交平台：**
@@ -39,7 +39,7 @@
 ### 06-22
 
 - **dashboard:**
-  - VsCode：7h40m | FireFox：5h
+  - VsCode：`7h40m` | FireFox：`5h`
 - **文章 | 文档**
   [Node 项目如何使用 ES 模块](https://blog.csdn.net/sayUonly/article/details/122885171) &emsp; | [tsconfig.json 的配置](https://blog.csdn.net/muguli2008/article/details/122246623) &emsp; | [GitHub Node 前后端项目](https://github.com/shi-jin/myhoutai) &emsp; | [Cors 跨源资源共享](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 - **社交平台**
@@ -54,7 +54,7 @@
 ### 06-23
 
 - **dashboard:**
-  - VsCode：6h17m | Firefox：2h48m
+  - VsCode：`6h17m` | Firefox：`2h48m`
 - **文章 | 文档**
   [Express 入门项目](https://juejin.cn/post/7022539322670710798)
 - **社交平台**

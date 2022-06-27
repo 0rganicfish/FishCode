@@ -160,6 +160,7 @@
         alert("index is: " + k + ", and this ele is: " + ele[k].innerHTML);
       });
     })(k);
+  }
   ```
 
 <br>

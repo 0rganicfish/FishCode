@@ -4,7 +4,7 @@ const database = {
   host: "localhost",
   user: "root",
   password: "fish",
-  database: "node_article",
+  database: "node_weibo",
 };
 
 export const db = {

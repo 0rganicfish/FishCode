@@ -163,7 +163,7 @@ xhr 提供了 3 个属性来获取请求返回的数据，分别是：`xhr.respo
 
 <br>
 
-# Ajax | Axios 模块
+# Axios 模块
 
 ## 栗子
 
