@@ -51,7 +51,10 @@ private:
 public: //构造析构区
     Stu(){};
     Stu(int score_) : score(score_){};
-    Stu(string id_, string name_, int score_) : People(id_, name_), score(score_){};
+    Stu(string id_, string name_, int score_) : People(id_, name_), score(score_)
+    {
+         
+    };
 
 public: //普通的public区
     void set_score(int score_) { score = score_; }

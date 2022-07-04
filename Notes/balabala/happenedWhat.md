@@ -16,7 +16,7 @@
 - **dashboard：**
   - VsCode：`11h20m` | Firefox：`5h52m`
 - **文章 | 文档：**
-  [Axios 文档](https://www.axios-http.cn/) &emsp; | [使用 Typescript 开发 Node.js 项目](https://segmentfault.com/a/1190000007574276)&emsp; | [Express 框架 文档](http://expressjs.com/zh-cn/) &emsp;| [用 Node 写一个 APi 接口](https://www.jianshu.com/p/44149ac15b40) &emsp;| [还算可以的 Node 文章](https://brucecai55520.gitee.io/bruceblog/notes/nodejs/Node.html) &emsp;| [输入 URL 到显示过程发生了什么](https://segmentfault.com/a/1190000013662126) &emsp;
+  [Axios 文档][06-20_1] &emsp; | [使用 Typescript 开发 Node.js 项目][06-20_2] &emsp; | [Express 框架 文档](http://expressjs.com/zh-cn/) &emsp;| [用 Node 写一个 APi 接口](https://www.jianshu.com/p/44149ac15b40) &emsp;| [还算可以的 Node 文章](https://brucecai55520.gitee.io/bruceblog/notes/nodejs/Node.html) &emsp;| [输入 URL 到显示过程发生了什么](https://segmentfault.com/a/1190000013662126) &emsp;
 - **社交平台：**
 - **其他：**
   - 先是凌晨的 [innei.ren 的毕业](https://innei.ren/notes/123)，看了会 [起码课的 Promise](https://www.bilibili.com/video/av712155832) 的异步，终于是由 [50 个项目的 github 查询](https://50projects50days.com/projects/github-profiles) 补了 `ajax | Axios`
@@ -24,6 +24,9 @@
   - 然后在 <a href="../../Web/TypeScript/ts-fish/src/index.ts">ts 项目</a> 下，用 `HTTP` 模块整出了个 `API` 服务器，并结合 `axios` 成功地获取到了数据
   - 顺便地在 [起码课的 ExpressJs](https://www.bilibili.com/video/av250818016) 项目中，终于是搞明白了 “路由” 的一些概念，以及 `ExpressJs` 框架的...... 所以，不要跳着来，Vue 之前还得是 Node
   - 顺便的一个 Node 工具： `pnpm i nodemon`，它将监测文件的改动来刷新项目，就不用每次改动都手动重启项目了
+
+[06-20_1]: https://www.axios-http.cn/
+[06-20_2]: https://segmentfault.com/a/1190000007574276
 
 ### 06-21
 

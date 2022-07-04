@@ -794,7 +794,7 @@ from employees
          join departments using (workid)
 where workname = '研发部';
 
-select  stu_name, sex, score
+select stu_name, sex, score
 from stu_info
          join stuscore using (stu_id)
 where sex = 1
@@ -802,3 +802,63 @@ where sex = 1
                from stuscore
                         join stu_info using (stu_id)
                where sex = 0);
+
+
+delimiter //
+drop procedure if exists xxx;
+create procedure xxx()
+begin
+    declare names varchar(4); -- 名字们
+    declare flag int default 0;
+    declare cur cursor for select name from employee; -- 主要是要用到游标去遍历每一行的名字
+    declare continue handler for not found set flag = 1; -- 游标的停止条件
+
+    drop table if exists t; -- 结果表
+    create table t
+    (
+        id   int primary key auto_increment,
+        name varchar(4),   -- 单个名
+        cnt  int default 0 -- 出现的次数
+    );
+
+    open cur; -- 打开游标
+    fetch cur into names; -- 开始遍历
+    while flag <> 1 -- 一直到遍历 not found
+        do
+            set @str = right(names, length(names) / 3 - 1); -- 提取名，由于汉字是三个字节的，所以还要长度除以3
+            set @i = 1; -- 循环的i
+            while @i <= length(@str) / 3 -- 一直到名的末尾
+                do
+                    set @x = substr(@str, @i, 1); -- 单个地截取名的字符
+                    set @cnt = (select count(name) from t where name = @x); -- 判断是否在结果表里了
+
+                    if @cnt = 0 then
+                        insert into t values (null, @x, 1); -- 不在的话就插入这个结果
+                    else
+                        update t set cnt = cnt + 1 where name = @x; -- 在的话就出现次数+1
+                    end if;
+                    set @i = @i + 1; -- 然后下标+1
+                end while;
+            fetch cur into names; -- 游标往下走一行 -- 其实也就是指针啦
+        end while;
+    close cur; -- 用完要关闭游标
+    select * from t order by cnt DESC;-- 输出结果
+end//
+call xxx();
+
+
+delimiter //
+drop procedure if exists mie;
+create procedure mie()
+begin
+    set @str = '王林';
+    set @x = (select stu_name
+              from stu_info
+              where stu_name = @str);
+    if @x is null then
+        select @x;
+    else
+        select 233;
+    end if;
+end //
+call mie()

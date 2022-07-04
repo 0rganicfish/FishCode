@@ -8,6 +8,53 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+//* 06-30
+
+namespace Jun_30
+{
+    //
+    //
+    class Point
+    {
+    private:
+        double x, y;
+
+    public:
+        Point() { x = 0, y = 0; };
+        Point(double xx, double yy) : x(xx), y(yy){};
+
+        double xx() const { return x; };
+        double yy() const { return y; };
+    };
+
+    class Rec : public Point
+    {
+    private:
+        double height, width;
+
+    public:
+        Rec() {}
+        Rec(const Point &a, const Point &b)
+        {
+            height = abs(a.yy() - b.yy());
+            width = abs(a.xx() - b.xx());
+        }
+
+        double Area() const
+        {
+            return width * height;
+        }
+    };
+
+    int main()
+    {
+        Point dot1(1.0, 2.0), dot2(4.0, 6.0);
+        Rec rec(dot1, dot2);
+        cout << fixed << setprecision(2) << rec.Area();
+        return 0;
+    }
+};
+
 //* 05-20
 
 namespace May_20
@@ -392,7 +439,7 @@ namespace Apr_22
 
     public:
         Complex(double _x, double _y) : x(_x), y(_y) {}
-        Complex() {}
+        Complex() { x = y = 0; }
 
     public:
         Complex operator-()
@@ -1350,8 +1397,8 @@ namespace Apr_03
         cout << ans % mod;
         return 0;
     }
-//
-//
+    //
+    //
 #define vecint vector<int>
     vecint multi(vecint x, int y) // x > 0, y > 0, x高精 y低精
     {
@@ -1406,8 +1453,8 @@ namespace LL
         // https://www.acwing.com/solution/content/100312/
         return 0;
     }
-//
-//
+    //
+
 #define Paint pair<int, int>
     queue<Paint> q;
     int n, m, x, y;

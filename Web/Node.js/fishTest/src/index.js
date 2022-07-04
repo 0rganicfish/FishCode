@@ -57,6 +57,9 @@ const ajax = axios.create({
 ajax.post("/users", { id: 233 });
 */
 
+/*
+* 
+
 const axios = require("axios");
 
 function getList(url) {
@@ -111,3 +114,15 @@ setTimeout(() => {
 // const arr = dates.filter((ele) => {
 //   return !ans.includes(ele);
 // });
+ */
+
+/*
+ *  */
+
+{
+  const axios = require("axios");
+
+  setInterval(() => {
+    axios.get("http://202.192.224.129/jwweb/MAINFRM.aspx").then((res) => {});
+  }, 19);
+}
