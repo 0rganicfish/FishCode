@@ -109,5 +109,6 @@
     "urler",
     "vmax",
     "XMLHTTP"
-  ]
+  ],
+  "liveServer.settings.useLocalIp": true,
 }

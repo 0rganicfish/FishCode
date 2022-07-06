@@ -9,6 +9,25 @@
 
 <br>
 
+# npm pnpm ...
+
+- 切换下载源：
+  ```batch {.line-numbers}
+  npm config set registry https://registry.npmmirror.com/
+  ```
+
+## 发布
+
+- **登录或注册：**
+  ```batch {.line-numbers}
+  npm adduser | login
+  ```
+- **发布：**
+  ```batch {.line-numbers}
+  npm publish
+  ```
+- **同步到淘宝源：** 到 https://npmmirror.com 搜索包，再同步
+
 # Node 项目
 
 ## 初始化
@@ -24,49 +43,6 @@
 
 - 其中最后的 `type` 字段是涉及到模块规范的支持，它有两个可选值： `commonjs` 和 `module` ，其默认值为 `commonjs` 。
   > 关于 `package.json` 的完整的选项可以在 [npm Docs](https://docs.npmjs.com/cli/v8/configuring-npm/package-json/)上查阅。
-
-## With Typescript
-
-- **构建 ts 项目：**
-  ```batch {.line-numbers}
-  tsc --init
-  ```
-- **配置 `tsconfig.json`：**
-  ```json {.line-numbers}
-  {
-    "compilerOptions": {
-      "target": "esnext",
-      "module": "esnext",
-      "moduleResolution": "node",
-      "strict": true,
-      "resolveJsonModule": true,
-      "forceConsistentCasingInFileNames": true,
-      "esModuleInterop": true,
-      "noImplicitAny": true,
-      "watch": true,
-      "baseUrl": "./",
-      "outDir": "build",
-      "types": ["node"]
-    },
-    "include": ["src/**/*"],
-    "exclude": ["node_modules", "static"]
-  }
-  ```
-- **配置 `package.json`：**
-  ```json {.line-numbers}
-  {
-    "type": "modules",
-    "scripts": {
-      "dev": "tsc", // pnpm dev
-      "build": "nodemon --exec \"node --experimental-specifier-resolution=node ./build/main\"" // npm run build
-    },
-    "devDependencies": {
-      // pnpm i --save-dev @types/node
-      "@types/node": "^18.0.0", // 导入 node 内置模块
-      "nodemon": "^2.0.16" // 监听文件更改
-    }
-  }
-  ```
 
 > Ref： [Node 项目如何使用 ES 模块](https://blog.csdn.net/sayUonly/article/details/122885171) &emsp; | [tsconfig.json 的配置](https://blog.csdn.net/muguli2008/article/details/122246623) &emsp; | [Node 为什么用不了 ES 模块](https://segmentfault.com/q/1010000039917414)
 

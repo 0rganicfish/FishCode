@@ -114,8 +114,10 @@
 /*
  *  */
 {
-  const axios = require("axios");
-  axios.get("http://202.192.224.129/jwweb/MAINFRM.aspx").then((res) => {
-    console.log(res.data);
-  });
+  function getIPV4() {
+    const os = require("os"),
+      ips = Object.values(os.networkInterfaces())[0];
+    return ips.find((ele) => ele.family === "IPv4").address;
+  }
+  console.log(getIPV4());
 }

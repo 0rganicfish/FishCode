@@ -7,14 +7,10 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"
     />
     <script src="styles/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <script src="styles/index.js"></script>
     <link rel="stylesheet" href="styles/Template.css" />
     <link rel="stylesheet" href="styles/index.css" />
-    <link
-      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
     <link rel="icon" href="img/waiting.svg" />
     <title>堆......</title>
   </head>
@@ -167,35 +163,10 @@
           </script>
         </div>
       </div>
-      <div class="FishApi">
-        <p>FishApi:</p>
-        <p id="ansApi"></p>
-        <script>
-          $(function () {
-            $.get({
-              url: "http://localhost:1026/api/getUser/",
-              data: "",
-              success: function (res) {
-                console.log(res);
-                let ans = "";
-                if (res.mes === 200) {
-                  res.user.forEach((item) => {
-                    ans += `id: ${item.id}; name: ${item.name}<br>`;
-                  });
-                  $("#ansApi").html(ans);
-                }
-              },
-              error: function (error) {
-                console.log(error);
-              },
-            });
-          });
-        </script>
-      </div>
-
-      <div>
-        <form action="" method="patch"></form>
-      </div>
+ 
+      <script>
+        
+      </script>
 
       <img src="img/cat.gif" alt="" id="top" />
       <div class="scroller">

@@ -10,9 +10,17 @@
     "noImplicitAny": true,
     "watch": true,
     "baseUrl": "./",
+    "rootDir": "./src",
     "outDir": "build",
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "static"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "static"
+  ]
 }

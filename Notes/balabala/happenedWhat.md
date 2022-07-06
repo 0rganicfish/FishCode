@@ -16,7 +16,7 @@
 - **dashboard：**
   - VsCode：`11h20m` | Firefox：`5h52m`
 - **文章 | 文档：**
-  [Axios 文档][06-20_1] &emsp; | [使用 Typescript 开发 Node.js 项目][06-20_2] &emsp; | [Express 框架 文档](http://expressjs.com/zh-cn/) &emsp;| [用 Node 写一个 APi 接口](https://www.jianshu.com/p/44149ac15b40) &emsp;| [还算可以的 Node 文章](https://brucecai55520.gitee.io/bruceblog/notes/nodejs/Node.html) &emsp;| [输入 URL 到显示过程发生了什么](https://segmentfault.com/a/1190000013662126) &emsp;
+  [Axios 文档][06-20_1] &emsp; | [使用 Typescript 开发 Node.js 项目][06-20_2] &emsp; | [Express 框架 文档](http://expressjs.com/zh-cn/) &emsp;| [用 Node 写一个 APi 接口](https://www.jianshu.com/p/44149ac15b40) &emsp;| [还算可以的 Node 文章 ](https://brucecai55520.gitee.io/bruceblog/notes/nodejs/Node.html) &emsp;| [输入 URL 到显示过程发生了什么](https://segmentfault.com/a/1190000013662126) &emsp;
 - **社交平台：**
 - **其他：**
   - 先是凌晨的 [innei.ren 的毕业](https://innei.ren/notes/123)，看了会 [起码课的 Promise](https://www.bilibili.com/video/av712155832) 的异步，终于是由 [50 个项目的 github 查询](https://50projects50days.com/projects/github-profiles) 补了 `ajax | Axios`
@@ -63,3 +63,12 @@
 - **社交平台**
 - **其他**
   主要还是用着 `Express + ts` 写了个 `api` 服务器，对本地 `json` 文件增删改查似乎都可以用，`PostMan` 还挺好诶
+
+### 07-06
+
+- **dashboard:**
+  - VsCode： `| Firefox：`
+- **文章 | 文档**
+  [VsCode 中使用 Eslint](https://www.cnblogs.com/Jamie1032797633/p/11125786.html) &emsp; | [从零开始配置 TypeScript 项目](https://juejin.cn/post/6856410900577026061) &emsp; | [Eslint 中文文档](http://eslint.cn/docs/user-guide/configuring) &emsp; | [tsconfig 的一些配置](https://yesifang.com/zh/TypeScript%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/c2fff071/)
+- **社交平台**
+- **其他**
