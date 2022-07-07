@@ -1,5 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="EndWoek" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" singleton="false" document_root="$PROJECT_DIR$/Items/EndWork" port="1234">
-    <method v="2" />
-  </configuration>
-</component>

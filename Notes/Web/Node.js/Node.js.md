@@ -9,25 +9,6 @@
 
 <br>
 
-# npm pnpm ...
-
-- 切换下载源：
-  ```batch {.line-numbers}
-  npm config set registry https://registry.npmmirror.com/
-  ```
-
-## 发布
-
-- **登录或注册：**
-  ```batch {.line-numbers}
-  npm adduser | login
-  ```
-- **发布：**
-  ```batch {.line-numbers}
-  npm publish
-  ```
-- **同步到淘宝源：** 到 https://npmmirror.com 搜索包，再同步
-
 # Node 项目
 
 ## 初始化
