@@ -205,7 +205,7 @@ th:hover .sort_ico {
   font-size: 0.8rem;
   line-height: 1.5rem;
 }
-input[name="tpPage"] {
+input[name='tpPage'] {
   width: 2rem;
   margin: 0 5px 0 1px;
   font-size: 0.7rem;
@@ -213,6 +213,6 @@ input[name="tpPage"] {
   border: none;
   border-bottom: 1px solid #000;
 }
-input[name="tpPage"]:focus {
+input[name='tpPage']:focus {
   outline-style: none;
 }

@@ -9,6 +9,25 @@
 
 # 语法
 
+- **数据类型**
+  - **enum** ：枚举类型对象，配合着 `switch` 使用
+    ```ts {.line-numbers}
+    enum httpStatus {
+      success = 200,
+      nodata = 404,
+    }
+    console.log(httpStatus.nodata); // 404
+    // 编译成 js 就是：两个方向的对象
+    var httpStatus = {
+      '200': 'success',
+      '404': 'nodata',
+      success: 200,
+      nodata: 404,
+    };
+    ```
+    当没有定义`value`时，默认从 0 开始递增下标
+  - \*\*
+
 <br>
 
 # 项目构建

@@ -17,24 +17,27 @@
 # git | Github
 
 - **git 的一些：**
-  - `git clone [url]`：克隆项目 / `git pull` 拉取最新代码
   - `git remote`： 查看是否有远程仓库
     没有远程仓库 ---> `git remote add [远程仓库名] [远程地址]`： 配置远程仓库
-  - `git branch -b [新分支名]`： 创建新的分支，在新分支上修改代码
+  - `git clone [url]`：克隆项目 / `git pull` 拉取最新代码
+  - `git status`：本地仓库状态
   - `git add.` ：提交
   - `git commit -m '描述'`： 提交
-  - `git checkout [分支名]`： 切换到要合并的分支
-  - `git merge [分支名]`： 把修改代码的分支合并到当前分支
   - `git push [远程仓库名] [分支名]`： 提交到远程仓库
+- **分支：**
+  - `git branch`：列出本地的所有分支，当前所在分支以 "\*" 标出
+  - `git branch -v`：列出本地的所有分支并显示最后一次提交，当前所在分支以 "\*" 标出
+  - `git branch -b [新分支名]`： 创建新的分支，在新分支上修改代码
   - `git branch -d [分支名]`： 删除之前修改代码的分支,删之前先 `branch` 查看
-  - `git clone [url]`： 克隆代码
-  - `git checkout [分支名]`： 切换到最新的开发分支，如 `git checkou dev`
-  - `git checkout -b [分支名]`： 将当前分支复制到新的分支进行开发，如 `git checkout -b my_dev`
+  - `git branch -m [<原分支名称>] <新的分支名称>`：修改分支名
+  - `git checkout [分支名]`： 切换到指定的分支
+  - `git checkout -b [分支名]`： 将当前分支复制到新的分支进行开发。等同于 `git branch` 和 `git checkout` 两个命令合并
+  - `git merge [分支名]`： 把修改代码的分支合并到当前分支
 - 提交代码前先更新远程的代码，但如果当前分支修改了代码没有提交，更新下来的代码可能会导致与当前未提交的代码冲突或被覆盖。
   ```batch {.line-numbers}
-  git stash  // 将当前修改但未提交的代码弹出
-  git pull或git pull origin [分支名] // 更新代码
-  git stash pop // 将弹出的代码取出
+  git stash   # 将当前修改但未提交的代码弹出
+  git pull 或 git pull origin [分支名]  # 更新代码
+  git stash pop   # 将弹出的代码取出
   git add .
   git commit -m '描述'
   git push
