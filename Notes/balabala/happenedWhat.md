@@ -67,8 +67,24 @@
 ### 07-06
 
 - **dashboard:**
-  - VsCode： `| Firefox：`
+  - VsCode：
 - **文章 | 文档**
   [VsCode 中使用 Eslint](https://www.cnblogs.com/Jamie1032797633/p/11125786.html) &emsp; | [从零开始配置 TypeScript 项目](https://juejin.cn/post/6856410900577026061) &emsp; | [Eslint 中文文档](http://eslint.cn/docs/user-guide/configuring) &emsp; | [tsconfig 的一些配置](https://yesifang.com/zh/TypeScript%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/c2fff071/)
 - **社交平台**
 - **其他**
+
+### 07-10 ~ 11
+
+- **dashboard:**
+  - VsCode： `8h10m`
+- **文章 | 文档**
+  [一些 Web 的聚合文档](https://www.icoderoad.com/) &emsp; | [真丶 Bootstarp 中文文档](https://www.bootstrap.cn/doc/book/2.html) &emsp; | [font-awesome@6.1](https://fontawesome.com/) &emsp; | [可以试一试的 JS Web Projects](https://vanillawebprojects.com/#projects) &emsp; | [Sass 教程](https://juejin.cn/post/7055101823442485255)
+- **社交平台**
+- **其他**
+  - 补了 git，整了分支和一个 `pull request`
+  - 趁着买一送一和史低补上了 `Minecraft`！顺便也在 Wiki 补了点基础的，像是版本特性之类的。甚至之前对 MC 的认知还在 `1.8.0` 左右 hh（按版本号的话，破坏性更新的 `2.0.0` 什么时候出 \\Doge）
+  - 忘记原因地要找回微博的裂图，然后发现它的原理应该是检测到是“违规图片”后，将链接重定向到 [裂图](https://ww4.sinaimg.cn/images/default_s_large.gif)。但原图还在图床上，改改图床链接就好：
+    - 挂图链接（可在 F12 看到）：`https://wx2.sinaimg.cn/orj360/xxx.jpg`
+    - 只要将 `/wx(\d)/gm` 改为 `ww$1`，`orj360` 改为原图大小的 `large` 就行。
+    - 用 axios 请求到微博详情的 Api：`https://weibo.com/ajax/statuses/show?id=`，其中 id 值为微博原链接 `https://weibo.com/用户id/博文id` 中的 `博文 id`。再把获取到的原图链接再请求下来转存成本地文件就好。码：[一些 Temp.md](一些Temp.md#大眼仔你坏事干净)
+  - 学了点 Sass，好玩诶，并且终于上了 `Bootstarp` 和 `font-awesome`，开始筹备起聚合音乐了

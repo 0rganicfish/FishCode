@@ -152,6 +152,55 @@ function getIPV4() {
 }
 ```
 
+### 大眼仔，你坏事干净！
+
+```js {.line-numbers}
+const axios = require('axios'),
+  fs = require('fs'),
+  path = require('path');
+
+async function getImg(postUrl) {
+  const baseURL = 'https://weibo.com/ajax/statuses/show?id=',
+    url = baseURL + postUrl.match(/(?<=\d+\/)\w+/gm)[0],
+    ansUrl = [];
+
+  await axios.get(url).then((res) => {
+    const imgs = res.data.pic_infos;
+    for (const [key, value] of Object.entries(imgs)) {
+      ansUrl.push(
+        value.large.url.replace(/wx(\d)/gm, `ww$1`).replace(/orj960/gm, `large`)
+      );
+    }
+  });
+  return new Promise((resolve, rejects) => {
+    resolve(ansUrl);
+  });
+}
+
+async function downloadImg(url, filePath, fileName) {
+  if (!fs.existsSync(filePath)) {
+    fs.mkdirSync(filePath);
+  }
+  const writer = fs.createWriteStream(path.resolve(filePath, fileName));
+
+  await axios({
+    url,
+    methods: 'get',
+    responseType: 'stream',
+  }).then((res) => {
+    res.data.pipe(writer);
+  });
+}
+
+const weibo = 'https://weibo.com/6069191706/LBBROtrFz';
+
+getImg(weibo).then((res) => {
+  res.forEach((ele, index) => {
+    downloadImg(ele, './Web/img/blockImg/', `${index}.jpg`);
+  });
+});
+```
+
 <br>
 
 ## TypeScript
@@ -159,8 +208,8 @@ function getIPV4() {
 ### ES 模块下的 dirname
 
 ```ts {.line-numbers}
-import url from "url";
-import path from "path";
+import url from 'url';
+import path from 'path';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

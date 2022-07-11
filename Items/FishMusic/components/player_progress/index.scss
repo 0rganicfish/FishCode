@@ -1,0 +1,76 @@
+/*!
+* by: fish
+*/
+
+$backImg: linear-gradient(
+  0deg,
+  rgba(247, 247, 247, 1) 23.8%,
+  rgba(252, 221, 221, 1) 92%
+);
+
+:root {
+  --bs-blue: #324b66;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+}
+
+$primary_color: #27415d;
+$primary_color_hover: #4c729b;
+$name: 'fish';
+
+// 34
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font: {
+    size: 16px;
+    family: 'Lato', sans-serif;
+  }
+}
+
+@mixin flex_middle($col: false) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  @if ($col) {
+    flex-direction: column;
+  }
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background: {
+    image: $backImg;
+  }
+  position: relative;
+  @include flex_middle();
+}
+
+#app {
+  color: $primary_color;
+}
+ 
