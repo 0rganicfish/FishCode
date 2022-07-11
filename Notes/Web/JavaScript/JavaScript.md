@@ -621,52 +621,41 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 主要是指 `promise`
 
 - 先假设个异步获取 API 的函数
-
   ```js {.line-numbers}
-  function getApi(success, delay = 1000) {
-    //返回的api结果
-    const mes = {
-      suc: "success",
-      fail: "fail",
-    };
-
+  async function getApi(url) {
+    await axios(url).then((res) => {}); // 异步获取
     return new Promise((resolve, rejects) => {
-      console.log("getting api");
-      setTimeout(() => {
-        success ? resolve(mes.suc) : rejects(mes.fail);
-      }, delay);
+      console.log('getting api');
+      success ? resolve(mes.suc) : rejects(mes.fail);
     });
   }
   ```
-
 - **使用 `then...catch`：**
   ```js {.line-numbers}
-  getApi(true)
+  getApi(url)
     .then((mes) => {
-      console.log("then got!", mes);
+      console.log('then got!', mes);
     })
     .catch((mes) => {
-      console.log("catch ??", mes);
+      console.log('catch ??', mes);
     });
   ```
 - **使用 `async`：**
   ```js {.line-numbers}
   async function action() {
     try {
-      const mes = await getApi(true);
-      console.log("async got!", mes);
+      const mes = await getApi(url);
+      console.log('async got!', mes);
     } catch (e) {
-      console.log("async ??", e);
+      console.log('async ??', e);
     }
   }
   ```
 - 而 `async` 的 **异步性：**
-
   ```js {.line-numbers}
   (async () => {
     const a = await getApi(1, 2000); //运行后2秒得到a
     const b = await getApi(22, 5000); //在得到a的5秒后才得到b
-
     setTimeout(() => {
       console.log(a + b); //得到b的1秒后才有a+b
     }, 1000);
@@ -706,6 +695,5 @@ Math 是一个内置对象，它拥有一些数学常数属性和数学函数方
 &emsp;&emsp; 处理程序是在发生用户行为（action）时运行 JavaScript 代码的一种方式。
 
 **详见：**[Evens.md](Evens.md)
-
 
 ## 第三方 API

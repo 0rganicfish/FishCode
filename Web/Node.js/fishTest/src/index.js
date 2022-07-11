@@ -58,9 +58,9 @@ ajax.post("/users", { id: 233 });
 */
 
 /*
-* 
+ * 
 
-const axios = require("axios");
+const axios = require('axios');
 
 function getList(url) {
   const ans = [];
@@ -86,10 +86,10 @@ function getList(url) {
 
 let ans = [],
   len = 4,
-  url = "http://www.huizhou.gov.cn/zwzt/fkyq/zxyq/index";
+  url = 'http://www.huizhou.gov.cn/zwzt/fkyq/zxyq/index';
 
 for (let i = 1; i <= len; ++i) {
-  getList(url + (i > 1 ? `_${i}` : "") + ".html").then((res) => {
+  getList(url + (i > 1 ? `_${i}` : '') + '.html').then((res) => {
     ans = [...ans, ...res];
   });
 }
@@ -114,15 +114,56 @@ setTimeout(() => {
 // const arr = dates.filter((ele) => {
 //   return !ans.includes(ele);
 // });
+
  */
 
 /*
  *  */
-
 {
-  const axios = require("axios");
+  const axios = require('axios'),
+    fs = require('fs'),
+    path = require('path');
 
-  setInterval(() => {
-    axios.get("http://202.192.224.129/jwweb/MAINFRM.aspx").then((res) => {});
-  }, 19);
+  async function getImg(postUrl) {
+    const baseURL = 'https://weibo.com/ajax/statuses/show?id=',
+      url = baseURL + postUrl.match(/(?<=\d+\/)\w+/gm)[0],
+      ansUrl = [];
+
+    await axios.get(url).then((res) => {
+      const imgs = res.data.pic_infos;
+      for (const [key, value] of Object.entries(imgs)) {
+        ansUrl.push(
+          value.large.url
+            .replace(/wx(\d)/gm, `ww$1`)
+            .replace(/orj960/gm, `large`)
+        );
+      }
+    });
+    return new Promise((resolve, rejects) => {
+      resolve(ansUrl);
+    });
+  }
+
+  async function downloadImg(url, filePath, fileName) {
+    if (!fs.existsSync(filePath)) {
+      fs.mkdirSync(filePath);
+    }
+    const writer = fs.createWriteStream(path.resolve(filePath, fileName));
+
+    await axios({
+      url,
+      methods: 'get',
+      responseType: 'stream',
+    }).then((res) => {
+      res.data.pipe(writer);
+    });
+  }
+
+  const weibo = 'https://weibo.com/6069191706/LBBROtrFz';
+
+  getImg(weibo).then((res) => {
+    res.forEach((ele, index) => {
+      downloadImg(ele, './Web/img/blockImg/', `${index}.jpg`);
+    });
+  });
 }

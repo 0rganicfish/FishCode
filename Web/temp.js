@@ -114,10 +114,5 @@
 /*
  *  */
 {
-  function getIPV4() {
-    const os = require('os'),
-      ips = Object.values(os.networkInterfaces())[0];
-    return ips.find((ele) => ele.family === 'IPv4').address;
-  }
-  console.log(getIPV4());
+
 }
