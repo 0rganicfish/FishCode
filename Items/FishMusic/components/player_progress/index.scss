@@ -2,75 +2,167 @@
 * by: fish
 */
 
+@import '../config';
+
 $backImg: linear-gradient(
   0deg,
   rgba(247, 247, 247, 1) 23.8%,
   rgba(252, 221, 221, 1) 92%
 );
 
-:root {
-  --bs-blue: #324b66;
-  --bs-indigo: #6610f2;
-  --bs-purple: #6f42c1;
-  --bs-pink: #d63384;
-  --bs-red: #dc3545;
-  --bs-orange: #fd7e14;
-  --bs-yellow: #ffc107;
-  --bs-green: #198754;
-  --bs-teal: #20c997;
-  --bs-cyan: #0dcaf0;
-  --bs-white: #fff;
-  --bs-gray: #6c757d;
-  --bs-gray-dark: #343a40;
-  --bs-primary: #0d6efd;
-  --bs-secondary: #6c757d;
-  --bs-success: #198754;
-  --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
-  --bs-danger: #dc3545;
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-}
-
-$primary_color: #27415d;
-$primary_color_hover: #4c729b;
-$name: 'fish';
-
-// 34
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font: {
-    size: 16px;
-    family: 'Lato', sans-serif;
-  }
-}
-
-@mixin flex_middle($col: false) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  @if ($col) {
-    flex-direction: column;
-  }
-}
-
-body {
+#app {
   height: 100vh;
-  margin: 0;
-  background: {
-    image: $backImg;
-  }
+  width: 100vw;
+  background-image: $backImg;
   position: relative;
   @include flex_middle();
 }
 
-#app {
-  color: $primary_color;
+.back-cover {
+  width: 100%;
+  height: 100%;
+  background: url('') no-repeat;
+  background-size: 100%;
+  filter: blur(10px);
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: scale(1.2);
 }
- 
+
+.music-footer {
+  @include flex_middle();
+  justify-content: space-around;
+  width: 90%;
+  height: 6rem;
+  margin: 0 1rem;
+  background-color: var(--bs-white);
+  border-radius: 0.6rem;
+  z-index: 1;
+}
+
+.music-info {
+  height: 100%;
+  width: 25%;
+  padding: 0.5rem 0;
+  margin-left: 1rem;
+  display: flex;
+  // 专辑封面
+  .music-cover {
+    height: 4.5rem;
+    width: 4.5rem;
+    margin: auto 0.5rem;
+    img {
+      width: 100%;
+      border-radius: 0.3rem;
+      cursor: pointer;
+    }
+  }
+
+  .info-box {
+    display: inline-block;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+    vertical-align: middle;
+    max-width: 10rem;
+    width: fit-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 0.3rem;
+  }
+
+  .artist {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+  }
+
+  .btn {
+    margin-left: 0.2rem;
+  }
+}
+
+.btns {
+  margin: 1rem 0 0.7rem;
+  height: 2rem;
+  @include flex_middle();
+
+  .btn-big {
+    font-size: 2rem;
+  }
+}
+
+.btn#like .fa-solid,
+.btn#like:hover {
+  color: red;
+}
+.btn {
+  margin: 0 1rem;
+  padding: 0;
+  transition: all ease-in-out 0.2s;
+  &:focus {
+    box-shadow: none;
+  }
+  &:hover {
+    color: $primary_color;
+  }
+}
+
+.playing {
+  width: 45%;
+  height: 100%;
+  margin: 0 2rem;
+
+  #play {
+    width: 3rem;
+    border-radius: 50%;
+    background-color: var(--bs-gray-light);
+
+    &:hover {
+      color: black;
+      background-color: var(--bs-gray-hover);
+    }
+    .fa-play {
+      padding-left: 0.3rem;
+    }
+  }
+
+  .time {
+    @include flex_middle();
+    font-size: 0.7rem;
+    height: 2rem;
+    color: var(--bs-gray);
+    user-select: none;
+  }
+}
+.progress {
+  margin: 1rem 0.5rem;
+  width: 90%;
+  height: 4px;
+  border-radius: 3px;
+  .progressing {
+    height: 100%;
+    background-color: $primary_color;
+    width: 0;
+    transition: width 0.1s linear;
+    cursor: pointer;
+  }
+}
+
+.other-btn {
+  width: 20%;
+  height: 100%;
+  margin: 0 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: $primary_hover;
+  }
+}
