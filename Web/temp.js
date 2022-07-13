@@ -114,20 +114,5 @@
 /*
  *  */
 {
-  let cur = 0;
 
-  function formTime(time) {
-    const sec = time % 60,
-      min = Math.floor(time / 60);
-
-    const fillZero = (num) => {
-      const len = num.toString().length;
-      return len === 1 ? `0${num}` : `${num}`;
-    };
-    return `${fillZero(min)}:${fillZero(sec)}`;
-  }
-
-  setInterval(() => {
-    console.log(formTime(cur++));
-  }, 1000);
 }

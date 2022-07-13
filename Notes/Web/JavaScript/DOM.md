@@ -1,9 +1,13 @@
   <h1 align="center"><b>DOM</b></h1>
 
-- [README](../README.md)
-- [JavaScript](JavaScript.md)
+- **外链**
+  - [README](../README.md)
+  - [JavaScript](JavaScript.md)
+  - [Events](Evens.md)
 
 [TOC]
+
+<br>
 
 # DOM 树
 
@@ -156,13 +160,13 @@
 - `document.forms`、`document.images`、`document.links`、`document.scripts`、`document.title`：返回这些的集合
 - `document.referrer`：返回跳转到当前文档的链接
 
-<hr>
-
 ### 参考
 
 1. [JavaScript 操作 DOM 常用的 API](https://juejin.cn/post/6844903604445249543#heading-2)
 2. [现代 JS 教程\_DOM 查询](https://zh.javascript.info/searching-elements-dom)
 3. [querySelector(All) 相比 getElement(s)By 在生产环境中有哪些优势？ 知乎](https://www.zhihu.com/question/404365645/answer/1314691976)
+
+<br><hr>
 
 ## Element
 
@@ -186,3 +190,24 @@
 ## DOM 事件
 
 令见 [Events](Evens.md)
+
+## Image 对象
+
+- **创建：**
+  ```js {.line-numbers}
+  const img = new Image();
+  // 可带两个参数表宽高
+  ```
+- **属性：**
+  - `src`：返回图像的 src
+  - `currentSrc`：返回图像的绝对路径
+  - `alt`：返回图像的 alt
+  - `width`、`height`：返回图片的显示宽高
+  - `naturalWidth`：返回图片的实际宽高
+  - `complete`：返回图片加载完成情况的布尔值
+  - `crossOrigin`：返回图片的跨域设置，有两种情况：
+    - `anonymous`：跨域请求不要求用户身份（`credentials`），这是默认值。
+    - `use-credentials`：跨域请求要求用户身份。
+- **方法：**
+  - `onload`：加载完成
+  - `onerror`：加载失败
