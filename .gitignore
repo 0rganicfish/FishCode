@@ -7,7 +7,5 @@ node_modules
 *.exe
 *.yaml
 
-# 忽略特定文件，一般只是些复制粘贴的
 rss.*
 jquery-3.6.0.js
-**/*_ignore.* 

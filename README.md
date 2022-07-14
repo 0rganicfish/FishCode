@@ -11,7 +11,6 @@
 - HTML [HTML.md](Notes/Web/HTML.md)
 - CSS [CSS](Notes/Web/CSS.md)
 - JS [JavaScript.md](Notes/Web/JavaScript/JavaScript.md)
-- jQuery [JQuery.md](Notes/Web/JQuery.md)
 - Node.js [Node.md](Notes/Web/Node.js/Node.js.md)
 - Vue.js [Vue.md](Notes/Web/Vue.js/Vue.js.md)
 - [HTML | CSS | JS](Items/WebSite/Learn2Try/Readme.md)

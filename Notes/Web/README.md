@@ -10,6 +10,7 @@
   - [Node.js](Node.js/Node.js.md)
   - [DOM](JavaScript/DOM.md)
   - [Evens](JavaScript/Evens.md)
-- [Ajax](Ajax.md)
+  - [Ajax](JavaScript/Ajax.md)
+- [TypeScript](TypeScript.md)
 - [PHP](PHP.md)
 - [MySQL](../MySQL.md)

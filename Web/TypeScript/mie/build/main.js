@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { routers } from "./router/user";
-const app = express();
+const app = exprwess();
 app
     .use(cors())
     .use(express.json())
