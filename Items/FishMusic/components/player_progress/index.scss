@@ -139,11 +139,14 @@ $backImg: linear-gradient(
     user-select: none;
   }
 }
+
+// 进度条
 .progress {
   margin: 1rem 0.5rem;
   width: 90%;
   height: 4px;
   border-radius: 3px;
+  cursor: pointer;
   .progressing {
     height: 100%;
     background-color: $primary_color;
@@ -164,5 +167,73 @@ a {
   color: black;
   &:hover {
     color: $primary_hover;
+  }
+}
+
+// 音量调节
+.volume {
+  margin-bottom: 8.5rem;
+  .volume-box {
+    display: block;
+    width: 2rem;
+    height: 7.5rem;
+    margin: 0.5rem auto;
+    padding: 0.5rem 0;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0px 14.1px 2.9px -15px rgba(0, 0, 0, 0.223),
+      0px 25px 8px -15px rgba(0, 0, 0, 0.328),
+      0px 38px 19.3px -15px rgba(0, 0, 0, 0.424),
+      0px 82px 64px -15px rgba(0, 0, 0, 0.59);
+    position: relative;
+
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.4rem;
+      left: 0.5rem;
+      width: 0rem;
+      height: 0rem;
+      border-top: 7px solid white;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+    }
+  }
+
+  .volume-range {
+    --height: 20px;
+
+    margin: auto;
+    display: block;
+    height: 6.5rem;
+    width: 0.4rem;
+    border-radius: 2px;
+    background-color: var(--bs-gray-light);
+    position: relative;
+
+    .volume-circle {
+      color: $primary_color;
+      font-size: 0.9rem;
+      position: absolute;
+      bottom: 0;
+      left: -4px;
+
+      &::after {
+        content: '';
+        margin: 0 auto;
+        display: block;
+        width: 0.4rem;
+        height: var(--height);
+        background: $primary_color;
+      }
+      &::before {
+        position: relative;
+        bottom: -2px;
+        left: 0.2px;
+      }
+    }
   }
 }
