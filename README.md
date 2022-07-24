@@ -27,7 +27,7 @@
 ## 后端
 
 - C++ [cpp.md](Notes/Cpp.md)
-- Java [Java.md](Notes/Java.md)
+- Java [JavaSE.md](Notes/Java/JavaSE.md)
 - Python [Python.md](Notes/Python.md)
 - PHP [PHP.md](Notes/Web/PHP.md)
 

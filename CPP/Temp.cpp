@@ -9,38 +9,23 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+#define vi vector<int>
+
+ 
+
 int main()
 {
-    double T, r, x, y, d;
+    int n = 9;
+    vi a{2, 7, 1, 5, 6, 4, 3, 8, 9}, f(n, 1);
 
-    cin >> T;
-    while (T--)
-    {
-        cin >> r >> x >> y >> d;
-        double lx, ly, rx, ry;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j < i; j++)
+            if (a[j] < a[i])
+                f[i] = max(f[i], f[j] + 1);
 
-        if (abs(x - d) < 2 * r)
-            lx = x - d, ly = sqrt(r * r - pow(x - d, 2));
-        else
-        {
-            if (abs(y) <= r)
-                ly = y, lx = sqrt(r * r - y * y);
-            else
-                ly = r, lx = 0;
-        }
-
-        if (abs(x + d) < 2 * r)
-            rx = x + d, ry = sqrt(r * r - pow(x + d, 2));
-        else
-        {
-            if (abs(y) <= r)
-                ry = y, rx = sqrt(r * r - y * y);
-            else
-                ry = r, rx = 0;
-        }
-        printf("(%f, %f)  (%f, %f)\n", lx, ly, rx, ry);
-
-        double cosA = (lx * rx + ly * ry) / (sqrt(lx * lx + ly * ly) * sqrt(rx * rx + ry * ry));
-        printf("%.12f\n", acos(cosA) * r);
-    }
+    for (int ele : f)
+        cout << ele << " ";
+    cout << endl
+         << *max_element(all(f));
+    return 0;
 }

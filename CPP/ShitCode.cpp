@@ -8,6 +8,53 @@
 #define IOS ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
 using namespace QAQ;
 
+namespace sds
+{
+#define vi vector<int>
+    int binary(vi arr, int start, int end, int value)
+    {
+        int l = start, r = end - 1;
+        while (l <= r)
+        {
+            int m = (l + r) / 2;
+            if (arr[m] == value)
+                return m;
+            else if (arr[m] < value)
+                l = m + 1;
+            else
+                r = m - 1;
+        }
+        return l;
+    }
+
+    int length(vi arr, bool lis)
+    {
+        vi temp{arr[0]};
+        int end = 0;
+        for (int i = 0; i < arr.size(); ++i)
+        {
+            bool f = arr[i] > temp[end];
+            if (!lis)
+                f = arr[i] <= temp[end];
+
+            if (f)
+                temp.push_back(arr[i]), end++;
+            else
+            {
+                int pos = binary(temp, 0, temp.size(), arr[i]);
+                temp[pos] = arr[i];
+            }
+        }
+        for (int i = 0; i < temp.size(); ++i)
+            cout << temp[i] << " ";
+        cout << endl;
+
+        return end + 1;
+    }
+
+    // int Max(vi arr) { return max(length(arr, true), length(arr, false)); }
+};
+
 //* 06-30
 
 namespace Jun_30
@@ -242,10 +289,10 @@ namespace Apr_29
 
     public:
         Dog(int _age, string _info) : Animal(_age), info(_info) {}
-        void showInfor()
+        void showInfo()
         {
             cout << "age:" << age << endl
-                 << "colcor:" << info << endl;
+                 << "color:" << info << endl;
         }
     };
 
@@ -254,8 +301,8 @@ namespace Apr_29
         Animal ani(5);
         cout << "age of ani:" << ani.getAge() << endl;
         Dog dog(5, "black");
-        cout << "infor of dog:" << endl;
-        dog.showInfor();
+        cout << "info of dog:" << endl;
+        dog.showInfo();
     }
 
     //
